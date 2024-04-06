@@ -1,2 +1,7 @@
 # Entornos-Graficos
-Repositorio para las distintas entregas de la materia.
+Repositorio grupal para las distintas entregas de la materia.
+Integrantes:
+    - Barragán, José
+    - Chaya, Shakir
+    - Kellemberger, Santiago
+    - Villalba, Joaquín
