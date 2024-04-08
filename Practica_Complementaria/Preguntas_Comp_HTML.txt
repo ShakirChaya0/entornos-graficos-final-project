@@ -1,0 +1,25 @@
+Ejercitación 1:
+1) HTML 5 es la versión más reciente de HTML, una de sus más grandes adiciones es poder añadir audio 
+y video sin necesidad de usar adobe flash u otro reproductor multimedia, se puede hacer mediante las 
+etiquetas <video> y <audio>. Además se pueden crear animaciones 2D gracias a la etiqueta <canvas>. 
+2) La gran ventaja que hay al utilizarlo es que el resultado final es completamente accesible, es decir, 
+se puede acceder a esta aplicación desde una computadora, tablet o teléfono celular. 
+3) * Es gratuito.
+   * Código más ordenado.
+   * Compatibilidad en navegadores.
+   * Almacenamiento mejorado.
+   * HTML5 y el diseño adaptativo.
+
+Ejercitación 2:
+A) El comité de estandarización W3C permite a cada empresa que desarrolla navegadores elegir que formatos que quieren soportar 
+(algunos ejemplos son mp3, wav, ogg, au, entre otros).
+B) Hecho en el archivo HTML.
+
+Ejercitación 3:
+A)En este momento los navegadores permiten mostrar formatos como el mp4, webm y ogv.
+B)Hecho en el archivo HTML.
+
+Ejercitación 4:
+Hecho en el archivo HTML.
+
+
