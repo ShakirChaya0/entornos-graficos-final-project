@@ -1,0 +1,91 @@
+Ejercitación 1:
+1. ¿ Qué es CSS y para qué se usa?
+CSS son las siglas de Cascade Style Sheet que traducido significa hojas de estilo en
+cascada. Las hojas de estilo es una tecnología que nos permite controlar la apariencia de una
+página web. Utilizamos CSS para especificar estilos como el tamaño, fuentes, color, espaciado entre
+textos y recuadros así como el lugar donde disponer texto e imágenes en la página.
+
+2. CSS utiliza reglas para las declaraciones de estilo, ¿cómo funcionan?
+Utilizamos un selector para identificar el elemento HTML que se desea modificar, luego se escriben entre
+llaves ({}) los atributos de dicho elemento a personalizar seguido con sus valores correspondientes. 
+Los atributos que se modifican se separan mediante punto y coma (;).
+
+3. ¿ Cuáles son las tres formas de dar estilo a un documento?
+a) En la misma etiqueta mediante un atributo style.
+b) Creando una etiqueta <style>.
+c) Usando una etiqueta <link> para enlazar el archivo HTML con el archivo CSS.
+
+4. ¿ Cuáles son los distintos tipos de selectores más utilizados? 
+Selector de Elementos: h2{color:gray;}
+Agrupación de Selectores: h2,p{color:gray;}
+Selector Universal: *{margin:0;}
+Selector de Clases: .box{padding:5px;}
+Selector de ID: #name{font-size:12px;}
+
+5. ¿ Qué es una pseudo-clase? Cuáles son las más utilizadas aplicadas a vínculos?
+Son palabras claves que se añaden a los selectores de CSS para especificar un estado especial del elemento seleccionado. 
+Las más utilizadas son: Hover - Active - Focus - First-child - Empty - Last-child ...
+
+6. ¿ Qué es la herencia?
+La herencia es el proceso por el cual algunas propiedades CSS aplicadas a una etiqueta se pasan a las etiquetas anidadas.
+Si un elemento no tiene un valor en cascada para una determinada propiedad, puede heredar uno de un elemento antecesor. 
+Es común aplicar la propiedad font-family al elemento <body>.
+
+7. ¿ En qué consiste el proceso denominado cascada?
+Consiste en 3 principios principales:
+a) Especificidad: Cada selector tiene un nivel de especificidad que determina su importancia respecto a los demás selectores, 
+   ej: El ID tiene mayor especificidad que las clases.
+b) Orden de aparición: Cuando dos o más reglas tienen = especificidad la que aparezca más tarde prevalecerá.
+c) Importancia: Algunas declaraciones de estilo pueden tener una importancia mayor que otras. Las reglas definidas en un archivo 
+   CSS externo tienen menos importancia que las reglas definidas en línea dentro del documento HTML. 
+   Además, las declaraciones de estilo marcadas con !important tienen la mayor importancia y prevalecerán sobre otras reglas.
+
+Ejercitación 2:
+   Declaraciones: 
+	Se modifica la etiqueta <p> con el ID = "normal" 
+		font-family: arial,helvetica; (Especifica la fuente o conjunto de fuentes que se utilizarán para mostrar el texto dentro del elemento al que se le aplica)
+		font-size: 11px; (Establece el tamaño de la fuente para el texto dentro del elemento al que se aplica)
+		font-weight: bold; (Determina el grosor de la fuente para el texto dentro del elemento al que se le aplica)
+	Se modifica en el universal (*) todos aquellos elementos con el ID = "destacado" (etiquetas <p> y <table>) 
+		border-style: solid; (Establece el estilo de borde de un elemento. Puede ser sólido, punteado doble entre otros)
+		border-color: blue; (Establece el color del borde de un elemento)
+		border-width: 2px; (Establece el ancho del borde)
+	Se modifica la etiqueta <p> con el ID = "distinto"
+		background-color: #9EC7EB; (Establece el color de fondo al elemento que se le aplica)
+		color: red; (Establece el color de la fuente)
+
+Ejercitación 3: 
+  Declaraciones: 
+	Se modifica la etiqueta <p> con la clase = "quitar"
+		color: red; (Establece el color de la fuente)
+	Se modifica en el universal (*) los elementos con la clase = "desarrollo"
+		font-size: 8px; (Establece el tamaño de la fuente para el texto dentro del elemento al que se aplica)
+	Se modifica el elemento con la clase = "importante"
+		font-size: 20px; (Establece el tamaño de la fuente para el texto dentro del elemento al que se aplica)
+	
+Ejercitación 4:
+Podemos observar en el primer caso: 
+ 	* Al tener en la etiqueta <p> un atributo style="font-weight: normal;" , se le da mayor prioridad a este que a la 
+	  class = "contenido" por ende el grosor final de la fuente será el dado por defecto. 
+Podemos observar en el segundo caso: 
+	* Al tener en el propio <body> el class toda la declaración del "contenido" se aplicara a cada etiqueta. 
+
+Ejercitación 5:
+   1. 	h1,h2,h3,h4,h5,h6{color:#f00}
+
+   2. 	div p [href]{color:#000}
+
+   3. 	#ultimo ul{color:#ff0}#ultimo ul a{color:#00f}
+
+   4. 	div #importante{color:#0f0}
+	div .titulo #importante{color:#f00}
+   5.   h1 [title]{color:#00f}
+
+   6. 	ol a{text-decoration:none}
+	ol a::link{color:#00f}
+	ol a::visited{color:#41b}
+  
+
+ 
+
+ 
