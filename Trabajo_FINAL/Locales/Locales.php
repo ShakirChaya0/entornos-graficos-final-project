@@ -68,17 +68,37 @@
     <div class="lineas_title">Locales</div>
     <section class="section1">
       <form class="filtrado_locales" method="post">
-        <input id= "lupa_local" type="text" class="busqueda_local" placeholder="Ingrese el local que busca">
-        <input type="submit" class="lupa_local" id="enviar_busqueda"><label for="enviar_busqueda" class="lupa_busqueda"><img class="lupa_busqueda" src="lupa.png" alt="lupa de busqueda"></label>
+        <input id= "lupa_local" type="text" class="busqueda_local"  value="" name="busqueda" placeholder="Ingrese el local que busca">
+        <input type="submit" class="lupa_local" id="enviar_busqueda" name="enviar"><label for="enviar_busqueda" class="lupa_busqueda"><img class="lupa_busqueda" src="lupa.png" alt="lupa de busqueda"></label>
       </form>
       </section>
-    <div class="loquita">  
+    <div class="iteracion">  
       <?php
-        include("database.php");
-        $sql = "SELECT * FROM locales";
-        $result = mysqli_query($conn, $sql);
-        if(mysqli_num_rows($result) > 0){
-            while($row = mysqli_fetch_assoc($result)){
+      include("database.php");
+        if($_POST["busqueda"] == ""){
+          $sql = "SELECT * FROM locales";
+          $result = mysqli_query($conn, $sql);
+          if(mysqli_num_rows($result) > 0){
+              while($row = mysqli_fetch_assoc($result)){
+                  echo"
+                      <div class='container'>
+                            <div class ='local_data'> Local {$row['id']} <br> ubi {$row['ubicacion']} <br> {$row['rubro']} </div>
+                            <div class = 'div-content base-div'>
+                              <p class = 'data'> {$row['Nombre']}</p>
+                            </div>
+                            <div class = 'div-content hover-div'>
+                              <a class='link_promociones' href='Promociones.php'>Promociones</a>
+                            </div>
+                      </div>";
+              };
+          }
+        }
+        else{
+          $busqueda = $_POST["busqueda"];
+          $sql = "SELECT * FROM locales WHERE Nombre = '$busqueda'";
+          $resp = mysqli_query($conn, $sql);
+          if(mysqli_num_rows($resp) > 0){
+            while($row = mysqli_fetch_assoc($resp)){
                 echo"
                     <div class='container'>
                           <div class ='local_data'> Local {$row['id']} <br> ubi {$row['ubicacion']} <br> {$row['rubro']} </div>
@@ -90,7 +110,16 @@
                           </div>
                     </div>";
             };
-        }
+          }
+          else{
+            echo"
+              <div class = 'error_box'>
+                <p class = 'error'>No se encontro el local que buscaste</p>
+              </div>
+            
+            ";
+          }
+        };
       ?>
     </div>
     <footer class="footer">

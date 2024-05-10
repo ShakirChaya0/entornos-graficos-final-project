@@ -118,7 +118,7 @@ header{
 
 /*header*/
 
-.loquita{
+.iteracion{
   display: flex;
   flex-wrap: wrap;
 }
@@ -262,6 +262,24 @@ header{
   color: rgb(255, 255, 255);
   min-width: 100vw;
 }
+
+.error_box{
+  width: 40vw;
+  height: 5vh;
+  text-align: center;
+  margin: auto;
+  margin-top: 1rem;
+  max-width: 240px;
+  background-color: white;
+  border-radius: 1rem;
+}
+.error{
+  padding-top: 0.7rem;
+  margin: 0;
+  color: red;
+}
+
+
 
 /*footer*/
 
