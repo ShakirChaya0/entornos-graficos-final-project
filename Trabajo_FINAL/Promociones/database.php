@@ -1,14 +1,16 @@
 <?php
-$db_server = "localhost";
-$db_user = "root";
-$db_pass = "";
-$db_name = "shopping";
-$conn = "";
-try {
-  $conn = mysqli_connect($db_server, $db_user, $db_pass, $db_name);
-} catch (mysqli_sql_exception) {
-  echo "Colud not conneted!";
-}
-if ($conn) {
-  //echo "you are connected <br>";
-}
+    $db_server = "localhost";
+    $db_user = "root";
+    $db_pass = "";
+    $db_name = "rsc_db";
+    $conn = "";
+    try{
+        $conn = mysqli_connect($db_server, $db_user, $db_pass, $db_name);
+    }
+    catch(mysqli_sql_exception){
+        echo"Colud not conneted!";
+    }
+    if($conn){
+        //echo"you are connected <br>";
+    }
+?>
