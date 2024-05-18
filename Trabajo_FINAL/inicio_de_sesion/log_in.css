@@ -1,0 +1,299 @@
+body{
+    margin:0;
+    padding: 0;
+    height: 100vh;
+    background-image: url(shopping.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    display: flex;
+}
+.box{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    min-height: 48vh;
+    width: 20vw;
+    max-width: 300px;
+    min-width: 350px;
+}
+
+.form{
+    min-width: 350px;
+    max-width: 300px;
+    margin-bottom: 0;
+    min-height: 15vh;
+    height: 60vh;
+    max-height: 480px;
+    background-color: white;
+    border-radius: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;  
+    position: absolute;
+    overflow-x: hidden;
+}
+@media(max-height: 300px){
+    .form{
+        overflow:scroll;
+    }
+}
+.logo-cont{
+    width: 20vw;
+    min-height: 12vh;
+    padding-bottom: 1.5rem;
+}
+.logo{
+    margin-top: 1rem;
+    min-width: 100px;
+    margin-left: 7rem;
+    max-height: 200px;
+    height: 100px;
+    min-height: 100px;
+}
+.logo-cont a{
+    min-width: 120px;
+    min-height: 12vh;
+    max-height: 12vh;
+    left: 50px;
+}
+
+.username_form{
+    border-bottom: 2px solid rgb(0, 0, 0);
+    position: relative;
+    min-width: 290px;
+    width: 290px;
+    max-width: 300px;
+    margin-left: 1.7rem;
+    margin-top: 1rem;
+    padding-bottom: 0.5rem;
+    min-height: 20px;
+    max-height: 60px;
+}
+.form-control{
+    background-color:  rgb(240, 240, 240);
+    margin-left: 2.5rem;
+    padding-top: 1rem;
+    border-radius: 0.1rem;
+    font-size: 16px;
+    border: 0;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    outline: none;
+    border: none;
+    background: none;
+}
+.username_form label{
+    position: absolute;
+    font-size: 16px;
+    top: 40%;
+    left: 8px;
+    color: #969696be;
+    pointer-events: none;
+    transform: translateY(-180%);
+    transition: 0.2s;
+    display: block;
+}
+.username_form input{
+    margin-left: 0.4rem;
+    padding: 0;
+    font-size: 16px;
+    width: 17.2rem;
+    display: block;
+}
+.password_form{
+    border-bottom: 2px solid rgb(0, 0, 0);
+    position: relative;
+    width: 18rem;
+    margin-left: 1.7rem;
+    margin-top: 2rem;
+    padding-bottom: 0.5rem;
+}
+.password_form input{
+    margin-left: 0.4rem;
+    padding: 0;
+    font-size: 16px;
+    width: 17.2rem;
+}
+.password_form label{
+    position: absolute;
+    font-size: 16px;
+    top: 40%;
+    left: 8px;
+    color: #969696be;
+    pointer-events: none;
+    transform: translateY(-165%);
+    transition: 0.2s;
+    display: block;
+}
+
+.user_type_box{
+    padding-top: 1.5rem;
+    margin-left: 3.5rem;
+    height: 0.5rem;
+    width: 80%;
+    position: relative;
+}
+.client_box{
+    display: inline;
+    border-radius: 0.3rem;
+    background-color:  rgb(255, 255, 255);
+    margin-left: 1rem;
+}
+.owner_box{
+    display: inline;
+    margin-right: 1rem;
+    margin-left: 2rem;
+    border-radius: 0.3rem;
+    background-color:  rgb(255, 255, 255);
+}
+.owner_box label{
+    text-align: end;
+    width: 14vw;
+    min-width: 130px;
+    max-width: 130px;
+    display: block;
+    position: absolute;
+    
+}
+.owner_box input[type="radio"]{
+    display: none;
+}
+.client_box input[type="radio"]{
+    display: none;
+}
+.owner_box span{
+    height: 11px;
+    width: 11px;
+    min-width: 12px;
+    border-radius: 50%;
+    border: 2px solid rgb(19, 117, 209);
+    display: block;
+    position: absolute;
+    left: 7px;
+    top: 24px;
+}
+.owner_box span:after{
+    content: "";
+    height: 75%;
+    width: 70%;
+    background: rgb(19, 117, 209);
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    transition: 300ms ease-in-out 0s;
+}
+.owner_box input[type="radio"]:checked ~ span::after{
+    transform: translate(-40%, -60%) scale(1);
+}
+.client_box span{
+    height: 11px;
+    width: 11px;
+    min-width: 12px;
+    border-radius: 50%;
+    border: 2px solid rgb(19, 117, 209);
+    display: block;
+    position: absolute;
+    left: 145px;
+    top: 24px;
+}
+.client_box span:after{
+    content: "";
+    height: 75%;
+    width: 70%;
+    background: rgb(19, 117, 209);
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    transition: 200ms ease-in-out 0s;
+}
+.client_box label{
+    display: block;
+    position: absolute;
+    margin-left: 8.7rem;
+    width: 75px;
+    min-width: 60px;
+    max-width: 80px;
+    text-align: end;
+}
+
+.client_box input[type="radio"]:checked ~ span::after{
+    transform: translate(-40%, -60%) scale(1);
+}
+
+.submit{
+    background-color: rgb(4, 134, 255);
+    border-radius: 0.5rem;
+    border: 0;
+    color: white;
+    margin-top: 0;
+    margin-left: 3.2rem ;
+    height: 3rem;
+    width: 15rem;
+    font-family: Helvetica, sans-serif;
+}
+:hover.submit{
+    background-color: rgb(0, 93, 180);
+    transition: 0.2s;
+}
+:hover.form-control{
+    background-color:rgb(255, 255, 255);
+}
+.regis{
+    margin-left: 3.7rem;
+    margin-bottom: 0;
+    margin-top: 1rem;
+}
+a{
+    text-decoration: none ;
+}
+a:visited{
+    color: rgb(0, 17, 255);
+}
+.error{
+    max-height: 3vh;
+    min-width: 5vw;
+    margin-left: 4rem;
+    animation: cambio 3s linear forwards;
+}
+@keyframes cambio{
+    0%{
+        color: red;
+    }
+    50%{
+        color: rgb(255, 87, 87);
+    }
+    100%{
+        color: rgb(255, 0, 0);
+        /*display: none;*/
+    }
+}
+.register{
+    max-height:3vh;
+    min-width: 5vw;
+    margin-left: 3.5rem;
+    color: rgb(0, 143, 0);
+}
+.form-floating{
+    margin: 0;
+}
+.footer_form{
+    padding-top: 2rem;
+    justify-content: center;
+    align-items: center;
+    min-height: 110px;
+    height: 110px;
+}
+.cont_error{
+    height: 4vh;
+    max-height: 4vh;
+    min-height: 4vh;
+    min-width: 20vw;    
+}
