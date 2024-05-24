@@ -1,0 +1,23 @@
+<?php
+    // delete_local.php
+    ob_start();
+    session_start();
+    include ("../database.php"); // Include your database connection
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $sql = "UPDATE locales
+                SET estadoLocal = 'B'
+                WHERE codLocal = '{$_POST["codLocal"]}'";
+        try {
+            mysqli_query($connection, $sql);
+            $_SESSION["localEliminado"] = 1;
+
+            header("Location: admin_locales.php");
+        }
+        catch(mysqli_sql_exception) {
+            echo "<p class='msj_error'>Error de conexión con la base de datos.</p>";
+        }  
+    } 
+
+    ob_end_flush();
+?>
