@@ -60,6 +60,7 @@ header{
 }
 .navbar {
   height: 100%;
+  padding-right: 1rem;
 }
 .avatar-style {
   width: 3rem;
@@ -71,13 +72,14 @@ header{
   font-size: 1rem;
 }
 .btn {
-  margin-left: 1rem;
+  margin-left: 0;
 }
 
 .cerrar-sesion {
   width: 1.5rem;
   height: 1.5rem;
   margin-left: 2rem;
+  margin-right: 1rem;
 }
 
 .list-item {
@@ -124,9 +126,9 @@ header{
 }
 .filtrado_locales{
   background: rgb(255, 255, 255);
-  min-width: 360px;
+  min-width: 280px;
   max-width: 700px;
-  width: 60vw;
+  width: 35vw;
   height: 10vh;
   min-height: 88px;
   display: block;
@@ -134,10 +136,21 @@ header{
   margin-top: 1rem;
   border-radius: 1rem;
 }
+@media(max-width: 1400px){
+  .filtrado_locales{
+    height: 14vh;
+    flex-wrap: wrap;
+  }
+  .label_busqueda{
+    margin-left:5rem;
+    margin-top: 0.6rem;
+    margin-right: 0;
+  }
+}
 
 .busqueda_local{
-  margin-top: 35px;
-  margin-left: 70px;
+  margin-top: 2rem;
+  margin-left: 30px;
   width: 30vw;
   min-width: 200px;
   max-width: 400px;
@@ -145,30 +158,41 @@ header{
   border-bottom: 1px solid black;
   outline: none;
 }
-
-
-.lupa_local{
-  position: absolute;
-  margin-top: 2rem;
-  margin-left: 1rem;
-  background: transparent;
-  border: none;
-  color: transparent;
-}
-.lupa_busqueda{
+.label_busqueda{
   width: 4vw;
   min-width: 30px;
   max-width: 40px;
   height: 4vh;
-  margin-left: 0.5rem;
-  min-height: 34.8px;
+  min-height: 35px;
+  position: relative;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.lupa_input{
+  position: relative;
+  z-index: 2;
+  border: none;
+  background-color: transparent;
+  color: transparent;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+.lupa_busqueda{
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 .container{
   height: 20vh;
   width: 200px;
   min-height: 165px;
   padding: 0;
-  margin-left: 6rem;
+  margin-left: 3rem;
   margin-top: 2.5rem;
   background-color: rgb(255, 255, 255);
   border-radius: 0.5rem;
@@ -261,6 +285,7 @@ header{
   background-color: black;
   color: rgb(255, 255, 255);
   min-width: 100vw;
+  min-height: 81.6px;
 }
 
 .error_box{
@@ -272,6 +297,7 @@ header{
   max-width: 240px;
   background-color: white;
   border-radius: 1rem;
+  min-height: 46.3px;
 }
 .error{
   padding-top: 0.7rem;
@@ -285,15 +311,16 @@ header{
 
 .footer {
   background-color: #003360;
-  justify-content: space-evenly;
+  justify-content: space-around;
   display: flex;
   font-size: 20px;
-  color: #fffafa;
+  color:snow;
   font-weight: 600;
-  padding: 1em 0 2em 0;
-  margin: 10em 0 0 0;
+  padding: 2em 0 2em 0;
+  margin: 20em 0 0 0;
+  position: relative;
+  bottom: 0;
 }
-
 .logo_footer {
   display: flex;
   align-items: center;
@@ -303,68 +330,57 @@ header{
   margin-top: 20px;
   text-align: left;
 }
-
 .logo_footer a {
-  color:#fffafa;
+  color:snow;
 }
-
 .footer-titles {
+  font-size: 20px;
   display: flex;
   margin-top: 10px;
-  margin-bottom: 13px;
+  margin-bottom: 5px;
   padding-left: 20px;
   text-align: left;
-  font-size: 20px;
 }
-
 footer a{
+  font-size: 15px;
   text-decoration: none;
   padding: 0 12px;
-  font-size: 15px;
 }
-
 .f4 h3{
   margin-left: 25px;
 }
-
 .img_mapa img {
   width: 400px;
   height: 208px;
   border: double 6px black ;
 }
-
 .f3 a{
-  color:#fffafa;
+  color:snow;
 }
-
 .f3 h3{
   margin-bottom: 50px;
 }
-
 .site_map li{ 
   display: block;
   padding: 3px 3px;
   text-align: left;
 }
-
 .site_map a{
-color: #fffafa;
+color: snow;
 margin-right: 30px;
 }
-
 .site_map ul{
   justify-content: center;
   align-items: center;
   /* margin: 0; */
 }
-
 .logo_footer_form{
   display: flex;
   align-items: center;
 }
-
-@media (max-width: 800px) {
+@media (max-width:1200px) {
   .f4, .f1{
     display: none;
   }
+
 }

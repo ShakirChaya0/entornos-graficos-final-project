@@ -15,14 +15,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
     integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
     crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="client.css">
+    <link rel="stylesheet" href="Locales.css">
 </head>
 <body>
 <header class="header">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
         <div class="navbar-style">
-          <a class="navbar-brand" href="../Home/index.php"><img class="icon" src="../Imagenes-Videos/bolsas-de-compra.png" alt="Icono"></a>
+          <a class="navbar-brand" href="../Home/Home.php"><img class="icon" src="../Imagenes-Videos/bolsas-de-compra.png" alt="Icono"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -36,10 +36,10 @@
               <a class="nav-link active" aria-current="page" href="../Promociones/Promociones.php">Promociones</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link active" aria-current="page" href="#">Novedades</a>
+              <a class="nav-link active" aria-current="page" href="../Novedades/Novedades.php">Novedades</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link active" aria-current="page" href="#About us">Sobre Nosotros</a>
+              <a class="nav-link active" aria-current="page" href="../Home/Home.php#About us">Sobre Nosotros</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#Contacto">Contacto</a>
@@ -56,7 +56,7 @@
                 <li>
                   <hr class="dropdown-divider dropdown-item-delete">
                 </li>
-                <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
+                <li><a class="dropdown-item" href="../inicio_de_sesion/inicio_sesion.php">Cerrar Sesión</a></li>
               </ul>
             </li>
             <img class="icon cerrar-sesion" src="../Imagenes-Videos/Cerrar-sesion.png" alt="">
@@ -71,12 +71,11 @@
     <section class="section1">
       <form class="filtrado_locales" method="post">
         <input id= "lupa_local" type="text" class="busqueda_local" name="busqueda" placeholder="Ingrese el local que busca">
-        <input type="submit" class="lupa_local" id="enviar_busqueda" name="enviar"><label for="enviar_busqueda" class="lupa_busqueda"><img class="lupa_busqueda" src="lupa.png" alt="lupa de busqueda"></label>
-      </form>
+        <label for="enviar_busqueda" class="label_busqueda"><img class="lupa_busqueda" src="../Imagenes-Videos/lupa.png" alt="lupa de busqueda"><input type="submit" class="lupa_input" id="enviar_busqueda" name="Enviar"></label>
       </section>
     <div class="iteracion">  
       <?php
-      include("database.php");
+      include("../../database.php");
         if(empty($_POST["busqueda"])){
           $sql = "SELECT * FROM locales";
           $result = mysqli_query($conn, $sql);

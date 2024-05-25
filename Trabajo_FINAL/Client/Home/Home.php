@@ -9,7 +9,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
   <link rel="icon" href="../Imagenes-Videos/bolsas-de-compra.png" type="image/png">
   <title>Online Shop</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -17,13 +16,12 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="Home.css">
 </head>
-
 <body>
-  <header class="header">
+<header class="header">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
         <div class="navbar-style">
-          <a class="navbar-brand" href="../Home/Home.php"><img class="icon" src="../Imagenes-Videos/bolsas-de-compra.png" alt="Icono"></a>
+          <a class="navbar-brand" href="../Home/Home.php"><img class="icono" src="../Imagenes-Videos/bolsas-de-compra.png" alt="Icono"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -37,10 +35,10 @@
               <a class="nav-link active" aria-current="page" href="../Promociones/Promociones.php">Promociones</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link active" aria-current="page" href="#">Novedades</a>
+              <a class="nav-link active" aria-current="page" href="../Novedades/Novedades.php">Novedades</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link active" aria-current="page" href="#About us">Sobre Nosotros</a>
+              <a class="nav-link active" aria-current="page" href="../Home/Home.php#About us">Sobre Nosotros</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#Contacto">Contacto</a>
@@ -52,31 +50,23 @@
                 echo"{$_SESSION['tipoUsuario']}";
               ?></a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item dropdown-item-delete" href="../../inicio_de_sesion/inicio_sesion.php">Iniciar Sesión</a></li>
+                <li><a class="dropdown-item dropdown-item-delete" href="../inicio_de_sesion/inicio_sesion.php">Iniciar Sesión</a></li>
                 <li><a class="dropdown-item dropdown-item-delete" href="../inicio_de_sesion/sign_up.php">Registrarse</a></li>
                 <li>
                   <hr class="dropdown-divider dropdown-item-delete">
                 </li>
-                <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
+                <li><a class="dropdown-item" href="../../inicio_de_sesion/inicio_sesion.php">Cerrar Sesión</a></li>
               </ul>
             </li>
+            <img class="icon cerrar-sesion" src="../Imagenes-Videos/Cerrar-sesion.png" alt="">
+            <input class="btn btn-outline-danger btn-delete log_out" value="Cerrar Sesión" name="submit" type="submit">
+          </form>
             <?php
-            if ($_SESSION["tipoUsuario"] == "UNR"){
-              echo"  
-                <input class='btn btn-outline-success btn-delete' name='Inicio_sesion' value='Iniciar Sesión' type='submit'>
-                <input class='btn btn-outline-success btn-delete' name='Registrarse' value='Registrarse' type='submit'>
-              ";
-              if (isset($_POST["Inicio_sesion"])){
+              if (!empty($_POST["submit"])){
                 $_POST = array();
                 header("LOCATION: ../../inicio_de_sesion/inicio_sesion.php");
               }
-              elseif (isset($_POST["Registrarse"])){
-                $_POST = array();
-                header("LOCATION: ../../inicio_de_sesion/sign_up.php");
-              }
-            }
             ?>
-          </form>
         </div>
       </div>
     </nav>
@@ -87,7 +77,7 @@
       <div class="video-title">
         <h1 class="title">Rosario Shopping Center</h1>
         <p class="shopping-description p-delete">Bienvenidos a Rosario Shopping Center.</p>
-        <p class="shopping-description">Moda, cine, gastronomía y mucho más !Descubrí el corazón de Rosario.</p>
+        <p class="shopping-description">Moda, cine, gastronomía y mucho más! Descubrí el corazón de Rosario.</p>
       </div>
     </div>
   </section>
@@ -307,7 +297,46 @@
           <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z" />
           <path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8m0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0" />
         </svg>
-        <a href="Formulario_contacto.html" target="_blank">Formulario de Contacto</a>
+          <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Formulario de contacto</button>
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Formulario de contacto</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form method="post">
+                  <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Asunto</label>
+                    <input type="text" class="form-control" id="recipient-name" name="asunto" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="message-text" class="col-form-label">Mensaje</label>
+                    <textarea name="cuerpo" class="form-control" id="message-text" required></textarea>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <input type="submit" class="btn btn-primary" value="Enviar" name="Enviar">
+                  </div>
+                </form>
+              </div>
+              <?php
+                if(!empty($_POST["Enviar"])){
+                  if(!empty($_POST["asunto"]) && !empty($_POST["cuerpo"])){
+                    $asunto = $_POST["asunto"];
+                    $cuerpo = $_POST["cuerpo"];
+                    $email = "admin@shopping.com";
+                    $header = "From: {$_SESSION['nombreUsuario']}"."\r\n";
+                    $header.= "Reply-To: {$_SESSION['nombreUsuario']}"."\r\n";
+                    $header.= "X-Mailer: PHP/".phpversion();
+                    $mail = @mail($email, $asunto, $cuerpo, $header);
+                  }
+                }
+              ?>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 

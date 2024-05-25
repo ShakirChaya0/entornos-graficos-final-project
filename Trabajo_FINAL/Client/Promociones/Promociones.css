@@ -14,7 +14,7 @@ header{
   flex-wrap: wrap;
   
 }
-.icon {
+.icono {
   width: 100%;
   height: 100%;
 }
@@ -60,6 +60,7 @@ header{
 }
 .navbar {
   height: 100%;
+  padding-right: 1rem;
 }
 .avatar-style {
   width: 3rem;
@@ -78,6 +79,7 @@ header{
   width: 1.5rem;
   height: 1.5rem;
   margin-left: 2rem;
+  margin-right: 1rem;
 }
 
 .list-item {
@@ -124,7 +126,7 @@ header{
 }
 .filtrado_locales{
   background: rgb(255, 255, 255);
-  min-width: 360px;
+  min-width: 280px;
   max-width: 700px;
   width: 60vw;
   height: 10vh;
@@ -134,10 +136,31 @@ header{
   margin-top: 1rem;
   border-radius: 1rem;
 }
-
+@media(max-width: 615px){
+  .filtrado_locales{
+    height: 14vh;
+    flex-wrap: wrap;
+  }
+  .label_busqueda{
+    margin-left:3rem;
+    margin-top: 0.5rem;
+  }
+}
+@media(max-width:558px){
+  .containerpromociones_{
+    margin-left:3rem;
+    margin-top: 0.5rem;
+  }
+  .label_busqueda{
+    margin: 0.5rem;
+  }
+}
+.containerpromociones_{
+  display: inline-block;
+}
 .busqueda_local{
-  margin-top: 35px;
-  margin-left: 70px;
+  margin-top: 2rem;
+  margin-left: 50px;
   width: 30vw;
   min-width: 200px;
   max-width: 400px;
@@ -145,30 +168,44 @@ header{
   border-bottom: 1px solid black;
   outline: none;
 }
-
-
-.lupa_local{
-  position: absolute;
-  margin-top: 2rem;
-  margin-left: 1rem;
-  background: transparent;
+.lupa_input{
+  position: relative;
+  z-index: 2;
   border: none;
+  background-color: transparent;
   color: transparent;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
 }
-.lupa_busqueda{
+.label_busqueda{
   width: 4vw;
   min-width: 30px;
   max-width: 40px;
   height: 4vh;
-  margin-left: 0.5rem;
-  min-height: 34.8px;
+  min-height: 35px;
+  position: relative;
+}
+
+.lupa_local{
+  border: none;
+  display: block;
+  padding-top: 3rem;
+}
+.lupa_busqueda{
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 .container{
   height: 20vh;
   width: 200px;
   min-height: 165px;
   padding: 0;
-  margin-left: 6rem;
+  margin-left: 3rem;
   margin-top: 2.5rem;
   background-color: rgb(255, 255, 255);
   border-radius: 0.5rem;
@@ -388,7 +425,7 @@ margin-right: 30px;
   width: 200px;
   min-height: 165px;
   padding: 0;
-  margin-left: 6rem;
+  margin-left: 3rem;
   margin-top: 2.5rem;
   background-color: rgb(255, 255, 255);
   border-radius: 0.5rem;
@@ -400,7 +437,6 @@ margin-right: 30px;
 }
 .prom_usada{
   position: relative;
-  border: 1px solid rgb(0, 44, 167);
   margin-top: 1rem;
   margin-left: 2.3rem;
   width: 8rem;
@@ -413,4 +449,83 @@ margin-right: 30px;
   height: 3.5vh;
   overflow: hidden;
   min-height: 30px;
+}
+
+.col-form-label, .modal-title{
+  color:black;
+}
+
+.mb-3 textarea{
+  min-height: 200px;
+  max-height: 300px;
+}
+
+.btn{
+  color: white;
+  margin-left: 0;
+}
+.log_out{
+  color: #dc3545;
+}
+.success-box {
+  padding: 1rem;
+  background-color: #d6e7d5;
+  color: #0fbd6cc9;
+  border: 2px solid #0fbd6cb2;
+  border-radius: 7px;
+  width: 50vw;
+  margin-top: 3rem;
+}
+
+.success-box__msj {
+  margin-bottom: 0;
+  font-size: medium;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 30px; 
+  height: 17px; 
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 17px; 
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 13px; 
+  width: 13px;
+  left: 2px; 
+  bottom: 2px; 
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: rgb(0, 104, 0);
+}
+
+input:checked + .slider:before {
+  transform: translateX(13px); 
+}
+.promociones_{
+  position: relative;
+  top: -4%;
 }
