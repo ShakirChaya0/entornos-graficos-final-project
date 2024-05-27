@@ -2,7 +2,7 @@
     ob_start();
     session_start();
     include("../database.php");
-    include("successMensajes.php")
+    include("../successMensajes.php")
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../bolsas-de-compra.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="admin_locales_style.css">
     <title>Rosario Shopping Center - Locales</title>
@@ -146,6 +145,7 @@
                 echo "
                         <div class='table_box'>
                             <table class='table_list'>
+                                <caption>Lista de Locales</caption>
                                 <tr>
                                     <th>Código</th>
                                     <th>Nombre</th>
@@ -187,7 +187,7 @@
                                                 <div class='modal-content'>
                                                     <div class='modal-header'>
                                                         <h5 class='modal-title'>Dar de baja: <strong style='color: #c90a0a'>{$row["codLocal"]}- {$row["nombreLocal"]}</strong></h5>
-                                                        <button type='button' class='close' onclick=\"document.getElementById('modal-{$row["codLocal"]}').checked = false\" aria-label='Cerrar'>&times;</button>
+                                                        <button type='button' class='btn btn-close' onclick=\"document.getElementById('modal-{$row["codLocal"]}').checked = false\" aria-label='Cerrar'></button>
                                                     </div>
                                                     <div class='modal-body'>
                                                         <p>¿Está seguro de que desea eliminar el local?</p>
@@ -227,7 +227,7 @@
 
                     if (isset($_GET["page"]) && $_GET["page"] > 1) {
                         ?>
-                        <li class="page-item"><a href="?parametro=<?php echo $parametro ?>&buscar_name=<?php echo $busqueda ?>&buscar=Buscar&cell_limit=<?php echo $cant_registros ?>&page=<?php echo $_GET["page"] - 1 ?>" class="page-link">««</a></li>
+                        <li class="page-item"><a href="?parametro=<?php echo $parametro ?>&buscar_name=<?php echo $busqueda ?>&buscar=Buscar&page=<?php echo $_GET["page"] - 1 ?>" class="page-link">««</a></li>
                         <?php
                     }
                     else {
@@ -238,7 +238,7 @@
 
                     for ($i = 1; $i <= $total_pags; $i++) {
                         ?>
-                        <li class="page-item"><a href="?parametro=<?php echo $parametro ?>&buscar_name=<?php echo $busqueda ?>&buscar=Buscar&cell_limit=<?php echo $cant_registros ?>&page=<?php echo $i ?>" class="page-link"><?php echo $i ?></a></li>
+                        <li class="page-item"><a href="?parametro=<?php echo $parametro ?>&buscar_name=<?php echo $busqueda ?>&buscar=Buscar&page=<?php echo $i ?>" class="page-link"><?php echo $i ?></a></li>
                         <?php
                     }
 
@@ -252,7 +252,7 @@
                     }
                     else {
                         ?>
-                        <li class="page-item"><a href="?parametro=<?php echo $parametro ?>&buscar_name=<?php echo $busqueda ?>&buscar=Buscar&cell_limit=<?php echo $cant_registros ?>&page=<?php echo $_GET["page"] + 1 ?>" class="page-link">»»</a></li>
+                        <li class="page-item"><a href="?parametro=<?php echo $parametro ?>&buscar_name=<?php echo $busqueda ?>&buscar=Buscar&page=<?php echo $_GET["page"] + 1 ?>" class="page-link">»»</a></li>
                         <?php
                     }
 

@@ -12,7 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../crear_style.css">
-    <title>Rosario Shopping Center - Crear Local</title>
+    <title>Rosario Shopping Center - Modificar Novedad</title>
 </head>
 <body>
     <header class="header">
@@ -56,55 +56,104 @@
     </header>
 
     <section>
-        <h1 class="page_title">Locales</h1>
+        <h1 class="page_title">Novedades</h1>
         <div class="form_back">
             <button class="btn btn-outline-secondary">
                 <svg class="arrow_symbol" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
                 </svg>
-                <a href="admin_locales.php" class="volver_btn" aria-label="Volver"></a>
+                <a href="admin_nov.php" class="volver_btn" aria-label="Volver"></a>
                 Volver
             </button>
         </div>
 
+        <?php
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                $cod_nov = $_POST["codNovedad"];
+                $sql = "SELECT * FROM novedades WHERE codNovedad = '$cod_nov'";
+
+                $result = mysqli_query($connection, $sql);
+                $row = mysqli_fetch_assoc($result);
+            }
+        ?>
+
         <div class="create_box">
-            <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post" class="form_create">
-                <h3 class="create_subtitle">Crear Local</h3>
-                <label class="create_label" for="nombre">Nombre de Local:</label>
-                <input type="text" placeholder="..." class="form-create__input" id="nombre" name="name" maxlength="100" required>
-                <label class="create_label" for="ubi">Ubicación:</label>
-                <input type="text" placeholder="..." class="form-create__input" id="ubi" name="ubi" maxlength="50" required>
-                <label class="create_label" for="rubro">Rubro:</label>
-                <input type="text" placeholder="..." class="form-create__input" id="rubro" name="rubro" maxlength="20" required>
-                <label class="create_label" for="usuario">Código de Usuario:</label>
-                <input type="number" min="2" placeholder="..." class="form-create__input" id="usuario" name="user" required>
-                <input type="submit" value="Crear Local" class="form-create__button" name="crear">
+        <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post" class="form_create">
+                <h3 class="create_subtitle">Modificar Novedad</h3>
+                <label class="create_label" for="titulo">Título:</label>
+                <input type="text" placeholder="..." class="form-create__input" id="titulo" name="titulo" maxlength="30" value="<?php echo $row["tituloNovedad"] ?>" required>
+                <label class="create_label" for="descripcion">Descripción:</label>
+                <input type="text" placeholder="..." class="form-create__input" id="descripcion" name="texto" maxlength="200" value="<?php echo $row["textoNovedad"] ?>" required>
+                <label class="create_label" for="inicio">Inicio:</label>
+                <input type="date" placeholder="..." class="form-create__input" id="inicio" name="desde" value="<?php echo $row["fechaDesdeNov"] ?>" required>
+                <label class="create_label" for="final">Finalización:</label>
+                <input type="date" placeholder="..." class="form-create__input" id="final" name="hasta" value="<?php echo $row["fechaHastaNov"] ?>" required>
+                <label class="create_label" for="categoria-usuario">Categoría de Cliente:</label>
+                <select  class="form-create__input" id="categoria-usuario" name="categoria" required>
+                    <option value="Inicial" <?php if ($row["tipoUsuario"] == "Inicial") echo "selected" ?>>Inicial</option>
+                    <option value="Medium" <?php if ($row["tipoUsuario"] == "Medium") echo "selected" ?>>Medium</option>
+                    <option value="Premium" <?php if ($row["tipoUsuario"] == "Premium") echo "selected" ?>>Premium</option>
+                </select>
+                <?php
+                    if($row["estadoNovedad"] == "B") {
+                        ?>
+                            <h4 class="aviso_alta_local">Novedad dada de baja, ¿Desea restablecerla?</h4>
+                            <div class="dar-alta">
+                                <input class="form-check-input" type="checkbox" value="A" id="flexCheckDefault" name="darAlta">
+                                <label class="dar-alta__label" for="flexCheckDefault">Restablecer</label>
+                            </div>
+                        <?php
+                    }
+                ?>
+                <?php
+                    if($row["estadoNovedad"] == "NV") {
+                        ?>
+                            <h6 class="aviso_term_nov">Novedad no vigente, actualice su fecha de inicio y/o fin para darle vigencia nuevamente.</h6>
+                        <?php
+                    }
+                ?>
+                <input type="hidden" name="codNovedad" value="<?php echo $cod_nov ?>">
+                <input type="submit" value="Modificar" class="form-modify__button" name="modify">
             </form>
         </div>
     </section>
 
     <?php
+        if (isset($_POST["modify"])) {
+            $cod_nov = $_POST["codNovedad"];
+            $titulo = filter_input(INPUT_POST, "titulo", FILTER_SANITIZE_SPECIAL_CHARS);
+            $texto = filter_input(INPUT_POST, "texto", FILTER_SANITIZE_SPECIAL_CHARS);
+            $desde = $_POST["desde"];
+            $hasta = $_POST["hasta"];
+            $cat_user = $_POST["categoria"];
 
-        if (isset($_POST["crear"])) {
-            $sql = "SELECT * FROM locales ORDER BY codLocal DESC LIMIT 1";
-            $result = mysqli_query($connection, $sql);
-            $last_row = mysqli_fetch_assoc($result);
             
-            $cod = $last_row["codLocal"] + 1;
-            $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS);
-            $ubi = filter_input(INPUT_POST, "ubi", FILTER_SANITIZE_SPECIAL_CHARS);
-            $rubro = filter_input(INPUT_POST, "rubro", FILTER_SANITIZE_SPECIAL_CHARS);
-            $user = $_POST["user"];
-            $sql = "INSERT INTO locales (codLocal, nombreLocal, ubicacionLocal, rubroLocal, codUsuario, estadoLocal)
-                    VALUES ('$cod', '$name', '$ubi', '$rubro', '$user', 'A')";
-            
+            if($row["estadoNovedad"] == "B"){
+                $estado = !empty($_POST["darAlta"]) ? htmlspecialchars($_POST["darAlta"]) : "B";
+            }
+            else {
+                $estado = "A";
+            }
+
+            $sql = "UPDATE novedades 
+                    SET tituloNovedad = '$titulo', textoNovedad = '$texto', fechaDesdeNov = '$desde', fechaHastaNov = '$hasta', tipoUsuario = '$cat_user', estadoNovedad = '$estado'
+                    WHERE codNovedad = '$cod_nov'";  
+
             try {
                 mysqli_query($connection, $sql);
-                $_SESSION["localCreado"] = 1;
-                header("Location: admin_locales.php");
+
+                if ($row["tituloNovedad"] != $titulo || $row["textoNovedad"] != $texto || $row["fechaDesdeNov"] != $desde || $row["fechaHastaNov"] != $hasta || $row["tipoUsuario"] != $cat_user) {
+                    $_SESSION["novModificada"] = 1;
+                }
+
+                if ($row["estadoNovedad"] != $estado) {
+                    $_SESSION["novRestablecida"] = 1;
+                } 
+
+                header("Location: admin_nov.php");
             }
             catch(mysqli_sql_exception) {
-                echo "<p class='msj_error'>El nombre del local no puede repetirse. Ingrese uno nuevo.</p>";
+                echo "<p class='msj_error'>Error al modificar novedad, inténtelo de nuevo más tarde.</p>";
             }
         } 
     ?>

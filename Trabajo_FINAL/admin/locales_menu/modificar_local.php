@@ -9,10 +9,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../bolsas-de-compra.png">
-    <link rel="stylesheet" href="C:\Users\User\Documents\UTN-ISI\UTN_2do\EG\Entornos-Graficos\Trabajo_FINAL\admin\locales_style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="crear_style.css">
+    <link rel="stylesheet" href="../crear_style.css">
     <title>Rosario Shopping Center - Modificar Local</title>
 </head>
 <body>
@@ -59,13 +58,13 @@
     <section>
         <h1 class="page_title">Locales</h1>
         <div class="form_back">
-            <div class="btn btn-outline-secondary">
+            <button class="btn btn-outline-secondary">
                 <svg class="arrow_symbol" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
                 </svg>
                 <a href="admin_locales.php" class="volver_btn" aria-label="Volver"></a>
                 Volver
-            </div>
+            </button>
         </div>
 
         <?php
@@ -82,13 +81,13 @@
             <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post" class="form_create">
                 <h3 class="create_subtitle">Modificar Local</h3>
                 <label class="create_label" for="nombre">Nombre de Local:</label>
-                <input type="text" placeholder="..." class="form-create__input" id="nombre" name="name" value="<?php echo $row["nombreLocal"] ?>" required>
+                <input type="text" placeholder="..." class="form-create__input" id="nombre" name="name" value="<?php echo $row["nombreLocal"] ?>" maxlength="100" required>
                 <label class="create_label" for="ubi">Ubicación:</label>
-                <input type="text" placeholder="..." class="form-create__input" id="ubi" name="ubi" value="<?php echo $row["ubicacionLocal"] ?>" required>
+                <input type="text" placeholder="..." class="form-create__input" id="ubi" name="ubi" value="<?php echo $row["ubicacionLocal"] ?>" maxlength="50" required>
                 <label class="create_label" for="rubro">Rubro:</label>
-                <input type="text" placeholder="..." class="form-create__input" id="rubro" name="rubro" value="<?php echo $row["rubroLocal"] ?>" required>
+                <input type="text" placeholder="..." class="form-create__input" id="rubro" name="rubro" value="<?php echo $row["rubroLocal"] ?>" maxlength="20" required>
                 <label class="create_label" for="usuario">Código de Usuario:</label>
-                <input type="text" placeholder="..." class="form-create__input" id="usuario" name="user" value="<?php echo $row["codUsuario"] ?>" required>
+                <input type="number" placeholder="..." class="form-create__input" id="usuario" name="user" value="<?php echo $row["codUsuario"] ?>" required>
                 <?php
                     if($row["estadoLocal"] == "B") {
                         ?>
@@ -109,10 +108,10 @@
     <?php
         if (isset($_POST["modify"])) {
             $cod_local = $_POST["codLocal"];
-            $name = htmlspecialchars($_POST["name"]);
-            $ubi = htmlspecialchars($_POST["ubi"]);
-            $rubro = htmlspecialchars($_POST["rubro"]);
-            $user = htmlspecialchars($_POST["user"]);
+            $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS);
+            $ubi = filter_input(INPUT_POST, "ubi", FILTER_SANITIZE_SPECIAL_CHARS);
+            $rubro = filter_input(INPUT_POST, "rubro", FILTER_SANITIZE_SPECIAL_CHARS);
+            $user = $_POST["user"];
             
             if($row["estadoLocal"] == "B"){
                 $estado = !empty($_POST["darAlta"]) ? htmlspecialchars($_POST["darAlta"]) : "B";
