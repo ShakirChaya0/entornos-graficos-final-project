@@ -32,7 +32,7 @@
                             <a class="nav-link active" aria-current="page" href="../locales_menu/admin_locales.php">Locales</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="../owners_menu/admin_owner.php">Dueños de Locales</a>
+                            <a class="nav-link active" aria-current="page" href="../owners_menu/admin_owner.php">Cuentas de Dueño</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link active" aria-current="page" href="../novedades_menu/admin_nov.php">Novedades</a>
@@ -115,7 +115,7 @@
                                     <td class='$class_b'>{$row["estadoNovedad"]}</td>
                                     <td class='button_cell'>
                                         <form action='modificar_nov.php' method='POST'>
-                                            <button type='submit' class='modify_button' aria-label='Modificar Local'>
+                                            <button type='submit' class='modify_button' aria-label='Modificar Novedad' title='Modificar Novedad'>
                                                 <input type='hidden' name='codNovedad' value='{$row["codNovedad"]}'>
                                                 <svg class='modify_symbol' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil-square' viewBox='0 0 16 16'>
                                                     <path d='M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z'/>
@@ -123,7 +123,7 @@
                                                 </svg>
                                             </button>
                                         </form>
-                                        <button class='delete_button' onclick=\"document.getElementById('modal-{$row["codNovedad"]}').checked = true\" aria-label='Eliminar Local'>
+                                        <button class='delete_button' onclick=\"document.getElementById('modal-{$row["codNovedad"]}').checked = true\" aria-label='Eliminar Novedad' title='Eliminar Novedad'>
                                             <svg class='delete_symbol' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-x-square-fill' viewBox='0 0 16 16'>
                                                 <path d='M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708'/>
                                             </svg>

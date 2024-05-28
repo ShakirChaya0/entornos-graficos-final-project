@@ -14,7 +14,7 @@
             header("Location: admin_locales.php");
         }
         catch(mysqli_sql_exception) {
-            echo "<p class='msj_error'>Error de conexión con la base de datos.</p>";
+            echo "Error al intentar realizar la operación, inténtelo más tarde.";
         }  
     } 
 

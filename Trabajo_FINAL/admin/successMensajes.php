@@ -70,5 +70,19 @@
                     </div>
             ";
         }
+        elseif ($_SESSION["ownerAceptado"] == 1) {
+            echo "
+                    <div class='success-box'>
+                        <p class='success-box__msj'>Cuenta validada con éxito!</p>
+                    </div>
+            ";
+        }
+        elseif ($_SESSION["ownerRechazado"] == 1) {
+            echo "
+                    <div class='success-box'>
+                        <p class='success-box__msj'>Cuenta rechazada con éxito!</p>
+                    </div>
+            ";
+        }
     }
 ?>
