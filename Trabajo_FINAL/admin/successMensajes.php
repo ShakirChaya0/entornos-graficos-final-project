@@ -84,5 +84,19 @@
                     </div>
             ";
         }
+        elseif ($_SESSION["promoAceptada"] == 1) {
+            echo "
+                    <div class='success-box'>
+                        <p class='success-box__msj'>Promoción aceptada con éxito!</p>
+                    </div>
+            ";
+        }
+        elseif ($_SESSION["promoDenegada"] == 1) {
+            echo "
+                    <div class='success-box'>
+                        <p class='success-box__msj'>Promoción denegada con éxito!</p>
+                    </div>
+            ";
+        }
     }
 ?>

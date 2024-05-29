@@ -13,7 +13,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="admin_owner_style.css">
-    <title>Rosario Shopping Center - Cuentas de Dueños</title>
+    <title>Rosario Shopping Center - Solicitud de Cuentas</title>
 </head>
 <body>
     <header class="header">
@@ -94,7 +94,7 @@
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "
                                 <tr>
-                                    <td>{$row["codUsuario"]}</td>
+                                    <td class='cod_cell'>{$row["codUsuario"]}</td>
                                     <td>{$row["nombreUsuario"]}</td>
                                     <td class='button_cell'>
                                         <button class='btn btn-outline-secondary' onclick=\"document.getElementById('modal-{$row["codUsuario"]}').checked = true\">
@@ -109,7 +109,7 @@
                                                         <button type='button' class='btn btn-close' onclick=\"document.getElementById('modal-{$row["codUsuario"]}').checked = false\" aria-label='Cerrar'></button>
                                                     </div>
                                                     <div class='modal-body'>
-                                                        <p>Si se valida la cuenta, se le dará acceso al usuario a las opciones de Dueño de Local.<br><br> Se le notificará al mismo sobre su decisión.</p>
+                                                        <p>Si se valida la cuenta, se le dará acceso al usuario a las opciones de Dueño de Local.<br><br> Se notificará al mismo sobre su decisión.</p>
                                                     </div>
                                                     <div class='modal-footer'>
                                                         <form method='POST' action='valid_ac.php'>
@@ -238,31 +238,31 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
                         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
                     </svg>
-                    <a href="#" class="footer__items">Locales</a>
+                    <a href="../locales_menu/admin_locales.php" class="footer__items">Locales</a>
                 </li>
                 <li>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
                         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
                     </svg>
-                    <a href="#" class="footer__items">Dueños</a>
+                    <a href="../owners_menu/admin_owner.php" class="footer__items">Dueños</a>
                 </li>
                 <li>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
                         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
                     </svg>
-                    <a href="#" class="footer__items">Novedades</a>
+                    <a href="../novedades_menu/admin_nov.php" class="footer__items">Novedades</a>
                 </li>
                 <li>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
                         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
                     </svg>
-                    <a href="#" class="footer__items">Verificar promociones</a>
+                    <a href="../promociones_menu/admin_promo.php" class="footer__items">Verificar promociones</a>
                 </li>
                 <li>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
                         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
                     </svg>
-                    <a href="#" class="footer__items">Utilización de promociones</a>
+                    <a href="../uso_promociones/uso_promo.php" class="footer__items">Utilización de promociones</a>
                 </li>
             </ul>
         </div>

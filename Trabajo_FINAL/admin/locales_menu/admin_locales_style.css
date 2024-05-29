@@ -250,6 +250,11 @@ td {
   box-sizing: content-box;
 }
 
+.cod_cell {
+  text-align: center;
+  width: 75px;
+}
+
 .estado_baja {
   color: #f00;
   font-weight: 500;

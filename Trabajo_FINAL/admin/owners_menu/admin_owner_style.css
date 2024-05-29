@@ -167,6 +167,11 @@ td {
   box-sizing: content-box;
 }
 
+.cod_cell {
+  text-align: center;
+  width: 75px;
+}
+
 .button_cell {
   text-align: center;
   width: 150px;
@@ -261,13 +266,6 @@ input[type="checkbox"]:checked ~ .modal {
 .success-box__msj {
   margin-bottom: 0;
   font-size: medium;
-}
-
-@media (max-width: 1600px) {
-  .accept_button, .delete_button {
-      width: 1.5rem;
-      margin: 1px;
-    }
 }
 
 @media (max-width:875px) {

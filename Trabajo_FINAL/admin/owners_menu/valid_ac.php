@@ -11,7 +11,7 @@
         }
         else {
             $estado = "R";
-            $cuerpo = "Su solicitud de una cuenta de Dueño de Local fue rechazada. Comuníquese a través del formulario de contacto si así lo requiere.";
+            $cuerpo = "Su solicitud de cuenta de Dueño de Local fue rechazada. Comuníquese con el administrador a través del formulario de contacto si así lo requiere.";
             $_SESSION["ownerRechazado"] = 1;
         }
         
@@ -21,11 +21,11 @@
                     'Reply-To: no_reply@gmail.com' . "\r\n" .
                     'X-Mailer: PHP/' . phpversion();
 
-        if (mail($destinatario, $asunto, $cuerpo, $headers)) {
+        /*if (mail($destinatario, $asunto, $cuerpo, $headers)) {
             echo "Correo enviado exitosamente a $email";
         } else {
             echo "Error al enviar el correo.";
-        }
+        }*/
         
         $sql = "UPDATE usuarios 
                 SET estado = '$estado'
@@ -33,6 +33,7 @@
 
         try {
             mysqli_query($connection, $sql);
+            header("Location: admin_owner.php");
         }
         catch (mysqli_sql_exception) {
             echo "Error al intentar realizar la operación, inténtelo más tarde.";
