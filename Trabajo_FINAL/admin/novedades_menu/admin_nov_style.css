@@ -113,27 +113,78 @@ section:target {
   padding: 0.3rem;
 }
 
-.pre-table_box, .warning-box, .success-box {
+.search_box, .warning-box, .success-box {
   margin: auto;
   margin-top: 3rem;
   padding: 2rem 5rem;
   background-color: #efefef;
   width: 80vw;
 }
-   
-.create_button {
+
+.search_label {
+  position: relative;
   display: block;
-  width: max-content;
-  text-decoration: none;
-  margin-top: 10px;
+  margin-left: 5px;
+  margin-bottom: 8px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-search__select{
+  position: absolute;
+  margin-left: 10px;
+  font-size: medium;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  top: 1px;
+  transition: box-shadow 0.1s;
+}
+
+.form-search__select:focus {
+  box-shadow: 0 0 8px 1px #257cc9;
+  outline: none;
+}
+
+.form-search__input {
+  margin-top: 7px;
+  margin-left: 5px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 35vw;
+}
+
+.form-search__button {
+  margin-left: 5px;
+  border: 1px solid #003360;
+  border-radius: 5px;
+  padding: 10px 20px;
+  color: #fffafa;
+  background-color: #003360;
+  transition-property: background-color, border;
+  transition-duration: 0.2s;
+}
+
+.form-search__button:hover {
+  background-color: #007bff;
+  border: 1px solid #007bff;
+}
+
+.form-search__create-button {
+  margin-left: 5px;
   border: 1px solid #198754;
   border-radius: 5px;
   padding: 10px 20px;
   color: #fffafa;
   background-color: #198754;
+  transition-property: background-color, border;
+  transition-duration: 0.2s;
 }
 
-.create_button:hover {
+.form-search__create-button:hover {
   background-color: #09ce72;
   border: 1px solid #09ce72;
   transition: all 0.2s;
@@ -335,18 +386,38 @@ input[type="checkbox"]:checked ~ .modal {
   font-size: medium;
 }
 
-@media (max-width:875px) {
+@media (max-width:895px) {
   .page_title {
     font-size: 3rem;
   }
 
-  .pre-table_box {
+  .search_box {
     padding: 1rem 1rem;
   }
 
-  .create_button {
+  .form-search__input{
+    width: 60%;
+  }
+
+  .form-search__button {
+    padding: 10px 10px;
+  }
+
+  .form-search__create-button {
     margin-top: 10px;
     padding: 10px;
+  }
+}
+
+@media (max-width:570px) {
+  .form-search__select {
+    position: unset;
+    margin-left: 0;
+    width: 61%;
+  }
+
+  .search_label {
+    margin-bottom: 0;
   }
 }
 

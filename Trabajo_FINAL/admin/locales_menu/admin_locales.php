@@ -20,7 +20,7 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <div class="navbar-style">
-                <a class="navbar-brand" href="../HomePage_admin.html"><img class="icon" src="../bolsas-de-compra.png" alt="Icono"></a>
+                <a class="navbar-brand" href="../home_page_admin.html"><img class="icon" src="../bolsas-de-compra.png" alt="Icono"></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -30,30 +30,39 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="../locales_menu/admin_locales.php">Locales</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="../owners_menu/admin_owner.php">Cuentas de Dueño</a>
+                        <li class="nav-item dropdown list-item">
+                            <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Usuarios</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="../users_menu/admin_users.php">Usuarios Registrados</a></li>
+                                <li><a class="dropdown-item" href="../users_menu/admin_owner.php">Validar/Denegar Cuentas de Dueño</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link active" aria-current="page" href="../novedades_menu/admin_nov.php">Novedades</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link active" aria-current="page" href="../promociones_menu/admin_promo.php">Promociones</a>
+                        <li class="nav-item dropdown list-item">
+                            <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Promociones</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="../promociones_menu/admin_lista_promo.php">Promociones Cargadas</a></li>
+                                <li><a class="dropdown-item" href="../promociones_menu/admin_promo.php">Aceptar/Rechazar Promociones</a></li>
+                            </ul>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="../uso_promociones/uso_promo.php">Uso de Promociones</a>
                         </li>
                     </ul>
-                    <form class="d-flex align-items-center form-style" role="search">
+                    <form class="d-flex align-items-center form-style" role="search" method="post" action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>">
                         <li class="nav-item dropdown list-item">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img class="avatar-style icon" src="../avatar.png" alt="">Administrador</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
+                                <li><button type="submit" class="dropdown-item" name="cerrarSesion">Cerrar Sesión</button></li>
                             </ul>
                         </li>
                     </form>
                 </div>
             </div>
-        </nav>
+        </nav>  
     </header>
 
     <section>
@@ -103,28 +112,9 @@
 
         <!-- SELECT FILAS POR PAG Y TABLA -->
         <?php
-            //$cant_registros = isset($_GET['page']) ? $_GET['page'] : 10;   <--- parte del selector de filas
             $cant_registros = 15;
             $pag = isset($_GET["page"]) ? $_GET["page"] : 1;
             $inicio = ($pag - 1) * $cant_registros;
-            
-            /* SELECTOR DE FILAS POR PAGINA (lo guardo por las dudas)
-                echo '
-                        <div class="select_pagination">
-                            <form action="admin_locales.php" method="get">
-                                <label for="select_limit" class="limit_label">Mostrar 
-                                <select name="cell_limit" id="select_limit" class="select_cell_limit" onchange="this.form.submit()">
-                                    <option value="15" ' . (isset($_GET['cell_limit']) && $_GET['cell_limit'] == 15 ? 'selected' : '') . '>15</option>
-                                    <option value="20" ' . (isset($_GET['cell_limit']) && $_GET['cell_limit'] == 20 ? 'selected' : '') . '>20</option>
-                                    <option value="30" ' . (isset($_GET['cell_limit']) && $_GET['cell_limit'] == 30 ? 'selected' : '') . '>30</option>
-                                    <option value="40" ' . (isset($_GET['cell_limit']) && $_GET['cell_limit'] == 40 ? 'selected' : '') . '>40</option>
-                                    <option value="50" ' . (isset($_GET['cell_limit']) && $_GET['cell_limit'] == 50 ? 'selected' : '') . '>50</option>
-                                </select>
-                                filas por página: 
-                                </label>
-                            </form>
-                        </div>
-                ';*/
             
             if (empty($busqueda)) {
                 $sql = "SELECT * FROM locales LIMIT $inicio, $cant_registros";
@@ -324,7 +314,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
                         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
                     </svg>
-                    <a href="../owners_menu/admin_owner.php" class="footer__items">Dueños</a>
+                    <a href="../users_menu/admin_owner.php" class="footer__items">Dueños</a>
                 </li>
                 <li>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">

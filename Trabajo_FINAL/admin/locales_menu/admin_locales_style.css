@@ -189,17 +189,6 @@ section:target {
   border: 1px solid #09ce72;
 }
 
-.limit_label {
-  margin: 3rem 0 10px 0;
-}
-
-.select_cell_limit {
-  padding: 3px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-}
-
 .table_box, .select_pagination, .pagination_info {
   margin: auto;
   width: 80vw;
@@ -429,10 +418,6 @@ input[type="checkbox"]:checked ~ .modal {
 }
 
 @media (max-width:340px) {
-  .select_pagination {
-    font-size: small;
-  }
-  
   .pagination_info {
     font-size: smaller;
   }

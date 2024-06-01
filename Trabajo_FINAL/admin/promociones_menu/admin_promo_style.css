@@ -162,10 +162,23 @@ tr:nth-child(odd) {
   background-color: #f0f5fa;
 }
 
+tr:nth-child(even):hover {
+  background-color: #ececec;
+}
+
+tr:nth-child(odd):hover {
+  background-color: #d5e5f7;
+}
+
 td {
   border-right: 3px solid #fff;
   padding: 10px;
   box-sizing: content-box;
+}
+
+.cod_cell {
+  text-align: center;
+  width: 75px;
 }
 
 .button_cell {
