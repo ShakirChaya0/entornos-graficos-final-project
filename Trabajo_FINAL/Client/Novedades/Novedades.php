@@ -86,9 +86,12 @@
       $result = mysqli_query($conn, $sql);
       $fecha_actual = date("Y-m-d");
       $fecha_actual = strtotime($fecha_actual);
+      $search_usu = 'SELECT * FROM usuarios WHERE codusuario = "'.$_SESSION["codusuario"].'"';
+      $result_usu = mysqli_query($conn, $search_usu);
+      $row_usu = mysqli_fetch_assoc($result_usu);
       if(mysqli_num_rows($result) > 0){
         while($row = mysqli_fetch_assoc($result)){
-          if(strtolower($_SESSION["categoriaCliente"]) == "premium"){
+          if(strtolower($row_usu["categoriaCliente"]) == "premium"){
             $row["fechaDesdeNov"] = strtotime($row["fechaDesdeNov"]);
             $diferencia = ($fecha_actual - $row["fechaDesdeNov"]) / 86400; 
             if($diferencia == 0){
@@ -98,7 +101,7 @@
                 {$row['tipoUsuario']}
               </div>
               <div class='card-body'>
-                <h5 class='card-title'>{$row['tituloNovedad']}</h5>
+                <h5 class='card-title'></h5>
                 <p class='card-text'>{$row['textoNovedad']}</p>
               </div>
               <div class='card-footer text-body-secondary green'>
@@ -114,7 +117,7 @@
                 {$row['tipoUsuario']}
               </div>
               <div class='card-body'>
-                <h5 class='card-title'>{$row['tituloNovedad']}</h5>
+                <h5 class='card-title'></h5>
                 <p class='card-text'>{$row['textoNovedad']}</p>
               </div>
               <div class='card-footer text-body-secondary bottom_card'>
@@ -125,7 +128,7 @@
 
             }
           }
-          elseif(strtolower($_SESSION["categoriaCliente"]) == "medium"){
+          elseif(strtolower($row_usu["categoriaCliente"]) == "medium"){
             if(strtolower($row["tipoUsuario"]) != "premium"){
               $row["fechaDesdeNov"] = strtotime($row["fechaDesdeNov"]);
               $diferencia = ($fecha_actual - $row["fechaDesdeNov"]) / 86400; 
@@ -136,7 +139,7 @@
                   {$row['tipoUsuario']}
                 </div>
                 <div class='card-body'>
-                  <h5 class='card-title'>{$row['tituloNovedad']}</h5>
+                  <h5 class='card-title'></h5>
                   <p class='card-text'>{$row['textoNovedad']}</p>
                 </div>
                 <div class='card-footer text-body-secondary green'>
@@ -152,7 +155,7 @@
                   {$row['tipoUsuario']}
                 </div>
                 <div class='card-body'>
-                  <h5 class='card-title'>{$row['tituloNovedad']}</h5>
+                  <h5 class='card-title'></h5>
                   <p class='card-text'>{$row['textoNovedad']}</p>
                 </div>
                 <div class='card-footer text-body-secondary bottom_card'>
@@ -164,7 +167,7 @@
               }
             }
           }
-          elseif(strtolower($_SESSION["categoriaCliente"])  == "inicial"){
+          elseif(strtolower($row_usu["categoriaCliente"])  == "inicial"){
             if(strtolower($row["tipoUsuario"]) == "inicial"){
               $row["fechaDesdeNov"] = strtotime($row["fechaDesdeNov"]);
               $diferencia = ($fecha_actual - $row["fechaDesdeNov"]) / 86400; 
@@ -175,7 +178,7 @@
                   {$row['tipoUsuario']}
                 </div>
                 <div class='card-body'>
-                  <h5 class='card-title'>{$row['tituloNovedad']}</h5>
+                  <h5 class='card-title'>asdasd</h5>
                   <p class='card-text'>{$row['textoNovedad']}</p>
                 </div>
                 <div class='card-footer text-body-secondary green'>
@@ -191,7 +194,7 @@
                   {$row['tipoUsuario']}
                 </div>
                 <div class='card-body'>
-                  <h5 class='card-title'>{$row['tituloNovedad']}</h5>
+                  <h5 class='card-title'>Novedad</h5>
                   <p class='card-text'>{$row['textoNovedad']}</p>
                 </div>
                 <div class='card-footer text-body-secondary bottom_card'>

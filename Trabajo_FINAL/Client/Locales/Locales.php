@@ -47,9 +47,7 @@
           </ul>
           <form class="d-flex align-items-center form-style" role="search">
             <li class="nav-item dropdown list-item">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img class="avatar-style icon" src="../Imagenes-Videos/avatar.png" alt=""><?php
-                echo"{$_SESSION['tipoUsuario']}";
-              ?></a>
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img class="avatar-style icon" src="../Imagenes-Videos/avatar.png" alt="">Cliente</a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item dropdown-item-delete" href="../inicio_de_sesion/inicio_sesion.php">Iniciar Sesión</a></li>
                 <li><a class="dropdown-item dropdown-item-delete" href="../inicio_de_sesion/sign_up.php">Registrarse</a></li>
@@ -70,9 +68,17 @@
     <div class="lineas_title">Locales</div>
     <section class="section1">
       <form class="filtrado_locales" method="post">
-        <input id= "lupa_local" type="text" class="busqueda_local" name="busqueda" placeholder="Ingrese el local que busca">
+        <label class="search_label" for="select_parametro"><b>Búsqueda de local:</b>
+          <select name="parametro" id="select_parametro" class="form-search__select">
+              <option value="nombreLocal">Por nombre</option>
+              <option value="ubicacionLocal">Por ubicación</option>
+              <option value="rubroLocal">Por rubro</option>
+              <option value="codUsuario">Por código de Dueño</option>
+          </select>
+        </label>
+        <input id= "lupa_local" type="text" class="busqueda_local" name="busqueda" placeholder="¿Qué desea buscar?">
         <label for="enviar_busqueda" class="label_busqueda"><img class="lupa_busqueda" src="../Imagenes-Videos/lupa.png" alt="lupa de busqueda"><input type="submit" class="lupa_input" id="enviar_busqueda" name="Enviar"></label>
-      </section>
+    </section>
     <div class="iteracion">  
       <?php
       include("../../database.php");
@@ -95,8 +101,9 @@
           }
         }
         else{
+          $parame = $_POST["parametro"];
           $busqueda = $_POST["busqueda"];
-          $sql = "SELECT * FROM locales WHERE nombreLocal = '$busqueda'";
+          $sql = "SELECT * FROM locales WHERE $parame = '$busqueda'";
           $resp = mysqli_query($conn, $sql);
           if(mysqli_num_rows($resp) > 0){
             while($row = mysqli_fetch_assoc($resp)){
@@ -115,7 +122,7 @@
           else{
             echo"
               <div class = 'error_box'>
-                <p class = 'error'>No se encontro el local que buscaste</p>
+                <p class = 'error'>No se encontro lo que buscaste</p>
               </div>
             
             ";

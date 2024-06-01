@@ -1,6 +1,6 @@
 body {
     overflow-x: hidden;
-    font-family:-apple-system;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 16px;
     background-color: #ebebeb;
     height: 100vh;
@@ -124,17 +124,21 @@ header{
   display: flex;
   flex-wrap: wrap;
 }
+
 .filtrado_locales{
   background: rgb(255, 255, 255);
   min-width: 280px;
-  max-width: 700px;
-  width: 35vw;
-  height: 10vh;
-  min-height: 88px;
-  display: block;
+  max-width: 600px;
+  width: 40vw;
+  height: 16vh;
+  min-height: 159px;
   margin: auto;
+  display: block;
   margin-top: 1rem;
   border-radius: 1rem;
+}
+.section1{
+  flex-wrap: wrap;
 }
 @media(max-width: 1400px){
   .filtrado_locales{
@@ -148,8 +152,14 @@ header{
   }
 }
 
+@media(max-width: 934px){
+  .filtrado_locales{
+    height: 21vh;
+  }
+}
+
 .busqueda_local{
-  margin-top: 2rem;
+  margin-top: 1rem;
   margin-left: 30px;
   width: 30vw;
   min-width: 200px;
@@ -169,6 +179,13 @@ header{
   margin-right: 1rem;
 }
 
+.search_label{
+  margin-left: 2rem;
+  margin-top: 2rem;
+  margin-right: 2rem;
+  font-size: 16px;
+}
+
 .lupa_input{
   position: relative;
   z-index: 2;
@@ -178,6 +195,7 @@ header{
   box-sizing: border-box;
   width: 100%;
   height: 100%;
+  min-width: 40px;
 }
 .lupa_busqueda{
   position: absolute;
@@ -186,19 +204,35 @@ header{
   left: 0;
   width: 100%;
   height: 100%;
+  min-width: 40px;
 }
+
+@media(max-width: 1063px){
+  .lupa_busqueda, .lupa_input{
+    margin-left: 2rem;
+  }
+}
+
 .container{
   height: 20vh;
   width: 200px;
   min-height: 165px;
   padding: 0;
+  margin-right: 1.5rem;
   margin-left: 3rem;
   margin-top: 2.5rem;
   background-color: rgb(255, 255, 255);
   border-radius: 0.5rem;
   min-width: 200px;
-  margin-right: 0;
 }
+
+@media(max-width: 544px){
+  .container{
+    margin:auto;
+    margin-top: 2.5rem;
+  }
+}
+
 .dive-content{
   position:absolute;
   align-items: center;
@@ -295,13 +329,14 @@ header{
   margin: auto;
   margin-top: 1rem;
   max-width: 240px;
+  min-width: 240px;
   background-color: white;
   border-radius: 1rem;
   min-height: 46.3px;
 }
 .error{
-  padding-top: 0.7rem;
   margin: 0;
+  padding-top: 0.5rem;
   color: red;
 }
 
