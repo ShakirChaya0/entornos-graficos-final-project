@@ -1,5 +1,7 @@
 <?php
-    include("database.php");
+    include("../database.php");
+    session_start();
+    $_SESSION["tipoUsuario"] = "UNR";
 ?>
 
 <!DOCTYPE html>
@@ -17,24 +19,26 @@
     <section class="box">
         <form action="sign_up.php" method="post" class="form">
             <div class="logo-cont">
-                <a href="../Home/Home.php"><img src="logo.jpg" alt="logo" class="logo"></a>
+                <a href="../UNR/Home-UNR/index.php"><img src="../Client/Imagenes-Videos/logo.jpg" alt="logo" class="logo"></a>
             </div>
             <div class="username_form">
-                <input type="text" class="form-control" id="floatingInput" name="username">
-                <label class="label" for="floatingInput">Email del Usuario</label>
+                <img src="../Client/Imagenes-Videos/avatar.png" alt="Avatar.png" class="avatar-de-email">
+                <input type="text" class="form-control" id="floatingInput" name="username" required maxlength="100">
+                <label for="floatingInput">Email del Usuario</label>
             </div>
             <div class="password_form">
-                <input type="password" class="form-control" id="floatingPassword" name="password">
-                <label class="label" for="floatingPassword">Contraseña</label><br>
+            <img src="../Client/Imagenes-Videos/candado.png" alt="candado.png" class="avatar-de-email">
+                <input type="password" class="form-control" id="floatingPassword" name="password" required maxlength="8">
+                <label for="floatingPassword">Contraseña</label><br>
             </div>
             <div class="user_type_box">
                 <div class="owner_box">
-                    <input id = "owner" type="radio" name="type" class="user_type" value="Dueño de local">
+                    <input id="owner" type="radio" name="type" class="user_type" value="Dueño de local">
                     <span></span>
                     <label for="owner">Dueño de Local</label>
                 </div>
                 <div class="client_box">
-                    <input id = "client"type="radio" name="type" class="user_type" value="Cliente">
+                    <input id="client" type="radio" name="type" class="user_type" value="Cliente" >
                     <span></span>
                     <label for="client">Cliente</label>
                 </div>
@@ -44,41 +48,33 @@
                 <p class="regis">¿Desea iniciar sesion?<a href="inicio_sesion.php"> Iniciar sesion</a></p>
             <div class="cont_error">
                 <?php
-                    if($_POST["submit"] == "Registrarse"){
+                    if(!empty($_POST["submit"])){
                         $username = $_POST["username"];
                         $password = $_POST["password"];
                         $type = $_POST["type"];
                         $_POST = array();
                         if(!empty($username) && !empty($password)){
-                            $sqli = 'SELECT * FROM usuarios WHERE (nombreUsuario, claveUsuario) = ("'.$username.'","'.$password.'")';
-                            $result = mysqli_query($conn, $sqli);
-                            if(mysqli_num_rows($result) > 0){   
-                                echo"<p class = 'error'>* Ya existe dicho usuario</p>";
-                            }
-                            else{
-                                if($type == "Cliente"){
-                                    $sql = 'INSERT INTO usuarios (nombreUsuario,claveUsuario, tipoUsuario, categoriaCliente, estado) VALUES ("'.$username.'", "'.$password.'", "'.$type.'", "inicial", "A")';
-                                    try{
-                                        mysqli_query($conn, $sql);
-                                        echo"<p class='register'>* Te registraste exitosamente</p>";
-                                        mysqli_close($conn);
-                                    }
-                                    catch(mysqli_sql_exception){
-                                        echo" No se pudo registrar";
-                                    }
-                                }
-                                else{
-                                    $sql = 'INSERT INTO usuarios (nombreUsuario,claveUsuario, tipoUsuario, categoriaCliente, estado) VALUES ("'.$username.'", "'.$password.'", "'.$type.'", "inicial", "E")';
-                                    try{
-                                        mysqli_query($conn, $sql);
-                                        echo"<p class='register'>* Se ha enviado la solicitud de dueño</p>";
-                                        mysqli_close($conn);
-                                    }
-                                    catch(mysqli_sql_exception){
-                                        echo" No se pudo registrar";
-                                    }
-                                }
-                            } 
+                            $destinatario = "josebpp198@gmail.com";
+                            $asunto = "Email de prueba";
+                            $cuerpo = "
+                            <html>
+                                <head>
+                                    <title>Prueba de correo</title>
+                                </head>
+                                <body>
+                                    <h1>Email del admin</h1>
+                                    <form method = 'post'>
+                                        <input type='submit'>
+                                    </form>
+                                </body>
+                            </html>
+                            ";
+                            $headers = "MIME-Version: 1.0\r\n";
+                            $headers .= "Contetn-type: text/html; charset=utf-8\r\n";
+                            $headers .= "From: cliente\r\n";
+                            $headers .= "Return-path: $destinatario\r\n";
+                            @mail($destinatario, $asunto, $cuerpo, $headers);
+                            echo"enviado correctamente";
                         }
                     }
                         
