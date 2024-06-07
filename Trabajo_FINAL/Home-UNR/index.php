@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION["username"] = "UNR";
+$_SESSION["tipoUsuario"] = "UNR";
 ?>
 
 <!doctype html>
@@ -23,7 +23,7 @@ $_SESSION["username"] = "UNR";
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
         <div class="navbar-style">
-          <a class="navbar-brand" href="#Home"><img class="icon" src="/Trabajo_FINAL/unrClient/Imagenes-Videos/bolsas-de-compra.png" alt="Icono"></a>
+          <a class="navbar-brand" href="#Home"><img class="icon" src="../../Client/Imagenes-Videos/bolsas-de-compra.png" alt="Icono"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -31,7 +31,7 @@ $_SESSION["username"] = "UNR";
         <div class="collapse navbar-collapse" id="navbarScroll">
           <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
             <li class="nav-item">
-              <a class="nav-link active locales-active" aria-current="page" href="#">Locales</a>
+              <a class="nav-link active locales-active" aria-current="page" href="../../Client/Locales/Locales.php">Locales</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">Promociones</a>
@@ -48,11 +48,12 @@ $_SESSION["username"] = "UNR";
           </ul>
           <form class="d-flex align-items-center form-style" role="search">
             <li class="nav-item dropdown list-item">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img class="avatar-style icon" src="/Trabajo_FINAL/unrClient/Imagenes-Videos/avatar.png" alt="">Tipo de
-                Usuario</a>
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img class="avatar-style icon" src="../../Client/Imagenes-Videos/avatar.png" alt=""><?php
+                echo"{$_SESSION['tipoUsuario']}";
+              ?></a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item dropdown-item-delete" href="#">Iniciar Sesión</a></li>
-                <li><a class="dropdown-item dropdown-item-delete" href="#">Registrarse</a></li>
+                <li><a class="dropdown-item dropdown-item-delete" href="../../inicio_de_sesion/inicio_sesion.php">Iniciar Sesión</a></li>
+                <li><a class="dropdown-item dropdown-item-delete" href="../../inicio_de_sesion/sign_up.php">Registrarse</a></li>
                 <li>
                   <hr class="dropdown-divider dropdown-item-delete">
                 </li>
@@ -67,12 +68,12 @@ $_SESSION["username"] = "UNR";
     </nav>
   </header>
   <section id="Home" class="section-1">
-    <video autoplay loop muted class="video" src="/Trabajo_FINAL/unrClient/Imagenes-Videos/Video-principal.mp4"></video>
+    <video autoplay loop muted class="video" src="../../Client/Imagenes-Videos/Video-principal.mp4"></video>
     <div class="video-opacity">
       <div class="video-title">
         <h1 class="title">Rosario Shopping Center</h1>
         <p class="shopping-description p-delete">Bienvenidos a Rosario Shopping Center.</p>
-        <p class="shopping-description">Moda, cine, gastronomía y mucho más !Descubrí el corazón de Rosario.</p>
+        <p class="shopping-description">Moda, cine, gastronomía y mucho más! Descubrí el corazón de Rosario.</p>
       </div>
     </div>
   </section>
@@ -87,7 +88,7 @@ $_SESSION["username"] = "UNR";
           <div class="cards-wrapper">
             <div class="card">
               <div class="image-wrapper">
-                <img src="/Trabajo_FINAL/unrClient/Imagenes-Videos/Nike.jpg" alt="/Imagenes-Videos/Nike.jpg">
+                <img src="../../Client/Imagenes-Videos/Nike.jpg" alt="/Imagenes-Videos/Nike.jpg">
               </div>
               <div class="card-body">
                 <h5 class="card-title">Card title</h5>
@@ -98,7 +99,7 @@ $_SESSION["username"] = "UNR";
             </div>
             <div class="card">
               <div class="image-wrapper">
-                <img src="/Trabajo_FINAL/unrClient/Imagenes-Videos/Nike.jpg" alt="/Imagenes-Videos/Nike.jpg" alt="/Imagenes-Videos/Nike.jpg">
+                <img src="../../Client/Imagenes-Videos/Nike.jpg" alt="/Imagenes-Videos/Nike.jpg" alt="/Imagenes-Videos/Nike.jpg">
               </div>
               <div class="card-body">
                 <h5 class="card-title">Card title</h5>
@@ -109,44 +110,7 @@ $_SESSION["username"] = "UNR";
             </div>
             <div class="card">
               <div class="image-wrapper">
-                <img src="/Trabajo_FINAL/unrClient/Imagenes-Videos/Nike.jpg" alt="/Imagenes-Videos/Nike.jpg" alt="/Imagenes-Videos/Nike.jpg">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="cards-wrapper">
-            <div class="card">
-              <div class="image-wrapper">
-                <img src="/Trabajo_FINAL/unrClient/Imagenes-Videos/Showcase.jpg" alt="/Imagenes-Videos/Nike.jpg" alt="/Imagenes-Videos/Showcase.jpg">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="image-wrapper">
-                <img src="/Trabajo_FINAL/unrClient/Imagenes-Videos/Showcase.jpg" alt="/Imagenes-Videos/Showcase.jpg">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="image-wrapper">
-                <img src="/Trabajo_FINAL/unrClient/Imagenes-Videos/Showcase.jpg" alt="/Imagenes-Videos/Showcase.jpg">
+                <img src="../../Client/Imagenes-Videos/Nike.jpg" alt="/Imagenes-Videos/Nike.jpg" alt="/Imagenes-Videos/Nike.jpg">
               </div>
               <div class="card-body">
                 <h5 class="card-title">Card title</h5>
@@ -161,7 +125,7 @@ $_SESSION["username"] = "UNR";
           <div class="cards-wrapper">
             <div class="card">
               <div class="image-wrapper">
-                <img src="/Trabajo_FINAL/unrClient/Imagenes-Videos/Starbucks.jpg" alt="/Imagenes-Videos/Starbucks.jpg">
+                <img src="../../Client/Imagenes-Videos/Showcase.jpg" alt="/Imagenes-Videos/Nike.jpg" alt="/Imagenes-Videos/Showcase.jpg">
               </div>
               <div class="card-body">
                 <h5 class="card-title">Card title</h5>
@@ -172,7 +136,7 @@ $_SESSION["username"] = "UNR";
             </div>
             <div class="card">
               <div class="image-wrapper">
-                <img src="/Trabajo_FINAL/unrClient/Imagenes-Videos/Starbucks.jpg" alt="/Imagenes-Videos/Starbucks.jpg">
+                <img src="../../Client/Imagenes-Videos/Showcase.jpg" alt="/Imagenes-Videos/Showcase.jpg">
               </div>
               <div class="card-body">
                 <h5 class="card-title">Card title</h5>
@@ -183,7 +147,44 @@ $_SESSION["username"] = "UNR";
             </div>
             <div class="card">
               <div class="image-wrapper">
-                <img src="/Trabajo_FINAL/unrClient/Imagenes-Videos/Starbucks.jpg" alt="/Imagenes-Videos/Starbucks.jpg">
+                <img src="../../Client/Imagenes-Videos/Showcase.jpg" alt="/Imagenes-Videos/Showcase.jpg">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="cards-wrapper">
+            <div class="card">
+              <div class="image-wrapper">
+                <img src="../../Client/Imagenes-Videos/Starbucks.jpg" alt="/Imagenes-Videos/Starbucks.jpg">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+            <div class="card">
+              <div class="image-wrapper">
+                <img src="../../Client/Imagenes-Videos/Starbucks.jpg" alt="/Imagenes-Videos/Starbucks.jpg">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+            <div class="card">
+              <div class="image-wrapper">
+                <img src="../../Client/Imagenes-Videos/Starbucks.jpg" alt="/Imagenes-Videos/Starbucks.jpg">
               </div>
               <div class="card-body">
                 <h5 class="card-title">Card title</h5>
@@ -208,7 +209,7 @@ $_SESSION["username"] = "UNR";
   <section class="section-3" id="About us">
     <div class="b1">
       <h2 class="subtitle">EL SHOPPING</h2>
-      <img class="image-wrapper shopping-image" src="/Trabajo_FINAL/unrClient/Imagenes-Videos/Imagen-Shopping.jpg" alt="">
+      <img class="image-wrapper shopping-image" src="../../Client/Imagenes-Videos/Imagen-Shopping.jpg" alt="">
       <p class="informacion">
         Recoleta Urban Mall se ubica en el corazón de Recoleta, barrio que se caracteriza por su elegancia, arquitectura
         y entretenimiento. Está rodeado de atractivos turísticos como el Museo de Bellas Artes en donde se encuentran
@@ -225,7 +226,7 @@ $_SESSION["username"] = "UNR";
       <h3 class="footer-titles">Ubicación: Junín 501</h3>
       <div class="img_mapa">
         <a href="https://www.google.com/maps/place/Alto+Rosario+Shopping/@-32.9282706,-60.674688,15z/data=!4m6!3m5!1s0x95b654abc3ab1d5f:0x2f90ce97db2c5a6!8m2!3d-32.9274658!4d-60.6690017!16s%2Fg%2F1tdvlb_y?entry=ttu" target="_blank">
-          <img src="/Trabajo_FINAL/unrClient/Imagenes-Videos/Captura de pantalla 2024-05-02 100702.png" alt="Ubicación en Google Maps"></a>
+          <img src="../../Client/Imagenes-Videos/Captura de pantalla 2024-05-02 100702.png" alt="Ubicación en Google Maps"></a>
       </div>
     </div>
 
