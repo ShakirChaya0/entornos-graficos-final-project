@@ -30,65 +30,6 @@ section:target {
 }
 
 
-/* Barra de navegación: Icono - Estilos */
-
-.icon {
-  width: 3rem;
-  height: 3rem;
-}
-.navbar {
-  height: 100%;
-}
-.avatar-style {
-  width: 3rem;
-  height: 3rem;
-  margin-right: 1rem;
-}
-.nav-item {
-  padding-right: .5rem;
-  font-size: 1rem;
-}
-.btn {
-  margin-left: 1rem;
-}
-.list-item {
-  list-style-type: none;
-}
-.navbar-toggler {
-  position: absolute;
-  right: 1rem;
-  top: .3rem;
-}
-.nav-item {
-  transition: background-color 0.3s;
-}
-.nav-item:hover {
-  background-color: #c8c8c8ad;
-  border-radius: 0.5em;
-}
-.header {
-    height: 7vh;
-    position: sticky;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-}
-@media (max-width: 991px) {
-  .btn-delete {
-    display: none;
-  }
-  .container-fluid {
-    background-color:#f8f9fa;
-  }
-}
-@media (min-width: 992px) {
-  .dropdown-item-delete {
-    display: none;
-  }
-}
-
-
-
 /* Seccion 1: Imagen - Opacidad - Título*/
 
 .video {
@@ -170,12 +111,12 @@ section:target {
     display: flex;
     margin: 10em;
   }
-    .card {
+  .card {
     margin: 0 1em;
     width: calc(100%/3);
   }
-    .image-wrapper {
-    height: 22vw;
+  .image-wrapper {
+    min-height: 22vw;
     margin: 0 auto;
   }
 }
@@ -214,80 +155,4 @@ section:target {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-/* Footer */
-
-.footer {
-  background-color: #003360;
-  justify-content: space-around;
-  display: flex;
-  font-size: 20px;
-  color:snow;
-  font-weight: 600;
-  padding: 2em 0 2em 0;
-  margin: 20em 0 0 0;
-}
-.logo_footer {
-  display: flex;
-  align-items: center;
-  padding: 5px 5px 5px 15px;
-  box-sizing: border-box;
-  margin: 0;
-  margin-top: 20px;
-  text-align: left;
-}
-.logo_footer a {
-  color:snow;
-}
-.footer-titles {
-  font-size: 20px;
-  display: flex;
-  margin-top: 10px;
-  margin-bottom: 5px;
-  padding-left: 20px;
-  text-align: left;
-}
-footer a{
-  font-size: 15px;
-  text-decoration: none;
-  padding: 0 12px;
-}
-.f4 h3{
-  margin-left: 25px;
-}
-.img_mapa img {
-  width: 400px;
-  height: 208px;
-  border: double 6px black ;
-}
-.f3 a{
-  color:snow;
-}
-.f3 h3{
-  margin-bottom: 50px;
-}
-.site_map li{ 
-  display: block;
-  padding: 3px 3px;
-  text-align: left;
-}
-.site_map a{
-color: snow;
-margin-right: 30px;
-}
-.site_map ul{
-  justify-content: center;
-  align-items: center;
-  /* margin: 0; */
-}
-.logo_footer_form{
-  display: flex;
-  align-items: center;
-}
-@media (max-width:1200px) {
-  .f4, .f1{
-    display: none;
-  }
-
 }
