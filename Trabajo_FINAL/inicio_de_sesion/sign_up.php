@@ -19,15 +19,15 @@
     <section class="box">
         <form action="sign_up.php" method="post" class="form">
             <div class="logo-cont">
-                <a href="../UNR/Home-UNR/index.php"><img src="../Client/Imagenes-Videos/logo.jpg" alt="logo" class="logo"></a>
+                <a href="../Home-UNR/index.php"><img src="../Imagenes-Videos/logo.jpg" alt="logo" class="logo"></a>
             </div>
             <div class="username_form">
-                <img src="../Client/Imagenes-Videos/avatar.png" alt="Avatar.png" class="avatar-de-email">
+                <img src="../Imagenes-Videos/avatar.png" alt="Avatar.png" class="avatar-de-email">
                 <input type="text" class="form-control" id="floatingInput" name="username" required maxlength="100">
                 <label for="floatingInput">Email del Usuario</label>
             </div>
             <div class="password_form">
-            <img src="../Client/Imagenes-Videos/candado.png" alt="candado.png" class="avatar-de-email">
+            <img src="../Imagenes-Videos/candado.png" alt="candado.png" class="avatar-de-email">
                 <input type="password" class="form-control" id="floatingPassword" name="password" required maxlength="8">
                 <label for="floatingPassword">Contraseña</label><br>
             </div>

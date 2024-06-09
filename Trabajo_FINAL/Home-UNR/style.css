@@ -57,6 +57,11 @@ section:target {
   text-align: center;
   margin-bottom: 2rem;
 }
+@media screen and (max-width: 480px){
+  .title{
+    font-size: 3.5rem !important;
+  }
+}
 .shopping-description {
   display: block;
   text-align: center;
@@ -111,12 +116,12 @@ section:target {
     display: flex;
     margin: 10em;
   }
-  .card {
+    .card {
     margin: 0 1em;
     width: calc(100%/3);
   }
-  .image-wrapper {
-    min-height: 22vw;
+    .image-wrapper {
+    height: 22vw;
     margin: 0 auto;
   }
 }
@@ -130,11 +135,14 @@ section:target {
   .card:nth-child(1){
     width: 50%;
     margin: 0 auto;
-    height: 60vh;
+    height: 100vw;
+    max-height: 500px;
   }
   .cards-wrapper {
     display: flex;
-    margin: 8em 0;
+    margin: 14em 0;
+    align-items: center;
+    justify-content: center;
   }
 }
 

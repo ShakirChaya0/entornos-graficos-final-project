@@ -61,6 +61,11 @@ section:target {
   text-align: center;
   margin-bottom: 2rem;
 }
+@media screen and (max-width: 480px){
+  .title{
+    font-size: 3.5rem !important;
+  }
+}
 .shopping-description {
   display: block;
   text-align: center;
@@ -142,6 +147,16 @@ section:target {
     margin: 14em 0;
     align-items: center;
     justify-content: center;
+  }
+  .card-body{
+    display: block;
+    align-items: end;
+  }
+}
+
+@media screen and (max-width: 352px){
+  .card{
+    min-height: 352px;
   }
 }
 

@@ -8,7 +8,7 @@
     $search_usu = 'SELECT * FROM usuarios WHERE codUsuario = "'.$_SESSION["codUsuario"].'"';
     $result_usu = mysqli_query($conn, $search_usu);
     $row_usu = mysqli_fetch_array($result_usu);
-    $search_promo = "SELECT * FROM promociones";
+    $search_promo = 'SELECT * FROM promociones';
     $result_promo = mysqli_query($conn, $search_promo);
     if(mysqli_num_rows($result_promo) > 0){
       $consulta_filas = "SELECT COUNT(*) AS total_filas FROM uso_promociones";
@@ -72,41 +72,110 @@
                 }
               }
             if($flag){
-              echo "
-                <div class='container'>
-                <div class ='local_data'>  {$row_promo['textoPromo']}  </div>
-                <div class = 'div-content base-div'>
-                <p class = 'data'> {$row_local['nombreLocal']}</p>
-                </div>
-                <div class = 'div-content hover-div'>
-                <form method= 'post' action='Promociones.php'>
-                <input name='{$row_promo['codPromo']}' type='submit' class='link_promociones' value='Usar'>
-                </form>
-                </div>
-                </div>";
-                if(!empty($_POST["{$row_promo['codPromo']}"]) && $_POST["{$row_promo['codPromo']}"] == "Usar") {
-                  $cantProm = $row_usu["cantidadPromo"] + 1;
-                  $sql = "UPDATE usuarios SET cantidadPromo = '$cantProm' WHERE codUsuario = {$row_usu['codUsuario']}";
-                  mysqli_query($conn, $sql);
-                  if($cantProm > 3 && $cantProm < 9){
-                    $sqli = "UPDATE usuarios SET categoriaCliente = 'Medium' WHERE codUsuario = {$row_usu['codUsuario']}";
-                    mysqli_query($conn, $sqli);
+              if(strtolower($_SESSION["categoriaCliente"]) == "premium"){
+                  echo "
+                  <div class='container'>
+                  <div class ='local_data'>  {$row_promo['textoPromo']}  </div>
+                  <div class = 'div-content base-div'>
+                  <p class = 'data'> {$row_local['nombreLocal']}</p>
+                  </div>
+                  <div class = 'div-content hover-div'>
+                  <form method= 'post' action='Promociones.php'>
+                  <input name='{$row_promo['codPromo']}' type='submit' class='link_promociones' value='Usar'>
+                  </form>
+                  </div>
+                  </div>";
+                  if(!empty($_POST["{$row_promo['codPromo']}"]) && $_POST["{$row_promo['codPromo']}"] == "Usar") {
+                    $cantProm = $row_usu["cantidadPromo"] + 1;
+                    $sql = "UPDATE usuarios SET cantidadPromo = '$cantProm' WHERE codUsuario = {$row_usu['codUsuario']}";
+                    mysqli_query($conn, $sql);
+                    if($cantProm > 3 && $cantProm < 9){
+                      $sqli = "UPDATE usuarios SET categoriaCliente = 'Medium' WHERE codUsuario = {$row_usu['codUsuario']}";
+                      mysqli_query($conn, $sqli);
+                    }
+                    elseif($cantProm > 9){
+                      $sqlia = "UPDATE usuarios SET categoriaCliente = 'Premium' WHERE codUsuario = {$row_usu['codUsuario']}";
+                      mysqli_query($conn, $sqlia);
+                    }
+                    $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo['codPromo']}, '$fecha_actual', 'enviada', {$row_promo['codLocal']})";
+                    mysqli_query($conn, $add_prom);
+                    $_POST = array();
+                    header("LOCATION: Promociones.php"); 
                   }
-                  elseif($cantProm > 9){
-                    $sqlia = "UPDATE usuarios SET categoriaCliente = 'Premium' WHERE codUsuario = {$row_usu['codUsuario']}";
-                    mysqli_query($conn, $sqlia);
-                  }
-                  $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo['codPromo']}, '$fecha_actual', 'enviada', {$row_promo['codLocal']})";
-                  mysqli_query($conn, $add_prom);
-                  $_POST = array();
-                  header("LOCATION: Promociones.php"); 
                 }
+                elseif(strtolower($_SESSION["categoriaCliente"]) == "medium"){
+                  if($row_promo["categoriaCliente"] != "premium"){
+                    echo "
+                    <div class='container'>
+                    <div class ='local_data'>  {$row_promo['textoPromo']}  </div>
+                    <div class = 'div-content base-div'>
+                    <p class = 'data'> {$row_local['nombreLocal']}</p>
+                    </div>
+                    <div class = 'div-content hover-div'>
+                    <form method= 'post' action='Promociones.php'>
+                    <input name='{$row_promo['codPromo']}' type='submit' class='link_promociones' value='Usar'>
+                    </form>
+                    </div>
+                    </div>";
+                    if(!empty($_POST["{$row_promo['codPromo']}"]) && $_POST["{$row_promo['codPromo']}"] == "Usar") {
+                      $cantProm = $row_usu["cantidadPromo"] + 1;
+                      $sql = "UPDATE usuarios SET cantidadPromo = '$cantProm' WHERE codUsuario = {$row_usu['codUsuario']}";
+                      mysqli_query($conn, $sql);
+                      if($cantProm > 3 && $cantProm < 9){
+                        $sqli = "UPDATE usuarios SET categoriaCliente = 'Medium' WHERE codUsuario = {$row_usu['codUsuario']}";
+                        mysqli_query($conn, $sqli);
+                      }
+                      elseif($cantProm > 9){
+                        $sqlia = "UPDATE usuarios SET categoriaCliente = 'Premium' WHERE codUsuario = {$row_usu['codUsuario']}";
+                        mysqli_query($conn, $sqlia);
+                      }
+                      $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo['codPromo']}, '$fecha_actual', 'enviada', {$row_promo['codLocal']})";
+                      mysqli_query($conn, $add_prom);
+                      $_POST = array();
+                      header("LOCATION: Promociones.php");  
+                      }
+                }
+              }
+            elseif(strtolower($_SESSION["categoriaCliente"]) == "inicial"){
+              if(strtolower($row_promo["categoriaCliente"]) == "inicial"){
+                  echo "
+                    <div class='container'>
+                    <div class ='local_data'>  {$row_promo['textoPromo']}  </div>
+                    <div class = 'div-content base-div'>
+                    <p class = 'data'> {$row_local['nombreLocal']}</p>
+                    </div>
+                    <div class = 'div-content hover-div'>
+                    <form method= 'post' action='Promociones.php'>
+                    <input name='{$row_promo['codPromo']}' type='submit' class='link_promociones' value='Usar'>
+                    </form>
+                    </div>
+                    </div>";
+                    if(!empty($_POST["{$row_promo['codPromo']}"]) && $_POST["{$row_promo['codPromo']}"] == "Usar") {
+                      $cantProm = $row_usu["cantidadPromo"] + 1;
+                      $sql = "UPDATE usuarios SET cantidadPromo = '$cantProm' WHERE codUsuario = {$row_usu['codUsuario']}";
+                      mysqli_query($conn, $sql);
+                      if($cantProm > 3 && $cantProm < 9){
+                        $sqli = "UPDATE usuarios SET categoriaCliente = 'Medium' WHERE codUsuario = {$row_usu['codUsuario']}";
+                        mysqli_query($conn, $sqli);
+                      }
+                      elseif($cantProm > 9){
+                        $sqlia = "UPDATE usuarios SET categoriaCliente = 'Premium' WHERE codUsuario = {$row_usu['codUsuario']}";
+                        mysqli_query($conn, $sqlia);
+                      }
+                      $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo['codPromo']}, '$fecha_actual', 'enviada', {$row_promo['codLocal']})";
+                      mysqli_query($conn, $add_prom);
+                      $_POST = array();
+                      header("LOCATION: Promociones.php");  
+                      }
+              }
+            }
             }
             else{
               $flag = true;
             }
           }
           else{
+              if(strtolower($_SESSION["categoriaCliente"]) == "premium"){
                 echo "
                 <div class='container'>
                 <div class ='local_data'>  {$row_promo['textoPromo']}  </div>
@@ -136,6 +205,73 @@
                 $_POST = array();
                 header("LOCATION: Promociones.php");  
               }
+            }
+            elseif(strtolower($_SESSION["categoriaCliente"]) == "medium"){
+              if($row_promo["categoriaCliente"] != "premium"){
+                echo "
+                <div class='container'>
+                <div class ='local_data'>  {$row_promo['textoPromo']}  </div>
+                <div class = 'div-content base-div'>
+                <p class = 'data'> {$row_local['nombreLocal']}</p>
+                </div>
+                <div class = 'div-content hover-div'>
+                <form method= 'post' action='Promociones.php'>
+                <input name='{$row_promo['codPromo']}' type='submit' class='link_promociones' value='Usar'>
+                </form>
+                </div>
+                </div>";
+                if(!empty($_POST["{$row_promo['codPromo']}"]) && $_POST["{$row_promo['codPromo']}"] == "Usar") {
+                  $cantProm = $row_usu["cantidadPromo"] + 1;
+                  $sql = "UPDATE usuarios SET cantidadPromo = '$cantProm' WHERE codUsuario = {$row_usu['codUsuario']}";
+                  mysqli_query($conn, $sql);
+                  if($cantProm > 3 && $cantProm < 9){
+                    $sqli = "UPDATE usuarios SET categoriaCliente = 'Medium' WHERE codUsuario = {$row_usu['codUsuario']}";
+                    mysqli_query($conn, $sqli);
+                  }
+                  elseif($cantProm > 9){
+                    $sqlia = "UPDATE usuarios SET categoriaCliente = 'Premium' WHERE codUsuario = {$row_usu['codUsuario']}";
+                    mysqli_query($conn, $sqlia);
+                  }
+                  $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo['codPromo']}, '$fecha_actual', 'enviada', {$row_promo['codLocal']})";
+                  mysqli_query($conn, $add_prom);
+                  $_POST = array();
+                  header("LOCATION: Promociones.php");  
+                }
+              }
+            }
+            elseif(strtolower($_SESSION["categoriaCliente"]) == "inicial"){
+              if(strtolower($row_promo["categoriaCliente"]) == "inicial"){
+                echo "
+                <div class='container'>
+                <div class ='local_data'>  {$row_promo['textoPromo']}  </div>
+                <div class = 'div-content base-div'>
+                <p class = 'data'> {$row_local['nombreLocal']}</p>
+                </div>
+                <div class = 'div-content hover-div'>
+                <form method= 'post' action='Promociones.php'>
+                <input name='{$row_promo['codPromo']}' type='submit' class='link_promociones' value='Usar'>
+                </form>
+                </div>
+                </div>";
+                if(!empty($_POST["{$row_promo['codPromo']}"]) && $_POST["{$row_promo['codPromo']}"] == "Usar") {
+                  $cantProm = $row_usu["cantidadPromo"] + 1;
+                  $sql = "UPDATE usuarios SET cantidadPromo = '$cantProm' WHERE codUsuario = {$row_usu['codUsuario']}";
+                  mysqli_query($conn, $sql);
+                  if($cantProm > 3 && $cantProm < 9){
+                    $sqli = "UPDATE usuarios SET categoriaCliente = 'Medium' WHERE codUsuario = {$row_usu['codUsuario']}";
+                    mysqli_query($conn, $sqli);
+                  }
+                  elseif($cantProm > 9){
+                    $sqlia = "UPDATE usuarios SET categoriaCliente = 'Premium' WHERE codUsuario = {$row_usu['codUsuario']}";
+                    mysqli_query($conn, $sqlia);
+                  }
+                  $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo['codPromo']}, '$fecha_actual', 'enviada', {$row_promo['codLocal']})";
+                  mysqli_query($conn, $add_prom);
+                  $_POST = array();
+                  header("LOCATION: Promociones.php");  
+                }
+              }
+            }
           }
         } 
       }
@@ -156,7 +292,7 @@
     $search_usu = 'SELECT * FROM usuarios WHERE codUsuario = "'.$_SESSION["codUsuario"].'"';
     $result_usu = mysqli_query($conn, $search_usu);
     $row_usu = mysqli_fetch_array($result_usu);
-    $search_promo = "SELECT * FROM promociones";
+    $search_promo = 'SELECT * FROM promociones WHERE categoriaCliente = "'.$_SESSION["categoriaCliente"].'"';
     $result_promo = mysqli_query($conn, $search_promo);
     if(mysqli_num_rows($result_promo) > 0){
       $consulta_filas = "SELECT COUNT(*) AS total_filas FROM uso_promociones";
@@ -275,7 +411,7 @@
     $search_usu = 'SELECT * FROM usuarios WHERE codUsuario = "'.$_SESSION["codUsuario"].'"';
     $result_usu = mysqli_query($conn, $search_usu);
     $row_usu = mysqli_fetch_array($result_usu);
-    $search_promo = "SELECT * FROM promociones";
+    $search_promo = 'SELECT * FROM promociones WHERE categoriaCliente = "'.$_SESSION["categoriaCliente"].'"';
     $result_promo = mysqli_query($conn, $search_promo);
     if(mysqli_num_rows($result_promo) > 0){
       $consulta_filas = "SELECT COUNT(*) AS total_filas FROM uso_promociones";
@@ -332,7 +468,7 @@
     $search_usu = 'SELECT * FROM usuarios WHERE codUsuario = "'.$_SESSION["codUsuario"].'"';
     $result_usu = mysqli_query($conn, $search_usu);
     $row_usu = mysqli_fetch_array($result_usu);
-    $search_promo = "SELECT * FROM promociones";
+    $search_promo = 'SELECT * FROM promociones WHERE categoriaCliente = "'.$_SESSION["categoriaCliente"].'"';
     $result_promo = mysqli_query($conn, $search_promo);
     if(mysqli_num_rows($result_promo) > 0){
       $consulta_filas = "SELECT COUNT(*) AS total_filas FROM uso_promociones";
@@ -437,7 +573,7 @@
     $search_usu = 'SELECT * FROM usuarios WHERE codUsuario = "'.$_SESSION["codUsuario"].'"';
     $result_usu = mysqli_query($conn, $search_usu);
     $row_usu = mysqli_fetch_array($result_usu);
-    $search_promo = "SELECT * FROM promociones";
+    $search_promo = 'SELECT * FROM promociones WHERE categoriaCliente = "'.$_SESSION["categoriaCliente"].'"';
     $result_promo = mysqli_query($conn, $search_promo);
     if(mysqli_num_rows($result_promo) > 0){
       $consulta_filas = "SELECT COUNT(*) AS total_filas FROM uso_promociones";
@@ -500,7 +636,7 @@
     $search_usu = 'SELECT * FROM usuarios WHERE codUsuario = "'.$_SESSION["codUsuario"].'"';
     $result_usu = mysqli_query($conn, $search_usu);
     $row_usu = mysqli_fetch_array($result_usu);
-    $search_promo = "SELECT * FROM promociones";
+    $search_promo = 'SELECT * FROM promociones WHERE categoriaCliente = "'.$_SESSION["categoriaCliente"].'"';
     $result_promo = mysqli_query($conn, $search_promo);
     if(mysqli_num_rows($result_promo) > 0){
       $consulta_filas = "SELECT COUNT(*) AS total_filas FROM uso_promociones";
