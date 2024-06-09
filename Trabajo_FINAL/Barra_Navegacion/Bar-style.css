@@ -35,6 +35,11 @@ body {
   
   /* Barra de navegación: Icono - Estilos */
   
+.container-fluid{
+  background-color: white;
+}
+
+
 .icon{
     width: 3rem;
     height: 3rem;
@@ -92,12 +97,13 @@ body {
     .btn-delete {
       display: none;
     }
+    .header{
+      padding-right: 0;
+    }
   }
   @media (min-width: 992px) {
     .dropdown-item-delete {
       display: none;
     }
   }
-  
-
   
