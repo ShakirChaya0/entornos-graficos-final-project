@@ -1,14 +1,14 @@
 <?php
     ob_start();
     session_start();
-    include("../database.php");
+    include("../../database.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../bolsas-de-compra.png">
+    <link rel="icon" href="../../Imagenes-Videos/bolsas-de-compra.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="uso_promo_style.css">
@@ -19,7 +19,7 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <div class="navbar-style">
-                <a class="navbar-brand" href="../home_page_admin.html"><img class="icon" src="../bolsas-de-compra.png" alt="Icono"></a>
+                <a class="navbar-brand" href="../home_page_admin.html"><img class="icon" src="../../Imagenes-Videos/bolsas-de-compra.png" alt="Icono"></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -53,7 +53,7 @@
                     </ul>
                     <form class="d-flex align-items-center form-style" role="search" method="post" action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>">
                         <li class="nav-item dropdown list-item">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img class="avatar-style icon" src="../avatar.png" alt="">Administrador</a>
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img class="avatar-style icon" src="../../Imagenes-Videos/avatar.png" alt="">Administrador</a>
                             <ul class="dropdown-menu">
                                 <li><button type="submit" class="dropdown-item" name="cerrarSesion">Cerrar Sesión</button></li>
                             </ul>
@@ -78,12 +78,12 @@
             $sql_1 = "SELECT * FROM uso_promociones WHERE estadoUsoPromo = 'aceptada' LIMIT $inicio, $cant_registros";
             $sql_total = "SELECT COUNT(*) FROM uso_promociones WHERE estadoUsoPromo = 'aceptada'";
 
-            $result_total = mysqli_query($connection, $sql_total);
+            $result_total = mysqli_query($conn, $sql_total);
             $row_total = mysqli_fetch_row($result_total);
             $total_results = $row_total[0];
             $total_pags = ceil($total_results / $cant_registros);
                 
-            $result = mysqli_query($connection, $sql_1);
+            $result = mysqli_query($conn, $sql_1);
             if (mysqli_num_rows($result) > 0) {
                 echo "
                         <div class='table_box'>
@@ -102,15 +102,15 @@
                     ";
                 while ($row = mysqli_fetch_assoc($result)) {                    
                     $sql_aux_1 = "SELECT * FROM usuarios WHERE codUsuario = '{$row["codCliente"]}'";
-                    $result_aux_1 = mysqli_query($connection, $sql_aux_1);
+                    $result_aux_1 = mysqli_query($conn, $sql_aux_1);
                     $row_aux_1 = mysqli_fetch_assoc($result_aux_1);
 
                     $sql_aux_2 = "SELECT * FROM promociones WHERE codPromo = '{$row["codPromo"]}'";
-                    $result_aux_2 = mysqli_query($connection, $sql_aux_2);
+                    $result_aux_2 = mysqli_query($conn, $sql_aux_2);
                     $row_aux_2 = mysqli_fetch_assoc($result_aux_2);
 
                     $sql_aux_3 = "SELECT * FROM locales WHERE codLocal = '{$row["codLocal"]}'";
-                    $result_aux_3 = mysqli_query($connection, $sql_aux_3);
+                    $result_aux_3 = mysqli_query($conn, $sql_aux_3);
                     $row_aux_3 = mysqli_fetch_assoc($result_aux_3);
                     echo "
                                 <tr>
@@ -207,12 +207,12 @@
                         $sql_2 = "SELECT * FROM locales LIMIT $inicio_2, $cant_registros_2";
                         $sql_total_2 = "SELECT COUNT(*) FROM locales";
 
-                        $result_total_2 = mysqli_query($connection, $sql_total_2);
+                        $result_total_2 = mysqli_query($conn, $sql_total_2);
                         $row_total_2 = mysqli_fetch_row($result_total_2);
                         $total_results_2 = $row_total_2[0];
                         $total_pags_2 = ceil($total_results_2 / $cant_registros_2);
 
-                        $result_2 = mysqli_query($connection, $sql_2);
+                        $result_2 = mysqli_query($conn, $sql_2);
                         if (mysqli_num_rows($result_2) > 0) {
                             echo "
                                     <div class='table-responsive'>
@@ -227,7 +227,7 @@
                             while ($row_2 = mysqli_fetch_assoc($result_2)) {
                                 $codLocal = $row_2["codLocal"];
                                 $sql_aux = "SELECT COUNT(*) FROM uso_promociones WHERE codLocal = '$codLocal' AND estadoUsoPromo = 'aceptada'";
-                                $result_aux = mysqli_query($connection, $sql_aux);
+                                $result_aux = mysqli_query($conn, $sql_aux);
 
                                 if ($result_aux) {
                                     $row_aux = mysqli_fetch_row($result_aux);
@@ -312,12 +312,12 @@
                     $cont_categorias = array("Inicial"=>0, "Medium"=>0, "Premium"=>0);
 
                     $sql_3 = "SELECT * FROM uso_promociones";
-                    $result_3 = mysqli_query($connection, $sql_3);
+                    $result_3 = mysqli_query($conn, $sql_3);
                     if (mysqli_num_rows($result_3) > 0) {
 
                         while ($row_3 = mysqli_fetch_assoc($result_3)) {
                             $sql_cat = "SELECT * FROM usuarios WHERE codUsuario = '{$row_3["codCliente"]}'";
-                            $result_cat = mysqli_query($connection, $sql_cat);
+                            $result_cat = mysqli_query($conn, $sql_cat);
                             $row_cat = mysqli_fetch_assoc($result_cat);
 
                             $cont_categorias["{$row_cat["categoriaCliente"]}"]++;
@@ -341,7 +341,7 @@
             <h3 class="footer-titles">Ubicación: Junín 501</h3>
             <div class="img_mapa">
                 <a href="https://www.google.com/maps/place/Alto+Rosario+Shopping/@-32.9282706,-60.674688,15z/data=!4m6!3m5!1s0x95b654abc3ab1d5f:0x2f90ce97db2c5a6!8m2!3d-32.9274658!4d-60.6690017!16s%2Fg%2F1tdvlb_y?entry=ttu" target="_blank">
-                <img src="../shopping_map.png" alt="Ubicación en Google Maps"></a>
+                <img src="../../Imagenes-Videos/Captura de pantalla 2024-05-02 100702.png" alt="Ubicación en Google Maps"></a>
             </div>
         </div>
     

@@ -1,7 +1,7 @@
 <?php
     ob_start();
     session_start();
-    include("../database.php");
+    include("../../database.php");
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST["accept_account"])) {
@@ -32,7 +32,7 @@
                 WHERE codUsuario = '{$_POST["codUsuario"]}'";
 
         try {
-            mysqli_query($connection, $sql);
+            mysqli_query($conn, $sql);
             header("Location: admin_owner.php");
         }
         catch (mysqli_sql_exception) {

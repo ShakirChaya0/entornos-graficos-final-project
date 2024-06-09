@@ -1,14 +1,14 @@
 <?php
     ob_start();
     session_start();
-    include ("../database.php");
+    include("../../database.php");
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $sql = "UPDATE novedades
                 SET estadoNovedad = 'B'
                 WHERE codNovedad = '{$_POST["codNovedad"]}'";
         try {
-            mysqli_query($connection, $sql);
+            mysqli_query($conn, $sql);
             $_SESSION["novEliminada"] = 1;
 
             header("Location: admin_nov.php");

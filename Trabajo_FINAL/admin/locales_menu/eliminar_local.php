@@ -1,14 +1,14 @@
 <?php
     ob_start();
     session_start();
-    include ("../database.php");
+    include("../../database.php");
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $sql = "UPDATE locales
                 SET estadoLocal = 'B'
                 WHERE codLocal = '{$_POST["codLocal"]}'";
         try {
-            mysqli_query($connection, $sql);
+            mysqli_query($conn, $sql);
             $_SESSION["localEliminado"] = 1;
 
             header("Location: admin_locales.php");

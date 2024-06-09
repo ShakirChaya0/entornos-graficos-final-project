@@ -1,11 +1,11 @@
 <?php
     ob_start();
     session_start();
-    include("../database.php");
-    
+    include("../../database.php");
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "SELECT * FROM usuarios WHERE codUsuario ='{$_POST["codOwner"]}'";
-        $result = mysqli_query($connection, $sql);
+        $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($result);
 
         if (isset($_POST["accept_promo"])) {
@@ -36,7 +36,7 @@
                 WHERE codPromo = '{$_POST["codPromo"]}'";
 
         try {
-            mysqli_query($connection, $sql);
+            mysqli_query($conn, $sql);
             header("Location: admin_promo.php");
         }
         catch (mysqli_sql_exception) {

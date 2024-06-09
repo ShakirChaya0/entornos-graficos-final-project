@@ -1,14 +1,14 @@
 <?php
     ob_start();
     session_start();
-    include("../database.php")
+    include("../../database.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../bolsas-de-compra.png">
+    <link rel="icon" href="../../Imagenes-Videos/bolsas-de-compra.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../crear_style.css">
@@ -19,7 +19,7 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <div class="navbar-style">
-                <a class="navbar-brand" href="../home_page_admin.html"><img class="icon" src="../bolsas-de-compra.png" alt="Icono"></a>
+                <a class="navbar-brand" href="../home_page_admin.html"><img class="icon" src="../../Imagenes-Videos/bolsas-de-compra.png" alt="Icono"></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -53,7 +53,7 @@
                     </ul>
                     <form class="d-flex align-items-center form-style" role="search" method="post" action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>">
                         <li class="nav-item dropdown list-item">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img class="avatar-style icon" src="../avatar.png" alt="">Administrador</a>
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img class="avatar-style icon" src="../../Imagenes-Videos/avatar.png" alt="">Administrador</a>
                             <ul class="dropdown-menu">
                                 <li><button type="submit" class="dropdown-item" name="cerrarSesion">Cerrar Sesión</button></li>
                             </ul>
@@ -101,7 +101,7 @@
     <?php
         if (isset($_POST["crear"])) {
             $sql = "SELECT * FROM novedades ORDER BY codNovedad DESC LIMIT 1";
-            $result = mysqli_query($connection, $sql);
+            $result = mysqli_query($conn, $sql);
             $last_row = mysqli_fetch_assoc($result);
             
             $cod = $last_row["codNovedad"] + 1;
@@ -114,7 +114,7 @@
                     VALUES ('$cod', '$titulo', '$texto', '$desde', '$hasta', '$cat_user', 'A')";
             
             try {
-                mysqli_query($connection, $sql);
+                mysqli_query($conn, $sql);
                 $_SESSION["novCreada"] = 1;
                 header("Location: admin_nov.php");
             }
@@ -129,7 +129,7 @@
             <h3 class="footer-titles">Ubicación: Junín 501</h3>
             <div class="img_mapa">
                 <a href="https://www.google.com/maps/place/Alto+Rosario+Shopping/@-32.9282706,-60.674688,15z/data=!4m6!3m5!1s0x95b654abc3ab1d5f:0x2f90ce97db2c5a6!8m2!3d-32.9274658!4d-60.6690017!16s%2Fg%2F1tdvlb_y?entry=ttu" target="_blank">
-                <img src="../shopping_map.png" alt="Ubicación en Google Maps"></a>
+                <img src="../../Imagenes-Videos/Captura de pantalla 2024-05-02 100702.png" alt="Ubicación en Google Maps"></a>
             </div>
         </div>
     
