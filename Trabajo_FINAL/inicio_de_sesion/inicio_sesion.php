@@ -15,7 +15,7 @@
 </head>
 <body>
     <section class="box">
-        <form action="inicio_sesion.php" method="post" class="form">
+        <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"])?>" method="post" class="form">
             <div class="logo-cont">
                 <a href="../Home-UNR/index.php"><img src="../Imagenes-Videos/logo.jpg" alt="logo" class="logo"></a>
             </div>
@@ -25,10 +25,22 @@
                 <label for="floatingInput">Email del Usuario</label>
             </div>
             <div class="password_form">
-                <img src="../Imagenes-Videos/candado.png" alt="candado.png" class="avatar-de-email">
-                <input type="password" required class="form-control" id="floatingPassword" name="password">
-                <label for="floatingPassword">Contraseña</label>
+                <img src="../Imagenes-Videos/candado.png" alt="candado.png" class="avatar-de-email" id="togglePassword">
+                <input type="password" required class="form-control" id="password" name="password">
+                <label for="password">Contraseña</label>
             </div>
+            <script>
+                document.getElementById('togglePassword').addEventListener('click', function () {
+                    const passwordField = document.getElementById('password');
+                    const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+                    passwordField.setAttribute('type', type);
+                    if (type === 'text') {
+                        this.src = '../Imagenes-Videos/desbloquear.png'; 
+                    } else {
+                        this.src = '../Imagenes-Videos/candado.png'; 
+                    }   
+                });
+            </script>
             <div class="footer_form">
                 <input type="submit" value="Iniciar sesion" class="submit" name="submit">
                 <p class="regis">¿Aun no te registraste?<a href="sign_up.php"> Registrarse</a></p>
