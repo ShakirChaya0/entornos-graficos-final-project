@@ -9,6 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../Imagenes-Videos/bolsas-de-compra.png">
     <link rel="stylesheet" href="log_in.css">
     <title>Inicio de sesion</title>
 </head>
@@ -66,7 +67,7 @@
                                     $_SESSION["ownerRechazado"] = 0;
                                     $_SESSION["promoAceptada"] = 0;
                                     $_SESSION["promoDenegada"] = 0;
-                                    header("LOCATION: ..\\admin\\home_page_admin.html");
+                                    header("LOCATION: ..\\admin\\home_page_admin.php");
                                 }
                                 elseif($row["tipoUsuario"] == "Cliente"){
                                     header("LOCATION: ..\\Client\\Home\\Home.php");

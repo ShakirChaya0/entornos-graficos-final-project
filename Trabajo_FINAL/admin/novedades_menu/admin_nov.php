@@ -1,9 +1,13 @@
 <?php
     ob_start();
     session_start();
+    if (!isset($_SESSION["codUsuario"]) || $_SESSION["codUsuario"] != 1) {
+        session_destroy();
+        header("Location: ../inicio_de_sesion/inicio_sesion.php");
+    }
     include("../../database.php");
-    include("../successMensajes.php");
     include("verif_nov.php");
+    include("../successMensajes.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +25,7 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <div class="navbar-style">
-                <a class="navbar-brand" href="../home_page_admin.html"><img class="icon" src="../../Imagenes-Videos/bolsas-de-compra.png" alt="Icono"></a>
+                <a class="navbar-brand" href="../home_page_admin.php"><img class="icon" src="../../Imagenes-Videos/bolsas-de-compra.png" alt="Icono"></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -216,7 +220,7 @@
 
                     if (isset($_GET["page"]) && $_GET["page"] > 1) {
                         ?>
-                        <li class="page-item"><a href="?page=<?php echo $_GET["page"] - 1 ?>" class="page-link">««</a></li>
+                        <li class="page-item"><a href="?parametro=<?php echo $parametro ?>&buscar_name=<?php echo $busqueda ?>&buscar=Buscar&page=<?php echo $_GET["page"] - 1 ?>" class="page-link">««</a></li>
                         <?php
                     }
                     else {
@@ -227,7 +231,7 @@
 
                     for ($i = 1; $i <= $total_pags; $i++) {
                         ?>
-                        <li class="page-item"><a href="?page=<?php echo $i ?>" class="page-link"><?php echo $i ?></a></li>
+                        <li class="page-item"><a href="?parametro=<?php echo $parametro ?>&buscar_name=<?php echo $busqueda ?>&buscar=Buscar&page=<?php echo $i ?>" class="page-link"><?php echo $i ?></a></li>
                         <?php
                     }
 
@@ -241,7 +245,7 @@
                     }
                     else {
                         ?>
-                        <li class="page-item"><a href="?page=<?php echo $_GET["page"] + 1 ?>" class="page-link">»»</a></li>
+                        <li class="page-item"><a href="?parametro=<?php echo $parametro ?>&buscar_name=<?php echo $busqueda ?>&buscar=Buscar&page=<?php echo $_GET["page"] + 1 ?>" class="page-link">»»</a></li>
                         <?php
                     }
 

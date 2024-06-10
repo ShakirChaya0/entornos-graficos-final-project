@@ -1,6 +1,10 @@
 <?php
     ob_start();
     session_start();
+    if (!isset($_SESSION["codUsuario"]) || $_SESSION["codUsuario"] != 1) {
+        session_destroy();
+        header("Location: ../inicio_de_sesion/inicio_sesion.php");
+    }
     include("../../database.php");
 ?>
 <!DOCTYPE html>
@@ -19,7 +23,7 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <div class="navbar-style">
-                <a class="navbar-brand" href="../home_page_admin.html"><img class="icon" src="../../Imagenes-Videos/bolsas-de-compra.png" alt="Icono"></a>
+                <a class="navbar-brand" href="../home_page_admin.php"><img class="icon" src="../../Imagenes-Videos/bolsas-de-compra.png" alt="Icono"></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -86,7 +90,7 @@
                 <label class="create_label" for="rubro">Rubro:</label>
                 <input type="text" placeholder="..." class="form-create__input" id="rubro" name="rubro" maxlength="20" required>
                 <label class="create_label" for="usuario">Código de Usuario:</label>
-                <input type="number" min="2" placeholder="..." class="form-create__input" id="usuario" name="user" required>
+                <input type="number" placeholder="..." class="form-create__input" id="usuario" name="user" min="2" required>
                 <input type="submit" value="Crear Local" class="form-create__button" name="crear">
             </form>
         </div>
@@ -104,16 +108,24 @@
             $ubi = filter_input(INPUT_POST, "ubi", FILTER_SANITIZE_SPECIAL_CHARS);
             $rubro = filter_input(INPUT_POST, "rubro", FILTER_SANITIZE_SPECIAL_CHARS);
             $user = $_POST["user"];
-            $sql = "INSERT INTO locales (codLocal, nombreLocal, ubicacionLocal, rubroLocal, codUsuario, estadoLocal)
-                    VALUES ('$cod', '$name', '$ubi', '$rubro', '$user', 'A')";
             
-            try {
-                mysqli_query($conn, $sql);
-                $_SESSION["localCreado"] = 1;
-                header("Location: admin_locales.php");
+            $sql_aux = "SELECT * FROM usuarios WHERE codUsuario = '$user' AND tipoUsuario = 'dueño de local'";
+            $result_aux = mysqli_query($conn, $sql_aux);
+            if (mysqli_num_rows($result_aux) > 0) {
+                $sql = "INSERT INTO locales (codLocal, nombreLocal, ubicacionLocal, rubroLocal, codUsuario, estadoLocal)
+                        VALUES ('$cod', '$name', '$ubi', '$rubro', '$user', 'A')";
+
+                try {
+                    mysqli_query($conn, $sql);
+                    $_SESSION["localCreado"] = 1;
+                    header("Location: admin_locales.php");
+                }
+                catch(mysqli_sql_exception) {
+                    echo "<p class='msj_error'>El nombre del local no puede repetirse. Ingrese uno nuevo.</p>";
+                }
             }
-            catch(mysqli_sql_exception) {
-                echo "<p class='msj_error'>El nombre del local no puede repetirse. Ingrese uno nuevo.</p>";
+            else {
+                echo "<p class='msj_error'>No existe un dueño con el código ingresado. Ingrese uno nuevo.</p>";
             }
         } 
     ?>
