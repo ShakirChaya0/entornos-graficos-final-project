@@ -62,7 +62,7 @@
 
         <?php 
             if($_SESSION["tipoUsuario"] == "UNR"){
-              if($_SERVER["PHP_SELF"] == "/Trabajo-Final/Home-UNR/index.php"){
+              if($_SERVER["PHP_SELF"] == "/Home-UNR/index.php"){
               ?>
               <div class="navbar-style">
                 <a class="navbar-brand" href="../Home-UNR/index.php"><img class="icon" src="../Imagenes-Videos/bolsas-de-compra.png" alt="Icono"></a>
@@ -103,7 +103,7 @@
               ?>
               <?php  
               }
-              elseif($_SERVER["PHP_SELF"] == "/Trabajo-Final/Client/Locales/Locales.php" || $_SERVER["PHP_SELF"] == "/Trabajo-Final/Client/Promociones/Promociones.php"){
+              elseif($_SERVER["PHP_SELF"] == "/Client/Locales/Locales.php" || $_SERVER["PHP_SELF"] == "/Client/Promociones/Promociones.php"){
               ?>
               <div class="navbar-style">
                 <a class="navbar-brand" href="../../Home-UNR/index.php"><img class="icon" src="../../Imagenes-Videos/bolsas-de-compra.png" alt="Icono"></a>

@@ -14,7 +14,7 @@
       <div class="img_mapa">
       <?php 
           if($_SESSION["tipoUsuario"] == "UNR"){
-            if($_SERVER["PHP_SELF"] == "/Trabajo-Final/Home-UNR/index.php"){
+            if($_SERVER["PHP_SELF"] == "/Home-UNR/index.php"){
       ?>
         <a href="https://www.google.com/maps/place/Alto+Rosario+Shopping/@-32.9282706,-60.674688,15z/data=!4m6!3m5!1s0x95b654abc3ab1d5f:0x2f90ce97db2c5a6!8m2!3d-32.9274658!4d-60.6690017!16s%2Fg%2F1tdvlb_y?entry=ttu" target="_blank">
         <img src="../Imagenes-Videos/Captura de pantalla 2024-05-02 100702.png" alt="Ubicación en Google Maps"></a>
@@ -24,7 +24,7 @@
       ?>
       <?php 
           if($_SESSION["tipoUsuario"] != "UNR"){
-            if($_SERVER["PHP_SELF"] != "/Trabajo-Final/Home-UNR/index.php"){
+            if($_SERVER["PHP_SELF"] != "Client/Home/index.php"){
       ?>
         <a href="https://www.google.com/maps/place/Alto+Rosario+Shopping/@-32.9282706,-60.674688,15z/data=!4m6!3m5!1s0x95b654abc3ab1d5f:0x2f90ce97db2c5a6!8m2!3d-32.9274658!4d-60.6690017!16s%2Fg%2F1tdvlb_y?entry=ttu" target="_blank">
         <img src="../../Imagenes-Videos/Captura de pantalla 2024-05-02 100702.png" alt="Ubicación en Google Maps"></a>
@@ -70,7 +70,7 @@
     </div>
     <?php 
           if($_SESSION["tipoUsuario"] == "UNR"){
-            if($_SERVER["PHP_SELF"] == "/Trabajo-Final/Home-UNR/index.php"){
+            if($_SERVER["PHP_SELF"] == "/Home-UNR/index.php"){
       ?>
         <div class="f4">
           <h3 class="footer-titles">Mapa del Sitio</h3>
@@ -95,7 +95,7 @@
 
       <?php
         }
-        elseif($_SERVER["PHP_SELF"] != "/Trabajo-Final/Home-UNR/index.php"){
+        elseif($_SERVER["PHP_SELF"] != "/Home-UNR/index.php"){
         ?>
         <div class="f4">
           <h3 class="footer-titles">Mapa del Sitio</h3>

@@ -35,8 +35,8 @@ body {
   
   /* Barra de navegación: Icono - Estilos */
   
-.container-fluid{
-  background-color: white;
+.bg-body-tertiary {
+  padding-right: 1rem;
 }
 
 
@@ -80,8 +80,6 @@ body {
     border-radius: 0.5em;
   }
 .header {
-      background-color: rgba(248, 249, 250, 1);
-      padding-right: 1rem;
       height: 7vh;
       position: sticky;
       width: 100%;
