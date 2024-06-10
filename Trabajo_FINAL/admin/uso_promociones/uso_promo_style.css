@@ -216,6 +216,17 @@ td {
   padding-top: 45px;
 }
 
+.warning-nd-box {
+  text-align: center;
+  font-size: medium;
+  font-style: italic;
+  padding-top: 10px;
+}
+
+.warning-nd-box p {
+  margin: 0;
+}
+
 .container {
   background-color: #efefef;
 }

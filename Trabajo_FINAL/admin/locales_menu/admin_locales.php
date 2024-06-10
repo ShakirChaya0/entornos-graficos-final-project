@@ -1,6 +1,10 @@
 <?php
     ob_start();
     session_start();
+    if (!isset($_SESSION["codUsuario"]) || $_SESSION["codUsuario"] != 1) {
+        session_destroy();
+        header("Location: ../inicio_de_sesion/inicio_sesion.php");
+    }
     include("../../database.php");
     include("../successMensajes.php")
 ?>
@@ -20,7 +24,7 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <div class="navbar-style">
-                <a class="navbar-brand" href="../home_page_admin.html"><img class="icon" src="../../Imagenes-Videos/bolsas-de-compra.png" alt="Icono"></a>
+                <a class="navbar-brand" href="../home_page_admin.php"><img class="icon" src="../../Imagenes-Videos/bolsas-de-compra.png" alt="Icono"></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -270,7 +274,7 @@
             <h3 class="footer-titles">Ubicación: Junín 501</h3>
             <div class="img_mapa">
                 <a href="https://www.google.com/maps/place/Alto+Rosario+Shopping/@-32.9282706,-60.674688,15z/data=!4m6!3m5!1s0x95b654abc3ab1d5f:0x2f90ce97db2c5a6!8m2!3d-32.9274658!4d-60.6690017!16s%2Fg%2F1tdvlb_y?entry=ttu" target="_blank">
-                <img src="../Imagenes-Videos/Captura de pantalla 2024-05-02 100702.png" alt="Ubicación en Google Maps">
+                <img src="../../Imagenes-Videos/Captura de pantalla 2024-05-02 100702.png" alt="Ubicación en Google Maps"></a>
             </div>
         </div>
     
@@ -336,7 +340,7 @@
                 </li>
             </ul>
         </div>
-      </footer>
+    </footer>
 </body>
 </html>
 <?php

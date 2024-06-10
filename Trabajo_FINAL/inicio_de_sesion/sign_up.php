@@ -9,6 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../Imagenes-Videos/bolsas-de-compra.png">
     <link rel="stylesheet" href="log_in.css">
     <title>Registrarse</title>
 </head>
@@ -17,7 +18,7 @@
 
     </header>
     <section class="box">
-        <form action="sign_up.php" method="post" class="form">
+        <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"])?>" method="post" class="form">
             <div class="logo-cont">
                 <a href="../Home-UNR/index.php"><img src="../Imagenes-Videos/logo.jpg" alt="logo" class="logo"></a>
             </div>
@@ -27,10 +28,22 @@
                 <label for="floatingInput">Email del Usuario</label>
             </div>
             <div class="password_form">
-            <img src="../Imagenes-Videos/candado.png" alt="candado.png" class="avatar-de-email">
-                <input type="password" class="form-control" id="floatingPassword" name="password" required maxlength="8">
-                <label for="floatingPassword">Contraseña</label><br>
+                <img src="../Imagenes-Videos/candado.png" alt="candado.png" id="togglePassword" class="avatar-de-email">
+                <input type="password" class="form-control" id="password" name="password" required maxlength="8">
+                <label for="password">Contraseña</label><br>
             </div>
+            <script>
+                document.getElementById('togglePassword').addEventListener('click', function () {
+                    const passwordField = document.getElementById('password');
+                    const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+                    passwordField.setAttribute('type', type);
+                    if (type === 'text') {
+                        this.src = '../Imagenes-Videos/desbloquear.png'; 
+                    } else {
+                        this.src = '../Imagenes-Videos/candado.png'; 
+                    }   
+                });
+            </script>
             <div class="user_type_box">
                 <div class="owner_box">
                     <input id="owner" type="radio" name="type" class="user_type" value="Dueño de local">
@@ -62,19 +75,20 @@
                                     <title>Prueba de correo</title>
                                 </head>
                                 <body>
-                                    <h1>Email del admin</h1>
-                                    <form method = 'post'>
-                                        <input type='submit'>
+                                    <img src='../Imagenes-Videos/bolsas-de-compra.png' alt='logo.png' class='logo_mail'>
+                                    <h2>Validar cuenta de cliente $username</h2>
+                                    <form method='post'>
+                                        <input type='submit' value='Validar Cuenta' name='valid' class='Validar_mail'>
                                     </form>
                                 </body>
                             </html>
                             ";
-                            $headers = "MIME-Version: 1.0\r\n";
-                            $headers .= "Contetn-type: text/html; charset=utf-8\r\n";
-                            $headers .= "From: cliente\r\n";
-                            $headers .= "Return-path: $destinatario\r\n";
+                            $headers = "MIME-Version: 1.0" . "\r\n";
+                            $headers .= "Content-type:text/html;charset=utf-8" . "\r\n";
+                            $headers .= 'From: cliente' ."\r\n";
+                            $headers .= "Return-path: $destinatario" . "\r\n";
                             @mail($destinatario, $asunto, $cuerpo, $headers);
-                            echo"enviado correctamente";
+                            echo"<p class= 'enviado'>*enviado correctamente</p>";
                         }
                     }
                         

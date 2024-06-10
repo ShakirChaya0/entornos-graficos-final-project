@@ -1,6 +1,10 @@
 <?php
     ob_start();
     session_start();
+    if (!isset($_SESSION["codUsuario"]) || $_SESSION["codUsuario"] != 1) {
+        session_destroy();
+        header("Location: ../inicio_de_sesion/inicio_sesion.php");
+    }
     include("../../database.php");
     include("../successMensajes.php");
 ?>
@@ -20,7 +24,7 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <div class="navbar-style">
-                <a class="navbar-brand" href="../home_page_admin.html"><img class="icon" src="../../Imagenes-Videos/bolsas-de-compra.png" alt="Icono"></a>
+                <a class="navbar-brand" href="../home_page_admin.php"><img class="icon" src="../../Imagenes-Videos/bolsas-de-compra.png" alt="Icono"></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
