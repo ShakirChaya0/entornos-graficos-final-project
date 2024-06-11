@@ -21,8 +21,8 @@
     integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
     crossorigin="anonymous"></script>
     <link rel="stylesheet" href="Novedades.css">
-    <link rel="stylesheet" href="Trabajo-Final/Pie_De_Pagina/footer.css">
-    <link rel="stylesheet" href="Trabajo-Final/Barra_Navegacion/Bar-style.css">
+    <link rel="stylesheet" href="../../Pie_De_Pagina/footer.css">
+    <link rel="stylesheet" href="../../Barra_Navegacion/Bar-style.css">
 </head>
 <body>
   <?php
@@ -38,7 +38,7 @@
     <div class="iteracion">  
       <?php
       include("../../database.php");
-      $sql = "SELECT * FROM Novedades";
+      $sql = "SELECT * FROM novedades";
       $result = mysqli_query($conn, $sql);
       date_default_timezone_set('America/Argentina/Buenos_Aires');
       $fecha_actual = date("Y-m-d");

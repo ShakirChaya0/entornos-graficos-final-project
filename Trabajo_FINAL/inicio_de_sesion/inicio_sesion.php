@@ -79,14 +79,14 @@
                                     $_SESSION["ownerRechazado"] = 0;
                                     $_SESSION["promoAceptada"] = 0;
                                     $_SESSION["promoDenegada"] = 0;
-                                    header("LOCATION: ..\\admin\\home_page_admin.php");
+                                    header("LOCATION: ../admin/home_page_admin.php");
                                 }
                                 elseif($row["tipoUsuario"] == "Cliente"){
-                                    header("LOCATION: ..\\Client\\Home\\Home.php");
+                                    header("LOCATION: ../Client/Home/Home.php");
                                 }
                                 elseif($row["tipoUsuario"] == "Dueño de local"){
                                     if($row["estado"] == "A"){
-                                        header("LOCATION: dueños.html");
+                                        header("LOCATION: ../Owner");
                                     }
                                     else{
                                         echo"<p class='error'>* Tu cuenta debe ser validada</p>";
