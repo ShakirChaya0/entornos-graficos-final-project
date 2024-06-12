@@ -34,12 +34,14 @@ body {
   
   
   /* Barra de navegación: Icono - Estilos */
-  
-.bg-body-tertiary {
-  padding-right: 1rem;
+
+
+.container-fluid {
+  background-color: rgba(var(--bs-tertiary-bg-rgb), var(--bs-bg-opacity));
 }
-
-
+.success {
+  margin-right: 1rem;
+}
 .icon{
     width: 3rem;
     height: 3rem;

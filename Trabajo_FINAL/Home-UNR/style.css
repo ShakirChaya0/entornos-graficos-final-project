@@ -20,6 +20,11 @@ body {
     font-size: 10px;
   }
 }
+@media screen and (max-width: 360px) {
+  html {
+    font-size: 6px;
+  }
+}
 * {
   margin: 0;
   padding: 0;
@@ -143,6 +148,12 @@ section:target {
     margin: 14em 0;
     align-items: center;
     justify-content: center;
+  }
+}
+
+@media screen and (max-width: 352px){
+  .card{
+    min-height: 352px;
   }
 }
 

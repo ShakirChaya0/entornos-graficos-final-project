@@ -10,11 +10,11 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
 
-        <!-- Navbar del Cliente Modularizada -->
+    <!-- Navbar del Cliente Modularizada -->
 
-        <?php 
-            if($_SESSION["tipoUsuario"] != "UNR"){
-            ?>
+    <?php 
+          if($_SESSION["tipoUsuario"] == "Cliente"){
+    ?>
             <div class="navbar-style">
                 <a class="navbar-brand" href="../Home/Home.php"><img class="icon" src="../../Imagenes-Videos/bolsas-de-compra.png" alt="Icono"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,12 +58,12 @@
 
 
 
-        <!-- Navbar del UNR  Modularizada -->
+    <!-- Navbar del UNR  Modularizada -->
 
-        <?php 
-            if($_SESSION["tipoUsuario"] == "UNR"){
-              if($_SERVER["PHP_SELF"] == "/Home-UNR/index.php"){
-              ?>
+    <?php 
+        if($_SESSION["tipoUsuario"] == "UNR"){
+          if($_SERVER["PHP_SELF"] == "/Home-UNR/index.php"){
+    ?>
               <div class="navbar-style">
                 <a class="navbar-brand" href="../Home-UNR/index.php"><img class="icon" src="../Imagenes-Videos/bolsas-de-compra.png" alt="Icono"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -134,6 +134,8 @@
                       <input class="btn btn-outline-success success" name="Registrarse" value="Registrarse" type="submit">
                   </form>
               </div>
+          </div>
+      </div>
               <?php
                 if(isset($_POST["Iniciar-Sesion"])){
                   header("LOCATION: ../../inicio_de_sesion/inicio_sesion.php");
@@ -148,8 +150,57 @@
           <?php
             }
           ?>
+
+
+    <!-- Navbar del UNR  Modularizada -->
+
+    <?php 
+        if($_SESSION["tipoUsuario"] == "Dueño"){
+    ?>
+            <div class="navbar-style">
+                <a class="navbar-brand" href="../Home/Home.php"><img class="icon" src="../../Imagenes-Videos/bolsas-de-compra.png" alt="Icono"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                  <li class="nav-item">
+                    <a class="nav-link active locales-active" aria-current="page" href="../Locales/Locales.php">Promociones</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="../Promociones/Promociones.php">Solicitudes de Promociones</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link active" aria-current="page" href="../Novedades/Novedades.php">Reportes</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link active" aria-current="page" href="../Home/Home.php#About us">Sobre Nosotros</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#Contacto">Contacto</a>
+                  </li>
+                </ul>
+                <form class="d-flex align-items-center form-style" role="search" method="post">
+                  <li class="nav-item dropdown list-item">
+                    <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img class="avatar-style icon" src="../../Imagenes-Videos/avatar.png" alt=""><?php echo"{$_SESSION['tipoUsuario']}";?></a>
+                  </li>
+                  <img class="icon cerrar-sesion btn-delete" src="../../Imagenes-Videos/Cerrar-sesion.png" alt="">
+                  <input class="btn btn-outline-danger log_out" value="Cerrar Sesión" name="submit" type="submit">
+                </form>
+            </div>
+            <?php  
+                if (!empty($_POST["submit"])){
+                    $_POST = array();
+                    header("LOCATION: ../../inicio_de_sesion/inicio_sesion.php");
+                    }
+                }
+            ?> 
         </div>
       </div>
+
+
+
     </nav>
   </header> 
 </body>
