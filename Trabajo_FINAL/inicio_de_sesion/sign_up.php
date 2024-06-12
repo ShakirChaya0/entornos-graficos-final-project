@@ -66,29 +66,46 @@
                         $password = $_POST["password"];
                         $type = $_POST["type"];
                         $_POST = array();
-                        if(!empty($username) && !empty($password)){
-                            $destinatario = "josebpp198@gmail.com";
-                            $asunto = "Email de prueba";
-                            $cuerpo = "
-                            <html>
-                                <head>
-                                    <title>Prueba de correo</title>
-                                </head>
-                                <body>
-                                    <img src='../Imagenes-Videos/bolsas-de-compra.png' alt='logo.png' class='logo_mail'>
-                                    <h2>Validar cuenta de cliente $username</h2>
-                                    <form method='post'>
-                                        <input type='submit' value='Validar Cuenta' name='valid' class='Validar_mail'>
-                                    </form>
-                                </body>
-                            </html>
-                            ";
-                            $headers = "MIME-Version: 1.0" . "\r\n";
-                            $headers .= "Content-type:text/html;charset=utf-8" . "\r\n";
-                            $headers .= 'From: cliente' ."\r\n";
-                            $headers .= "Return-path: $destinatario" . "\r\n";
-                            @mail($destinatario, $asunto, $cuerpo, $headers);
-                            echo"<p class= 'enviado'>*enviado correctamente</p>";
+                        $valid = "SELECT * FROM usuarios WHERE nombreUsuario = '$username'";
+                        $valid_query = mysqli_query($conn, $valid);
+                        if(!empty($username) && !empty($password) && !empty($type)){
+                            if(mysqli_num_rows($valid_query) > 0){
+                                echo"<p class= 'enviado'>*Usuario ya existente</p>";
+                            }
+                            else{
+                                if($type == "Cliente"){
+                                    $destinatario = "josebpp198@gmail.com";
+                                    $asunto = "Email de prueba";
+                                    $cuerpo = "
+                                    <html>
+                                        <head>
+                                            <title>Prueba de correo</title>
+                                        </head>
+                                        <body>
+                                            <img src='../Imagenes-Videos/bolsas-de-compra.png' alt='logo.png' class='logo_mail'>
+                                            <h2>Validar cuenta de cliente $username</h2>
+                                            <form method='post' action=''>
+                                                <input type='submit' value='Validar Cuenta' name='valid' class='Validar_mail'>
+                                            </form>
+                                        </body>
+                                    </html>
+                                    ";
+                                    $headers = "MIME-Version: 1.0" . "\r\n";
+                                    $headers .= "Content-type:text/html;charset=utf-8" . "\r\n";
+                                    $headers .= 'From: cliente' ."\r\n";
+                                    $headers .= "Return-path: $destinatario" . "\r\n";
+                                    @mail($destinatario, $asunto, $cuerpo, $headers);
+                                    echo"<p class= 'enviado'>*enviado correctamente</p>";
+                                }
+                                else{
+                                    $sql = "INSERT INTO usuarios (nombreUsuario, claveUsuario, tipoUsuario, categoriaCliente, estado, cantidadPromo) VALUES ('$username', '$password', '$type', 'ninguno', 'P', '0')";
+                                    $query = mysqli_query($conn, $sql);
+                                    echo "<p class= 'enviado'>*enviado correctamente</p>";
+                                }
+                            }
+                        }
+                        else{
+                            
                         }
                     }
                         
