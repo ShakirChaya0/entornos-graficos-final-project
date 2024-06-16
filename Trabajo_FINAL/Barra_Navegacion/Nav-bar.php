@@ -166,19 +166,10 @@
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                   <li class="nav-item">
-                    <a class="nav-link active locales-active" aria-current="page" href="../Locales/Locales.php">Promociones</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="../Promociones/Promociones.php">Solicitudes de Promociones</a>
+                    <a class="nav-link active locales-active" aria-current="page" href="../Promociones/Promociones.php">Promociones</a>
                   </li>
                   <li class="nav-item dropdown">
-                    <a class="nav-link active" aria-current="page" href="../Novedades/Novedades.php">Reportes</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link active" aria-current="page" href="../Home/Home.php#About us">Sobre Nosotros</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#Contacto">Contacto</a>
+                    <a class="nav-link active" aria-current="page" href="../Reportes/Reporte-Usos.php">Reportes de Promociones</a>
                   </li>
                 </ul>
                 <form class="d-flex align-items-center form-style" role="search" method="post">
