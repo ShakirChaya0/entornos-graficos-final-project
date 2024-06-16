@@ -86,6 +86,18 @@
                                 }
                                 elseif($row["tipoUsuario"] == "Dueño de local"){
                                     if($row["estado"] == "A"){
+                                        $_SESSION["localCreado"] = 0;
+                                        $_SESSION["localModificado"] = 0;
+                                        $_SESSION["localRestablecido"] = 0;
+                                        $_SESSION["localEliminado"] = 0;
+                                        $_SESSION["novCreada"] = 0;
+                                        $_SESSION["novModificada"] = 0;
+                                        $_SESSION["novRestablecida"] = 0;
+                                        $_SESSION["novEliminada"] = 0;
+                                        $_SESSION["ownerAceptado"] = 0;
+                                        $_SESSION["ownerRechazado"] = 0;
+                                        $_SESSION["promoAceptada"] = 0;
+                                        $_SESSION["promoDenegada"] = 0;
                                         header("LOCATION: ../Owner");
                                     }
                                     else{
