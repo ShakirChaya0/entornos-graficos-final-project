@@ -103,51 +103,49 @@
 <body>
     <?php
     include("../../Barra_Navegacion/Nav-bar.php");
+    $sql2= "SELECT * FROM locales WHERE codUsuario = {$_SESSION["codUsuario"]}";
+    $Locales = mysqli_query($conn, $sql2);
+    $Filas_Locales = mysqli_num_rows($Locales);
+    
+    if (empty($_POST["Filtrado"])) {
+        $_POST["Filtrado"] = "Todos";
+    }
+    if (empty($_POST["Ordenar"])) {
+        $_POST["Ordenar"] = "Mayor";
+    }
     ?>
+    
     <section>
         <div class="b1">
           <h2 class="title">Uso de Promociones</h2>
         </div>
     </section>
+    <div class="back_img">
+        <div class="subtitle_box">
+                <h2 class="page_subtitle">Listado de usos de promociones:</h2>
+                <div class="select">
+                    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                         <div class="select-box">
+                            <label class="label">Filtrado:</label>
+                            <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="Filtrado" onchange="this.form.submit()">
+                                 <option value="Todos" <?php echo ($_POST["Filtrado"] == "Todos") ? "selected" : ""; ?>>Todos</option>
+                                 <option value="Local" <?php echo ($_POST["Filtrado"] == "Local") ? "selected" : ""; ?>>Por local</option>
+                            </select>
+                         </div>
+                         <div class="select-box">
+                            <label class="label-2">Ordenar de:</label>
+                            <select class="form-select form-select-sm select-2" aria-label=".form-select-sm example" name="Ordenar" onchange="this.form.submit()">
+                                 <option value="Mayor" <?php echo ($_POST["Ordenar"] == "Mayor") ? "selected" : ""; ?>>Más usadas</option>
+                                 <option value="Menor" <?php echo ($_POST["Ordenar"] == "Menor") ? "selected" : ""; ?>>Menos Usadas</option>
+                            </select>
+                         </div>
 
-    <div class="subtitle_box">
-            <h2 class="page_subtitle">Listado de usos de promociones:</h2>
+                    </form>
+                </div>
+        </div>
     </div>
 
-<?php
-$sql2= "SELECT * FROM locales WHERE codUsuario = {$_SESSION["codUsuario"]}";
-$Locales = mysqli_query($conn, $sql2);
-$Filas_Locales = mysqli_num_rows($Locales);
-
-if (empty($_POST["Filtrado"])) {
-    $_POST["Filtrado"] = "Todos";
-}
-if (empty($_POST["Ordenar"])) {
-    $_POST["Ordenar"] = "Mayor";
-}
-?>
-
-
 <div class="container">
-   <div class="select">
-       <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-            <div class="select-box">
-               <label class="label">Filtrado:</label>
-               <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="Filtrado" onchange="this.form.submit()">
-                    <option value="Todos" <?php echo ($_POST["Filtrado"] == "Todos") ? "selected" : ""; ?>>Todos</option>
-                    <option value="Local" <?php echo ($_POST["Filtrado"] == "Local") ? "selected" : ""; ?>>Por local</option>
-               </select>
-            </div>
-            <div class="select-box">
-               <label class="label-2">Ordenar de:</label>
-               <select class="form-select form-select-sm select-2" aria-label=".form-select-sm example" name="Ordenar" onchange="this.form.submit()">
-                    <option value="Mayor" <?php echo ($_POST["Ordenar"] == "Mayor") ? "selected" : ""; ?>>Más usadas</option>
-                    <option value="Menor" <?php echo ($_POST["Ordenar"] == "Menor") ? "selected" : ""; ?>>Menos Usadas</option>
-               </select>
-            </div>
-
-       </form>
-   </div>
 
 <?php
 // Tabla que ordena todos las promociones juntas de todos los locales del dueño de más usadas a menos usadas
@@ -321,8 +319,7 @@ if ($Filas_Locales > 0) {
 }
 
 ?>
-
-
+</div>
 <?php
     include("../../Pie_De_Pagina/footer.php");
 ?>                  

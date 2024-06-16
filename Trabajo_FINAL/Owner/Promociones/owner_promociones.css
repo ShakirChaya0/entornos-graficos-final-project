@@ -108,7 +108,6 @@ body {
     min-height: 400px;
     height: 700px;
     max-height: 800px;
-
   }
 
   .page_title {
@@ -118,6 +117,7 @@ body {
     font-size: 4rem;
     letter-spacing: 3px;
     padding: 0.3rem;
+    margin: 0;
   }
   
   .search_box, .warning-box, .success-box {
@@ -126,6 +126,10 @@ body {
     padding: 2rem 5rem;
     background-color: #efefef;
     width: 80vw;
+  }
+  .search_box{
+    margin-top: 0;
+    background-color: #efefef;
   }
   
   .search_label {
@@ -202,7 +206,7 @@ body {
     overflow-x: auto; 
     -webkit-overflow-scrolling: touch; 
   }
-  
+
   .table_box {
     margin-top: 3rem;
     border-bottom: 2px solid #003360;
@@ -397,7 +401,7 @@ body {
     .search_box {
       padding: 1rem 1rem;
     }
-  
+
     .form-search__input{
       width: 60%;
     }
@@ -651,9 +655,39 @@ body {
     }
 }
 .contenedor_tabla{
-    overflow-x: auto;
+  overflow: auto;
+  max-height: 296px;
 }
 
 .denegada{
   color: rgb(255, 0, 0);
+}
+
+.back_img{
+  width: 100%;
+  height: 30vh;
+  position: relative;
+  background-color: black;
+  background-image: url(../../Imagenes-Videos/bc_mall_2.jpg);
+  background-size: cover;
+  background-position: bottom;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  padding-top: 4rem;
+}
+
+@media(max-width:571px){
+  .back_img{
+    padding-top: 2rem;
+  }
+}
+
+@media(max-width:338px){
+  .back_img{
+    padding-top: 1rem;
+  }
+}
+
+.pagination_info{
+  margin-top: 5rem;
 }
