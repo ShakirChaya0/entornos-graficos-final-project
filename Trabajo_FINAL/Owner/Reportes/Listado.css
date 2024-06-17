@@ -1,0 +1,182 @@
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    background-color: #ffffff;
+    width: 100%;
+    height: 100%;
+  }
+  
+@media screen and (max-width: 1200px) and (min-height: 600px) {
+    html {
+      font-size: 14px;
+    }
+    .title{
+        font-size: 3rem !important;
+    }
+  }
+  
+@media screen and (max-width: 768px) and (max-height: 600px) {
+    html {
+      font-size: 12px;
+    }
+    .title{
+        font-size: 2rem !important;
+    }
+  }
+  
+@media screen and (max-width: 480px) and (max-height: 400px) {
+    html {
+      font-size: 10px;
+    }
+    .title{
+        font-size: 1rem !important;
+    }
+  }
+  
+/* Estilos del título */
+
+.title{
+    background-color: #003360;
+    color: #fffafa;
+    text-align: center;
+    font-size: 4rem;
+    letter-spacing: 3px;
+    padding: 0.3rem;
+    margin: 0;
+}
+.select-box{
+  display: inline;
+}
+.select {
+  margin: 0;
+}
+.form-select {
+  display: inline;
+  width: 15%;
+  border: 2px solid black;
+}
+.form-submit{
+  display: inline;
+}
+.label-2{
+  margin-left: 40px;
+}
+@media (max-width:600px) {
+  .select-box {
+    display: block;
+    margin-bottom: 15px;
+  }
+  .form-select{
+    width: 30%;
+  }
+  .label-2{
+    margin-left: 0;
+  }
+}
+
+
+/* Estilos del subtítulo*/
+
+.back_img{
+  width: 100%;
+  height: 30vh;
+  position: relative;
+  background-color: black;
+  background-image: url(../../Imagenes-Videos/bc_mall_2.jpg);
+  background-size: cover;
+  background-position: bottom;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  padding-top: 4rem;
+}
+
+@media(max-width:571px){
+  .back_img{
+    padding-top: 2rem;
+  }
+}
+
+@media(max-width:338px){
+  .back_img{
+    padding-top: 1rem;
+  }
+}
+
+.select form{
+  margin-top: 1rem;
+}
+
+.subtitle_box, .warning-box {
+  margin: auto;
+  margin-top: 3rem;
+  padding: 2rem 5rem;
+  background-color: #efefef;
+  width: 70vw;
+}
+
+.subtitle_box{
+  margin-top: 0;
+}
+
+.page_subtitle {
+    margin: 0;
+}
+@media (max-width:875px) {
+  .subtitle_box {
+    padding: 1rem 1rem;
+  }
+
+}
+@media (max-width:600px) {
+  .page_subtitle {
+    font-size: 18px;
+  }
+}
+  
+
+/* Estilos de la tabla */
+
+.container{
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    overflow-x: auto;
+  }
+}
+
+table {
+  margin-bottom: 3rem;
+}
+
+.Titulo_local {
+  text-align: center;
+  color: white;
+  font-size: 1.5rem;
+  background-color: #003360;
+
+}
+
+.campos {
+  background-color: #f2f2f2;
+}
+
+/* Estilos de mensaje cuando no se encuentran locales */
