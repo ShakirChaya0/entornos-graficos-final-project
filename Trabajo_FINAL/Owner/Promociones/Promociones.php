@@ -16,6 +16,7 @@
     $_SESSION["ownerRechazado"] = 0;
     $_SESSION["promoAceptada"] = 0;
     $_SESSION["promoDenegada"] = 0;
+    
     include("../../database.php");
     include("../../admin/successMensajes.php");
 ?>
@@ -79,6 +80,7 @@
             $bandera = true;
             $flag = false;
             $k = 0;
+            $i = 0;
             $cant_registros = 5;
             $pag = isset($_GET["page"]) ? $_GET["page"] : 1;
             $inicio = ($pag - 1) * $cant_registros;
@@ -88,6 +90,7 @@
             $result_locales = mysqli_query($conn, $search_locales);
             $result_locales_total = mysqli_query($conn, $search_locales_total);
 
+            $_SESSION["buscar_local"] = isset($_SESSION["buscar_local"]) ? $_SESSION["buscar_local"] : 1;
             $sql_total = "SELECT COUNT(*) FROM promociones WHERE codLocal = {$_SESSION['buscar_local']}";
             $result_total = mysqli_query($conn, $sql_total);
             $row_total = mysqli_fetch_row($result_total);
@@ -101,6 +104,7 @@
                         <div class="nav_locales">
                             <?php
                                 while($row_locales = mysqli_fetch_assoc($result_locales)){
+                                    $_SESSION["buscar_nombre_local"] = isset($_SESSION["buscar_nombre_local"]) ? $_SESSION["buscar_nombre_local"]: $row_locales["nombreLocal"];
                                     ?>
                                     <div class='header_locales'>
                                         <form method='get' action="Promociones.php">
@@ -137,6 +141,7 @@
                                         else{
                                             $bandera = false;
                                         }
+                                        header("LOCATION: Promociones.php");
                                     }
                                 }
                             ?>
@@ -158,6 +163,7 @@
                                         $dias_semana = array("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo");
                                         while($row_promos = mysqli_fetch_assoc($result_promos)){
                                             $class = false;
+                                            $pend = false;
                                             $dias_validos = "";
                                             for ($i = 0; $i <= 6; $i++) {
                                                 if ($row_promos["diasSemana"][$i] == 1) {
@@ -169,14 +175,17 @@
                                             if($row_promos["estadoPromo"] == "denegada"){
                                                 $class = true;
                                             }
+                                            elseif($row_promos["estadoPromo"] == "pendiente"){
+                                                $pend = true;
+                                            }
                                             ?>          
                                             <tr>
-                                                <td class="<?php echo $class ? 'denegada':'';?>"><?php echo $row_promos["textoPromo"]?></td>
-                                                <td class="<?php echo $class ? 'denegada':'';?>"><?php echo $row_promos["categoriaCliente"]?></td>
-                                                <td class="<?php echo $class ? 'denegada':'';?>"><?php echo $row_promos["fechaHastaPromo"]?></td>
-                                                <td class="<?php echo $class ? 'denegada':'';?>"><?php echo $dias_validos?></td>
+                                                <td class="<?php echo $class ? 'denegada':'';?> <?php echo $pend ? 'pendiente':'';?>"><?php echo $row_promos["textoPromo"]?></td>
+                                                <td class="<?php echo $class ? 'denegada':'';?>" <?php echo $pend ? 'pendiente':'';?>><?php echo $row_promos["categoriaCliente"]?></td>
+                                                <td class="<?php echo $class ? 'denegada':'';?>" <?php echo $pend ? 'pendiente':'';?>><?php echo $row_promos["fechaHastaPromo"]?></td>
+                                                <td class="<?php echo $class ? 'denegada':'';?>" <?php echo $pend ? 'pendiente':'';?>><?php echo $dias_validos?></td>
                                                 <?php
-                                                    if($row_promos["estadoPromo"] != "denegada"){
+                                                    if($row_promos["estadoPromo"] == "aprobada"){
                                                 ?>
                                                     <td>
                                                         <?php echo"
@@ -286,6 +295,7 @@
                             $result_promos = mysqli_query($conn, $search_promos);
                             while($row_promos = mysqli_fetch_assoc($result_promos)){
                                 $class = false;
+                                $pend = false;
                                 $dias_validos = "";
                                 for ($i = 0; $i <= 6; $i++) {
                                     if ($row_promos["diasSemana"][$i] == 1) {
@@ -296,6 +306,9 @@
                                 $dias_validos[$len - 1] = ' ';
                                 if($row_promos["estadoPromo"] == "denegada"){
                                     $class = true;
+                                }
+                                if($row_promos["estadoPromo"] == "pendiente"){
+                                    $pend = true;
                                 }
                                 if(!$flag){
                                 ?>
@@ -314,10 +327,10 @@
                                             }
                                         ?>
                                             <tr>
-                                                <td class="<?php echo $class ? 'denegada':'';?>"><?php echo $row_promos["textoPromo"]?></td>
-                                                <td class="<?php echo $class ? 'denegada':'';?>"><?php echo $row_promos["categoriaCliente"]?></td>
-                                                <td class="<?php echo $class ? 'denegada':'';?>"><?php echo $row_promos["fechaHastaPromo"]?></td>
-                                                <td class="<?php echo $class ? 'denegada':'';?>"><?php echo $dias_validos?></td>
+                                                <td class="<?php echo $class ? 'denegada':'';?> <?php echo $pend ? 'pendiente':'';?>"><?php echo $row_promos["textoPromo"]?></td>
+                                                <td class="<?php echo $class ? 'denegada':'';?> <?php echo $pend ? 'pendiente':'';?>"><?php echo $row_promos["categoriaCliente"]?></td>
+                                                <td class="<?php echo $class ? 'denegada':'';?> <?php echo $pend ? 'pendiente':'';?>"><?php echo $row_promos["fechaHastaPromo"]?></td>
+                                                <td class="<?php echo $class ? 'denegada':'';?> <?php echo $pend ? 'pendiente':'';?>"><?php echo $dias_validos?></td>
                                                 <?php
                                                     if($row_promos["estadoPromo"] != "denegada"){
                                                 ?>

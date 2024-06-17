@@ -1,4 +1,5 @@
 <?php
+    ob_start();
     session_start();
     include("../database.php");
     session_unset();
@@ -67,6 +68,7 @@
                                 $_SESSION["cantidadPromo"] = $row["cantidadPromo"];
                                 mysqli_close($conn);
                                 if($row["tipoUsuario"] == "administrador"){
+                                    $_SESSION["promocionCreadaDueño"] = 0;
                                     $_SESSION["localCreado"] = 0;
                                     $_SESSION["localModificado"] = 0;
                                     $_SESSION["localRestablecido"] = 0;
@@ -84,8 +86,9 @@
                                 elseif($row["tipoUsuario"] == "Cliente"){
                                     header("LOCATION: ../Client/Home/Home.php");
                                 }
-                                elseif($row["tipoUsuario"] == "Dueño de local"){
+                                elseif($row["tipoUsuario"] == "Dueño"){
                                     if($row["estado"] == "A"){
+                                        $_SESSION["promocionCreadaDueño"] = 0;
                                         $_SESSION["localCreado"] = 0;
                                         $_SESSION["localModificado"] = 0;
                                         $_SESSION["localRestablecido"] = 0;
@@ -98,7 +101,7 @@
                                         $_SESSION["ownerRechazado"] = 0;
                                         $_SESSION["promoAceptada"] = 0;
                                         $_SESSION["promoDenegada"] = 0;
-                                        header("LOCATION: ../Owner");
+                                        header("LOCATION: ../Owner/Home/Home.php");
                                     }
                                     else{
                                         echo"<p class='error'>* Tu cuenta debe ser validada</p>";
@@ -107,6 +110,9 @@
                             }
                         }
                     }
+                    else{
+                        $_POST = array();
+                    }
                 ?>
             </div>
             </div>
@@ -114,3 +120,6 @@
     </section>
 </body>
 </html>
+<?php
+    ob_end_flush();
+?>

@@ -98,5 +98,12 @@
                     </div>
             ";
         }
+        elseif($_SESSION["promocionCreadaDueño"] == 1){
+            echo "
+                    <div class='success-box'>
+                        <p class='success-box__msj'>Promoción creada con éxito!</p>
+                    </div>
+            ";
+        }
     }
 ?>

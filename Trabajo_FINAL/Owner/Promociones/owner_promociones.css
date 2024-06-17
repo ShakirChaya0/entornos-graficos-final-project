@@ -691,3 +691,8 @@ body {
 .pagination_info{
   margin-top: 5rem;
 }
+.pendiente{
+    color: #52525286;
+    font-style: italic;
+    font-weight: 500;
+}
