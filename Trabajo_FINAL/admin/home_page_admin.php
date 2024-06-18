@@ -53,12 +53,11 @@
                             <a class="nav-link active" aria-current="page" href="uso_promociones/uso_promo.php">Uso de Promociones</a>
                         </li>
                     </ul>
-                    <li class="nav-item dropdown list-item">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img class="avatar-style icon" src="../Imagenes-Videos/avatar.png" alt="">Administrador</a>
-                        <ul class="dropdown-menu">
-                            <li><button type="submit" class="dropdown-item" name="cerrarSesion">Cerrar Sesión</button></li>
-                        </ul>
-                    </li>
+                    <span class="nav-item dropdown list-item">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img class="avatar-style icon" src="../Imagenes-Videos/avatar.png" alt="">Administrador</a>
+                    </span>
+                    <img src="../Imagenes-Videos/Cerrar-sesion.png" class="icon cerrar-sesion btn-delete" alt="">
+                    <a href="../inicio_de_sesion/inicio_sesion.php" class="btn btn-outline-danger log_out">Cerrar Sesión</a>
                 </div>
             </div>
         </nav>
@@ -130,7 +129,13 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
                         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
                     </svg>
-                    <a href="users_menu/admin_owner.php" class="footer__items">Dueños</a>
+                    <a href="users_menu/admin_users.php" class="footer__items">Usuarios Registrados</a>
+                </li>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
+                        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
+                    </svg>
+                    <a href="users_menu/admin_owner.php" class="footer__items">Validar Dueños</a>
                 </li>
                 <li>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
@@ -142,13 +147,19 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
                         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
                     </svg>
-                    <a href="promociones_menu/admin_promo.php" class="footer__items">Verificar promociones</a>
+                    <a href="promociones_menu/admin_lista_promo.php" class="footer__items">Promociones Cargadas</a>
                 </li>
                 <li>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
                         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
                     </svg>
-                    <a href="uso_promociones/uso_promo.php" class="footer__items">Utilización de promociones</a>
+                    <a href="promociones_menu/admin_promo.php" class="footer__items">Aceptar Promociones</a>
+                </li>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
+                        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
+                    </svg>
+                    <a href="uso_promociones/uso_promo.php" class="footer__items">Utilización de Promociones</a>
                 </li>
             </ul>
         </div>

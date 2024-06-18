@@ -3,7 +3,7 @@
     session_start();
     if (!isset($_SESSION["codUsuario"]) || $_SESSION["codUsuario"] != 1) {
         session_destroy();
-        header("Location: ../inicio_de_sesion/inicio_sesion.php");
+        header("Location: ../../inicio_de_sesion/inicio_sesion.php");
     }
     include("../../database.php");
 ?>
@@ -55,14 +55,11 @@
                             <a class="nav-link active" aria-current="page" href="../uso_promociones/uso_promo.php">Uso de Promociones</a>
                         </li>
                     </ul>
-                    <form class="d-flex align-items-center form-style" role="search" method="post" action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>">
-                        <li class="nav-item dropdown list-item">
+                    <span class="nav-item dropdown list-item">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img class="avatar-style icon" src="../../Imagenes-Videos/avatar.png" alt="">Administrador</a>
-                            <ul class="dropdown-menu">
-                                <li><button type="submit" class="dropdown-item" name="cerrarSesion">Cerrar Sesión</button></li>
-                            </ul>
-                        </li>
-                    </form>
+                    </span>
+                    <img src="../../Imagenes-Videos/Cerrar-sesion.png" class="icon cerrar-sesion btn-delete" alt="">
+                    <a href="../../inicio_de_sesion/inicio_sesion.php" class="btn btn-outline-danger log_out">Cerrar Sesión</a>
                 </div>
             </div>
         </nav>     
@@ -202,7 +199,7 @@
         <div class="container mt-5">
             <div class="flex-container">
                 <div class="flex-item table-container">
-                    <h4 class="page_subtitle">Promociones usadas por local:</h4>
+                    <h3 class="page_subtitle">Promociones usadas por local:</h3>
                     <?php
                         $cant_registros_2 = 10;
                         $pag_2 = isset($_GET["page_2"]) ? $_GET["page_2"] : 1;
@@ -311,11 +308,11 @@
                     ?>
             </div>
             <div class="flex-item list-container">
-                <h4 class="page_subtitle">Promociones usadas por categoría:</h4>
+                <h3 class="page_subtitle">Promociones usadas por categoría:</h3>
                 <?php
                     $cont_categorias = array("Inicial"=>0, "Medium"=>0, "Premium"=>0);
 
-                    $sql_3 = "SELECT * FROM uso_promociones";
+                    $sql_3 = "SELECT * FROM uso_promociones WHERE estadoUsoPromo = 'aceptada'";
                     $result_3 = mysqli_query($conn, $sql_3);
                     if (mysqli_num_rows($result_3) > 0) {
 
@@ -395,7 +392,13 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
                         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
                     </svg>
-                    <a href="../users_menu/admin_owner.php" class="footer__items">Dueños</a>
+                    <a href="../users_menu/admin_users.php" class="footer__items">Usuarios Registrados</a>
+                </li>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
+                        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
+                    </svg>
+                    <a href="../users_menu/admin_owner.php" class="footer__items">Validar Dueños</a>
                 </li>
                 <li>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
@@ -407,17 +410,23 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
                         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
                     </svg>
-                    <a href="../promociones_menu/admin_promo.php" class="footer__items">Verificar promociones</a>
+                    <a href="../promociones_menu/admin_lista_promo.php" class="footer__items">Promociones Cargadas</a>
                 </li>
                 <li>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
                         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
                     </svg>
-                    <a href="../uso_promociones/uso_promo.php" class="footer__items">Utilización de promociones</a>
+                    <a href="../promociones_menu/admin_promo.php" class="footer__items">Aceptar Promociones</a>
+                </li>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
+                        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
+                    </svg>
+                    <a href="../uso_promociones/uso_promo.php" class="footer__items">Utilización de Promociones</a>
                 </li>
             </ul>
         </div>
-      </footer>
+    </footer>
 </body>
 </html>
 <?php

@@ -62,6 +62,18 @@ section:target {
   list-style-type: none;
 }
 
+.cerrar-sesion{
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-left: 1rem;
+  margin-right: .5rem;
+}
+
+.log_out {
+  margin-right: 1rem;
+  margin-left: 0;
+}
+
 .navbar-toggler {
   position: absolute;
   right: 1rem;
@@ -89,8 +101,17 @@ section:target {
   .btn-delete {
     display: none;
   }
+
+  .log_out {
+    margin: 0.7rem 0;
+  }
+
   .container-fluid {
     background-color:#f8f9fa;
+  }
+
+  .header{
+    padding-right: 0;
   }
 }
 
@@ -254,13 +275,14 @@ td {
   max-width: 100%;
 }
 
-.flex-item h4 {
+.flex-item h3 {
   text-align: center;
   margin-bottom: 1.5rem;
   text-wrap: nowrap;
+  font-size: 24px;
 }
 
-.list-container h4 {
+.list-container h3 {
   margin-top: 6.5px;
   font-size: 18px;
 }
@@ -400,6 +422,10 @@ footer a{
 .site_map a{
 color: #fffafa;
 margin-right: 30px;
+}
+
+.site_map a:hover {
+  text-decoration: underline;
 }
 
 .site_map ul{

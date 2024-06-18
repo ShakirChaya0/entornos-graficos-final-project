@@ -3,7 +3,7 @@
     session_start();
     if (!isset($_SESSION["codUsuario"]) || $_SESSION["codUsuario"] != 1) {
         session_destroy();
-        header("Location: ../inicio_de_sesion/inicio_sesion.php");
+        header("Location: ../../inicio_de_sesion/inicio_sesion.php");
     }
     include("../../database.php");
     include("verif_nov.php");
@@ -57,14 +57,11 @@
                             <a class="nav-link active" aria-current="page" href="../uso_promociones/uso_promo.php">Uso de Promociones</a>
                         </li>
                     </ul>
-                    <form class="d-flex align-items-center form-style" role="search" method="post" action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>">
-                        <li class="nav-item dropdown list-item">
+                    <span class="nav-item dropdown list-item">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img class="avatar-style icon" src="../../Imagenes-Videos/avatar.png" alt="">Administrador</a>
-                            <ul class="dropdown-menu">
-                                <li><button type="submit" class="dropdown-item" name="cerrarSesion">Cerrar Sesión</button></li>
-                            </ul>
-                        </li>
-                    </form>
+                    </span>
+                    <img src="../../Imagenes-Videos/Cerrar-sesion.png" class="icon cerrar-sesion btn-delete" alt="">
+                    <a href="../../inicio_de_sesion/inicio_sesion.php" class="btn btn-outline-danger log_out">Cerrar Sesión</a>
                 </div>
             </div>
         </nav>
@@ -294,7 +291,6 @@
                     <a href="https://instagram.com" target="_blank" class="footer__items"> Nuestro Instagram!</a>
                 </div>
             
-            
                 <div class="logo_footer">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-open" viewBox="0 0 16 16">
                         <path d="M8.47 1.318a1 1 0 0 0-.94 0l-6 3.2A1 1 0 0 0 1 5.4v.817l5.75 3.45L8 8.917l1.25.75L15 6.217V5.4a1 1 0 0 0-.53-.882zM15 7.383l-4.778 2.867L15 13.117zm-.035 6.88L8 10.082l-6.965 4.18A1 1 0 0 0 2 15h12a1 1 0 0 0 .965-.738ZM1 13.116l4.778-2.867L1 7.383v5.734ZM7.059.435a2 2 0 0 1 1.882 0l6 3.2A2 2 0 0 1 16 5.4V14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5.4a2 2 0 0 1 1.059-1.765z" />
@@ -317,7 +313,13 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
                         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
                     </svg>
-                    <a href="../users_menu/admin_owner.php" class="footer__items">Dueños</a>
+                    <a href="../users_menu/admin_users.php" class="footer__items">Usuarios Registrados</a>
+                </li>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
+                        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
+                    </svg>
+                    <a href="../users_menu/admin_owner.php" class="footer__items">Validar Dueños</a>
                 </li>
                 <li>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
@@ -329,17 +331,23 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
                         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
                     </svg>
-                    <a href="../promociones_menu/admin_promo.php" class="footer__items">Verificar promociones</a>
+                    <a href="../promociones_menu/admin_lista_promo.php" class="footer__items">Promociones Cargadas</a>
                 </li>
                 <li>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
                         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
                     </svg>
-                    <a href="../uso_promociones/uso_promo.php" class="footer__items">Utilización de promociones</a>
+                    <a href="../promociones_menu/admin_promo.php" class="footer__items">Aceptar Promociones</a>
+                </li>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
+                        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
+                    </svg>
+                    <a href="../uso_promociones/uso_promo.php" class="footer__items">Utilización de Promociones</a>
                 </li>
             </ul>
         </div>
-      </footer>
+    </footer>
 </body>
 </html>
 <?php
