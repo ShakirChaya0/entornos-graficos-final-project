@@ -67,7 +67,7 @@
                                 $_SESSION["estado"] = $row["estado"];
                                 $_SESSION["cantidadPromo"] = $row["cantidadPromo"];
                                 mysqli_close($conn);
-                                if($row["tipoUsuario"] == "administrador"){
+                                if($row["tipoUsuario"] == "Administrador"){
                                     $_SESSION["promocionCreadaDueño"] = 0;
                                     $_SESSION["localCreado"] = 0;
                                     $_SESSION["localModificado"] = 0;
@@ -86,7 +86,7 @@
                                 elseif($row["tipoUsuario"] == "Cliente"){
                                     header("LOCATION: ../Client/Home/Home.php");
                                 }
-                                elseif($row["tipoUsuario"] == "Dueño"){
+                                elseif($row["tipoUsuario"] == "Dueño de local"){
                                     if($row["estado"] == "A"){
                                         $_SESSION["promocionCreadaDueño"] = 0;
                                         $_SESSION["localCreado"] = 0;

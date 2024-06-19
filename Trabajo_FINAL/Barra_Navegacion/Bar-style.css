@@ -38,13 +38,14 @@ body {
 
 .container-fluid {
   background-color: rgba(var(--bs-tertiary-bg-rgb), var(--bs-bg-opacity));
+   background-color: rgb(248,249,250);
 }
 .success {
   margin-right: 1rem;
 }
 .icon{
-    width: 3rem;
-    height: 3rem;
+    width: 2.5rem;
+    height: 2.5rem;
   }
 .navbar {
     height: 100%;

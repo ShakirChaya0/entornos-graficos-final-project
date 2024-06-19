@@ -2,8 +2,6 @@
     ob_start();
     session_start();
     include("../../database.php");
-    $_SESSION["tipoUsuario"] = "Dueño";
-    $_SESSION['codUsuario'] = 2;
     
 
     // Función que cuenta la cantidad de usos que tiene cada promo contando las aparciciones del codPromo en la tabla uso_promociones

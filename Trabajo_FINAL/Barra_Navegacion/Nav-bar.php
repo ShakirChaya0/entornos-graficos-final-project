@@ -155,7 +155,7 @@
     <!-- Navbar del UNR  Modularizada -->
 
     <?php 
-        if($_SESSION["tipoUsuario"] == "Dueño"){
+        if($_SESSION["tipoUsuario"] == "Dueño de local"){
     ?>
             <div class="navbar-style">
                 <a class="navbar-brand" href="../Home/Home.php"><img class="icon" src="../../Imagenes-Videos/bolsas-de-compra.png" alt="Icono"></a>

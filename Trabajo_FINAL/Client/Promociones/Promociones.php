@@ -24,7 +24,7 @@
         $position = array_search($dia_actual, $semana);
         $dias_disponibles = str_split($row_promo["diasSemana"]);
         //FILTRADO POR FECHAS:
-        if($row_promo["fechaDesdePromo"] <= $fecha_actual && $row_promo["fechaHastaPromo"] >= $fecha_actual && $row_promo["estadoPromo"] == "aceptada" && $dias_disponibles[$position] == "1"){
+        if($row_promo["fechaDesdePromo"] <= $fecha_actual && $row_promo["fechaHastaPromo"] >= $fecha_actual && $row_promo["estadoPromo"] == "aprobada" && $dias_disponibles[$position] == "1"){
           //FILTRADO POR PROMOCIONES USADAS
           if($filas["total_filas"] > 0){
             $search_usopromo = 'SELECT * FROM uso_promociones WHERE codCliente = "'.$row_usu["codUsuario"].'"';
@@ -49,7 +49,7 @@
                     $flag = false;
                   break;
                 }
-                elseif($row_usoPromo["codPromo"] == $row_promo["codPromo"] && strtolower($row_usoPromo["estadoUsoPromo"]) == "aceptada"){
+                elseif($row_usoPromo["codPromo"] == $row_promo["codPromo"] && strtolower($row_usoPromo["estadoUsoPromo"]) == "aprobada"){
                   echo "
                     <div class='container container_aprobado'>
                       <div class ='local_data'> 

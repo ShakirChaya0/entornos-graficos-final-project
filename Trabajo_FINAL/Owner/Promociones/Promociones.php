@@ -1,22 +1,7 @@
 <?php
     ob_start();
     session_start();
-    $_SESSION["codUsuario"] = 1;
-    $_SESSION["promocionCreadaDueño"] = 0;
-    $_SESSION["tipoUsuario"] = "Dueño";
-    $_SESSION["localCreado"] = 0;
-    $_SESSION["localModificado"] = 0;
-    $_SESSION["localRestablecido"] = 0;
-    $_SESSION["localEliminado"] = 0;
-    $_SESSION["novCreada"] = 0;
-    $_SESSION["novModificada"] = 0;
-    $_SESSION["novRestablecida"] = 0;
-    $_SESSION["novEliminada"] = 0;
-    $_SESSION["ownerAceptado"] = 0;
-    $_SESSION["ownerRechazado"] = 0;
-    $_SESSION["promoAceptada"] = 0;
-    $_SESSION["promoDenegada"] = 0;
-    
+
     include("../../database.php");
     include("../../admin/successMensajes.php");
 ?>
@@ -123,7 +108,7 @@
                                         </form>       
                                     </div><?php
                                     if(!empty($_GET[$row_locales["codLocal"]])){
-                                        $_SESSION = array();
+                                        $_SESSION["buscar_local"] = null;   
                                         $_SESSION["buscar_local"] = $row_locales["codLocal"];                                        
                                         $_SESSION["buscar_nombre_local"] = $row_locales["nombreLocal"];                                        
                                         if($busqueda != "" && isset($parametro)){

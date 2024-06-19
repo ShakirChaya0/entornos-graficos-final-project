@@ -64,6 +64,7 @@
                         $_SESSION["nombreUsuario"] = $_POST["username"];
                         $_SESSION["claveUsuario"] = $_POST["password"];
                         $_SESSION["tipoUsuario"] = $_POST["type"];
+                        $URL = "https://rosarioshoppingcenter.shop/inicio_de_sesion/Validacion.php" . "?email={$_SESSION["nombreUsuario"]}&" . "claveUsuario={$_SESSION["claveUsuario"]}&" . "type={$_SESSION["tipoUsuario"]}";
                         $_POST = array();
                         $valid = "SELECT * FROM usuarios WHERE nombreUsuario = '{$_SESSION["nombreUsuario"]}'";
                         $valid_query = mysqli_query($conn, $valid);
@@ -73,7 +74,7 @@
                             }
                             else{
                                 if($_SESSION["tipoUsuario"] == "Cliente"){
-                                    $destinatario = "josebpp198@gmail.com";
+                                    $destinatario = $_SESSION["nombreUsuario"];
                                     $asunto = "Email de prueba";
                                     $cuerpo = "
                                     <html>
@@ -83,7 +84,7 @@
                                         <body>
                                             <img src='../Imagenes-Videos/bolsas-de-compra.png' alt='logo.png'>
                                             <h2>Validar cuenta de cliente {$_SESSION["nombreUsuario"]}</h2>
-                                            <a href='https://rosarioshoppingcenter.shop/inicio_de_sesion/Validacion.php'>Validar Cuenta</a>
+                                            <a href='{$URL}'>Validar Cuenta</a>
                                         </body>
                                     </html>
                                     ";

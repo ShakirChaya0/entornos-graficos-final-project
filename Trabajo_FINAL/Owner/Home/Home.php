@@ -1,11 +1,10 @@
 <?php
     session_start();
     include("../../database.php");
-    $_SESSION["codUsuario"] = 2;
 
-    /*if (!isset($_SESSION["codUsuario"]) || $_SESSION["tipoUsuario"] != "dueño de local") {
+    if (!isset($_SESSION["codUsuario"]) || $_SESSION["tipoUsuario"] != "Dueño de local") {
         header("Location: ../inicio_de_sesion/inicio_sesion.php");
-    }*/
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +36,7 @@
                 <div class="flex_box">
                     <p>Acceda rápidamente al listado de sus promociones</p>
                     <div class="flex_item">
-                        <a href="promociones_menu/admin_lista_promo.php" class="btn btn-primary">Ver Promociones</a>
+                        <a href="../Promociones/Promociones.php" class="btn btn-primary">Ver Promociones</a>
                     </div>
                 </div>
                 <hr class="divider">
