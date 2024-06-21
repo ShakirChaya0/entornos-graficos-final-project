@@ -83,7 +83,7 @@
                                     $_SESSION["promoDenegada"] = 0;
                                     $_SESSION["fechavalida"] = 0;
                                     $_SESSION["no_dueño"] = 0;
-                                    header("LOCATION: ../admin/home_page_admin.php");
+                                    header("LOCATION: ../admin/home/home_page_admin.php");
                                 }
                                 elseif($row["tipoUsuario"] == "Cliente"){
                                     header("LOCATION: ../Client/Home/Home.php");

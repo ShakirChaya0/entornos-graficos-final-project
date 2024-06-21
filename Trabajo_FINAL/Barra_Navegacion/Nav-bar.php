@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../Barra_Navegacion/Bar-style.css">
+
     <title>Document</title>
 </head>
 <body>
@@ -47,6 +49,7 @@
                   <input class="btn btn-outline-danger log_out" value="Cerrar Sesión" name="submit" type="submit">
                 </form>
             </div>
+          </div>
             <?php  
                 if (!empty($_POST["submit"])){
                     $_POST = array();
@@ -93,6 +96,7 @@
                       <input class="btn btn-outline-success success" name="Registrarse" value="Registrarse" type="submit">
                   </form>
               </div>
+            </div>
               <?php
                 if(isset($_POST["Iniciar-Sesion"])){
                   header("LOCATION: ../inicio_de_sesion/inicio_sesion.php");
@@ -135,7 +139,6 @@
                   </form>
               </div>
           </div>
-      </div>
               <?php
                 if(isset($_POST["Iniciar-Sesion"])){
                   header("LOCATION: ../../inicio_de_sesion/inicio_sesion.php");
@@ -152,7 +155,7 @@
           ?>
 
 
-    <!-- Navbar del UNR  Modularizada -->
+    <!-- Navbar del Dueño Modularizada -->
 
     <?php 
         if($_SESSION["tipoUsuario"] == "Dueño de local"){
@@ -180,17 +183,64 @@
                   <input class="btn btn-outline-danger log_out" value="Cerrar Sesión" name="submit" type="submit">
                 </form>
             </div>
+          </div>
             <?php  
                 if (!empty($_POST["submit"])){
                     $_POST = array();
                     header("LOCATION: ../../inicio_de_sesion/inicio_sesion.php");
-                    }
                 }
+              }
             ?> 
-        </div>
-      </div>
+        
 
+          <!-- Navbar del Administrador  Modularizada -->
 
+    <?php 
+        if($_SESSION["tipoUsuario"] == "Administrador"){
+    ?>
+                <div class="navbar-style">
+                  <a class="navbar-brand" href="../home/home_page_admin.php"><img class="icon" src="../../Imagenes-Videos/bolsas-de-compra.png" alt="Icono"></a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarScroll">
+                  <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="../locales_menu/admin_locales.php">Locales</a>
+                    </li>
+                    <li class="nav-item dropdown list-item">
+                      <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Usuarios</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="../users_menu/admin_users.php">Usuarios Registrados</a></li>
+                        <li><a class="dropdown-item" href="../users_menu/admin_owner.php">Validar/Denegar Cuentas de Dueño</a></li>
+                      </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link active" aria-current="page" href="../novedades_menu/admin_nov.php">Novedades</a>
+                    </li>
+                    <li class="nav-item dropdown list-item">
+                      <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Promociones</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="../promociones_menu/admin_lista_promo.php">Promociones Cargadas</a></li>
+                        <li><a class="dropdown-item" href="../promociones_menu/admin_promo.php">Aceptar/Rechazar Promociones</a></li>
+                      </ul>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="../uso_promociones/uso_promo.php">Uso de Promociones</a>
+                    </li>
+                  </ul>
+                  <span class="nav-item dropdown list-item">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img class="avatar-style icon" src="../../Imagenes-Videos/avatar.png" alt="">Administrador</a>
+                  </span>
+                  <img src="../../Imagenes-Videos/Cerrar-sesion.png" class="icon cerrar-sesion btn-delete" alt="">
+                  <a href="../../inicio_de_sesion/inicio_sesion.php" class="btn btn-outline-danger log_out">Cerrar Sesión</a>
+                </div>
+            </div>
+    <?php  
+        }
+    ?> 
+    
 
     </nav>
   </header> 

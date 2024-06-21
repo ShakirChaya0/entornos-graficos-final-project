@@ -54,10 +54,6 @@ section:target {
   font-size: 1rem;
 }
 
-.btn {
-  margin-left: 1rem;
-}
-
 .list-item {
   list-style-type: none;
 }
@@ -194,8 +190,7 @@ section:target {
   border: 1px solid #007bff;
 }
 
-.form-search__create-button {
-  margin-left: 5px;
+.create-button {
   border: 1px solid #198754;
   border-radius: 5px;
   padding: 10px 20px;
@@ -203,9 +198,10 @@ section:target {
   background-color: #198754;
   transition-property: background-color, border;
   transition-duration: 0.2s;
+  margin-top: 1rem;
 }
 
-.form-search__create-button:hover {
+.create-button:hover {
   background-color: #09ce72;
   border: 1px solid #09ce72;
 }
@@ -420,7 +416,7 @@ input[type="checkbox"]:checked ~ .modal {
     padding: 10px 10px;
   }
 
-  .form-search__create-button {
+  .create-button {
     margin-top: 10px;
     padding: 10px;
   }

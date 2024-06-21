@@ -3,6 +3,10 @@
     session_start();
     include("../../database.php");
     include("../../admin/successMensajes.php");
+
+    if (!isset($_SESSION["codUsuario"]) || $_SESSION["tipoUsuario"] != "Dueño de local") {
+        header("Location: ../../inicio_de_sesion/inicio_sesion.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

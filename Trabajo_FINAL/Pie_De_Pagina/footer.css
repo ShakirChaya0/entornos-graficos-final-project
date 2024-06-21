@@ -38,6 +38,7 @@ footer a{
     margin-left: 25px;
 }
 .img_mapa img {
+    margin-top: 10px;
     width: 400px;
     height: 208px;
     border: double 6px black ;
@@ -56,6 +57,9 @@ footer a{
 .site_map a{
   color: snow;
   margin-right: 30px;
+}
+.site_map a:hover {
+    text-decoration: underline;
 }
 .site_map ul{
     justify-content: center;

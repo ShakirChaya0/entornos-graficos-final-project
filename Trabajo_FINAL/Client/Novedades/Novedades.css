@@ -30,7 +30,10 @@ body {
 
 .iteracion{
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
+  padding: 2rem 2rem;
+  gap: 2rem;
 }
 .filtrado_locales{
   background: rgb(255, 255, 255);
@@ -55,8 +58,6 @@ body {
   border-bottom: 1px solid black;
   outline: none;
 }
-
-
 .lupa_local{
   position: absolute;
   margin-top: 2rem;
@@ -163,8 +164,9 @@ body {
 
 .fondo_titulo{
   background-image: url(../../Imagenes-Videos/Imagen-Shopping.jpg);
-  background-position: 0;
-
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .lineas_title{
@@ -192,13 +194,12 @@ body {
   display: block;
   text-align: center;
   font-size: 1.6rem;
+  padding: 0 15px;
   width: 100%;
   margin: auto;
 }
 
 .card{
-  margin-left: 2rem;
-  margin-top: 2rem;
   min-width: 280px;
   max-width: 280px;
   min-height: 300px;
@@ -236,5 +237,15 @@ body {
   color: red;
 }
 
+@media (max-width: 400px) {
+  .lineas_title h1 {
+    font-size: 45px;
+  }
+
+  .lineas_title p {
+    font-size: 21px;
+  }
+
+}
 
 
