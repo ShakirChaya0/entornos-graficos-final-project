@@ -36,9 +36,11 @@
         <?php
             successMensaje();
             $_SESSION["promocionCreadaDueño"] = 0;
+            $_SESSION["fechavalida"] = 0;
+            $_SESSION["no_dueño"] = 0;
         ?>
         <div class="create_box">
-            <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"])?>" method="post" class="form_create">
+            <form action="<?php $_SERVER["PHP_SELF"]?>" method="post" class="form_create">
                 <h3 class="create_subtitle">Crear Promoción</h3>
                 <label class="create_label" for="nombre">Texto de la Promoción:</label>
                 <input type="text" placeholder="..." class="form-create__input" name="textPromo" maxlength="200" required>
@@ -54,39 +56,39 @@
                 </select>
                 <label class="create_label">Selecciona los días de la semana:</label><br>
                         <div class="checkbox_box">
-                            <input type="checkbox" class="checkbox" name="lunes" value="Lunes" id="lunes">
+                            <input type="checkbox" class="checkbox" name="luness" value="Lunes" id="lunes">
                             <label for="lunes" class="checkbox_label">Lunes</label><br>
-                            <input type="checkbox" class="checkbox" name="martes" value="Martes" id="martes">
+                            <input type="checkbox" class="checkbox" name="martess" value="Martes" id="martes">
                             <label for="martes" class="checkbox_label">Martes</label><br>
-                            <input type="checkbox" class="checkbox" name="miercoles" value="Miercoles" id="miercoles">
+                            <input type="checkbox" class="checkbox" name="miercoless" value="Miercoles" id="miercoles">
                             <label for="miercoles" class="checkbox_label">Miércoles</label><br>
-                            <input type="checkbox" class="checkbox" name="jueves" value="Jueves" id="jueves">
+                            <input type="checkbox" class="checkbox" name="juevess" value="Jueves" id="jueves">
                             <label for="jueves" class="checkbox_label">Jueves</label><br>
-                            <input type="checkbox" class="checkbox" name="viernes" value="Viernes" id="viernes">
+                            <input type="checkbox" class="checkbox" name="vierness" value="Viernes" id="viernes">
                             <label for="viernes" class="checkbox_label">Viernes</label><br>
-                            <input type="checkbox" class="checkbox" name="sabado" value="Sabado" id="sabado">
+                            <input type="checkbox" class="checkbox" name="sabados" value="Sabado" id="sabado">
                             <label for="sabado" class="checkbox_label">Sábado</label><br>
-                            <input type="checkbox" class="checkbox" name="domingo" value="Domingo" id="domingo">
+                            <input type="checkbox" class="checkbox" name="domingos" value="Domingo" id="domingo">
                             <label for="domingo" class="checkbox_label">Domingo</label><br>
                         </div>
                         <button id="dropdownBtn"><span class="icon_drop"></span><span class="icon_drop_2"></span></button>
                         <div id="dropdownContent">
-                            <input type="checkbox" class="checkbox" name="lunes" value="Lunes" id="lunesdrop">
+                            <input type="checkbox" class="checkbox" name="luness" value="Lunes" id="lunesdrop">
                             <label for="lunesdrop" class="checkbox_label">Lunes</label><br>
-                            <input type="checkbox" class="checkbox" name="martes" value="Martes" id="martesdrop">
+                            <input type="checkbox" class="checkbox" name="martess" value="Martes" id="martesdrop">
                             <label for="martesdrop" class="checkbox_label">Martes</label><br>
-                            <input type="checkbox" class="checkbox" name="miercoles" value="Miercoles" id="miercolesdrop">
+                            <input type="checkbox" class="checkbox" name="miercoless" value="Miercoles" id="miercolesdrop">
                             <label for="miercolesdrop" class="checkbox_label">Miércoles</label><br>
-                            <input type="checkbox" class="checkbox" name="jueves" value="Jueves" id="juevesdrop">
+                            <input type="checkbox" class="checkbox" name="juevess" value="Jueves" id="juevesdrop">
                             <label for="juevesdrop" class="checkbox_label">Jueves</label><br>
-                            <input type="checkbox" class="checkbox" name="viernes" value="Viernes" id="viernesdrop">
+                            <input type="checkbox" class="checkbox" name="vierness" value="Viernes" id="viernesdrop">
                             <label for="viernesdrop" class="checkbox_label">Viernes</label><br>
-                            <input type="checkbox" class="checkbox" name="sabado" value="Sabado" id="sabadodrop">
+                            <input type="checkbox" class="checkbox" name="sabados" value="Sabado" id="sabadodrop">
                             <label for="sabadodrop" class="checkbox_label">Sábado</label><br>
-                            <input type="checkbox" class="checkbox" name="domingo" value="Domingo" id="domingodrop">
+                            <input type="checkbox" class="checkbox" name="domingos" value="Domingo" id="domingodrop">
                             <label for="domingodrop" class="checkbox_label">Domingo</label><br>
                         </div>
-                <input type="submit" value="Crear Promoción" class="form-create__button" name="submit">
+                <input type="submit" value="Crear Promoción" class="form-create__button" name="sumbit">
             </form>
             <script>
                 document.getElementById('dropdownBtn').addEventListener('click', function() {
@@ -102,11 +104,10 @@
             </script>
         </div>
     </section>
-
     <?php
-        if(isset($_POST["lunes"]) || isset($_POST["martes"]) || isset($_POST["miercoles"]) || isset($_POST["jueves"]) || isset($_POST["viernes"]) ||
-            isset($_POST["sabado"]) ||isset($_POST["domingo"])){
-            if(!empty($_POST["submit"])) {
+        if(isset($_POST["luness"]) || isset($_POST["martess"]) || isset($_POST["miercoless"]) || isset($_POST["juevess"]) || isset($_POST["vierness"]) ||
+            isset($_POST["sabados"]) ||isset($_POST["domingos"])){
+            if(!empty($_POST["sumbit"])) {
                 $search_local = "SELECT * FROM locales WHERE (codLocal, codUsuario) = ('{$_POST["codlocal"]}', '{$_SESSION["codUsuario"]}')";
                 $result_local = mysqli_query($conn, $search_local);
                 if(mysqli_num_rows($result_local) > 0){ 
@@ -117,16 +118,16 @@
                     $categoriaCliente = filter_input(INPUT_POST, "categoria", FILTER_SANITIZE_SPECIAL_CHARS);
                     $codLocal = filter_input(INPUT_POST, "codlocal", FILTER_SANITIZE_NUMBER_INT);
                     if($fecha_actual < $_POST["fechaHast"]){
-                        $_POST["lunes"] = isset($_POST["lunes"]) ? 'Lunes':'';
-                        $_POST["martes"] = isset($_POST["martes"]) ? 'Martes':'';
-                        $_POST["miercoles"] = isset($_POST["miercoles"]) ? 'Miercoles':'';
-                        $_POST["jueves"] = isset($_POST["jueves"]) ? 'Jueves':'';
-                        $_POST["viernes"] = isset($_POST["viernes"]) ? 'Viernes':'';
-                        $_POST["sabado"] = isset($_POST["sabado"]) ? 'Sabado':'';
-                        $_POST["domingo"] = isset($_POST["domingo"]) ? 'Domingo':'';
+                        $_POST["luness"] = isset($_POST["luness"]) ? 'Lunes':'';
+                        $_POST["martess"] = isset($_POST["martess"]) ? 'Martes':'';
+                        $_POST["miercoless"] = isset($_POST["miercoless"]) ? 'Miercoles':'';
+                        $_POST["juevess"] = isset($_POST["juevess"]) ? 'Jueves':'';
+                        $_POST["vierness"] = isset($_POST["vierness"]) ? 'Viernes':'';
+                        $_POST["sabados"] = isset($_POST["sabados"]) ? 'Sabado':'';
+                        $_POST["domingos"] = isset($_POST["domingos"]) ? 'Domingo':'';
                         $diasSemana = "";
                         $dias_semana = array("Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo");
-                        $dias = array($_POST["lunes"], $_POST["martes"], $_POST["miercoles"], $_POST["jueves"], $_POST["viernes"], $_POST["sabado"], $_POST["domingo"]);
+                        $dias = array($_POST["luness"], $_POST["martess"], $_POST["miercoless"], $_POST["juevess"], $_POST["vierness"], $_POST["sabados"], $_POST["domingos"]);
                         for($i = 0; $i < 7; $i++){
                             if($dias_semana[$i] == $dias[$i]){
                                 $diasSemana = $diasSemana . "1";
@@ -135,8 +136,7 @@
                                 $diasSemana = $diasSemana . "0";
                             }
                         }
-                        $search_promo = " INSERT INTO promociones (textoPromo, fechaDesdePromo, fechaHastaPromo, categoriaCliente, diasSemana, estadoPromo, codLocal) VALUES ('$textoPromo', '$fecha_actual', '$fecha_hasta', '$categoriaCliente', '$diasSemana', 'pendiente', $codLocal)";
-                        $_POST = array();
+                        $search_promo = "INSERT INTO promociones (textoPromo, fechaDesdePromo, fechaHastaPromo, categoriaCliente, diasSemana, estadoPromo, codLocal) VALUES ('$textoPromo', '$fecha_actual', '$fecha_hasta', '$categoriaCliente', '$diasSemana', 'pendiente', $codLocal)";
                         try{
                             mysqli_query($conn, $search_promo);
                             $_SESSION["promocionCreadaDueño"] = 1;
@@ -147,18 +147,15 @@
                         }
                     }
                     else{
-                        echo"Ingresa una fecha mayor a la de inicio virgo";
-                        $_POST = array();
+                        $_SESSION["fechavalida"] = 1;
+                        header("LOCATION: CrearPromociones.php");
                     }
                 }
                 else{
-                    echo"No sos dueño del local virgo";
-                    $_POST = array();
+                    $_SESSION["no_dueño"] = 1;
+                    header("LOCATION: CrearPromociones.php");
                 }
             } 
-        }
-        else{
-            $_POST = array();
         }
     ?>
 

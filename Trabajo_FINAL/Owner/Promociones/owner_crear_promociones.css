@@ -451,3 +451,24 @@ body {
       display: block; /* Mostrar botón cuando la pantalla es pequeña */
     }
 }
+
+@media(max-width:1547px){
+  #sabado{
+    margin-left: 5rem;
+  }
+}
+@media(max-width:1347px){
+  #sabado{
+    margin-left: 0;
+  }
+}
+@media(max-width:1334px){
+  #viernes{
+    margin-left: 4rem;
+  }
+}
+@media(max-width:1250px){
+  #viernes{
+    margin-left: 0;
+  }
+}

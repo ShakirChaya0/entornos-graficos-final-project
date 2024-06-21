@@ -82,7 +82,7 @@
                                             <title>Prueba de correo</title>
                                         </head>
                                         <body>
-                                            <img src='../Imagenes-Videos/bolsas-de-compra.png' alt='logo.png'>
+                                            <img src='https://rosarioshoppingcenter.shop/Imagenes-Videos/bolsas-de-compra.png' alt='logo.png'>
                                             <h2>Validar cuenta de cliente {$_SESSION["nombreUsuario"]}</h2>
                                             <a href='{$URL}'>Validar Cuenta</a>
                                         </body>

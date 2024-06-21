@@ -617,6 +617,7 @@ body {
 }
 
 .no_promo{
+    margin: auto;
     margin-top: 1rem;
     display: flex;
     width: 80vw;

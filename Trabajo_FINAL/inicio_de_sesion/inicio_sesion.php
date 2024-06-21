@@ -81,6 +81,8 @@
                                     $_SESSION["ownerRechazado"] = 0;
                                     $_SESSION["promoAceptada"] = 0;
                                     $_SESSION["promoDenegada"] = 0;
+                                    $_SESSION["fechavalida"] = 0;
+                                    $_SESSION["no_dueño"] = 0;
                                     header("LOCATION: ../admin/home_page_admin.php");
                                 }
                                 elseif($row["tipoUsuario"] == "Cliente"){
@@ -101,6 +103,8 @@
                                         $_SESSION["ownerRechazado"] = 0;
                                         $_SESSION["promoAceptada"] = 0;
                                         $_SESSION["promoDenegada"] = 0;
+                                        $_SESSION["fechavalida"] = 0;
+                                        $_SESSION["no_dueño"] = 0;
                                         header("LOCATION: ../Owner/Home/Home.php");
                                     }
                                     else{

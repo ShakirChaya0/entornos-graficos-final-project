@@ -8,6 +8,7 @@
     $search_usu = 'SELECT * FROM usuarios WHERE codUsuario = "'.$_SESSION["codUsuario"].'"';
     $result_usu = mysqli_query($conn, $search_usu);
     $row_usu = mysqli_fetch_array($result_usu);
+    $_SESSION["categoriaCliente"] = $row_usu["categoriaCliente"];
     $search_promo = 'SELECT * FROM promociones';
     $result_promo = mysqli_query($conn, $search_promo);
     if(mysqli_num_rows($result_promo) > 0){
@@ -24,49 +25,32 @@
         $position = array_search($dia_actual, $semana);
         $dias_disponibles = str_split($row_promo["diasSemana"]);
         //FILTRADO POR FECHAS:
-        if($row_promo["fechaDesdePromo"] <= $fecha_actual && $row_promo["fechaHastaPromo"] >= $fecha_actual && $row_promo["estadoPromo"] == "aprobada" && $dias_disponibles[$position] == "1"){
+        if($row_promo["fechaDesdePromo"] <= $fecha_actual && $row_promo["fechaHastaPromo"] >= $fecha_actual && $row_promo["estadoPromo"] == "aceptada" && $dias_disponibles[$position] == "1"){
           //FILTRADO POR PROMOCIONES USADAS
           if($filas["total_filas"] > 0){
             $search_usopromo = 'SELECT * FROM uso_promociones WHERE codCliente = "'.$row_usu["codUsuario"].'"';
             $result_usoPromo = mysqli_query($conn, $search_usopromo);
             while($row_usoPromo = mysqli_fetch_assoc($result_usoPromo)){
+              if($row_usoPromo["codPromo"] == $row_promo["codPromo"]){
+                echo "
+                  <div class='container container_aprobado'>
+                    <div class ='local_data'> 
+                       {$row_promo['textoPromo']} 
+                    </div>
+                    <div class = 'div-content base-div'>
+                      <p class = 'prom_aprobado'> {$row_local['nombreLocal']}</p>
+                    </div>
+                    <div class = 'div-content hover-div'>
+                      <div class='Promocion_aprobada '>Usada</div>
+                    </div>      
+                  </div>";
+                $flag = false;
+                break;
+              }
                 if($row_usoPromo == null){
                     $row_usoPromo["codPromo"] = "0";
                 }
-                if($row_usoPromo["codPromo"] == $row_promo["codPromo"] && strtolower($row_usoPromo["estadoUsoPromo"]) == "enviada"){
-                  echo "
-                    <div class='container container_usada'>
-                      <div class ='local_data'> 
-                        {$row_promo['textoPromo']} 
-                      </div>
-                      <div class = 'div-content base-div'>
-                        <p class = 'prom_usada'> {$row_local['nombreLocal']}</p>
-                      </div>
-                      <div class = 'div-content hover-div'>
-                        <div class='Promocion_usada '>Enviada</div>
-                      </div>      
-                    </div>";
-                    $flag = false;
-                  break;
-                }
-                elseif($row_usoPromo["codPromo"] == $row_promo["codPromo"] && strtolower($row_usoPromo["estadoUsoPromo"]) == "aprobada"){
-                  echo "
-                    <div class='container container_aprobado'>
-                      <div class ='local_data'> 
-                         {$row_promo['textoPromo']} 
-                      </div>
-                      <div class = 'div-content base-div'>
-                        <p class = 'prom_aprobado'> {$row_local['nombreLocal']}</p>
-                      </div>
-                      <div class = 'div-content hover-div'>
-                        <div class='Promocion_aprobada '>Usada</div>
-                      </div>      
-                    </div>";
-                  $flag = false;
-                  break;
-                }
-
-                elseif($row_usoPromo["codPromo"] == "0"){
+                if($row_usoPromo["codPromo"] == "0"){
                   $flag = false;
                   break;
                 }
@@ -129,6 +113,7 @@
                         $sqlia = "UPDATE usuarios SET categoriaCliente = 'Premium' WHERE codUsuario = {$row_usu['codUsuario']}";
                         mysqli_query($conn, $sqlia);
                       }
+
                       $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo['codPromo']}, '$fecha_actual', 'enviada', {$row_promo['codLocal']})";
                       mysqli_query($conn, $add_prom);
                       $_POST = array();
@@ -286,132 +271,13 @@
     }
   } 
 
-  function mostrarpromociones_NoUsadas(){
-    include("../../database.php");
-    $fecha_actual = date("Y-m-d");
-    $search_usu = 'SELECT * FROM usuarios WHERE codUsuario = "'.$_SESSION["codUsuario"].'"';
-    $result_usu = mysqli_query($conn, $search_usu);
-    $row_usu = mysqli_fetch_array($result_usu);
-    $search_promo = 'SELECT * FROM promociones WHERE categoriaCliente = "'.$_SESSION["categoriaCliente"].'"';
-    $result_promo = mysqli_query($conn, $search_promo);
-    if(mysqli_num_rows($result_promo) > 0){
-      $consulta_filas = "SELECT COUNT(*) AS total_filas FROM uso_promociones";
-      $result_filas = mysqli_query($conn, $consulta_filas);
-      $filas = mysqli_fetch_array($result_filas);
-      $flag = true;
-      $dia_actual = date("l", strtotime("-1 day"));
-      $semana = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
-      while($row_promo = mysqli_fetch_assoc($result_promo)){
-        $search_local = 'SELECT * FROM locales WHERE codLocal = "'.$row_promo["codLocal"].'"';
-        $result_local = mysqli_query($conn, $search_local);
-        $row_local = mysqli_fetch_array($result_local);
-        $position = array_search($dia_actual, $semana);
-        $dias_disponibles = str_split($row_promo["diasSemana"]);
-        //FILTRADO POR FECHAS:
-        if($row_promo["fechaDesdePromo"] < $fecha_actual && $row_promo["fechaHastaPromo"] >= $fecha_actual && $row_promo["estadoPromo"] == "aceptada" && $dias_disponibles[$position] == "1"){
-          //FILTRADO POR PROMOCIONES USADAS
-          if($filas["total_filas"] > 0){
-            $search_usopromo = 'SELECT * FROM uso_promociones WHERE codCliente = "'.$row_usu["codUsuario"].'"';
-            $result_usoPromo = mysqli_query($conn, $search_usopromo);
-            while($row_usoPromo = mysqli_fetch_assoc($result_usoPromo)){
-                if($row_usoPromo == null){
-                    $row_usoPromo["codPromo"] = "0";
-                }
-                if($row_usoPromo["codPromo"] == $row_promo["codPromo"]){
-                  $flag = false;
-                  break;
-                }
-                elseif($row_usoPromo["codPromo"] == "0"){
-                  $flag = false;
-                  break;
-                }
-              }
-            if($flag){
-              echo "
-                <div class='container'>
-                <div class ='local_data'>  {$row_promo['textoPromo']}  </div>
-                <div class = 'div-content base-div'>
-                <p class = 'data'> {$row_local['nombreLocal']}</p>
-                </div>
-                <div class = 'div-content hover-div'>
-                <form method= 'post' action='Promociones.php'>
-                <input name='{$row_promo['codPromo']}' type='submit' class='link_promociones' value='Usar'>
-                </form>
-                </div>
-                </div>";
-                if(!empty($_POST["{$row_promo['codPromo']}"]) && $_POST["{$row_promo['codPromo']}"] == "Usar") {
-                  $cantProm = $row_usu["cantidadPromo"] + 1;
-                  $sql = "UPDATE usuarios SET cantidadPromo = '$cantProm' WHERE codUsuario = {$row_usu['codUsuario']}";
-                  mysqli_query($conn, $sql);
-                  if($cantProm > 3 && $cantProm < 9){
-                    $sqli = "UPDATE usuarios SET categoriaCliente = 'Medium' WHERE codUsuario = {$row_usu['codUsuario']}";
-                    mysqli_query($conn, $sqli);
-                  }
-                  elseif($cantProm > 9){
-                    $sqlia = "UPDATE usuarios SET categoriaCliente = 'Premium' WHERE codUsuario = {$row_usu['codUsuario']}";
-                    mysqli_query($conn, $sqlia);
-                  }
-                  $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo['codPromo']}, '$fecha_actual', 'enviada', {$row_promo['codLocal']})";
-                  mysqli_query($conn, $add_prom);
-                  $_POST = array();
-                  header("LOCATION: Promociones.php"); 
-                }
-            }
-            else{
-              $flag = true;
-            }
-          }
-          else{
-                echo "
-                <div class='container'>
-                <div class ='local_data'>  {$row_promo['textoPromo']}  </div>
-                <div class = 'div-content base-div'>
-                <p class = 'data'> {$row_local['nombreLocal']}</p>
-                </div>
-                <div class = 'div-content hover-div'>
-                <form method= 'post' action='Promociones.php'>
-                <input name='{$row_promo['codPromo']}' type='submit' class='link_promociones' value='Usar'>
-                </form>
-                </div>
-                </div>";
-              if(!empty($_POST["{$row_promo['codPromo']}"]) && $_POST["{$row_promo['codPromo']}"] == "Usar") {
-                $cantProm = $row_usu["cantidadPromo"] + 1;
-                $sql = "UPDATE usuarios SET cantidadPromo = '$cantProm' WHERE codUsuario = {$row_usu['codUsuario']}";
-                mysqli_query($conn, $sql);
-                if($cantProm > 3 && $cantProm < 9){
-                  $sqli = "UPDATE usuarios SET categoriaCliente = 'Medium' WHERE codUsuario = {$row_usu['codUsuario']}";
-                  mysqli_query($conn, $sqli);
-                }
-                elseif($cantProm > 9){
-                  $sqlia = "UPDATE usuarios SET categoriaCliente = 'Premium' WHERE codUsuario = {$row_usu['codUsuario']}";
-                  mysqli_query($conn, $sqlia);
-                }
-                $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo['codPromo']}, '$fecha_actual', 'enviada', {$row_promo['codLocal']})";
-                mysqli_query($conn, $add_prom);
-                $_POST = array();
-                header("LOCATION: Promociones.php");  
-              }
-          }
-        } 
-      }
-    }
-    else{
-      echo"
-              <div class = 'error_box'>
-                <p class = 'error'>No hay promociones todavia</p>
-              </div>
-            
-            ";
-    }
-  } 
-
   function mostrarpromociones_usadas(){
     include("../../database.php");
     $fecha_actual = date("Y-m-d");
     $search_usu = 'SELECT * FROM usuarios WHERE codUsuario = "'.$_SESSION["codUsuario"].'"';
     $result_usu = mysqli_query($conn, $search_usu);
     $row_usu = mysqli_fetch_array($result_usu);
-    $search_promo = 'SELECT * FROM promociones WHERE categoriaCliente = "'.$_SESSION["categoriaCliente"].'"';
+    $search_promo = 'SELECT * FROM promociones';
     $result_promo = mysqli_query($conn, $search_promo);
     if(mysqli_num_rows($result_promo) > 0){
       $consulta_filas = "SELECT COUNT(*) AS total_filas FROM uso_promociones";
@@ -432,7 +298,7 @@
             $search_usopromo = 'SELECT * FROM uso_promociones WHERE codCliente = "'.$row_usu["codUsuario"].'"';
             $result_usoPromo = mysqli_query($conn, $search_usopromo);
             while($row_usoPromo = mysqli_fetch_assoc($result_usoPromo)){
-                if($row_usoPromo["codPromo"] == $row_promo["codPromo"] && strtolower($row_usoPromo["estadoUsoPromo"]) == "aceptada"){
+                if($row_usoPromo["codPromo"] == $row_promo["codPromo"]){
                   echo "
                     <div class='container container_aprobado'>
                       <div class ='local_data'> 
@@ -450,6 +316,111 @@
               }
           }
         } 
+      }
+    }
+    else{
+      echo"
+              <div class = 'error_box'>
+                <p class = 'error'>No hay promociones todavia</p>
+              </div>
+            
+            ";
+    }
+  }
+
+  function mostrarpromociones_Texto($parametro, $busqueda){
+    include("../../database.php");
+    $fecha_actual = date("Y-m-d");
+    $search_usu = 'SELECT * FROM usuarios WHERE codUsuario = "'.$_SESSION["codUsuario"].'"';
+    $result_usu = mysqli_query($conn, $search_usu);
+    $row_usu = mysqli_fetch_array($result_usu);
+    $consulta_filas = "SELECT COUNT(*) AS total_filas FROM uso_promociones";
+    $result_filas = mysqli_query($conn, $consulta_filas);
+    $filas = mysqli_fetch_array($result_filas);
+    $flag = true;
+    $bandera = true;
+    $dia_actual = date("l", strtotime("-1 day"));
+    $semana = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
+    $search_promo_busq = "SELECT * FROM promociones WHERE $parametro LIKE '$busqueda%'";
+    $result_promo_busq = mysqli_query($conn, $search_promo_busq);
+    if(mysqli_num_rows($result_promo_busq) > 0){
+      while($row_promo_busq = mysqli_fetch_assoc($result_promo_busq)){
+        $search_local = 'SELECT * FROM locales WHERE codLocal = "'.$row_promo_busq["codLocal"].'"';
+        $result_local = mysqli_query($conn, $search_local);
+        $row_local = mysqli_fetch_array($result_local);
+        if($row_local == null){
+          $row_local["codLocal"] = 0;
+        }
+        $position = array_search($dia_actual, $semana);
+        $dias_disponibles = str_split($row_promo_busq["diasSemana"]);
+        //FILTRADO POR FECHAS:
+        if($row_promo_busq["fechaDesdePromo"] < $fecha_actual && $row_promo_busq["fechaHastaPromo"] >= $fecha_actual && $row_promo_busq["estadoPromo"] == "aceptada" && $dias_disponibles[$position] == "1" && $row_local["codLocal"] == $row_promo_busq["codLocal"]){
+          //FILTRADO POR PROMOCIONES USADAS
+          $bandera = false;
+          if($filas["total_filas"] > 0){
+            $search_usopromo = 'SELECT * FROM uso_promociones WHERE codCliente = "'.$row_usu["codUsuario"].'"';
+            $result_usoPromo = mysqli_query($conn, $search_usopromo);
+            if($row_local != null){
+              while($row_usoPromo = mysqli_fetch_assoc($result_usoPromo)){
+                  if($row_usoPromo["codPromo"] == $row_promo_busq["codPromo"]){
+                    echo"
+                    <div class='container container_aprobado'>
+                      <div class ='local_data'> 
+                         {$row_promo_busq['textoPromo']} 
+                      </div>
+                      <div class = 'div-content base-div'>
+                        <p class = 'prom_aprobado'> {$row_local['nombreLocal']}</p>
+                      </div>
+                      <div class = 'div-content hover-div'>
+                        <div class='Promocion_aprobada '>Usada</div>
+                      </div>      
+                    </div>
+                    ";
+                    $flag = false;
+                    break;
+                  }
+                }
+                if($row_local["codLocal"] == $row_promo_busq["codLocal"] && $flag){
+                  echo "
+                  <div class='container'>
+                    <div class ='local_data'>  {$row_promo_busq['textoPromo']}  </div>
+                    <div class = 'div-content base-div'>
+                      <p class = 'data'> {$row_local['nombreLocal']}</p>
+                    </div>
+                    <div class = 'div-content hover-div'>
+                      <form method= 'post' action='Promociones.php'>
+                        <input name='{$row_promo_busq['codPromo']}' type='submit' class='link_promociones' value='Usar'>
+                      </form>
+                    </div>
+                  </div>";
+                  if(!empty($_POST["{$row_promo_busq['codPromo']}"]) && $_POST["{$row_promo_busq['codPromo']}"] == "Usar") {
+                    $cantProm = $row_usu["cantidadPromo"] + 1;
+                    $sql = "UPDATE usuarios SET cantidadPromo = '$cantProm' WHERE codUsuario = {$row_usu['codUsuario']}";
+                    mysqli_query($conn, $sql);
+                    if($cantProm > 3 && $cantProm < 9){
+                      $sqli = "UPDATE usuarios SET categoriaCliente = 'Medium' WHERE codUsuario = {$row_usu['codUsuario']}";
+                      mysqli_query($conn, $sqli);
+                    }
+                    elseif($cantProm > 9){
+                      $sqlia = "UPDATE usuarios SET categoriaCliente = 'Premium' WHERE codUsuario = {$row_usu['codUsuario']}";
+                      mysqli_query($conn, $sqlia);
+                    }
+                    $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo_busq['codPromo']}, '$fecha_actual', 'enviada', {$row_promo_busq['codLocal']})";
+                    mysqli_query($conn, $add_prom);
+                    $_POST = array();
+                    header("LOCATION: Promociones.php"); 
+                  }
+                }
+            }
+          }
+        }
+      }
+      if($bandera){
+        echo"
+              <div class = 'error_box'>
+                <p class = 'error'>No se encontro lo que buscaste</p>
+              </div>
+            ";
       }
     }
     else{
@@ -468,55 +439,38 @@
     $search_usu = 'SELECT * FROM usuarios WHERE codUsuario = "'.$_SESSION["codUsuario"].'"';
     $result_usu = mysqli_query($conn, $search_usu);
     $row_usu = mysqli_fetch_array($result_usu);
-    $search_promo = 'SELECT * FROM promociones WHERE categoriaCliente = "'.$_SESSION["categoriaCliente"].'"';
-    $result_promo = mysqli_query($conn, $search_promo);
-    if(mysqli_num_rows($result_promo) > 0){
-      $consulta_filas = "SELECT COUNT(*) AS total_filas FROM uso_promociones";
-      $result_filas = mysqli_query($conn, $consulta_filas);
-      $filas = mysqli_fetch_array($result_filas);
-      $flag = true;
-      $bandera = true;
-      $dia_actual = date("l", strtotime("-1 day"));
-      $semana = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
-      while($row_promo = mysqli_fetch_assoc($result_promo)){
-        $search_local = 'SELECT * FROM locales WHERE nombreLocal = "'.$busqueda.'"';
+    $consulta_filas = "SELECT COUNT(*) AS total_filas FROM uso_promociones";
+    $result_filas = mysqli_query($conn, $consulta_filas);
+    $filas = mysqli_fetch_array($result_filas);
+    $flag = true;
+    $bandera = true;
+    $dia_actual = date("l", strtotime("-1 day"));
+    $semana = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
+    $search_promo_busq = "SELECT * FROM promociones";
+    $result_promo_busq = mysqli_query($conn, $search_promo_busq);
+    if(mysqli_num_rows($result_promo_busq) > 0){
+      while($row_promo_busq = mysqli_fetch_assoc($result_promo_busq)){
+        $search_local = "SELECT * FROM locales WHERE nombreLocal LIKE '$busqueda%'";
         $result_local = mysqli_query($conn, $search_local);
         $row_local = mysqli_fetch_array($result_local);
         if($row_local == null){
           $row_local["codLocal"] = 0;
         }
         $position = array_search($dia_actual, $semana);
-        $dias_disponibles = str_split($row_promo["diasSemana"]);
+        $dias_disponibles = str_split($row_promo_busq["diasSemana"]);
         //FILTRADO POR FECHAS:
-        if($row_promo["fechaDesdePromo"] < $fecha_actual && $row_promo["fechaHastaPromo"] >= $fecha_actual && $row_promo["estadoPromo"] == "aceptada" && $dias_disponibles[$position] == "1" && $row_local["codLocal"] == $row_promo["codLocal"]){
+        if($row_promo_busq["fechaDesdePromo"] < $fecha_actual && $row_promo_busq["fechaHastaPromo"] >= $fecha_actual && $row_promo_busq["estadoPromo"] == "aceptada" && $dias_disponibles[$position] == "1" && $row_local["codLocal"] == $row_promo_busq["codLocal"]){
           //FILTRADO POR PROMOCIONES USADAS
-          $bandera = false;
           if($filas["total_filas"] > 0){
             $search_usopromo = 'SELECT * FROM uso_promociones WHERE codCliente = "'.$row_usu["codUsuario"].'"';
             $result_usoPromo = mysqli_query($conn, $search_usopromo);
             if($row_local != null){
               while($row_usoPromo = mysqli_fetch_assoc($result_usoPromo)){
-                  if($row_usoPromo["codPromo"] == $row_promo["codPromo"] && strtolower($row_usoPromo["estadoUsoPromo"] == "enviada")){
-                    echo "
-                      <div class='container container_usada'>
-                        <div class ='local_data'> 
-                           {$row_promo['textoPromo']} 
-                        </div>
-                        <div class = 'div-content base-div'>
-                          <p class = 'prom_usada'> {$row_local['nombreLocal']}</p>
-                        </div>
-                        <div class = 'div-content hover-div'>
-                          <div class='Promocion_usada '>Usada</div>
-                        </div>      
-                      </div>";
-                    $flag = false;
-                    break;
-                  }
-                  elseif($row_usoPromo["codPromo"] == $row_promo["codPromo"] && strtolower($row_usoPromo["estadoUsoPromo"] == "aceptada")){
+                  if($row_usoPromo["codPromo"] == $row_promo_busq["codPromo"]){
                     echo"
                     <div class='container container_aprobado'>
                       <div class ='local_data'> 
-                         {$row_promo['textoPromo']} 
+                         {$row_promo_busq['textoPromo']} 
                       </div>
                       <div class = 'div-content base-div'>
                         <p class = 'prom_aprobado'> {$row_local['nombreLocal']}</p>
@@ -526,23 +480,44 @@
                       </div>      
                     </div>
                     ";
+                    $_GET["Local"] = $row_local["nombreLocal"];
                     $flag = false;
+                    $bandera = false;
                     break;
                   }
                 }
-                if($row_local["codLocal"] == $row_promo["codLocal"] && $flag){
+                if($row_local["codLocal"] == $row_promo_busq["codLocal"] && $flag){
                   echo "
                   <div class='container'>
-                    <div class ='local_data'>  {$row_promo['textoPromo']}  </div>
+                    <div class ='local_data'>  {$row_promo_busq['textoPromo']}  </div>
                     <div class = 'div-content base-div'>
                       <p class = 'data'> {$row_local['nombreLocal']}</p>
                     </div>
                     <div class = 'div-content hover-div'>
                       <form method= 'post' action='Promociones.php'>
-                        <input name='{$row_promo['codPromo']}' type='submit' class='link_promociones' value='Usar'>
+                        <input name='{$row_promo_busq['codPromo']}' type='submit' class='link_promociones' value='Usar'>
                       </form>
                     </div>
                   </div>";
+                  $_GET["Local"] = $row_local["nombreLocal"];
+                  $bandera = false;
+                  if(!empty($_POST["{$row_promo_busq['codPromo']}"]) && $_POST["{$row_promo_busq['codPromo']}"] == "Usar") {
+                    $cantProm = $row_usu["cantidadPromo"] + 1;
+                    $sql = "UPDATE usuarios SET cantidadPromo = '$cantProm' WHERE codUsuario = {$row_usu['codUsuario']}";
+                    mysqli_query($conn, $sql);
+                    if($cantProm > 3 && $cantProm < 9){
+                      $sqli = "UPDATE usuarios SET categoriaCliente = 'Medium' WHERE codUsuario = {$row_usu['codUsuario']}";
+                      mysqli_query($conn, $sqli);
+                    }
+                    elseif($cantProm > 9){
+                      $sqlia = "UPDATE usuarios SET categoriaCliente = 'Premium' WHERE codUsuario = {$row_usu['codUsuario']}";
+                      mysqli_query($conn, $sqlia);
+                    }
+                    $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo_busq['codPromo']}, '$fecha_actual', 'enviada', {$row_promo_busq['codLocal']})";
+                    mysqli_query($conn, $add_prom);
+                    $_POST = array();
+                    header("LOCATION: Promociones.php"); 
+                  }
                 }
             }
           }
@@ -553,7 +528,6 @@
               <div class = 'error_box'>
                 <p class = 'error'>No se encontro lo que buscaste</p>
               </div>
-            
             ";
       }
     }
@@ -567,125 +541,6 @@
     }
   }
 
-  function mostrarpromociones_estadoEnviada(){
-    include("../../database.php");
-    $fecha_actual = date("Y-m-d");
-    $search_usu = 'SELECT * FROM usuarios WHERE codUsuario = "'.$_SESSION["codUsuario"].'"';
-    $result_usu = mysqli_query($conn, $search_usu);
-    $row_usu = mysqli_fetch_array($result_usu);
-    $search_promo = 'SELECT * FROM promociones WHERE categoriaCliente = "'.$_SESSION["categoriaCliente"].'"';
-    $result_promo = mysqli_query($conn, $search_promo);
-    if(mysqli_num_rows($result_promo) > 0){
-      $consulta_filas = "SELECT COUNT(*) AS total_filas FROM uso_promociones";
-      $result_filas = mysqli_query($conn, $consulta_filas);
-      $filas = mysqli_fetch_array($result_filas);
-      $dia_actual = date("l", strtotime("-1 day"));
-      $semana = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
-      while($row_promo = mysqli_fetch_assoc($result_promo)){
-        $search_local = 'SELECT * FROM locales WHERE codLocal = "'.$row_promo["codLocal"].'"';
-        $result_local = mysqli_query($conn, $search_local);
-        $row_local = mysqli_fetch_array($result_local);
-        if($row_local == null){
-          $row_local["codLocal"] = 0;
-        }
-        $position = array_search($dia_actual, $semana);
-        $dias_disponibles = str_split($row_promo["diasSemana"]);
-        //FILTRADO POR FECHAS:
-        if($row_promo["fechaDesdePromo"] < $fecha_actual && $row_promo["fechaHastaPromo"] >= $fecha_actual && $row_promo["estadoPromo"] == "aceptada" && $dias_disponibles[$position] == "1" && $row_local["codLocal"] == $row_promo["codLocal"]){
-          //FILTRADO POR PROMOCIONES USADAS
-          if($filas["total_filas"] > 0){
-            $search_usopromo = 'SELECT * FROM uso_promociones WHERE codCliente = "'.$row_usu["codUsuario"].'"';
-            $result_usoPromo = mysqli_query($conn, $search_usopromo);
-            if($row_local != null){
-              while($row_usoPromo = mysqli_fetch_assoc($result_usoPromo)){
-                  if($row_usoPromo["codPromo"] == $row_promo["codPromo"] && strtolower($row_usoPromo["estadoUsoPromo"]) == "enviada"){
-                    echo "
-                      <div class='container container_usada'>
-                        <div class ='local_data'> 
-                           {$row_promo['textoPromo']} 
-                        </div>
-                        <div class = 'div-content base-div'>
-                          <p class = 'prom_usada'> {$row_local['nombreLocal']}</p>
-                        </div>
-                        <div class = 'div-content hover-div'>
-                          <div class='Promocion_usada '>Usada</div>
-                        </div>      
-                      </div>";
-                    $flag = false;
-                    break;
-                  }
-                }
-            }
-          }
-        }
-      }
-    }
-    else{
-      echo"
-              <div class = 'error_box'>
-                <p class = 'error'>No hay promociones todavia</p>
-              </div>
-            
-            ";
-    }
-  }
-
-  function mostrarpromociones_NombreLocal_usadas($busqueda){
-    include("../../database.php");
-    $fecha_actual = date("Y-m-d");
-    $search_usu = 'SELECT * FROM usuarios WHERE codUsuario = "'.$_SESSION["codUsuario"].'"';
-    $result_usu = mysqli_query($conn, $search_usu);
-    $row_usu = mysqli_fetch_array($result_usu);
-    $search_promo = 'SELECT * FROM promociones WHERE categoriaCliente = "'.$_SESSION["categoriaCliente"].'"';
-    $result_promo = mysqli_query($conn, $search_promo);
-    if(mysqli_num_rows($result_promo) > 0){
-      $consulta_filas = "SELECT COUNT(*) AS total_filas FROM uso_promociones";
-      $result_filas = mysqli_query($conn, $consulta_filas);
-      $filas = mysqli_fetch_array($result_filas);
-      $dia_actual = date("l", strtotime("-1 day"));
-      $semana = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
-      while($row_promo = mysqli_fetch_assoc($result_promo)){
-        $search_local = 'SELECT * FROM locales WHERE codLocal = "'.$row_promo["codLocal"].'"';
-        $result_local = mysqli_query($conn, $search_local);
-        $row_local = mysqli_fetch_array($result_local);
-        $position = array_search($dia_actual, $semana);
-        $dias_disponibles = str_split($row_promo["diasSemana"]);
-        //FILTRADO POR FECHAS:
-        if($row_promo["fechaDesdePromo"] < $fecha_actual && $row_promo["fechaHastaPromo"] >= $fecha_actual && $row_promo["estadoPromo"] == "aceptada" && $dias_disponibles[$position] == "1" && strtolower($row_local["nombreLocal"]) == strtolower($busqueda)){
-          //FILTRADO POR PROMOCIONES USADAS
-          if($filas["total_filas"] > 0){
-            $search_usopromo = 'SELECT * FROM uso_promociones WHERE codCliente = "'.$row_usu["codUsuario"].'"';
-            $result_usoPromo = mysqli_query($conn, $search_usopromo);
-            while($row_usoPromo = mysqli_fetch_assoc($result_usoPromo)){
-                if($row_usoPromo["codPromo"] == $row_promo["codPromo"]){
-                  echo "
-                    <div class='container container_usada'>
-                      <div class ='local_data'> 
-                         {$row_promo['textoPromo']} 
-                      </div>
-                      <div class = 'div-content base-div'>
-                        <p class = 'prom_usada'> {$row_local['nombreLocal']}</p>
-                      </div>
-                      <div class = 'div-content hover-div'>
-                        <div class='Promocion_usada '>Usada</div>
-                      </div>      
-                    </div>";
-                  break;
-                }
-              }
-            }
-          }
-      }
-    }
-    else{
-      echo"
-              <div class = 'error_box'>
-                <p class = 'error'>No hay promociones todavia</p>
-              </div>
-            
-            ";
-    }
-  }
 
   function mostrar_UNR(){
     include("../../database.php");
@@ -693,16 +548,12 @@
     $search_promo = "SELECT * FROM promociones";
     $result_promo = mysqli_query($conn, $search_promo);
     if(mysqli_num_rows($result_promo) > 0){
-      $dia_actual = date("l", strtotime("-1 day"));
-      $semana = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
       while($row_promo = mysqli_fetch_assoc($result_promo)){
         $search_local = 'SELECT * FROM locales WHERE codLocal = "'.$row_promo["codLocal"].'"';
         $result_local = mysqli_query($conn, $search_local);
         $row_local = mysqli_fetch_array($result_local);
-        $position = array_search($dia_actual, $semana);
-        $dias_disponibles = str_split($row_promo["diasSemana"]);
         //FILTRADO POR FECHAS:
-        if($row_promo["fechaDesdePromo"] <= $fecha_actual && $row_promo["fechaHastaPromo"] >= $fecha_actual && $row_promo["estadoPromo"] == "aceptada" && $dias_disponibles[$position] == "1"){
+        if($row_promo["fechaDesdePromo"] <= $fecha_actual && $row_promo["fechaHastaPromo"] >= $fecha_actual && $row_promo["estadoPromo"] == "aceptada"){
           echo "
           <div class='container'>
           <div class ='local_data'>  {$row_promo['textoPromo']}  </div>
@@ -756,10 +607,9 @@
     <form class="filtrado_locales" action = "<?php htmlspecialchars($_SERVER["PHP_SELF"])?>" method="post">
       <label class="search_label" for="select_parametro"><b>Búsqueda de local:</b>
         <select name="parametro" id="select_parametro" class="form-search__select">
-            <option value="Todas">Todas las promociones</option>
             <option value="nombreLocal">Por nombre de local</option>
-            <option value="estadoNoUsada">No usadas</option>
-            <option value="estadoEnviada">Enviadas</option>
+            <option value="Todas">Todas las promociones</option>
+            <option value="textoPromo">Descripción de Promoción</option>
             <option value="estadoUsada">Usadas</option>
         </select>
       </label>
@@ -769,31 +619,74 @@
     </form>
   </section>
   <div class="iteracion">
-    <?php  
-      if($_SESSION["tipoUsuario"] != "UNR"){
-        if(empty($_POST["busqued"])) {
-          mostrarpromociones();
+    <?php
+      if(isset($_POST["parametro"])){
+        if(!isset($_GET["Local"])){
+          $_GET["Local"] = "";
         }
-        else{
-          if($_POST["parametro"] == "Todas"){
+        if($_GET["Local"] != ""){
+          if($_POST["parametro"] == "nombreLocal" && empty($_POST["search"])){
+            mostrarpromociones_NombreLocal($_GET["Local"]);
+          }
+          else{
+            if($_SESSION["tipoUsuario"] != "UNR"){
+              if(empty($_POST["busqued"])) {
+                mostrarpromociones();
+              }
+              else{
+                if($_POST["parametro"] == "Todas"){
+                    mostrarpromociones();
+                }
+                elseif($_POST["parametro"] == "textoPromo"){
+                  if($_POST["search"] != ""){    
+                    mostrarpromociones_Texto($_POST["parametro"], $_POST["search"]);
+                  }
+                  else{
+                    mostrarpromociones();
+                  }
+                }
+                elseif($_POST["parametro"] == "estadoUsada"){
+                  mostrarpromociones_usadas();
+                }
+                elseif($_POST["parametro"] == "nombreLocal"){
+                  mostrarpromociones_NombreLocal($_POST["search"]);
+                }
+              }
+            }
+            else{
+              mostrar_UNR();
+            }
+          }
+        } 
+        else{ 
+          if($_SESSION["tipoUsuario"] != "UNR"){
+            if(empty($_POST["busqued"])) {
               mostrarpromociones();
+            }
+            else{
+              if($_POST["parametro"] == "Todas"){
+                  mostrarpromociones();
+              }
+              elseif($_POST["parametro"] == "textoPromo"){
+                  mostrarpromociones_Texto($_POST["parametro"], $_POST["search"]);
+              }
+              elseif($_POST["parametro"] == "estadoUsada"){
+                mostrarpromociones_usadas();
+              }
+            }
           }
-          elseif($_POST["parametro"] == "nombreLocal"){
-              mostrarpromociones_NombreLocal($_POST["search"]);
-          }
-          elseif($_POST["parametro"] == "estadoNoUsada"){
-            mostrarpromociones_NoUsadas();
-          }
-          elseif($_POST["parametro"] == "estadoEnviada"){
-            mostrarpromociones_estadoEnviada();
-          }
-          elseif($_POST["parametro"] == "estadoUsada"){
-            mostrarpromociones_usadas();
+          else{
+            mostrar_UNR();
           }
         }
       }
       else{
-        mostrar_UNR();
+        if(!isset($_GET["Local"])){
+          $_GET["Local"] = "";
+        }
+        if($_GET["Local"] != ""){
+            mostrarpromociones_NombreLocal($_GET["Local"]);
+        }
       }
     ?>  
   </div>

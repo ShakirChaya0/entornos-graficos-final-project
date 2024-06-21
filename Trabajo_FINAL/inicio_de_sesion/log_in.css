@@ -458,3 +458,14 @@ a:visited{
     margin-left: 0.2rem;
     font-family: Helvetica, sans-serif;
 }
+
+@media(max-height:835px){
+    .username_form{
+        margin-top: 2rem;
+    }
+}
+@media(max-height:637px){
+    .username_form{
+        margin-top: 2.7rem;
+    }
+}

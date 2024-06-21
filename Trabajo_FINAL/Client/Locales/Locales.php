@@ -16,7 +16,7 @@
     integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
     crossorigin="anonymous"></script>
     <link rel="stylesheet" href="Locales.css">
-    <link rel="stylesheet" href="../../Pie_De_Pagina/footer.css">
+    <link rel="stylesheet" href="../../Pie_de_Pagina/footer.css">
     <link rel="stylesheet" href="../../Barra_Navegacion/Bar-style.css">
 
 </head>
@@ -34,7 +34,7 @@
   <!-- Barra de búsqueda de locales -->
 
     <section class="section1">
-      <form class="filtrado_locales" method="post">
+      <form class="filtrado_locales" method="post" action="<?php htmlspecialchars($_SERVER["PHP_SELF"])?>">
         <label class="search_label" for="select_parametro"><b>Búsqueda de local:</b>
           <select name="parametro" id="select_parametro" class="form-search__select">
               <option value="nombreLocal">Por nombre</option>
@@ -44,10 +44,12 @@
           </select>
         </label>
         <input id= "lupa_local" type="text" class="busqueda_local" name="busqueda" placeholder="¿Qué desea buscar?">
-        <label for="enviar_busqueda" class="label_busqueda"><img class="lupa_busqueda" src="../../Imagenes-Videos/lupa.png" alt="lupa de busqueda"><input type="submit" class="lupa_input" id="enviar_busqueda" name="Enviar"></label>
+        <label for="enviar_busqueda" class="label_busqueda">
+          <img class="lupa_busqueda" src="../../Imagenes-Videos/lupa.png" alt="lupa de busqueda"><input type="submit" class="lupa_input" id="enviar_busqueda" name="busqued">
+        </label>
+      </form>
     </section>
 
-    
     <div class="iteracion">  
       <?php
       include("../../database.php");
@@ -56,14 +58,15 @@
           $result = mysqli_query($conn, $sql);
           if(mysqli_num_rows($result) > 0){
               while($row = mysqli_fetch_assoc($result)){
+                $URL= "../Promociones/Promociones.php" . "?Local={$row["nombreLocal"]}";
                   echo"
                       <div class='container'>
                             <div class ='local_data'> Local {$row['codLocal']} <br> {$row['ubicacionLocal']} <br> {$row['rubroLocal']} </div>
-                            <div class = 'div-content base-div'>
+                            <div class =  'base-div'>
                               <p class = 'data'> {$row['nombreLocal']}</p>
                             </div>
-                            <div class = 'div-content hover-div'>
-                              <a class='link_promociones' href='../Promociones/Promociones.php'>Promociones</a>
+                            <div class = 'hover-div'>
+                              <a class='link_promociones' href='$URL'>Promociones</a>
                             </div>
                       </div>";
               };
@@ -80,18 +83,19 @@
         else{
           $parame = $_POST["parametro"];
           $busqueda = $_POST["busqueda"];
-          $sql = "SELECT * FROM locales WHERE $parame = '$busqueda'";
+          $sql = "SELECT * FROM locales WHERE $parame LIKE '$busqueda%'";
           $resp = mysqli_query($conn, $sql);
           if(mysqli_num_rows($resp) > 0){
             while($row = mysqli_fetch_assoc($resp)){
+              $URL= "../Promociones/Promociones.php" . "?Local={$row["nombreLocal"]}";
                 echo"
                     <div class='container'>
                           <div class ='local_data'> Local {$row['codLocal']} <br> ubi {$row['ubicacionLocal']} <br> {$row['rubroLocal']} </div>
-                          <div class = 'div-content base-div'>
+                          <div class = 'base-div'>
                             <p class = 'data'> {$row['nombreLocal']}</p>
                           </div>
-                          <div class = 'div-content hover-div'>
-                            <a class='link_promociones' href='../Promociones/Promociones.php'>Promociones</a>
+                          <div class = 'hover-div'>
+                            <a class='link_promociones' href='$URL'>Promociones</a>
                           </div>
                     </div>";
             };

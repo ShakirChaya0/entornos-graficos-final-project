@@ -1,7 +1,7 @@
 <?php
     ob_start();
     session_start();
-
+    
     include("../../database.php");
     include("../../admin/successMensajes.php");
 ?>
@@ -75,7 +75,6 @@
             $result_locales = mysqli_query($conn, $search_locales);
             $result_locales_total = mysqli_query($conn, $search_locales_total);
 
-            $_SESSION["buscar_local"] = isset($_SESSION["buscar_local"]) ? $_SESSION["buscar_local"] : 1;
             $sql_total = "SELECT COUNT(*) FROM promociones WHERE codLocal = {$_SESSION['buscar_local']}";
             $result_total = mysqli_query($conn, $sql_total);
             $row_total = mysqli_fetch_row($result_total);
@@ -83,12 +82,12 @@
             $total_pags = ceil($total_results / $cant_registros);
 
             if(mysqli_num_rows($result_locales) > 0){
-                $_SESSION["buscar_local"] = isset($_SESSION["buscar_local"]) ? $_SESSION["buscar_local"] : 1;
                 ?>    
                 <div class="mostrar_locales">
                         <div class="nav_locales">
                             <?php
                                 while($row_locales = mysqli_fetch_assoc($result_locales)){
+                                    $_SESSION["buscar_local"] = isset($_SESSION["buscar_local"]) ? $_SESSION["buscar_local"] : $row_locales["codLocal"];
                                     $_SESSION["buscar_nombre_local"] = isset($_SESSION["buscar_nombre_local"]) ? $_SESSION["buscar_nombre_local"]: $row_locales["nombreLocal"];
                                     ?>
                                     <div class='header_locales'>
@@ -96,7 +95,7 @@
                                             <?php
                                                 if($_SESSION["buscar_local"] == $row_locales["codLocal"]){
                                             ?>
-                                                <input name="<?php echo $row_locales["codLocal"];?>" type="submit" value="Local <?php echo $row_locales["codLocal"]; ?>" class="local <?php echo  !empty($_GET[$_SESSION["buscar_local"]]) ? 'submitted':'';?>">
+                                                <input name="<?php echo $row_locales["codLocal"];?>" type="submit" value="Local <?php echo $row_locales["codLocal"]; ?>" class="local <?php echo 'submitted';?>">
                                             <?php
                                                 }
                                                 else{
@@ -108,7 +107,6 @@
                                         </form>       
                                     </div><?php
                                     if(!empty($_GET[$row_locales["codLocal"]])){
-                                        $_SESSION["buscar_local"] = null;   
                                         $_SESSION["buscar_local"] = $row_locales["codLocal"];                                        
                                         $_SESSION["buscar_nombre_local"] = $row_locales["nombreLocal"];                                        
                                         if($busqueda != "" && isset($parametro)){
@@ -257,6 +255,11 @@
                                             </tr>
                                 <?php 
                                         }
+                                    }
+                                    else{
+                                        ?>
+                                        <div class="no_promo">No hay promociones en este local</div>
+                                    <?php
                                     }
                                 ?>
                             </table>
