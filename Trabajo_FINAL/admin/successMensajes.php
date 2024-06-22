@@ -105,5 +105,19 @@
                     </div>
             ";
         }
+        elseif($_SESSION["fechavalida"] == 1){
+            echo "
+                    <div class='success-box error'>
+                        <p class='success-box__msj'>Trate de ingresar una fecha valida</p>
+                    </div>
+            ";
+        }
+        elseif($_SESSION["no_dueño"] == 1){
+            echo "
+                    <div class='success-box error'>
+                        <p class='success-box__msj'>Usted no es dueño de este Local</p>
+                    </div>
+            ";
+        }
     }
 ?>

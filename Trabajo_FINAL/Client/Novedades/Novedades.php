@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Locales</title>
+    <link rel="icon" href="../../Imagenes-Videos/bolsas-de-compra.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -23,7 +23,8 @@
     <link rel="stylesheet" href="Novedades.css">
     <link rel="stylesheet" href="../../Pie_De_Pagina/footer.css">
     <link rel="stylesheet" href="../../Barra_Navegacion/Bar-style.css">
-</head>
+    <title>Rosario Shopping Center Novedades</title>
+  </head>
 <body>
   <?php
     include("../../Barra_Navegacion/Nav-bar.php");
@@ -38,7 +39,7 @@
     <div class="iteracion">  
       <?php
       include("../../database.php");
-      $sql = "SELECT * FROM novedades";
+      $sql = "SELECT * FROM Novedades";
       $result = mysqli_query($conn, $sql);
       date_default_timezone_set('America/Argentina/Buenos_Aires');
       $fecha_actual = date("Y-m-d");

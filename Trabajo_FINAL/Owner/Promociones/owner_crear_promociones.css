@@ -394,6 +394,12 @@ body {
   margin: auto;
 }
 
+.error{
+  color: red;
+  background-color: rgb(252, 172, 172);
+  border: 2px solid red;
+}
+
 .success-box__msj {
   margin-bottom: 0;
   font-size: medium;

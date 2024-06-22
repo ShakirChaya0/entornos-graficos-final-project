@@ -243,21 +243,27 @@ body {
   }
 }
 
-.error_box{
-  width: 40vw;
-  height: 5vh;
-  min-height: 45px;
-  text-align: center;
+.no_promo{
   margin: auto;
   margin-top: 1rem;
-  max-width: 240px;
-  background-color: white;
-  border-radius: 1rem;
+  display: flex;
+  width: 27vw;
+  height: 15vh;
+  min-height: 85px;
+  min-width: 280px;
+  background-color: rgb(197, 250, 201);
+  color: green;
+  border: 4px solid green;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2rem;
 }
-.error{
-  padding-top: 0.7rem;
-  margin: 0;
-  color: red;
+
+.no_promo.cion{
+background-color: rgb(252, 172, 172);
+color: red;
+border: 2px solid red;
 }
 
 .Promocion_aprobada{
