@@ -29,13 +29,13 @@
     <section>
         <h1 class="page_title">Novedades</h1>
         <div class="form_back">
-            <button class="btn btn-outline-secondary">
-                <svg class="arrow_symbol" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+            <span class="btn btn-outline-secondary">
+                <svg class="bi bi-arrow-left arrow_symbol" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
                 </svg>
                 <a href="admin_nov.php" class="volver_btn" aria-label="Volver"></a>
                 Volver
-            </button>
+            </span>
         </div>
 
         <div class="create_box">
@@ -44,7 +44,7 @@
                 <label class="create_label" for="titulo">Título:</label>
                 <input type="text" placeholder="..." class="form-create__input" id="titulo" name="titulo" maxlength="30" required>
                 <label class="create_label" for="descripcion">Descripción:</label>
-                <input type="text" placeholder="..." class="form-create__input" id="descripcion" name="texto" maxlength="200" required>
+                <textarea type="text" placeholder="..." class="form-create__input" id="descripcion" name="texto" maxlength="200" required></textarea>
                 <label class="create_label" for="inicio">Inicio:</label>
                 <input type="date" placeholder="..." class="form-create__input" id="inicio" name="desde" required>
                 <label class="create_label" for="final">Finalización:</label>
@@ -62,26 +62,31 @@
 
     <?php
         if (isset($_POST["crear"])) {
-            $sql = "SELECT * FROM novedades ORDER BY codNovedad DESC LIMIT 1";
-            $result = mysqli_query($conn, $sql);
-            $last_row = mysqli_fetch_assoc($result);
-            
-            $cod = $last_row["codNovedad"] + 1;
-            $titulo = filter_input(INPUT_POST, "titulo", FILTER_SANITIZE_SPECIAL_CHARS);
-            $texto = filter_input(INPUT_POST, "texto", FILTER_SANITIZE_SPECIAL_CHARS);
-            $desde = $_POST["desde"];
-            $hasta = $_POST["hasta"];
-            $cat_user = $_POST["categoria"];
-            $sql = "INSERT INTO novedades (codNovedad, tituloNovedad, textoNovedad, fechaDesdeNov, fechaHastaNov, tipoUsuario, estadoNovedad)
-                    VALUES ('$cod', '$titulo', '$texto', '$desde', '$hasta', '$cat_user', 'A')";
-            
-            try {
-                mysqli_query($conn, $sql);
-                $_SESSION["novCreada"] = 1;
-                header("Location: admin_nov.php");
+            if (!empty($_POST["titulo"]) && !empty($_POST["texto"]) && !empty($_POST["desde"]) && !empty($_POST["hasta"]) && !empty($_POST["categoria"])) {
+                $sql = "SELECT * FROM novedades ORDER BY codNovedad DESC LIMIT 1";
+                $result = mysqli_query($conn, $sql);
+                $last_row = mysqli_fetch_assoc($result);
+
+                $cod = $last_row["codNovedad"] + 1;
+                $titulo = filter_input(INPUT_POST, "titulo", FILTER_SANITIZE_SPECIAL_CHARS);
+                $texto = filter_input(INPUT_POST, "texto", FILTER_SANITIZE_SPECIAL_CHARS);
+                $desde = $_POST["desde"];
+                $hasta = $_POST["hasta"];
+                $cat_user = $_POST["categoria"];
+                $sql = "INSERT INTO novedades (codNovedad, tituloNovedad, textoNovedad, fechaDesdeNov, fechaHastaNov, tipoUsuario, estadoNovedad)
+                        VALUES ('$cod', '$titulo', '$texto', '$desde', '$hasta', '$cat_user', 'A')";
+
+                try {
+                    mysqli_query($conn, $sql);
+                    $_SESSION["novCreada"] = 1;
+                    header("Location: admin_nov.php");
+                }
+                catch(mysqli_sql_exception) {
+                    echo "<p class='msj_error'>Error al crear la novedad, inténtelo más tarde.</p>";
+                }
             }
-            catch(mysqli_sql_exception) {
-                echo "<p class='msj_error'>Error al crear la novedad, inténtelo más tarde.</p>";
+            else {
+                echo "<p class='msj_error'>Deben llenarse todos los campos para continuar.</p>";
             }
         } 
     ?>

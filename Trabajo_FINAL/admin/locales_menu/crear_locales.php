@@ -29,13 +29,13 @@
     <section>
         <h1 class="page_title">Locales</h1>
         <div class="form_back">
-            <button class="btn btn-outline-secondary">
-                <svg class="arrow_symbol" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+            <span class="btn btn-outline-secondary">
+                <svg class="bi bi-arrow-left arrow_symbol" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
                 </svg>
                 <a href="admin_locales.php" class="volver_btn" aria-label="Volver"></a>
                 Volver
-            </button>
+            </span>
         </div>
 
         <div class="create_box">
@@ -57,33 +57,38 @@
     <?php
 
         if (isset($_POST["crear"])) {
-            $sql = "SELECT * FROM locales ORDER BY codLocal DESC LIMIT 1";
-            $result = mysqli_query($conn, $sql);
-            $last_row = mysqli_fetch_assoc($result);
-            
-            $cod = $last_row["codLocal"] + 1;
-            $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS);
-            $ubi = filter_input(INPUT_POST, "ubi", FILTER_SANITIZE_SPECIAL_CHARS);
-            $rubro = filter_input(INPUT_POST, "rubro", FILTER_SANITIZE_SPECIAL_CHARS);
-            $user = $_POST["user"];
-            
-            $sql_aux = "SELECT * FROM usuarios WHERE codUsuario = '$user' AND tipoUsuario = 'dueño de local'";
-            $result_aux = mysqli_query($conn, $sql_aux);
-            if (mysqli_num_rows($result_aux) > 0) {
-                $sql = "INSERT INTO locales (codLocal, nombreLocal, ubicacionLocal, rubroLocal, codUsuario, estadoLocal)
-                        VALUES ('$cod', '$name', '$ubi', '$rubro', '$user', 'A')";
+            if (!empty($_POST["name"]) && !empty($_POST["ubi"]) && !empty($_POST["rubro"]) && !empty($_POST["user"])) {
+                $sql = "SELECT * FROM locales ORDER BY codLocal DESC LIMIT 1";
+                $result = mysqli_query($conn, $sql);
+                $last_row = mysqli_fetch_assoc($result);
+                
+                $cod = $last_row["codLocal"] + 1;
+                $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS);
+                $ubi = filter_input(INPUT_POST, "ubi", FILTER_SANITIZE_SPECIAL_CHARS);
+                $rubro = filter_input(INPUT_POST, "rubro", FILTER_SANITIZE_SPECIAL_CHARS);
+                $user = $_POST["user"];
+                
+                $sql_aux = "SELECT * FROM usuarios WHERE codUsuario = '$user' AND tipoUsuario = 'dueño de local'";
+                $result_aux = mysqli_query($conn, $sql_aux);
+                if (mysqli_num_rows($result_aux) > 0) {
+                    $sql = "INSERT INTO locales (codLocal, nombreLocal, ubicacionLocal, rubroLocal, codUsuario, estadoLocal)
+                            VALUES ('$cod', '$name', '$ubi', '$rubro', '$user', 'A')";
 
-                try {
-                    mysqli_query($conn, $sql);
-                    $_SESSION["localCreado"] = 1;
-                    header("Location: admin_locales.php");
+                    try {
+                        mysqli_query($conn, $sql);
+                        $_SESSION["localCreado"] = 1;
+                        header("Location: admin_locales.php");
+                    }
+                    catch(mysqli_sql_exception) {
+                        echo "<p class='msj_error'>El nombre del local no puede repetirse. Ingrese uno nuevo.</p>";
+                    }
                 }
-                catch(mysqli_sql_exception) {
-                    echo "<p class='msj_error'>El nombre del local no puede repetirse. Ingrese uno nuevo.</p>";
+                else {
+                    echo "<p class='msj_error'>No existe un dueño con el código ingresado. Ingrese uno nuevo.</p>";
                 }
             }
             else {
-                echo "<p class='msj_error'>No existe un dueño con el código ingresado. Ingrese uno nuevo.</p>";
+                echo "<p class='msj_error'>Deben llenarse todos los campos para continuar.</p>";
             }
         } 
     ?>
