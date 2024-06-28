@@ -93,10 +93,6 @@
                   <div class="modal-body">
                     <form method="post">
                       <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Email</label>
-                        <input type="email" class="form-control" id="recipient-name" name="email" required>
-                      </div>
-                      <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Asunto</label>
                         <input type="text" class="form-control" id="recipient-name" name="asunto" required>
                       </div>
@@ -113,11 +109,10 @@
                   <?php
                     if(!empty($_POST["Enviar"])){
                       if(!empty($_POST["asunto"]) && !empty($_POST["cuerpo"])){
-                        $emisor = $_POST["email"];
                         $asunto = $_POST["asunto"];
                         $cuerpo = $_POST["cuerpo"];
-                        $email = "admin@shopping.com";
-                        $header = "From: {$emisor}"."\r\n";
+                        $email = "santikellemberger@gmail.com";
+                        $header = "From: {$_SESSION['nombreUsuario']}"."\r\n";
                         $header.= "Reply-To: {$_SESSION['nombreUsuario']}"."\r\n";
                         $header.= "X-Mailer: PHP/".phpversion();
                         $mail = @mail($email, $asunto, $cuerpo, $header);
@@ -133,7 +128,7 @@
         } elseif($_SERVER["PHP_SELF"] != "/Home-UNR/index.php"){
       ?>
         <a href="https://www.google.com/maps/place/Alto+Rosario+Shopping/@-32.9282706,-60.674688,15z/data=!4m6!3m5!1s0x95b654abc3ab1d5f:0x2f90ce97db2c5a6!8m2!3d-32.9274658!4d-60.6690017!16s%2Fg%2F1tdvlb_y?entry=ttu" target="_blank">
-        <img src="../../Imagenes-Videos/Captura de pantalla 2024-05-02 100702.png" alt="Ubicación en Google Maps"></a>
+        <img src="../Imagenes-Videos/Captura de pantalla 2024-05-02 100702.png" alt="Ubicación en Google Maps"></a>
       </div>
     </div>
         <div class="f2">
@@ -209,10 +204,6 @@
                   <div class="modal-body">
                     <form method="post">
                       <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Email</label>
-                        <input type="text" class="form-control" id="recipient-name" name="email" required>
-                      </div>
-                      <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Asunto</label>
                         <input type="text" class="form-control" id="recipient-name" name="asunto" required>
                       </div>
@@ -229,10 +220,9 @@
                   <?php
                     if(!empty($_POST["Enviar"])){
                       if(!empty($_POST["asunto"]) && !empty($_POST["cuerpo"])){
-                        $emisor = $_POST["email"];
                         $asunto = $_POST["asunto"];
                         $cuerpo = $_POST["cuerpo"];
-                        $email = "admin@shopping.com";
+                        $email = "santikellemberger@gmail.com";
                         $header = "From: {$_SESSION['nombreUsuario']}"."\r\n";
                         $header.= "Reply-To: {$_SESSION['nombreUsuario']}"."\r\n";
                         $header.= "X-Mailer: PHP/".phpversion();
@@ -338,7 +328,7 @@
                   if(!empty($_POST["asunto"]) && !empty($_POST["cuerpo"])){
                     $asunto = $_POST["asunto"];
                     $cuerpo = $_POST["cuerpo"];
-                    $email = "admin@shopping.com";
+                    $email = "santikellemberger@gmail.com";
                     $header = "From: {$_SESSION['nombreUsuario']}"."\r\n";
                     $header.= "Reply-To: {$_SESSION['nombreUsuario']}"."\r\n";
                     $header.= "X-Mailer: PHP/".phpversion();
@@ -437,7 +427,7 @@
                        if(!empty($_POST["asunto"]) && !empty($_POST["cuerpo"])){
                          $asunto = $_POST["asunto"];
                          $cuerpo = $_POST["cuerpo"];
-                         $email = "admin@shopping.com";
+                         $email = "santikellemberger@gmail.com";
                          $header = "From: {$_SESSION['nombreUsuario']}"."\r\n";
                          $header.= "Reply-To: {$_SESSION['nombreUsuario']}"."\r\n";
                          $header.= "X-Mailer: PHP/".phpversion();

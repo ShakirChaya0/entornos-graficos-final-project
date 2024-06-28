@@ -27,6 +27,7 @@ body {
   display: block;
   margin-top: 1rem;
   border-radius: 1rem;
+  max-height: 159px;
 }
 
 .section1{
@@ -145,6 +146,7 @@ body {
   border: 2px solid rgb(23, 46, 109);
   margin: auto;
   margin-top: 3rem;
+  max-height: 194px;
 }
 
 @media(max-width: 544px){
@@ -220,6 +222,7 @@ body {
   color: white;
   text-decoration: none;
   text-align: center;
+  max-height: 29px;
 }
 .link_promociones:hover{
   background-color: rgb(32, 77, 202)

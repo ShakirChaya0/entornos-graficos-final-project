@@ -1,9 +1,9 @@
 <?php
   ob_start();
   session_start();
-  if($_SESSION["tipoUsuario"] == "UNR"){
+  /*if($_SESSION["tipoUsuario"] == "UNR"){
     header("LOCATION: ../../inicio_de_sesion/inicio_sesion.php");
-  }
+  }*/
   include("../../admin/novedades_menu/verif_nov.php");
 ?>
 <!DOCTYPE html>
@@ -39,7 +39,7 @@
     <div class="iteracion">  
       <?php
       include("../../database.php");
-      $sql = "SELECT * FROM Novedades";
+      $sql = "SELECT * FROM novedades";
       $result = mysqli_query($conn, $sql);
       date_default_timezone_set('America/Argentina/Buenos_Aires');
       $fecha_actual = date("Y-m-d");

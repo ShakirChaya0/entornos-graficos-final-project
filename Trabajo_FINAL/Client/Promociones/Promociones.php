@@ -30,7 +30,7 @@
         $position = array_search($dia_actual, $semana);
         $dias_disponibles = str_split($row_promo["diasSemana"]);
         //FILTRADO POR FECHAS:
-        if($row_promo["fechaDesdePromo"] <= $fecha_actual && $row_promo["fechaHastaPromo"] >= $fecha_actual && $row_promo["estadoPromo"] == "aceptada" && $dias_disponibles[$position] == "1"){
+        if($row_promo["fechaDesdePromo"] <= $fecha_actual && $row_promo["fechaHastaPromo"] >= $fecha_actual && $row_promo["estadoPromo"] == "aprobada" && $dias_disponibles[$position] == "1"){
           //FILTRADO POR PROMOCIONES USADAS
           if($filas["total_filas"] > 0){
             $search_usopromo = 'SELECT * FROM uso_promociones WHERE codCliente = "'.$row_usu["codUsuario"].'"';
@@ -296,7 +296,7 @@
         $position = array_search($dia_actual, $semana);
         $dias_disponibles = str_split($row_promo["diasSemana"]);
         //FILTRADO POR FECHAS:
-        if($row_promo["fechaDesdePromo"] < $fecha_actual && $row_promo["fechaHastaPromo"] >= $fecha_actual && $row_promo["estadoPromo"] == "aceptada" && $dias_disponibles[$position] == "1"){
+        if($row_promo["fechaDesdePromo"] < $fecha_actual && $row_promo["fechaHastaPromo"] >= $fecha_actual && $row_promo["estadoPromo"] == "aprobada" && $dias_disponibles[$position] == "1"){
           //FILTRADO POR PROMOCIONES USADAS
           if($filas["total_filas"] > 0){
             $search_usopromo = 'SELECT * FROM uso_promociones WHERE codCliente = "'.$row_usu["codUsuario"].'"';
@@ -363,7 +363,7 @@
         $position = array_search($dia_actual, $semana);
         $dias_disponibles = str_split($row_promo_busq["diasSemana"]);
         //FILTRADO POR FECHAS:
-        if($row_promo_busq["fechaDesdePromo"] < $fecha_actual && $row_promo_busq["fechaHastaPromo"] >= $fecha_actual && $row_promo_busq["estadoPromo"] == "aceptada" && $dias_disponibles[$position] == "1" && $row_local["codLocal"] == $row_promo_busq["codLocal"]){
+        if($row_promo_busq["fechaDesdePromo"] < $fecha_actual && $row_promo_busq["fechaHastaPromo"] >= $fecha_actual && $row_promo_busq["estadoPromo"] == "aprobada" && $dias_disponibles[$position] == "1" && $row_local["codLocal"] == $row_promo_busq["codLocal"]){
           //FILTRADO POR PROMOCIONES USADAS
           if($filas["total_filas"] > 0){
             $search_usopromo = 'SELECT * FROM uso_promociones WHERE codCliente = "'.$row_usu["codUsuario"].'"';
@@ -641,7 +641,7 @@
         $position = array_search($dia_actual, $semana);
         $dias_disponibles = str_split($row_promo_busq["diasSemana"]);
         //FILTRADO POR FECHAS:
-        if($row_promo_busq["fechaDesdePromo"] < $fecha_actual && $row_promo_busq["fechaHastaPromo"] >= $fecha_actual && $row_promo_busq["estadoPromo"] == "aceptada" && $dias_disponibles[$position] == "1" && $row_local["codLocal"] == $row_promo_busq["codLocal"]){
+        if($row_promo_busq["fechaDesdePromo"] < $fecha_actual && $row_promo_busq["fechaHastaPromo"] >= $fecha_actual && $row_promo_busq["estadoPromo"] == "aprobada" && $dias_disponibles[$position] == "1" && $row_local["codLocal"] == $row_promo_busq["codLocal"]){
           //FILTRADO POR PROMOCIONES USADAS
           if($filas["total_filas"] > 0){
             $search_usopromo = 'SELECT * FROM uso_promociones WHERE codCliente = "'.$row_usu["codUsuario"].'"';
@@ -912,7 +912,7 @@
         $result_local = mysqli_query($conn, $search_local);
         $row_local = mysqli_fetch_array($result_local);
         //FILTRADO POR FECHAS:
-        if($row_promo["fechaDesdePromo"] <= $fecha_actual && $row_promo["fechaHastaPromo"] >= $fecha_actual && $row_promo["estadoPromo"] == "aceptada"){
+        if($row_promo["fechaDesdePromo"] <= $fecha_actual && $row_promo["fechaHastaPromo"] >= $fecha_actual && $row_promo["estadoPromo"] == "aprobada"){
           echo "
           <div class='container'>
           <div class ='local_data'>  {$row_promo['textoPromo']}  </div>
@@ -1065,7 +1065,7 @@
         else{
           if($_SESSION["tipoUsuario"] != "UNR"){
             mostrarpromociones();
-          }
+          }  
           else{
             mostrar_UNR();
           }
