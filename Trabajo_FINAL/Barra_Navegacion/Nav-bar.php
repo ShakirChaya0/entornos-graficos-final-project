@@ -43,18 +43,13 @@
                 </ul>
                 <form class="d-flex align-items-center form-style" role="search" method="post">
                   <li class="nav-item dropdown list-item">
-                    <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img class="avatar-style icon" src="../../Imagenes-Videos/avatar.png" alt=""><?php echo"{$_SESSION['tipoUsuario']}";?></a>
+                    <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img class="avatar-style icon" src="../../Imagenes-Videos/avatar.png" alt="Logo de usuario"><?php echo"{$_SESSION['tipoUsuario']}";?></a>
                   </li>
-                  <img class="icon cerrar-sesion btn-delete" src="../../Imagenes-Videos/Cerrar-sesion.png" alt="">
-                  <input class="btn btn-outline-danger log_out" value="Cerrar Sesión" name="submit" type="submit">
+                  <a class="btn btn-outline-danger log_out" href="../../inicio_de_sesion/inicio_sesion.php"><img class="icon cerrar-sesion btn-delete" src="../../Imagenes-Videos/Cerrar-sesion.png" alt="Imagen de puerta para cerrar sesion">Cerrar Sesion</a>
                 </form>
             </div>
           </div>
             <?php  
-                if (!empty($_POST["submit"])){
-                    $_POST = array();
-                    header("LOCATION: ../../inicio_de_sesion/inicio_sesion.php");
-                    }
                 }
             ?>
 
@@ -177,18 +172,13 @@
                 </ul>
                 <form class="d-flex align-items-center form-style" role="search" method="post">
                   <li class="nav-item dropdown list-item">
-                    <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img class="avatar-style icon" src="../../Imagenes-Videos/avatar.png" alt=""><?php echo"{$_SESSION['tipoUsuario']}";?></a>
+                    <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img class="avatar-style icon" src="../../Imagenes-Videos/avatar.png" alt="Logo de Usuario"><?php echo"{$_SESSION['tipoUsuario']}";?></a>
                   </li>
-                  <img class="icon cerrar-sesion btn-delete" src="../../Imagenes-Videos/Cerrar-sesion.png" alt="">
-                  <input class="btn btn-outline-danger log_out" value="Cerrar Sesión" name="submit" type="submit">
+                  <a class="btn btn-outline-danger log_out" href="../../inicio_de_sesion/inicio_sesion.php"><img class="icon cerrar-sesion btn-delete" src="../../Imagenes-Videos/Cerrar-sesion.png" alt="Imagen de puerta para cerrar sesion">Cerrar Sesion</a>
                 </form>
             </div>
           </div>
             <?php  
-                if (!empty($_POST["submit"])){
-                    $_POST = array();
-                    header("LOCATION: ../../inicio_de_sesion/inicio_sesion.php");
-                }
               }
             ?> 
         
@@ -231,10 +221,9 @@
                     </li>
                   </ul>
                   <span class="nav-item dropdown list-item">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img class="avatar-style icon" src="../../Imagenes-Videos/avatar.png" alt="">Administrador</a>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img class="avatar-style icon" src="../../Imagenes-Videos/avatar.png" alt="Logo de usuario">Administrador</a>
                   </span>
-                  <img src="../../Imagenes-Videos/Cerrar-sesion.png" class="icon cerrar-sesion btn-delete" alt="">
-                  <a href="../../inicio_de_sesion/inicio_sesion.php" class="btn btn-outline-danger log_out">Cerrar Sesión</a>
+                  <a class="btn btn-outline-danger log_out" href="../../inicio_de_sesion/inicio_sesion.php"><img class="icon cerrar-sesion btn-delete" src="../../Imagenes-Videos/Cerrar-sesion.png" alt="Imagen de puerta para cerrar sesion">Cerrar Sesion</a>
                 </div>
             </div>
     <?php  

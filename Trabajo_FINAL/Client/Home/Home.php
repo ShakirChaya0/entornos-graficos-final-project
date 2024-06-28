@@ -1,8 +1,8 @@
 <?php
   session_start();
-  if(strtolower($_SESSION["tipoUsuario"]) != "cliente"){
+  /*if(strtolower($_SESSION["tipoUsuario"]) != "cliente"){
     header("LOCATION: ../../inicio_de_sesion/inicio_sesion.php");
-  }
+  }*/
 ?>
 <!doctype html>
 <html lang="en">
@@ -53,35 +53,29 @@
           <div class="cards-wrapper">
             <div class="card">
               <div class="image-wrapper">
-                <img src="../../Imagenes-Videos/Nike.jpg" alt="/Imagenes-Videos/Nike.jpg">
+                <img src="../../Imagenes-Videos/Nike.jpg" alt="Imagen de Nike">
               </div>
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <h5 class="card-title">Nike</h5>
+                <p class="card-text">Encuentra la mejor ropa y calzado deportivo en la planta baja, al lado de la entrada principal.</p>
               </div>
             </div>
             <div class="card">
               <div class="image-wrapper">
-                <img src="../../Imagenes-Videos/Nike.jpg" alt="/Imagenes-Videos/Nike.jpg">
+                <img src="../../Imagenes-Videos/Zara.jpg" alt="Imagen de Zara">
               </div>
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <h5 class="card-title">Zara</h5>
+                <p class="card-text">Descubre las últimas tendencias de moda en el primer piso, justo frente a la escalera mecánica.</p>
               </div>
             </div>
             <div class="card">
               <div class="image-wrapper">
-                <img src="../../Imagenes-Videos/Nike.jpg" alt="/Imagenes-Videos/Nike.jpg">
+                <img src="../../Imagenes-Videos/Ripcurl.jpg" alt="Imagen Ripcurl">
               </div>
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <h5 class="card-title">Ripcurl</h5>
+                <p class="card-text">Todo lo que necesitas para surf y playa en la planta baja, cerca de la zona de entretenimiento.</p>
               </div>
             </div>
           </div>
@@ -90,35 +84,29 @@
           <div class="cards-wrapper">
             <div class="card">
               <div class="image-wrapper">
-                <img src="../../Imagenes-Videos/Showcase.jpg" alt="/Imagenes-Videos/Showcase.jpg">
+                <img src="../../Imagenes-Videos/McDonalds.jpg" alt="Sucursal Mc Donald's">
               </div>
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <h5 class="card-title">Mc Donald's</h5>
+                <p class="card-text">Disfruta de tus hamburguesas favoritas en el nivel superior, junto a la entrada del estacionamiento.</p>
               </div>
             </div>
             <div class="card">
               <div class="image-wrapper">
-                <img src="../../Imagenes-Videos/Showcase.jpg" alt="/Imagenes-Videos/Showcase.jpg">
+                <img src="../../Imagenes-Videos/Starbucks.jpg" alt="Sucursal Starbucks">
               </div>
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <h5 class="card-title">Starbucks</h5>
+                <p class="card-text">Disfruta de un café premium en el primer piso, justo al lado de la tienda de libros.</p>
               </div>
             </div>
             <div class="card">
               <div class="image-wrapper">
-                <img src="../../Imagenes-Videos/Showcase.jpg" alt="/Imagenes-Videos/Showcase.jpg">
+                <img src="../../Imagenes-Videos/Mostaza.jpg" alt="Sucursal Mostaza">
               </div>
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <h5 class="card-title">Mostaza</h5>
+                <p class="card-text">Saborea nuestras hamburguesas y papas fritas en el primer piso, cerca de la plaza central.</p>
               </div>
             </div>
           </div>
@@ -127,35 +115,29 @@
           <div class="cards-wrapper">
             <div class="card">
               <div class="image-wrapper">
-                <img src="../../Imagenes-Videos/Starbucks.jpg" alt="/Imagenes-Videos/Starbucks.jpg">
+                <img src="../../Imagenes-Videos/Showcase.jpg" alt="Cine Showcase">
               </div>
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <h5 class="card-title">Showcase</h5>
+                <p class="card-text">Disfruta de los últimos estrenos de cine en el tercer piso, junto a la zona de restaurantes.</p>
               </div>
             </div>
             <div class="card">
               <div class="image-wrapper">
-                <img src="../../Imagenes-Videos/Starbucks.jpg" alt="/Imagenes-Videos/Starbucks.jpg">
+                <img src="../../Imagenes-Videos/Juleriaque.jpg" alt="Sucursal Juleriaque">
               </div>
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <h5 class="card-title">Juleriaque</h5>
+                <p class="card-text">Encuentra perfumes y cosméticos exclusivos en el primer piso, junto a la fuente central.</p>
               </div>
             </div>
             <div class="card">
               <div class="image-wrapper">
-                <img src="../../Imagenes-Videos/Starbucks.jpg" alt="/Imagenes-Videos/Starbucks.jpg">
+                <img src="../../Imagenes-Videos/Natura.jpg" alt="Sucursal Natura">
               </div>
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <h5 class="card-title">Natura</h5>
+                <p class="card-text">Productos naturales y sustentables para el cuidado personal en el segundo piso, al lado de la librería.</p>
               </div>
             </div>
           </div>
