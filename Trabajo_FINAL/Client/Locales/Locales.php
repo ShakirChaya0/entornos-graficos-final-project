@@ -16,7 +16,7 @@
     integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
     crossorigin="anonymous"></script>
     <link rel="stylesheet" href="Locales.css">
-    <link rel="stylesheet" href="../../Pie_de_Pagina/footer.css">
+    <link rel="stylesheet" href="../../Pie_De_Pagina/footer.css">
     <link rel="stylesheet" href="../../Barra_Navegacion/Bar-style.css">
     <title>Rosario Shopping Center Locales</title>
 </head>

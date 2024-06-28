@@ -55,7 +55,7 @@ $_SESSION["tipoUsuario"] = "UNR";
             </div>
             <div class="card">
               <div class="image-wrapper">
-                <img src="../Imagenes-Videos/Zara.jpg" alt="Imagen de Zara">
+                <img src="../Imagenes-Videos/zara.jpg" alt="Imagen de Zara">
               </div>
               <div class="card-body">
                 <h5 class="card-title">Zara</h5>
