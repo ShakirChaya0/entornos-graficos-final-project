@@ -93,6 +93,10 @@
                   <div class="modal-body">
                     <form method="post">
                       <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Email</label>
+                        <input type="email" class="form-control" id="recipient-name" name="email" required>
+                      </div>
+                      <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Asunto</label>
                         <input type="text" class="form-control" id="recipient-name" name="asunto" required>
                       </div>
@@ -109,10 +113,11 @@
                   <?php
                     if(!empty($_POST["Enviar"])){
                       if(!empty($_POST["asunto"]) && !empty($_POST["cuerpo"])){
+                        $emisor = $_POST["email"];
                         $asunto = $_POST["asunto"];
                         $cuerpo = $_POST["cuerpo"];
                         $email = "admin@shopping.com";
-                        $header = "From: {$_SESSION['nombreUsuario']}"."\r\n";
+                        $header = "From: {$emisor}"."\r\n";
                         $header.= "Reply-To: {$_SESSION['nombreUsuario']}"."\r\n";
                         $header.= "X-Mailer: PHP/".phpversion();
                         $mail = @mail($email, $asunto, $cuerpo, $header);
@@ -204,6 +209,10 @@
                   <div class="modal-body">
                     <form method="post">
                       <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Email</label>
+                        <input type="text" class="form-control" id="recipient-name" name="email" required>
+                      </div>
+                      <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Asunto</label>
                         <input type="text" class="form-control" id="recipient-name" name="asunto" required>
                       </div>
@@ -220,6 +229,7 @@
                   <?php
                     if(!empty($_POST["Enviar"])){
                       if(!empty($_POST["asunto"]) && !empty($_POST["cuerpo"])){
+                        $emisor = $_POST["email"];
                         $asunto = $_POST["asunto"];
                         $cuerpo = $_POST["cuerpo"];
                         $email = "admin@shopping.com";

@@ -2,8 +2,8 @@
   ob_start();
   session_start();
 
+  $selected_value = "";
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $selected_value = "";
     $selected_value = $_POST["parametro"];
   }
   function mostrarpromociones(){
@@ -1063,7 +1063,12 @@
             mostrarpromociones_NombreLocal($_GET["Local"]);
         }
         else{
-          mostrarpromociones();
+          if($_SESSION["tipoUsuario"] != "UNR"){
+            mostrarpromociones();
+          }
+          else{
+            mostrar_UNR();
+          }
         }
       }
     ?>  

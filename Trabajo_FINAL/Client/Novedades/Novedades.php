@@ -1,9 +1,9 @@
 <?php
   ob_start();
   session_start();
-  /*if($_SESSION["tipoUsuario"] == "UNR"){
+  if($_SESSION["tipoUsuario"] == "UNR"){
     header("LOCATION: ../../inicio_de_sesion/inicio_sesion.php");
-  }*/
+  }
   include("../../admin/novedades_menu/verif_nov.php");
 ?>
 <!DOCTYPE html>

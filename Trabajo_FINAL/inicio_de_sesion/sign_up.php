@@ -80,11 +80,53 @@
                                     <html>
                                         <head>
                                             <title>Prueba de correo</title>
+                                            <style>
+                                            .email-container {
+                                                display: grid;
+                                                grid-template-columns: 100%;
+                                                grid-template-rows: 20% 2% 50% auto;
+                                                background-color: #e5e5e5;
+                                                
+                                            }
+                                            .email-logo{
+                                                grid-rows: 1/2;
+                                                width: 100px;
+                                                height: 100px;
+                                                margin: 30px auto;
+                                            }
+                                            .separacion {
+                                                grid-rows: 2/3;
+                                                height: 2px;
+                                                background-color: black;
+                                                width: 80%;
+                                                margin:auto;
+                                            }
+                                            .email-title{
+                                                grid-rows: 3/4;
+                                                font-size: 18px;
+                                                margin: 30px auto;
+                                            }
+                                            .email-enlace{
+                                                grid-rows: 4/5;
+                                                padding: 7px;
+                                                margin: 30px auto;
+                                                background-color: rgb(0,160,240);
+                                                text-decoration: none;
+                                                color: black !important;
+                                                border-radius: 10px;
+                                                font-weight:900;
+                                                font-size: 14px;
+                                            }
+                                            </style>
+                                        
                                         </head>
                                         <body>
-                                            <img src='https://rosarioshoppingcenter.shop/Imagenes-Videos/bolsas-de-compra.png' alt='logo.png'>
-                                            <h2>Validar cuenta de cliente {$_SESSION["nombreUsuario"]}</h2>
-                                            <a href='{$URL}'>Validar Cuenta</a>
+                                            <div class='email-container'>
+                                                <img class='email-logo' src='https://rosarioshoppingcenter.shop/Imagenes-Videos/bolsas-de-compra.png' alt='logo.png'>
+                                                <div class='separacion'></div>
+                                                <h2 class='email-title'>Validar cuenta de cliente {$_SESSION["nombreUsuario"]}</h2>
+                                                <a class='email-enlace ' href='{$URL}'>Validar Cuenta</a>
+                                            </div>
                                         </body>
                                     </html>
                                     ";

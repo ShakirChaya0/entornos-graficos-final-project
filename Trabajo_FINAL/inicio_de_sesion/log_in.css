@@ -469,3 +469,20 @@ a:visited{
         margin-top: 2.7rem;
     }
 }
+
+/* Estilos para el email */
+.email-container {
+    display: flex;
+    background-color: azure;
+    margin: auto;
+}
+.email-title{
+    justify-self: center;
+    font-size: 18px;
+}
+.email-logo{
+    justify-self: center;
+    width: 50px;
+    height: 50px;
+}
+
