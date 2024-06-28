@@ -15,8 +15,7 @@
     <title>Inicio de sesion</title>
 </head>
 <body>
-    <section class="box">
-        <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"])?>" method="post" class="form">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>" method="post" class="form">
             <div class="logo-cont">
                 <a href="../Home-UNR/index.php"><img src="../Imagenes-Videos/logo.jpg" alt="logo" class="logo"></a>
             </div>
@@ -50,7 +49,6 @@
                     if(!empty($_POST["submit"])){
                         $username = $_POST["username"];
                         $password = $_POST["password"];
-                        $_POST = array();
                         if(!empty($username) && !empty($password)){
                             $sqli = "SELECT * FROM usuarios WHERE (nombreUsuario, claveUsuario) = ('$username', '$password')";
                             $result = mysqli_query($conn, $sqli);
@@ -114,14 +112,10 @@
                             }
                         }
                     }
-                    else{
-                        $_POST = array();
-                    }
                 ?>
             </div>
             </div>
         </form>
-    </section>
 </body>
 </html>
 <?php

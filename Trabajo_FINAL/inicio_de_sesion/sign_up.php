@@ -16,7 +16,6 @@
     <header>
 
     </header>
-    <section class="box">
         <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"])?>" method="post" class="form">
             <div class="logo-cont">
                 <a href="../Home-UNR/index.php"><img src="../Imagenes-Videos/logo.jpg" alt="logo" class="logo"></a>
@@ -60,7 +59,7 @@
                 <p class="regis">¿Desea iniciar sesion?<a href="inicio_sesion.php"> Iniciar sesion</a></p>
             <div class="cont_error">
                 <?php
-                    if(!empty($_POST["submit"])){
+                    if(!empty($_POST["submit"]) && isset($_POST["type"])){
                         $_SESSION["nombreUsuario"] = $_POST["username"];
                         $_SESSION["claveUsuario"] = $_POST["password"];
                         $_SESSION["tipoUsuario"] = $_POST["type"];
@@ -68,7 +67,7 @@
                         $_POST = array();
                         $valid = "SELECT * FROM usuarios WHERE nombreUsuario = '{$_SESSION["nombreUsuario"]}'";
                         $valid_query = mysqli_query($conn, $valid);
-                        if(!empty($_SESSION["nombreUsuario"]) && !empty($_SESSION["claveUsuario"]) && !empty($_SESSION["tipoUsuario"])){
+                        if(!empty($_SESSION["nombreUsuario"]) && !empty($_SESSION["claveUsuario"])){
                             if(mysqli_num_rows($valid_query) > 0){
                                 echo"<p class= 'enviado'>*Usuario ya existente</p>";
                             }
@@ -106,12 +105,14 @@
                             echo "<p class= 'error'>*Completa el tipo de usuario</p>";
                         }
                     }
+                    else{
+                        echo "<p class= 'error'>*Completa el tipo de usuario</p>";
+                    }
                         
                 ?>
             </div>
             </div>
         </form>
-    </section>
 </body>
 </html>
 

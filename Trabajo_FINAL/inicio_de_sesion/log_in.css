@@ -27,10 +27,11 @@ body{
 
 .form{
     display: block;
-    min-width: 280px;
+    min-width: 340px;
     max-width: 340px;
     width: 100%;
     margin-bottom: 0;
+    margin: auto;
     min-height: 15vh;
     height: 60vh;
     max-height: 480px;
@@ -38,7 +39,7 @@ body{
     border-radius: 1rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;  
-    position: absolute;
+    position: relative;
     overflow-x: hidden;
 }
 
@@ -186,24 +187,24 @@ body{
 }
 
 .user_type_box{
+    display: flex;
     padding-top: 1.5rem;
     margin-left: 3.5rem;
     height: 1rem;
     width: 100%;
     max-width: 250px;
     position: relative;
-    display: flex;
 }
 .client_box{
     display: inline;
     border-radius: 0.3rem;
-    background-color:  rgb(255, 255, 255);
+    background-color:  rgba(255, 255, 255, 0);
     margin-left: 1rem;
 }
 .owner_box{
     display: inline;
     border-radius: 0.3rem;
-    background-color:  rgb(255, 255, 255);
+    background-color:  rgba(255, 255, 255, 0);
 }
 .owner_box label{
     text-align: end;
@@ -211,8 +212,9 @@ body{
     min-width: 130px;
     max-width: 130px;
     display: block;
-    position: absolute;
-    top: 52%; 
+    position: relative;
+    top: -25%; 
+    left: 1%;
     font-weight: 500;
 }
 .owner_box input[type="radio"]{
@@ -234,7 +236,7 @@ body{
 .owner_box span:after{
     content: "";
     height: 75%;
-    width: 70%;
+    width: 75%;
     background: rgb(19, 117, 209);
     display: block;
     position: absolute;
@@ -255,13 +257,13 @@ body{
     border: 2px solid rgb(19, 117, 209);
     display: block;
     position: absolute;
-    left: 147px;
+    left: 152px;
     top: 24px;
 }
 .client_box span:after{
     content: "";
     height: 75%;
-    width: 70%;
+    width: 75%;
     background: rgb(19, 117, 209);
     display: block;
     position: absolute;
@@ -273,13 +275,12 @@ body{
 }
 .client_box label{
     display: block;
-    position: absolute;
-    margin-left: 7.8rem;
+    position: relative;
     width: 75px;
     min-width: 60px;
     max-width: 80px;
     text-align: end;
-    top: 52%;
+    top: -25%;
     font-weight: 500;
 }
 
@@ -289,7 +290,7 @@ body{
 
 .submit{
     position: relative;
-    background-color: rgb(4, 134, 255);
+    background-color: rgb(20, 116, 206);
     border-radius: 0.5rem;
     border: 0;
     color: white;
@@ -298,6 +299,7 @@ body{
     margin-left: 3.2rem;
     height: 3rem;
     width: 15rem;
+    font-weight: 600;
     font-family: Helvetica, sans-serif;
 }
 :hover.submit{
@@ -364,21 +366,17 @@ a:visited{
 }
 
 @media (max-width: 450px) {
-    .box {
-        margin: 0;
-        width: 100%;
-        max-width: 100%;
-        min-width: 100% !important;
-    }
     .form{
+        border-radius: 0;
         max-width: 100%;
         min-width: 100%;
         width: 100%;
         max-height: 100%;
         min-height: 100%;
         height: 100%;
-        padding-top: 26rem;
-        padding-right: 0.8rem;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 200px;
         background: rgba(255,255,255,0.8);
     }
     .logo-cont{

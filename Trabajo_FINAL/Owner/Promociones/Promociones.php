@@ -8,6 +8,13 @@
     /*if (!isset($_SESSION["codUsuario"]) || $_SESSION["tipoUsuario"] != "Dueño de local") {
         header("Location: ../../inicio_de_sesion/inicio_sesion.php");
     }*/
+
+    $parametro = NULL;
+    $busqueda = NULL;
+    if (isset($_GET["buscar"])) {
+        $busqueda = $_GET["buscar_name"];
+        $parametro = $_GET["parametro"];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,28 +43,22 @@
         <h1 class="page_title">Promociones</h1>
         <div class="back_img">
             <div class="search_box">
-                <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="get" class="form_search">
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="get" class="form_search">
                     <label class="search_label" for="select_parametro">Búsqueda de Promoción:
                         <select name="parametro" id="select_parametro" class="form-search__select">
-                            <option value="textoPromo">Por Texto</option>
-                            <option value="categoriaCliente">Por Categoría</option>
-                            <option value="codPromo">Por Codigo de Promo</option>
+                            <option value="textoPromo" <?php if ($parametro == 'textoPromo') echo 'selected'; ?>>Por Texto</option>
+                            <option value="categoriaCliente" <?php if ($parametro == 'categoriaCliente') echo 'selected'; ?>>Por Categoría</option>
+                            <option value="codPromo" <?php if ($parametro == 'codPromo') echo 'selected'; ?>>Por Codigo de Promo</option>
                         </select>
                     </label>
+                    <a href="Promociones.php" class="refresh_button" title="Quitar Selección" aria-label="Quitar Selección"><svg class="refresh_logo" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/><path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/></svg></a>
                     <input type="text" placeholder="¿Qué buscas?" class="form-search__input" id="search" name="buscar_name" value="<?php echo $_GET["buscar_name"] ?>">
-                    <input type="submit" value="Buscar" class="form-search__button" name="buscar">
+                    <input type="submit" value="Buscar" class="form-search__button" name="buscar"><br>
                     <input type="submit" value="Crear Promoción" class="form-search__create-button" name="crear">
                 </form>
             </div>
         </div>
         <?php
-            $parametro = NULL;
-            $busqueda = NULL;
-            if (isset($_GET["buscar"])) {
-                $busqueda = $_GET["buscar_name"];
-                $parametro = $_GET["parametro"];
-            }
-
             if (isset($_GET["crear"])) {
                 header("Location: CrearPromociones.php");
             }
@@ -115,16 +116,17 @@
                                     </div><?php
                                     if(!empty($_GET[$row_locales["codLocal"]])){
                                         $_SESSION["buscar_local"] = $row_locales["codLocal"];                                        
-                                        $_SESSION["buscar_nombre_local"] = $row_locales["nombreLocal"];                                        
+                                        $_SESSION["buscar_nombre_local"] = $row_locales["nombreLocal"];
                                         if($busqueda != "" && isset($parametro)){
-                                            $search_promos = "SELECT * FROM promociones WHERE (codLocal, $parametro) = ('{$row_locales["codLocal"]}', '$busqueda')";
+                                            $search_promos = "SELECT * FROM promociones WHERE (codLocal, $parametro) LIKE ('{$row_locales["codLocal"]}', '$busqueda') LIMIT $inicio, $cant_registros";
                                             $result_promos = mysqli_query($conn, $search_promos);
-                                        }
-                                        else{
+                                        }      
+                                        else{                                  
                                             $search_promos = "SELECT * FROM promociones WHERE codLocal = {$row_locales['codLocal']} LIMIT $inicio, $cant_registros";
                                             $result_promos = mysqli_query($conn, $search_promos);
-                                            $sql_total = "SELECT COUNT(*) FROM promociones WHERE codLocal = {$_SESSION['buscar_local']}";
                                         }
+                                        $sql_total = "SELECT COUNT(*) FROM promociones WHERE codLocal = {$_SESSION['buscar_local']}";
+
                                         if(mysqli_num_rows($result_promos) > 0){
                                             $flag = true;                                       
                                         }
@@ -286,135 +288,149 @@
                         <table class="tabla_promocion">
                             <?php
                             $dias_semana = array("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo");
-                            $search_promos = "SELECT * FROM promociones WHERE codLocal = {$_SESSION['buscar_local']} LIMIT $inicio, $cant_registros";
-                            $result_promos = mysqli_query($conn, $search_promos);
-                            while($row_promos = mysqli_fetch_assoc($result_promos)){
-                                $class = false;
-                                $pend = false;
-                                $dias_validos = "";
-                                for ($i = 0; $i <= 6; $i++) {
-                                    if ($row_promos["diasSemana"][$i] == 1) {
-                                        $dias_validos = $dias_validos . $dias_semana[$i] . "-";
+                            if($busqueda != "" && isset($parametro)){
+                                $search_promos = "SELECT * FROM promociones WHERE codLocal = '{$_SESSION['buscar_local']}' AND $parametro LIKE '$busqueda%' LIMIT $inicio, $cant_registros";
+                                $result_promos = mysqli_query($conn, $search_promos);
+                            }
+                            else{
+                                $search_promos = "SELECT * FROM promociones WHERE codLocal = {$_SESSION['buscar_local']} LIMIT $inicio, $cant_registros";
+                                $result_promos = mysqli_query($conn, $search_promos);
+                            }
+                            if(mysqli_num_rows($result_promos) > 0){
+                                while($row_promos = mysqli_fetch_assoc($result_promos)){
+                                    $class = false;
+                                    $pend = false;
+                                    $dias_validos = "";
+                                    for ($i = 0; $i <= 6; $i++) {
+                                        if ($row_promos["diasSemana"][$i] == 1) {
+                                            $dias_validos = $dias_validos . $dias_semana[$i] . "-";
+                                        }
                                     }
-                                }
-                                $len = strlen($dias_validos);
-                                $dias_validos[$len - 1] = ' ';
-                                if($row_promos["estadoPromo"] == "denegada"){
-                                    $class = true;
-                                }
-                                if($row_promos["estadoPromo"] == "pendiente"){
-                                    $pend = true;
-                                }
-                                if(!$flag){
-                                ?>
-                                        <?php
-                                            while($j < 1){
-                                        ?>
-                                            <tr>
-                                                <th>Texto Promoción</th>
-                                                <th>Categoría</th>
-                                                <th>Fecha de Finalización</th>
-                                                <th>Dias validos</th>
-                                                <th>Acciones</th>
-                                            </tr>
-                                        <?php
-                                                $j++;
-                                            }
-                                        ?>
-                                            <tr>
-                                                <td class="<?php echo $class ? 'denegada':'';?> <?php echo $pend ? 'pendiente':'';?>"><?php echo $row_promos["textoPromo"]?></td>
-                                                <td class="<?php echo $class ? 'denegada':'';?> <?php echo $pend ? 'pendiente':'';?>"><?php echo $row_promos["categoriaCliente"]?></td>
-                                                <td class="<?php echo $class ? 'denegada':'';?> <?php echo $pend ? 'pendiente':'';?>"><?php echo $row_promos["fechaHastaPromo"]?></td>
-                                                <td class="<?php echo $class ? 'denegada':'';?> <?php echo $pend ? 'pendiente':'';?>"><?php echo $dias_validos?></td>
-                                                <?php
-                                                    if($row_promos["estadoPromo"] != "denegada"){
-                                                ?>
-                                                    <td>
-                                                        <?php echo"
-                                                            <button class='delete_button' onclick=\"document.getElementById('modal-{$row_promos["codPromo"]}').checked = true\" aria-label='Eliminar Local' title='Eliminar Local'>
-                                                                <svg class='delete_symbol' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-x-square-fill' viewBox='0 0 16 16'>
-                                                                    <path d='M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708'/>
-                                                                </svg>
-                                                            </button>
-                                                            <input type='checkbox' id='modal-{$row_promos["codPromo"]}' name='modal-trigger'>
-                                                            <div class='modal'>
-                                                                <div class='modal-dialog'>
-                                                                    <div class='modal-content'>
-                                                                        <div class='modal-header'>
-                                                                            <h5 class='modal-title'>Dar de baja: <strong style='color: #c90a0a'>{$row_promos["codPromo"]}- {$_SESSION["buscar_nombre_local"]}</strong></h5>
-                                                                            <button type='button' class='btn btn-close' onclick=\"document.getElementById('modal-{$row_promos["codPromo"]}').checked = false\" aria-label='Cerrar'></button>
-                                                                        </div>
-                                                                        <div class='modal-body'>
-                                                                            <p>¿Está seguro de que desea eliminar esta Promoción?</p>
-                                                                        </div>
-                                                                        <div class='modal-footer'>
-                                                                            <form method='POST' action='Promociones.php'>
-                                                                                <input type='hidden' name='codPromo' value='{$row_promos["codPromo"]}'>
-                                                                                <button type='button' class='btn btn-secondary' onclick=\"document.getElementById('modal-{$row_promos["codPromo"]}').checked = false\">Cancelar</button>
-                                                                                <button type='submit' class='btn btn-danger'>Eliminar</button>
-                                                                            </form>
+                                    $len = strlen($dias_validos);
+                                    $dias_validos[$len - 1] = ' ';
+                                    if($row_promos["estadoPromo"] == "denegada"){
+                                        $class = true;
+                                    }
+                                    if($row_promos["estadoPromo"] == "pendiente"){
+                                        $pend = true;
+                                    }
+                                    if(!$flag){
+                                    ?>
+                                            <?php
+                                                while($j < 1){
+                                            ?>
+                                                <tr>
+                                                    <th>Texto Promoción</th>
+                                                    <th>Categoría</th>
+                                                    <th>Fecha de Finalización</th>
+                                                    <th>Dias validos</th>
+                                                    <th>Acciones</th>
+                                                </tr>
+                                            <?php
+                                                    $j++;
+                                                }
+                                            ?>
+                                                <tr>
+                                                    <td class="<?php echo $class ? 'denegada':'';?> <?php echo $pend ? 'pendiente':'';?>"><?php echo $row_promos["textoPromo"]?></td>
+                                                    <td class="<?php echo $class ? 'denegada':'';?> <?php echo $pend ? 'pendiente':'';?>"><?php echo $row_promos["categoriaCliente"]?></td>
+                                                    <td class="<?php echo $class ? 'denegada':'';?> <?php echo $pend ? 'pendiente':'';?>"><?php echo $row_promos["fechaHastaPromo"]?></td>
+                                                    <td class="<?php echo $class ? 'denegada':'';?> <?php echo $pend ? 'pendiente':'';?>"><?php echo $dias_validos?></td>
+                                                    <?php
+                                                        if($row_promos["estadoPromo"] != "denegada"){
+                                                    ?>
+                                                        <td>
+                                                            <?php echo"
+                                                                <button class='delete_button' onclick=\"document.getElementById('modal-{$row_promos["codPromo"]}').checked = true\" aria-label='Eliminar Local' title='Eliminar Local'>
+                                                                    <svg class='delete_symbol' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-x-square-fill' viewBox='0 0 16 16'>
+                                                                        <path d='M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708'/>
+                                                                    </svg>
+                                                                </button>
+                                                                <input type='checkbox' id='modal-{$row_promos["codPromo"]}' name='modal-trigger'>
+                                                                <div class='modal'>
+                                                                    <div class='modal-dialog'>
+                                                                        <div class='modal-content'>
+                                                                            <div class='modal-header'>
+                                                                                <h5 class='modal-title'>Dar de baja: <strong style='color: #c90a0a'>{$row_promos["codPromo"]}- {$_SESSION["buscar_nombre_local"]}</strong></h5>
+                                                                                <button type='button' class='btn btn-close' onclick=\"document.getElementById('modal-{$row_promos["codPromo"]}').checked = false\" aria-label='Cerrar'></button>
+                                                                            </div>
+                                                                            <div class='modal-body'>
+                                                                                <p>¿Está seguro de que desea eliminar esta Promoción?</p>
+                                                                            </div>
+                                                                            <div class='modal-footer'>
+                                                                                <form method='POST' action='Promociones.php'>
+                                                                                    <input type='hidden' name='codPromo' value='{$row_promos["codPromo"]}'>
+                                                                                    <button type='button' class='btn btn-secondary' onclick=\"document.getElementById('modal-{$row_promos["codPromo"]}').checked = false\">Cancelar</button>
+                                                                                    <button type='submit' class='btn btn-danger'>Eliminar</button>
+                                                                                </form>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        ";
-                                                            if(!empty($_POST["codPromo"])){
-                                                                $sql_update = "UPDATE promociones SET estadoPromo = 'denegada' WHERE codPromo = {$_POST["codPromo"]}";
-                                                                mysqli_query($conn, $sql_update);
-                                                                $_POST = array();
-                                                                header("LOCATION: Promociones.php");
-                                                            }
-                                                        ?>
-                                                    </td>
-                                                    <?php
-                                                    }
-                                                    elseif($row_promos["estadoPromo"] == "denegada"){
-                                                        ?>
-                                                        <td>
-                                                            <?php
-                                                             echo"
-                                                             <button class='delete_button' onclick=\"document.getElementById('modal-{$row_promos["codPromo"]}').checked = true\" aria-label='Eliminar Local' title='Eliminar Local'>
-                                                                 <svg class='delete_symbol' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-x-square-fill' viewBox='0 0 16 16'>
-                                                                     <path d='M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708'/>
-                                                                 </svg>
-                                                             </button>
-                                                             <input type='checkbox' id='modal-{$row_promos["codPromo"]}' name='modal-trigger'>
-                                                             <div class='modal'>
-                                                                 <div class='modal-dialog'>
-                                                                     <div class='modal-content'>
-                                                                         <div class='modal-header'>
-                                                                             <h5 class='modal-title'>Dar de Alta: <strong style='color: #c90a0a'>{$row_promos["codPromo"]}- {$_SESSION["buscar_nombre_local"]}</strong></h5>
-                                                                             <button type='button' class='btn btn-close' onclick=\"document.getElementById('modal-{$row_promos["codPromo"]}').checked = false\" aria-label='Cerrar'></button>
-                                                                         </div>
-                                                                         <div class='modal-body'>
-                                                                             <p>La promoción ha sido eliminada, ¿Desea reestablecerla?</p>
-                                                                         </div>
-                                                                         <div class='modal-footer'>
-                                                                             <form method='POST' action='Promociones.php'>
-                                                                                 <input type='hidden' name='codPromo_rest' value='{$row_promos["codPromo"]}'>
-                                                                                 <button type='button' class='btn btn-secondary' onclick=\"document.getElementById('modal-{$row_promos["codPromo"]}').checked = false\">Cancelar</button>
-                                                                                 <button type='submit' class='btn btn-danger'>Reestablecer</button>
-                                                                             </form>
-                                                                         </div>
-                                                                     </div>
-                                                                 </div>
-                                                             </div>
-                                                         ";
-                                                         if(!empty($_POST["codPromo_rest"])){
-                                                            $sql_update = "UPDATE promociones SET estadoPromo = 'aprobada' WHERE codPromo = {$_POST["codPromo_rest"]}";
-                                                            mysqli_query($conn, $sql_update);
-                                                            $_POST = array();
-                                                            header("LOCATION: Promociones.php");
-                                                         }
+                                                            ";
+                                                                if(!empty($_POST["codPromo"])){
+                                                                    $sql_update = "UPDATE promociones SET estadoPromo = 'denegada' WHERE codPromo = {$_POST["codPromo"]}";
+                                                                    mysqli_query($conn, $sql_update);
+                                                                    $_POST = array();
+                                                                    header("LOCATION: Promociones.php");
+                                                                }
                                                             ?>
                                                         </td>
                                                         <?php
-                                                    }
-                                                    ?>
-                                            </tr>
-                                <?php
+                                                        }
+                                                        elseif($row_promos["estadoPromo"] == "denegada"){
+                                                            ?>
+                                                            <td>
+                                                                <?php
+                                                                 echo"
+                                                                 <button class='delete_button' onclick=\"document.getElementById('modal-{$row_promos["codPromo"]}').checked = true\" aria-label='Eliminar Local' title='Eliminar Local'>
+                                                                     <svg class='delete_symbol' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-x-square-fill' viewBox='0 0 16 16'>
+                                                                         <path d='M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708'/>
+                                                                     </svg>
+                                                                 </button>
+                                                                 <input type='checkbox' id='modal-{$row_promos["codPromo"]}' name='modal-trigger'>
+                                                                 <div class='modal'>
+                                                                     <div class='modal-dialog'>
+                                                                         <div class='modal-content'>
+                                                                             <div class='modal-header'>
+                                                                                 <h5 class='modal-title'>Dar de Alta: <strong style='color: #c90a0a'>{$row_promos["codPromo"]}- {$_SESSION["buscar_nombre_local"]}</strong></h5>
+                                                                                 <button type='button' class='btn btn-close' onclick=\"document.getElementById('modal-{$row_promos["codPromo"]}').checked = false\" aria-label='Cerrar'></button>
+                                                                             </div>
+                                                                             <div class='modal-body'>
+                                                                                 <p>La promoción ha sido eliminada, ¿Desea reestablecerla?</p>
+                                                                             </div>
+                                                                             <div class='modal-footer'>
+                                                                                 <form method='POST' action='Promociones.php'>
+                                                                                     <input type='hidden' name='codPromo_rest' value='{$row_promos["codPromo"]}'>
+                                                                                     <button type='button' class='btn btn-secondary' onclick=\"document.getElementById('modal-{$row_promos["codPromo"]}').checked = false\">Cancelar</button>
+                                                                                     <button type='submit' class='btn btn-danger'>Reestablecer</button>
+                                                                                 </form>
+                                                                             </div>
+                                                                         </div>
+                                                                     </div>
+                                                                 </div>
+                                                             ";
+                                                             if(!empty($_POST["codPromo_rest"])){
+                                                                $sql_update = "UPDATE promociones SET estadoPromo = 'aprobada' WHERE codPromo = {$_POST["codPromo_rest"]}";
+                                                                mysqli_query($conn, $sql_update);
+                                                                $_POST = array();
+                                                                header("LOCATION: Promociones.php");
+                                                             }
+                                                                ?>
+                                                            </td>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                </tr>
+                                    <?php
+                                    }
                                 }
-                            }?>
+                            }
+                            else{
+                                ?>
+                                <div class="no_promo cion">No se ha encontrado lo que buscas</div>
+                                <?php
+                            }
+                            ?>
                         </table>
                     </div>
                             <?php
