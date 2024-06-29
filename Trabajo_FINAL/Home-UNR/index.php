@@ -11,7 +11,7 @@ $_SESSION["tipoUsuario"] = "UNR";
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="../Imagenes-Videos/bolsas-de-compra.png" type="image/png">
-  <title>Online Shop</title>
+  <title>Rosario Shopping Center</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
@@ -30,11 +30,26 @@ $_SESSION["tipoUsuario"] = "UNR";
         <h1 class="title">Rosario Shopping Center</h1>
         <p class="shopping-description p-delete">Bienvenidos a Rosario Shopping Center.</p>
         <p class="shopping-description">Moda, cine, gastronomía y mucho más! Descubrí el corazón de Rosario.</p>
+        <div class="contenedor-flecha">
+          <a href="#locales" class="enlace-flecha">
+            <p class="flecha">
+              <svg data-bbox="20 59.5 160 81.001" viewBox="0 0 200 200" height="100" width="100" xmlns="http://www.w3.org/2000/svg" data-type="shape">
+                <g>
+                  <!-- Añadimos el círculo -->
+                  <circle cx="100" cy="100" r="75" stroke="white" stroke-width="5" fill="none" />
+                  <g transform="rotate(180 70 70) scale(0.4)">
+                    <path d="M177.687 128.054L105.35 61.402a7.205 7.205 0 0 0-5.35-1.886 7.198 7.198 0 0 0-5.349 1.886l-72.338 66.652a7.165 7.165 0 0 0-.407 10.138 7.172 7.172 0 0 0 5.283 2.309c1.743 0 3.49-.629 4.872-1.902L100 75.999l67.939 62.598a7.197 7.197 0 0 0 10.155-.406 7.163 7.163 0 0 0-.407-10.137z" fill="white"></path>
+                  </g>
+                </g>
+              </svg>
+            </p>
+          </a>
+        </div>
       </div>
     </div>
   </section>
-
-
+  
+  <div id="locales"></div>
   <section class="section-2">
     <div class="b1">
       <h2 class="subtitle">Locales</h2>

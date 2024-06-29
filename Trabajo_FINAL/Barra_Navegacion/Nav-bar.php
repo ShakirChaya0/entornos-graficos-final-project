@@ -18,7 +18,7 @@
           if($_SESSION["tipoUsuario"] == "Cliente"){
     ?>
             <div class="navbar-style">
-                <a class="navbar-brand" href="../Home/Home.php"><img class="icon" src="../../Imagenes-Videos/bolsas-de-compra.png" alt="Icono"></a>
+                <a class="navbar-brand" href="../Home/Home.php"><img title="Inicio" class="icon" src="../../Imagenes-Videos/bolsas-de-compra.png" alt="Inicio"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -63,7 +63,7 @@
           if($_SERVER["PHP_SELF"] == "/Home-UNR/index.php"){
     ?>
               <div class="navbar-style">
-                <a class="navbar-brand" href="../Home-UNR/index.php"><img class="icon" src="../Imagenes-Videos/bolsas-de-compra.png" alt="Icono"></a>
+                <a class="navbar-brand" href="../Home-UNR/index.php"><img title="Inicio" class="icon" src="../Imagenes-Videos/bolsas-de-compra.png" alt="Inicio"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -105,7 +105,7 @@
               elseif($_SERVER["PHP_SELF"] == "/Client/Locales/Locales.php" || $_SERVER["PHP_SELF"] == "/Client/Promociones/Promociones.php"){
               ?>
               <div class="navbar-style">
-                <a class="navbar-brand" href="../../Home-UNR/index.php"><img class="icon" src="../../Imagenes-Videos/bolsas-de-compra.png" alt="Icono"></a>
+                <a class="navbar-brand" href="../../Home-UNR/index.php"><img title="Inicio" class="icon" src="../../Imagenes-Videos/bolsas-de-compra.png" alt="Inicio"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -156,7 +156,7 @@
         if($_SESSION["tipoUsuario"] == "Dueño de local"){
     ?>
             <div class="navbar-style">
-                <a class="navbar-brand" href="../Home/Home.php"><img class="icon" src="../../Imagenes-Videos/bolsas-de-compra.png" alt="Icono"></a>
+                <a class="navbar-brand" href="../Home/Home.php"><img title="Inicio" class="icon" src="../../Imagenes-Videos/bolsas-de-compra.png" alt="Inicio"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -189,7 +189,7 @@
         if($_SESSION["tipoUsuario"] == "Administrador"){
     ?>
                 <div class="navbar-style">
-                  <a class="navbar-brand" href="../home/home_page_admin.php"><img class="icon" src="../../Imagenes-Videos/bolsas-de-compra.png" alt="Icono"></a>
+                  <a class="navbar-brand" href="../home/home_page_admin.php"><img title="Inicio" class="icon" src="../../Imagenes-Videos/bolsas-de-compra.png" alt="Inicio"></a>
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                   </button>
