@@ -64,6 +64,7 @@
                                 $_SESSION["categoriaCliente"] = $row["categoriaCliente"];
                                 $_SESSION["estado"] = $row["estado"];
                                 $_SESSION["cantidadPromo"] = $row["cantidadPromo"];
+                                $_SESSION["editarPerfil"] = 0;
                                 mysqli_close($conn);
                                 if($row["tipoUsuario"] == "Administrador"){
                                     $_SESSION["promocionCreadaDueño"] = 0;

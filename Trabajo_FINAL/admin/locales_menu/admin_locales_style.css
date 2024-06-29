@@ -214,6 +214,7 @@ section:target {
   transition-property: background-color, border;
   transition-duration: 0.2s;
   margin-top: 1.5rem;
+  margin-left: 5px !important;
 }
 
 .create-button:hover {
