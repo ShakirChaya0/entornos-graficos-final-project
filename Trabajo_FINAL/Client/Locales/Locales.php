@@ -16,7 +16,7 @@
     integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
     crossorigin="anonymous"></script>
     <link rel="stylesheet" href="Locales.css">
-    <link rel="stylesheet" href="../../Pie_De_Pagina/footer.css">
+    <link rel="stylesheet" href="../../Pie_de_Pagina/footer.css">
     <link rel="stylesheet" href="../../Barra_Navegacion/Bar-style.css">
     <title>Rosario Shopping Center Locales</title>
 </head>
@@ -32,9 +32,7 @@
     <div class="lineas_title">Locales</div>
 
   <!-- Barra de búsqueda de locales -->
-
-    <section class="section1">
-      <form class="filtrado_locales" method="post" action="<?php htmlspecialchars($_SERVER["PHP_SELF"])?>">
+      <form class="filtrado_locales" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>">
         <label class="search_label" for="select_parametro"><b>Búsqueda de local:</b>
           <select name="parametro" id="select_parametro" class="form-search__select">
               <option value="nombreLocal">Por nombre</option>
@@ -48,7 +46,6 @@
           <img class="lupa_busqueda" src="../../Imagenes-Videos/lupa.png" alt="lupa de busqueda"><input type="submit" class="lupa_input" id="enviar_busqueda" name="busqued">
         </label>
       </form>
-    </section>
 
     <div class="iteracion">  
       <?php

@@ -961,8 +961,7 @@
     include("../../Barra_Navegacion/Nav-bar.php");
   ?>
   <div class="lineas_title">Promociones</div>
-  <section class="section1">
-    <form class="filtrado_locales" action = "<?php htmlspecialchars($_SERVER["PHP_SELF"])?>" method="post">
+    <form class="filtrado_locales" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>" method="post">
       <label class="search_label" for="select_parametro"><b>Búsqueda de local:</b>
         <select name="parametro" id="select_parametro" class="form-search__select">
             <option value="nombreLocal" <?php if ($selected_value == 'nombreLocal') echo 'selected'; ?>>Por nombre de local</option>
@@ -975,7 +974,6 @@
       <!--<input id="promociones_usadas" type="checkbox" name="usadas" class="checkbox_prom">-->
       <label for="enviar_busqueda" class="label_busqueda"><img class="lupa_busqueda" src="../../Imagenes-Videos/lupa.png" alt="lupa de busqueda"><input type="submit" class="lupa_input" id="enviar_busqueda" name="busqued"></label>
     </form>
-  </section>
   <div class="iteracion">
     <?php
       if(isset($_POST["parametro"])){

@@ -162,7 +162,7 @@ $_SESSION["tipoUsuario"] = "UNR";
     </div>
   </section>
   
-  <section class="section-3" id="About us">
+  <section class="section-3" id="AboutUs">
     <div class="b1">
       <h2 class="subtitle">EL SHOPPING</h2>
       <img class="image-wrapper shopping-image" src="../Imagenes-Videos/Imagen-Shopping.jpg" alt="">
