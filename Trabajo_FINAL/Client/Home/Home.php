@@ -5,7 +5,7 @@
   }*/
 ?>
 <!doctype html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="utf-8">
@@ -156,7 +156,7 @@
 
   <!-- Sobre nosotros de la página principal de clientes (Se puede modularizar) -->
 
-  <section class="section-3" id="About us">
+  <section class="section-3" id="AboutUs">
     <div class="b1">
       <h2 class="subtitle">EL SHOPPING</h2>
       <img class="image-wrapper shopping-image" src="../../Imagenes-Videos/Imagen-Shopping.jpg" alt="">

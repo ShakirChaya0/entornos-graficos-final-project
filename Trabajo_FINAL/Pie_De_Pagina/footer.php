@@ -1,16 +1,17 @@
 
 <footer class="footer" id="Contacto">
-    <div class="f1">
-      <h3 class="footer-titles">Rosario Shopping center (Junin 501)</h3>
-      <div class="img_mapa">
   <?php 
       if($_SESSION["tipoUsuario"] == "UNR"){
         if($_SERVER["PHP_SELF"] == "/Home-UNR/index.php"){
   ?>
-        <a href="https://www.google.com/maps/place/Alto+Rosario+Shopping/@-32.9282706,-60.674688,15z/data=!4m6!3m5!1s0x95b654abc3ab1d5f:0x2f90ce97db2c5a6!8m2!3d-32.9274658!4d-60.6690017!16s%2Fg%2F1tdvlb_y?entry=ttu" target="_blank">
-        <img src="../Imagenes-Videos/imagen_mapa.png" alt="Ubicación en Google Maps"></a>
-      </div>
-    </div>
+  
+        <div class="f1">
+          <h3 class="footer-titles">Rosario Shopping center (Junin 501)</h3>
+          <div class="img_mapa">
+            <a href="https://www.google.com/maps/place/Alto+Rosario+Shopping/@-32.9282706,-60.674688,15z/data=!4m6!3m5!1s0x95b654abc3ab1d5f:0x2f90ce97db2c5a6!8m2!3d-32.9274658!4d-60.6690017!16s%2Fg%2F1tdvlb_y?entry=ttu" target="_blank">
+            <img src="../Imagenes-Videos/imagen_mapa.png" alt="Ubicación en Google Maps"></a>
+          </div>
+        </div>
         <div class="f2">
           <div class="contact_container">
             <h3 class="footer-titles">Información</h3>
@@ -118,10 +119,13 @@
     <?php
         } elseif($_SERVER["PHP_SELF"] != "/Home-UNR/index.php"){
       ?>
-        <a href="https://www.google.com/maps/place/Alto+Rosario+Shopping/@-32.9282706,-60.674688,15z/data=!4m6!3m5!1s0x95b654abc3ab1d5f:0x2f90ce97db2c5a6!8m2!3d-32.9274658!4d-60.6690017!16s%2Fg%2F1tdvlb_y?entry=ttu" target="_blank">
-        <img src="../../Imagenes-Videos/imagen_mapa.png" alt="Ubicación en Google Maps"></a>
-      </div>
-    </div>
+        <div class="f1">
+          <h3 class="footer-titles">Rosario Shopping center (Junin 501)</h3>
+          <div class="img_mapa">
+            <a href="https://www.google.com/maps/place/Alto+Rosario+Shopping/@-32.9282706,-60.674688,15z/data=!4m6!3m5!1s0x95b654abc3ab1d5f:0x2f90ce97db2c5a6!8m2!3d-32.9274658!4d-60.6690017!16s%2Fg%2F1tdvlb_y?entry=ttu" target="_blank">
+            <img src="../../Imagenes-Videos/imagen_mapa.png" alt="Ubicación en Google Maps"></a>
+          </div>
+        </div>
         <div class="f2">
           <div class="contact_container">
             <h3 class="footer-titles">Información</h3>
@@ -230,10 +234,13 @@
         }
       } elseif($_SESSION["tipoUsuario"] == "Cliente"){
    ?>
-     <a href="https://www.google.com/maps/place/Alto+Rosario+Shopping/@-32.9282706,-60.674688,15z/data=!4m6!3m5!1s0x95b654abc3ab1d5f:0x2f90ce97db2c5a6!8m2!3d-32.9274658!4d-60.6690017!16s%2Fg%2F1tdvlb_y?entry=ttu" target="_blank">
-     <img src="../../Imagenes-Videos/imagen_mapa.png" alt="Ubicación en Google Maps"></a>
-   </div>
-  </div>
+      <div class="f1">
+          <h3 class="footer-titles">Rosario Shopping center (Junin 501)</h3>
+          <div class="img_mapa">
+          <a href="https://www.google.com/maps/place/Alto+Rosario+Shopping/@-32.9282706,-60.674688,15z/data=!4m6!3m5!1s0x95b654abc3ab1d5f:0x2f90ce97db2c5a6!8m2!3d-32.9274658!4d-60.6690017!16s%2Fg%2F1tdvlb_y?entry=ttu" target="_blank">
+          <img src="../../Imagenes-Videos/imagen_mapa.png" alt="Ubicación en Google Maps"></a>
+        </div>
+      </div>
       <div class="f2">
        <div class="contact_container">
          <h3 class="footer-titles">Información</h3>
@@ -335,10 +342,13 @@
   <?php
       } elseif($_SESSION["tipoUsuario"] == "Dueño de local"){
         ?>
-          <a href="https://www.google.com/maps/place/Alto+Rosario+Shopping/@-32.9282706,-60.674688,15z/data=!4m6!3m5!1s0x95b654abc3ab1d5f:0x2f90ce97db2c5a6!8m2!3d-32.9274658!4d-60.6690017!16s%2Fg%2F1tdvlb_y?entry=ttu" target="_blank">
-          <img src="../../Imagenes-Videos/imagen_mapa.png" alt="Ubicación en Google Maps"></a>
-        </div>
-       </div>
+            <div class="f1">
+              <h3 class="footer-titles">Rosario Shopping center (Junin 501)</h3>
+              <div class="img_mapa">
+                <a href="https://www.google.com/maps/place/Alto+Rosario+Shopping/@-32.9282706,-60.674688,15z/data=!4m6!3m5!1s0x95b654abc3ab1d5f:0x2f90ce97db2c5a6!8m2!3d-32.9274658!4d-60.6690017!16s%2Fg%2F1tdvlb_y?entry=ttu" target="_blank">
+                <img src="../../Imagenes-Videos/imagen_mapa.png" alt="Ubicación en Google Maps"></a>
+              </div>
+            </div>
            <div class="f2">
             <div class="contact_container">
               <h3 class="footer-titles">Información</h3>
@@ -435,9 +445,12 @@
       } 
       elseif($_SESSION["tipoUsuario"] == "Administrador"){
         ?>
-              <a href="https://www.google.com/maps/place/Alto+Rosario+Shopping/@-32.9282706,-60.674688,15z/data=!4m6!3m5!1s0x95b654abc3ab1d5f:0x2f90ce97db2c5a6!8m2!3d-32.9274658!4d-60.6690017!16s%2Fg%2F1tdvlb_y?entry=ttu" target="_blank">
-					      <img src="../../Imagenes-Videos/imagen_mapa.png" alt="Ubicación en Google Maps">
-              </a>
+          <div class="f1">
+            <h3 class="footer-titles">Rosario Shopping center (Junin 501)</h3>
+            <div class="img_mapa">
+                  <a href="https://www.google.com/maps/place/Alto+Rosario+Shopping/@-32.9282706,-60.674688,15z/data=!4m6!3m5!1s0x95b654abc3ab1d5f:0x2f90ce97db2c5a6!8m2!3d-32.9274658!4d-60.6690017!16s%2Fg%2F1tdvlb_y?entry=ttu" target="_blank">
+			    		      <img src="../../Imagenes-Videos/imagen_mapa.png" alt="Ubicación en Google Maps">
+                  </a>
 		      	</div>
 		      </div>
             
