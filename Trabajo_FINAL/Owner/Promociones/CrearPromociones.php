@@ -9,7 +9,7 @@
     }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,13 +27,13 @@
     ?>
 
     <section>
-        <h1 class="page_title">Promociones</h1>
+        <h2 class="page_title">Promociones</h2>
         <div class="form_back">
             <button class="btn btn-outline-secondary">
                 <svg class="arrow_symbol" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
                 </svg>
-                <a href="Promociones.php" class="volver_btn" aria-label="Volver"></a>
+                <a href="Promociones.php" class="volver_btn" aria-label="Volver a la pagina anterior"></a>
                 Volver
             </button>
         </div>
@@ -46,19 +46,20 @@
         <div class="create_box">
             <form action="<?php $_SERVER["PHP_SELF"]?>" method="post" class="form_create">
                 <h3 class="create_subtitle">Crear Promoción</h3>
-                <label class="create_label" for="nombre">Texto de la Promoción:</label>
-                <input type="text" placeholder="..." class="form-create__input" name="textPromo" maxlength="200" required>
-                <label class="create_label" for="ubi">Fecha de Expiración: </label>
-                <input type="date" placeholder="..." class="form-create__input" name="fechaHast" required>
-                <label class="create_label" for="rubro">Codigo de Local: </label>
-                <input type="number" placeholder="..." class="form-create__input" name="codlocal" min="1" required>
-                <label class="create_label" for="rubro">Categoria de Cliente: </label>
-                <select name="categoria" class="form-create__input" id="">
+                <label class="create_label" for="TextoPromocion">Texto de la Promoción:</label>
+                <input type="text" placeholder="..." id="TextoPromocion" class="form-create__input" name="textPromo" maxlength="200" required>
+                <label class="create_label" for="fecha">Fecha de Expiración: </label>
+                <input type="date" placeholder="..." id="fecha" class="form-create__input" name="fechaHast" required>
+                <label class="create_label" for="codigo">Codigo de Local: </label>
+                <input type="number" placeholder="..." id="codigo" class="form-create__input" name="codlocal" min="1" required>
+                <label class="create_label" for="categoria">Categoria de Cliente: </label>
+                <select name="categoria" class="form-create__input" id="categoria">
                     <option value="Inicial">Inicial</option>
                     <option value="Medium">Medium</option>
                     <option value="Premium">Premium</option>
                 </select>
-                <label class="create_label">Selecciona los días de la semana:</label><br>
+                <fieldset>
+                    <legend>Selecciona los dias que estara activa</legend>
                         <div class="checkbox_box">
                             <input type="checkbox" class="checkbox" name="luness" value="Lunes" id="lunes">
                             <label for="lunes" class="checkbox_label">Lunes</label><br>
@@ -92,6 +93,7 @@
                             <input type="checkbox" class="checkbox" name="domingos" value="Domingo" id="domingodrop">
                             <label for="domingodrop" class="checkbox_label">Domingo</label><br>
                         </div>
+                </fieldset>
                 <input type="submit" value="Crear Promoción" class="form-create__button" name="sumbit">
             </form>
             <script>

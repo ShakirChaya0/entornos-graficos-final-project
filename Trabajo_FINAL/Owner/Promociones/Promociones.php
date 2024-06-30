@@ -25,8 +25,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="owner_promociones.css">
-    <link rel="stylesheet" href="../../Pie_De_Pagina/footer.css">
     <link rel="stylesheet" href="../../Barra_Navegacion/Bar-style.css">
+    <link rel="stylesheet" href="../../Pie_De_Pagina/footer.css">
     <title>Rosario Shopping Center - Locales</title>
 </head>
 <body>
@@ -46,13 +46,13 @@
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="get" class="form_search">
                     <label class="search_label" for="select_parametro">Búsqueda de Promoción:
                         <select name="parametro" id="select_parametro" class="form-search__select">
-                            <option value="textoPromo" <?php if ($parametro == 'textoPromo') echo 'selected'; ?>>Por Texto</option>
-                            <option value="categoriaCliente" <?php if ($parametro == 'categoriaCliente') echo 'selected'; ?>>Por Categoría</option>
-                            <option value="codPromo" <?php if ($parametro == 'codPromo') echo 'selected'; ?>>Por Codigo de Promo</option>
+                            <option value="textoPromo" <?php if ($parametro == 'textoPromo') echo 'selected'; ?> aria-label="Busqueda por texto">Por Texto</option>
+                            <option value="categoriaCliente" <?php if ($parametro == 'categoriaCliente') echo 'selected'; ?> aria-label="Busqueda por categoria">Por Categoría</option>
+                            <option value="codPromo" <?php if ($parametro == 'codPromo') echo 'selected'; ?> aria-label="Busqueda por Promo">Por Codigo de Promo</option>
                         </select>
                     </label>
                     <a href="Promociones.php" class="refresh_button" title="Quitar Selección" aria-label="Quitar Selección"><svg class="refresh_logo" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/><path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/></svg></a>
-                    <input type="text" placeholder="¿Qué buscas?" class="form-search__input" id="search" name="buscar_name" value="<?php echo $_GET["buscar_name"] ?>">
+                    <input type="text" placeholder="¿Qué buscas?" class="form-search__input" id="search" name="buscar_name" value="<?php echo $_GET["buscar_name"] ?>" aria-label="Busqueda de la promocion">
                     <input type="submit" value="Buscar" class="form-search__button" name="buscar"><br>
                     <input type="submit" value="Crear Promoción" class="form-search__create-button" name="crear">
                 </form>

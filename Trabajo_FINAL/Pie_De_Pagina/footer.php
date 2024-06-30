@@ -1,17 +1,16 @@
 
 <footer class="footer" id="Contacto">
+    <div class="f1">
+      <h3 class="footer-titles">Ubicación: Junín 501</h3>
+      <div class="img_mapa">
   <?php 
       if($_SESSION["tipoUsuario"] == "UNR"){
         if($_SERVER["PHP_SELF"] == "/Home-UNR/index.php"){
   ?>
-  
-        <div class="f1">
-          <h3 class="footer-titles">Rosario Shopping center (Junin 501)</h3>
-          <div class="img_mapa">
-            <a href="https://www.google.com/maps/place/Alto+Rosario+Shopping/@-32.9282706,-60.674688,15z/data=!4m6!3m5!1s0x95b654abc3ab1d5f:0x2f90ce97db2c5a6!8m2!3d-32.9274658!4d-60.6690017!16s%2Fg%2F1tdvlb_y?entry=ttu" target="_blank">
-            <img src="../Imagenes-Videos/imagen_mapa.png" alt="Ubicación en Google Maps"></a>
-          </div>
-        </div>
+        <a href="https://www.google.com/maps/place/Alto+Rosario+Shopping/@-32.9282706,-60.674688,15z/data=!4m6!3m5!1s0x95b654abc3ab1d5f:0x2f90ce97db2c5a6!8m2!3d-32.9274658!4d-60.6690017!16s%2Fg%2F1tdvlb_y?entry=ttu" target="_blank">
+        <img src="../Imagenes-Videos/Captura de pantalla 2024-05-02 100702.png" alt="Ubicación en Google Maps"></a>
+      </div>
+    </div>
         <div class="f2">
           <div class="contact_container">
             <h3 class="footer-titles">Información</h3>
@@ -20,7 +19,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
                 <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
               </svg>
-              <a href="https://web.whatsapp.com/" target="_blank">
+              <a href="https://web.whatsapp.com/" target="_blanck">
                 (+54)341-644-1810
               </a>
             </div>
@@ -64,7 +63,7 @@
               </svg><a href="../Client/Novedades/Novedades.php">Novedades</a></li>
             <li> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
                 <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
-              </svg><a href="../Home-UNR/index.php#AboutUs">Sobre Nosotros</a></li>
+              </svg><a href="../Home-UNR/index.php#About us">Sobre Nosotros</a></li>
           </ul>
         </div>
         <div class="f3">
@@ -79,11 +78,15 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h2 class="modal-title fs-5" id="exampleModalLabel">Formulario de contacto</h2>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Formulario de contacto</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
                     <form method="post">
+                      <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Correo Electronico</label>
+                        <input type="text" class="form-control" id="recipient-name" name="nombre" required>
+                      </div>
                       <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Asunto</label>
                         <input type="text" class="form-control" id="recipient-name" name="asunto" required>
@@ -101,10 +104,11 @@
                   <?php
                     if(!empty($_POST["Enviar"])){
                       if(!empty($_POST["asunto"]) && !empty($_POST["cuerpo"])){
+                        $nombre = $_POST["nombre"];
                         $asunto = $_POST["asunto"];
                         $cuerpo = $_POST["cuerpo"];
                         $email = "santikellemberger@gmail.com";
-                        $header = "From: {$_SESSION['nombreUsuario']}"."\r\n";
+                        $header = "From: {$nombre}"."\r\n";
                         $header.= "Reply-To: {$_SESSION['nombreUsuario']}"."\r\n";
                         $header.= "X-Mailer: PHP/".phpversion();
                         $mail = @mail($email, $asunto, $cuerpo, $header);
@@ -119,13 +123,10 @@
     <?php
         } elseif($_SERVER["PHP_SELF"] != "/Home-UNR/index.php"){
       ?>
-        <div class="f1">
-          <h3 class="footer-titles">Rosario Shopping center (Junin 501)</h3>
-          <div class="img_mapa">
-            <a href="https://www.google.com/maps/place/Alto+Rosario+Shopping/@-32.9282706,-60.674688,15z/data=!4m6!3m5!1s0x95b654abc3ab1d5f:0x2f90ce97db2c5a6!8m2!3d-32.9274658!4d-60.6690017!16s%2Fg%2F1tdvlb_y?entry=ttu" target="_blank">
-            <img src="../../Imagenes-Videos/imagen_mapa.png" alt="Ubicación en Google Maps"></a>
-          </div>
-        </div>
+        <a href="https://www.google.com/maps/place/Alto+Rosario+Shopping/@-32.9282706,-60.674688,15z/data=!4m6!3m5!1s0x95b654abc3ab1d5f:0x2f90ce97db2c5a6!8m2!3d-32.9274658!4d-60.6690017!16s%2Fg%2F1tdvlb_y?entry=ttu" target="_blank">
+        <img src="../Imagenes-Videos/Captura de pantalla 2024-05-02 100702.png" alt="Ubicación en Google Maps"></a>
+      </div>
+    </div>
         <div class="f2">
           <div class="contact_container">
             <h3 class="footer-titles">Información</h3>
@@ -178,7 +179,7 @@
               </svg><a href="../../Client/Novedades/Novedades.php">Novedades</a></li>
             <li> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
                 <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
-              </svg><a href="../../Home-UNR/index.php#AboutUs">Sobre Nosotros</a></li>
+              </svg><a href="../../Home-UNR/index.php#About us">Sobre Nosotros</a></li>
           </ul>
         </div>
         <div class="f3">
@@ -193,11 +194,15 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h2 class="modal-title fs-5" id="exampleModalLabel">Formulario de contacto</h2>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Formulario de contacto</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    <form method="post">
+                  <form method="post">
+                      <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Correo Electronico</label>
+                        <input type="text" class="form-control" id="recipient-name" name="nombre" required>
+                      </div>
                       <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Asunto</label>
                         <input type="text" class="form-control" id="recipient-name" name="asunto" required>
@@ -215,10 +220,11 @@
                   <?php
                     if(!empty($_POST["Enviar"])){
                       if(!empty($_POST["asunto"]) && !empty($_POST["cuerpo"])){
+                        $nombre = $_POST["nombre"];
                         $asunto = $_POST["asunto"];
                         $cuerpo = $_POST["cuerpo"];
                         $email = "santikellemberger@gmail.com";
-                        $header = "From: {$_SESSION['nombreUsuario']}"."\r\n";
+                        $header = "From: {$nombre}"."\r\n";
                         $header.= "Reply-To: {$_SESSION['nombreUsuario']}"."\r\n";
                         $header.= "X-Mailer: PHP/".phpversion();
                         $mail = @mail($email, $asunto, $cuerpo, $header);
@@ -234,13 +240,10 @@
         }
       } elseif($_SESSION["tipoUsuario"] == "Cliente"){
    ?>
-      <div class="f1">
-          <h3 class="footer-titles">Rosario Shopping center (Junin 501)</h3>
-          <div class="img_mapa">
-          <a href="https://www.google.com/maps/place/Alto+Rosario+Shopping/@-32.9282706,-60.674688,15z/data=!4m6!3m5!1s0x95b654abc3ab1d5f:0x2f90ce97db2c5a6!8m2!3d-32.9274658!4d-60.6690017!16s%2Fg%2F1tdvlb_y?entry=ttu" target="_blank">
-          <img src="../../Imagenes-Videos/imagen_mapa.png" alt="Ubicación en Google Maps"></a>
-        </div>
-      </div>
+     <a href="https://www.google.com/maps/place/Alto+Rosario+Shopping/@-32.9282706,-60.674688,15z/data=!4m6!3m5!1s0x95b654abc3ab1d5f:0x2f90ce97db2c5a6!8m2!3d-32.9274658!4d-60.6690017!16s%2Fg%2F1tdvlb_y?entry=ttu" target="_blank">
+     <img src="../../Imagenes-Videos/Captura de pantalla 2024-05-02 100702.png" alt="Ubicación en Google Maps"></a>
+   </div>
+  </div>
       <div class="f2">
        <div class="contact_container">
          <h3 class="footer-titles">Información</h3>
@@ -287,7 +290,7 @@
             </svg><a href="../Novedades/Novedades.php">Novedades</a></li>
           <li> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
               <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
-            </svg><a href="../Home/Home.php#AboutUs">Sobre Nosotros</a></li>
+            </svg><a href="../Home/Home.php#About us">Sobre Nosotros</a></li>
         </ul>
       </div>
       <div class="f3">
@@ -302,11 +305,15 @@
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h2 class="modal-title fs-5" id="exampleModalLabel">Formulario de contacto</h2>
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Formulario de contacto</h1>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                   <form method="post">
+                    <div class="mb-3">
+                      <label for="recipient-name" class="col-form-label">nombre</label>
+                      <input type="text" class="form-control" id="recipient-name" name="nombre" required>
+                    </div>
                     <div class="mb-3">
                       <label for="recipient-name" class="col-form-label">Asunto</label>
                       <input type="text" class="form-control" id="recipient-name" name="asunto" required>
@@ -324,10 +331,11 @@
             <?php
                 if(!empty($_POST["Enviar"])){
                   if(!empty($_POST["asunto"]) && !empty($_POST["cuerpo"])){
+                    $nombre = $_POST["nombre"];
                     $asunto = $_POST["asunto"];
                     $cuerpo = $_POST["cuerpo"];
                     $email = "santikellemberger@gmail.com";
-                    $header = "From: {$_SESSION['nombreUsuario']}"."\r\n";
+                    $header = "From: {$nombre}"."\r\n";
                     $header.= "Reply-To: {$_SESSION['nombreUsuario']}"."\r\n";
                     $header.= "X-Mailer: PHP/".phpversion();
                     $mail = @mail($email, $asunto, $cuerpo, $header);
@@ -342,13 +350,10 @@
   <?php
       } elseif($_SESSION["tipoUsuario"] == "Dueño de local"){
         ?>
-            <div class="f1">
-              <h3 class="footer-titles">Rosario Shopping center (Junin 501)</h3>
-              <div class="img_mapa">
-                <a href="https://www.google.com/maps/place/Alto+Rosario+Shopping/@-32.9282706,-60.674688,15z/data=!4m6!3m5!1s0x95b654abc3ab1d5f:0x2f90ce97db2c5a6!8m2!3d-32.9274658!4d-60.6690017!16s%2Fg%2F1tdvlb_y?entry=ttu" target="_blank">
-                <img src="../../Imagenes-Videos/imagen_mapa.png" alt="Ubicación en Google Maps"></a>
-              </div>
-            </div>
+          <a href="https://www.google.com/maps/place/Alto+Rosario+Shopping/@-32.9282706,-60.674688,15z/data=!4m6!3m5!1s0x95b654abc3ab1d5f:0x2f90ce97db2c5a6!8m2!3d-32.9274658!4d-60.6690017!16s%2Fg%2F1tdvlb_y?entry=ttu" target="_blank">
+          <img src="../../Imagenes-Videos/Captura de pantalla 2024-05-02 100702.png" alt="Ubicación en Google Maps"></a>
+        </div>
+       </div>
            <div class="f2">
             <div class="contact_container">
               <h3 class="footer-titles">Información</h3>
@@ -393,64 +398,61 @@
              </ul>
            </div>
            <div class="f3">
-             <h3 class="footer-titles">Contáctanos</h3>
-             <div class="logo_footer_form">
-               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-list" viewBox="0 0 16 16">
-                 <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z" />
-                 <path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8m0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0" />
-               </svg>
-                 <button type="button" class="btn btn_formulario" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Formulario de contacto</button>
-                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                 <div class="modal-dialog">
-                   <div class="modal-content">
-                     <div class="modal-header">
-                       <h2 class="modal-title fs-5" id="exampleModalLabel">Formulario de contacto</h2>
-                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                     </div>
-                     <div class="modal-body">
-                       <form method="post">
-                         <div class="mb-3">
-                           <label for="recipient-name" class="col-form-label">Asunto</label>
-                           <input type="text" class="form-control" id="recipient-name" name="asunto" required>
-                         </div>
-                         <div class="mb-3">
-                           <label for="message-text" class="col-form-label">Mensaje</label>
-                           <textarea name="cuerpo" class="form-control" id="message-text" required></textarea>
-                         </div>
-                         <div class="modal-footer">
-                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                           <input type="submit" class="btn btn-primary" value="Enviar" name="Enviar">
-                         </div>
-                       </form>
-                     </div>
-                 <?php
-                     if(!empty($_POST["Enviar"])){
-                       if(!empty($_POST["asunto"]) && !empty($_POST["cuerpo"])){
-                         $asunto = $_POST["asunto"];
-                         $cuerpo = $_POST["cuerpo"];
-                         $email = "santikellemberger@gmail.com";
-                         $header = "From: {$_SESSION['nombreUsuario']}"."\r\n";
-                         $header.= "Reply-To: {$_SESSION['nombreUsuario']}"."\r\n";
-                         $header.= "X-Mailer: PHP/".phpversion();
-                         $mail = @mail($email, $asunto, $cuerpo, $header);
-                       }
-                     }
-                   ?>
-                 </div>
-               </div>
-             </div>
-           </div>
-         </div>
+          <h3 class="footer-titles">Contáctanos</h3>
+          <div class="logo_footer_form">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-list" viewBox="0 0 16 16">
+              <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z" />
+              <path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8m0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0" />
+            </svg>
+              <button type="button" class="btn btn_formulario" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Formulario de contacto</button>
+              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Formulario de contacto</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form method="post">
+                      <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Asunto</label>
+                        <input type="text" class="form-control" id="recipient-name" name="asunto" required>
+                      </div>
+                      <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Mensaje</label>
+                        <textarea name="cuerpo" class="form-control" id="message-text" required></textarea>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <input type="submit" class="btn btn-primary" value="Enviar" name="Enviar">
+                      </div>
+                    </form>
+                  </div>
+                  <?php
+                    if(!empty($_POST["Enviar"])){
+                      if(!empty($_POST["asunto"]) && !empty($_POST["cuerpo"])){
+                        $asunto = $_POST["asunto"];
+                        $cuerpo = $_POST["cuerpo"];
+                        $email = "santikellemberger@gmail.com";
+                        $header = "From: {$_SESSION['nombreUsuario']}"."\r\n";
+                        $header.= "Reply-To: {$_SESSION['nombreUsuario']}"."\r\n";
+                        $header.= "X-Mailer: PHP/".phpversion();
+                        $mail = @mail($email, $asunto, $cuerpo, $header);
+                      }
+                    }
+                  ?>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
          <?php
       } 
       elseif($_SESSION["tipoUsuario"] == "Administrador"){
         ?>
-          <div class="f1">
-            <h3 class="footer-titles">Rosario Shopping center (Junin 501)</h3>
-            <div class="img_mapa">
-                  <a href="https://www.google.com/maps/place/Alto+Rosario+Shopping/@-32.9282706,-60.674688,15z/data=!4m6!3m5!1s0x95b654abc3ab1d5f:0x2f90ce97db2c5a6!8m2!3d-32.9274658!4d-60.6690017!16s%2Fg%2F1tdvlb_y?entry=ttu" target="_blank">
-			    		      <img src="../../Imagenes-Videos/imagen_mapa.png" alt="Ubicación en Google Maps">
-                  </a>
+              <a href="https://www.google.com/maps/place/Alto+Rosario+Shopping/@-32.9282706,-60.674688,15z/data=!4m6!3m5!1s0x95b654abc3ab1d5f:0x2f90ce97db2c5a6!8m2!3d-32.9274658!4d-60.6690017!16s%2Fg%2F1tdvlb_y?entry=ttu" target="_blank">
+					      <img src="../../Imagenes-Videos/Captura de pantalla 2024-05-02 100702.png" alt="Ubicación en Google Maps">
+              </a>
 		      	</div>
 		      </div>
             

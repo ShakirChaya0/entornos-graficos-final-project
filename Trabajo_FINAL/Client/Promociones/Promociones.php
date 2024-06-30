@@ -30,7 +30,7 @@
         $position = array_search($dia_actual, $semana);
         $dias_disponibles = str_split($row_promo["diasSemana"]);
         //FILTRADO POR FECHAS:
-        if($row_promo["fechaDesdePromo"] <= $fecha_actual && $row_promo["fechaHastaPromo"] >= $fecha_actual && $row_promo["estadoPromo"] == "aprobada" && $dias_disponibles[$position] == "1"){
+        if($row_promo["fechaDesdePromo"] <= $fecha_actual && $row_promo["fechaHastaPromo"] >= $fecha_actual && $row_promo["estadoPromo"] == 'aprobada' && $dias_disponibles[$position] == "1"){
           //FILTRADO POR PROMOCIONES USADAS
           if($filas["total_filas"] > 0){
             $search_usopromo = 'SELECT * FROM uso_promociones WHERE codCliente = "'.$row_usu["codUsuario"].'"';
@@ -86,7 +86,7 @@
                       $sqlia = "UPDATE usuarios SET categoriaCliente = 'Premium' WHERE codUsuario = {$row_usu['codUsuario']}";
                       mysqli_query($conn, $sqlia);
                     }
-                    $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo['codPromo']}, '$fecha_actual', 'enviada', {$row_promo['codLocal']})";
+                    $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo['codPromo']}, '$fecha_actual', 'aceptada', {$row_promo['codLocal']})";
                     mysqli_query($conn, $add_prom);
                     $_POST = array();
                     header("LOCATION: Promociones.php"); 
@@ -119,7 +119,7 @@
                         mysqli_query($conn, $sqlia);
                       }
 
-                      $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo['codPromo']}, '$fecha_actual', 'enviada', {$row_promo['codLocal']})";
+                      $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo['codPromo']}, '$fecha_actual', 'aceptada', {$row_promo['codLocal']})";
                       mysqli_query($conn, $add_prom);
                       $_POST = array();
                       header("LOCATION: Promociones.php");  
@@ -152,7 +152,7 @@
                         $sqlia = "UPDATE usuarios SET categoriaCliente = 'Premium' WHERE codUsuario = {$row_usu['codUsuario']}";
                         mysqli_query($conn, $sqlia);
                       }
-                      $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo['codPromo']}, '$fecha_actual', 'enviada', {$row_promo['codLocal']})";
+                      $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo['codPromo']}, '$fecha_actual', 'aceptada', {$row_promo['codLocal']})";
                       mysqli_query($conn, $add_prom);
                       $_POST = array();
                       header("LOCATION: Promociones.php");  
@@ -190,7 +190,7 @@
                   $sqlia = "UPDATE usuarios SET categoriaCliente = 'Premium' WHERE codUsuario = {$row_usu['codUsuario']}";
                   mysqli_query($conn, $sqlia);
                 }
-                $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo['codPromo']}, '$fecha_actual', 'enviada', {$row_promo['codLocal']})";
+                $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo['codPromo']}, '$fecha_actual', 'aceptada', {$row_promo['codLocal']})";
                 mysqli_query($conn, $add_prom);
                 $_POST = array();
                 header("LOCATION: Promociones.php");  
@@ -222,7 +222,7 @@
                     $sqlia = "UPDATE usuarios SET categoriaCliente = 'Premium' WHERE codUsuario = {$row_usu['codUsuario']}";
                     mysqli_query($conn, $sqlia);
                   }
-                  $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo['codPromo']}, '$fecha_actual', 'enviada', {$row_promo['codLocal']})";
+                  $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo['codPromo']}, '$fecha_actual', 'aceptada', {$row_promo['codLocal']})";
                   mysqli_query($conn, $add_prom);
                   $_POST = array();
                   header("LOCATION: Promociones.php");  
@@ -255,7 +255,7 @@
                     $sqlia = "UPDATE usuarios SET categoriaCliente = 'Premium' WHERE codUsuario = {$row_usu['codUsuario']}";
                     mysqli_query($conn, $sqlia);
                   }
-                  $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo['codPromo']}, '$fecha_actual', 'enviada', {$row_promo['codLocal']})";
+                  $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo['codPromo']}, '$fecha_actual', 'aceptada', {$row_promo['codLocal']})";
                   mysqli_query($conn, $add_prom);
                   $_POST = array();
                   header("LOCATION: Promociones.php");  
@@ -296,7 +296,7 @@
         $position = array_search($dia_actual, $semana);
         $dias_disponibles = str_split($row_promo["diasSemana"]);
         //FILTRADO POR FECHAS:
-        if($row_promo["fechaDesdePromo"] < $fecha_actual && $row_promo["fechaHastaPromo"] >= $fecha_actual && $row_promo["estadoPromo"] == "aprobada" && $dias_disponibles[$position] == "1"){
+        if($row_promo["fechaDesdePromo"] < $fecha_actual && $row_promo["fechaHastaPromo"] >= $fecha_actual && $row_promo["estadoPromo"] == 'aprobada' && $dias_disponibles[$position] == "1"){
           //FILTRADO POR PROMOCIONES USADAS
           if($filas["total_filas"] > 0){
             $search_usopromo = 'SELECT * FROM uso_promociones WHERE codCliente = "'.$row_usu["codUsuario"].'"';
@@ -363,7 +363,7 @@
         $position = array_search($dia_actual, $semana);
         $dias_disponibles = str_split($row_promo_busq["diasSemana"]);
         //FILTRADO POR FECHAS:
-        if($row_promo_busq["fechaDesdePromo"] < $fecha_actual && $row_promo_busq["fechaHastaPromo"] >= $fecha_actual && $row_promo_busq["estadoPromo"] == "aprobada" && $dias_disponibles[$position] == "1" && $row_local["codLocal"] == $row_promo_busq["codLocal"]){
+        if($row_promo_busq["fechaDesdePromo"] < $fecha_actual && $row_promo_busq["fechaHastaPromo"] >= $fecha_actual && $row_promo_busq["estadoPromo"] == 'aprobada' && $dias_disponibles[$position] == "1" && $row_local["codLocal"] == $row_promo_busq["codLocal"]){
           //FILTRADO POR PROMOCIONES USADAS
           if($filas["total_filas"] > 0){
             $search_usopromo = 'SELECT * FROM uso_promociones WHERE codCliente = "'.$row_usu["codUsuario"].'"';
@@ -416,7 +416,7 @@
                         $sqlia = "UPDATE usuarios SET categoriaCliente = 'Premium' WHERE codUsuario = {$row_usu['codUsuario']}";
                         mysqli_query($conn, $sqlia);
                       }
-                      $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo_busq['codPromo']}, '$fecha_actual', 'enviada', {$row_promo_busq['codLocal']})";
+                      $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo_busq['codPromo']}, '$fecha_actual', 'aceptada', {$row_promo_busq['codLocal']})";
                       mysqli_query($conn, $add_prom);
                       $_POST = array();
                       header("LOCATION: Promociones.php"); 
@@ -449,7 +449,7 @@
                           $sqlia = "UPDATE usuarios SET categoriaCliente = 'Premium' WHERE codUsuario = {$row_usu['codUsuario']}";
                           mysqli_query($conn, $sqlia);
                         }
-                        $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo_busq['codPromo']}, '$fecha_actual', 'enviada', {$row_promo_busq['codLocal']})";
+                        $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo_busq['codPromo']}, '$fecha_actual', 'aceptada', {$row_promo_busq['codLocal']})";
                         mysqli_query($conn, $add_prom);
                         $_POST = array();
                         header("LOCATION: Promociones.php"); 
@@ -483,7 +483,7 @@
                           $sqlia = "UPDATE usuarios SET categoriaCliente = 'Premium' WHERE codUsuario = {$row_usu['codUsuario']}";
                           mysqli_query($conn, $sqlia);
                         }
-                        $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo_busq['codPromo']}, '$fecha_actual', 'enviada', {$row_promo_busq['codLocal']})";
+                        $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo_busq['codPromo']}, '$fecha_actual', 'aceptada', {$row_promo_busq['codLocal']})";
                         mysqli_query($conn, $add_prom);
                         $_POST = array();
                         header("LOCATION: Promociones.php"); 
@@ -523,7 +523,7 @@
                   $sqlia = "UPDATE usuarios SET categoriaCliente = 'Premium' WHERE codUsuario = {$row_usu['codUsuario']}";
                   mysqli_query($conn, $sqlia);
                 }
-                $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo_busq['codPromo']}, '$fecha_actual', 'enviada', {$row_promo_busq['codLocal']})";
+                $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo_busq['codPromo']}, '$fecha_actual', 'aceptada', {$row_promo_busq['codLocal']})";
                 mysqli_query($conn, $add_prom);
                 $_POST = array();
                 header("LOCATION: Promociones.php"); 
@@ -556,7 +556,7 @@
                     $sqlia = "UPDATE usuarios SET categoriaCliente = 'Premium' WHERE codUsuario = {$row_usu['codUsuario']}";
                     mysqli_query($conn, $sqlia);
                   }
-                  $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo_busq['codPromo']}, '$fecha_actual', 'enviada', {$row_promo_busq['codLocal']})";
+                  $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo_busq['codPromo']}, '$fecha_actual', 'aceptada', {$row_promo_busq['codLocal']})";
                   mysqli_query($conn, $add_prom);
                   $_POST = array();
                   header("LOCATION: Promociones.php"); 
@@ -590,7 +590,7 @@
                     $sqlia = "UPDATE usuarios SET categoriaCliente = 'Premium' WHERE codUsuario = {$row_usu['codUsuario']}";
                     mysqli_query($conn, $sqlia);
                   }
-                  $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo_busq['codPromo']}, '$fecha_actual', 'enviada', {$row_promo_busq['codLocal']})";
+                  $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo_busq['codPromo']}, '$fecha_actual', 'aceptada', {$row_promo_busq['codLocal']})";
                   mysqli_query($conn, $add_prom);
                   $_POST = array();
                   header("LOCATION: Promociones.php"); 
@@ -641,7 +641,7 @@
         $position = array_search($dia_actual, $semana);
         $dias_disponibles = str_split($row_promo_busq["diasSemana"]);
         //FILTRADO POR FECHAS:
-        if($row_promo_busq["fechaDesdePromo"] < $fecha_actual && $row_promo_busq["fechaHastaPromo"] >= $fecha_actual && $row_promo_busq["estadoPromo"] == "aprobada" && $dias_disponibles[$position] == "1" && $row_local["codLocal"] == $row_promo_busq["codLocal"]){
+        if($row_promo_busq["fechaDesdePromo"] < $fecha_actual && $row_promo_busq["fechaHastaPromo"] >= $fecha_actual && $row_promo_busq["estadoPromo"] == 'aprobada' && $dias_disponibles[$position] == "1" && $row_local["codLocal"] == $row_promo_busq["codLocal"]){
           //FILTRADO POR PROMOCIONES USADAS
           if($filas["total_filas"] > 0){
             $search_usopromo = 'SELECT * FROM uso_promociones WHERE codCliente = "'.$row_usu["codUsuario"].'"';
@@ -696,7 +696,7 @@
                         $sqlia = "UPDATE usuarios SET categoriaCliente = 'Premium' WHERE codUsuario = {$row_usu['codUsuario']}";
                         mysqli_query($conn, $sqlia);
                       }
-                      $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo_busq['codPromo']}, '$fecha_actual', 'enviada', {$row_promo_busq['codLocal']})";
+                      $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo_busq['codPromo']}, '$fecha_actual', 'aceptada', {$row_promo_busq['codLocal']})";
                       mysqli_query($conn, $add_prom);
                       $_POST = array();
                       header("LOCATION: Promociones.php"); 
@@ -730,7 +730,7 @@
                           $sqlia = "UPDATE usuarios SET categoriaCliente = 'Premium' WHERE codUsuario = {$row_usu['codUsuario']}";
                           mysqli_query($conn, $sqlia);
                         }
-                        $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo_busq['codPromo']}, '$fecha_actual', 'enviada', {$row_promo_busq['codLocal']})";
+                        $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo_busq['codPromo']}, '$fecha_actual', 'aceptada', {$row_promo_busq['codLocal']})";
                         mysqli_query($conn, $add_prom);
                         $_POST = array();
                         header("LOCATION: Promociones.php"); 
@@ -765,7 +765,7 @@
                           $sqlia = "UPDATE usuarios SET categoriaCliente = 'Premium' WHERE codUsuario = {$row_usu['codUsuario']}";
                           mysqli_query($conn, $sqlia);
                         }
-                        $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo_busq['codPromo']}, '$fecha_actual', 'enviada', {$row_promo_busq['codLocal']})";
+                        $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo_busq['codPromo']}, '$fecha_actual', 'aceptada', {$row_promo_busq['codLocal']})";
                         mysqli_query($conn, $add_prom);
                         $_POST = array();
                         header("LOCATION: Promociones.php"); 
@@ -806,7 +806,7 @@
                   $sqlia = "UPDATE usuarios SET categoriaCliente = 'Premium' WHERE codUsuario = {$row_usu['codUsuario']}";
                   mysqli_query($conn, $sqlia);
                 }
-                $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo_busq['codPromo']}, '$fecha_actual', 'enviada', {$row_promo_busq['codLocal']})";
+                $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo_busq['codPromo']}, '$fecha_actual', 'aceptada', {$row_promo_busq['codLocal']})";
                 mysqli_query($conn, $add_prom);
                 $_POST = array();
                 header("LOCATION: Promociones.php"); 
@@ -840,7 +840,7 @@
                     $sqlia = "UPDATE usuarios SET categoriaCliente = 'Premium' WHERE codUsuario = {$row_usu['codUsuario']}";
                     mysqli_query($conn, $sqlia);
                   }
-                  $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo_busq['codPromo']}, '$fecha_actual', 'enviada', {$row_promo_busq['codLocal']})";
+                  $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo_busq['codPromo']}, '$fecha_actual', 'aceptada', {$row_promo_busq['codLocal']})";
                   mysqli_query($conn, $add_prom);
                   $_POST = array();
                   header("LOCATION: Promociones.php"); 
@@ -875,7 +875,7 @@
                     $sqlia = "UPDATE usuarios SET categoriaCliente = 'Premium' WHERE codUsuario = {$row_usu['codUsuario']}";
                     mysqli_query($conn, $sqlia);
                   }
-                  $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo_busq['codPromo']}, '$fecha_actual', 'enviada', {$row_promo_busq['codLocal']})";
+                  $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo_busq['codPromo']}, '$fecha_actual', 'aceptada', {$row_promo_busq['codLocal']})";
                   mysqli_query($conn, $add_prom);
                   $_POST = array();
                   header("LOCATION: Promociones.php"); 
@@ -912,7 +912,7 @@
         $result_local = mysqli_query($conn, $search_local);
         $row_local = mysqli_fetch_array($result_local);
         //FILTRADO POR FECHAS:
-        if($row_promo["fechaDesdePromo"] <= $fecha_actual && $row_promo["fechaHastaPromo"] >= $fecha_actual && $row_promo["estadoPromo"] == "aprobada"){
+        if($row_promo["fechaDesdePromo"] <= $fecha_actual && $row_promo["fechaHastaPromo"] >= $fecha_actual && $row_promo["estadoPromo"] == 'aprobada'){
           echo "
           <div class='container'>
           <div class ='local_data'>  {$row_promo['textoPromo']}  </div>
@@ -961,7 +961,7 @@
     include("../../Barra_Navegacion/Nav-bar.php");
   ?>
   <div class="lineas_title">Promociones</div>
-    <form class="filtrado_locales" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>" method="post">
+    <form class="filtrado_locales" action = "<?php echo echo htmlspecialchars($_SERVER["PHP_SELF"])?>" method="post">
       <label class="search_label" for="select_parametro"><b>Búsqueda de local:</b>
         <select name="parametro" id="select_parametro" class="form-search__select">
             <option value="nombreLocal" <?php if ($selected_value == 'nombreLocal') echo 'selected'; ?>>Por nombre de local</option>

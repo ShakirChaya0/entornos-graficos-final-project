@@ -406,6 +406,11 @@ body {
   text-align: center;
 }
 
+legend{
+  font-weight: 600;
+  font-size: large;
+}
+
 #dropdownBtn {
     display: none;
     background-color: #003360;

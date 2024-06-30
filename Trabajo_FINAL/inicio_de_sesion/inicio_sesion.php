@@ -12,20 +12,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../Imagenes-Videos/bolsas-de-compra.png">
     <link rel="stylesheet" href="log_in.css">
-    <title>Inicio de sesion</title>
+    <title>Rosario shopping center - Inicio de sesion</title>
 </head>
 <body>
+    <main>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>" method="post" class="form">
-            <div class="logo-cont" aria-label="Inicio">
-                <a href="../Home-UNR/index.php"><img src="../Imagenes-Videos/logo.jpg" alt="Inicio" class="logo"></a>
+            <div class="logo-cont" aria-label="Logo de la empresa" title="Inicio de la pagina principal">
+                <a href="../Home-UNR/index.php" alt="Inicio de la pagina principal"><img src="../Imagenes-Videos/logo.jpg" alt="Inicio de la pagina principal" class="logo"></a>
             </div>
             <div class="username_form">
-                <img src="../Imagenes-Videos/avatar.png" alt="Avatar.png" class="avatar-de-email">
+                <img src="../Imagenes-Videos/avatar.png" alt="Imagen de avatar de usuario" class="avatar-de-email" title="Imagen de avatar de usuario">
                 <input type="text" required class="form-control" id="floatingInput"  name="username" autocomplete="off">
                 <label for="floatingInput">Email del Usuario</label>
             </div>
             <div class="password_form">
-                <img src="../Imagenes-Videos/candado.png" alt="candado.png" class="avatar-de-email" id="togglePassword">
+                <img src="../Imagenes-Videos/candado.png" alt="Imagen contraseña" class="avatar-de-email" id="togglePassword" title="Imagen contraseña">
                 <input type="password" required class="form-control" id="password" name="password">
                 <label for="password">Contraseña</label>
             </div>
@@ -117,6 +118,7 @@
             </div>
             </div>
         </form>
+    </main>
 </body>
 </html>
 <?php

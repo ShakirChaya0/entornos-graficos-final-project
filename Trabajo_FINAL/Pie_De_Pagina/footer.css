@@ -88,3 +88,12 @@ footer a{
     font-weight: 600;
     margin: 0;
 }
+
+.modal-backdrop{
+    z-index: 0;
+    padding-top: 100px;
+}
+
+.modal{
+    padding-top: 100px;
+}
