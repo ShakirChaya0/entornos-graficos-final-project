@@ -49,18 +49,19 @@
         ?>
 
         <div class="create_box">
-        <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post" class="form_create">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post" class="form_create">
                 <h2 class="create_subtitle">Modificar Novedad</h2>
                 <label class="create_label" for="titulo">Título:</label>
                 <input type="text" placeholder="..." class="form-create__input" id="titulo" name="titulo" maxlength="30" value="<?php echo $row["tituloNovedad"] ?>" required>
                 <label class="create_label" for="descripcion">Descripción:</label>
-                <textarea type="text" placeholder="..." class="form-create__input" id="descripcion" name="texto" maxlength="200" required><?php echo $row["textoNovedad"] ?></textarea>
+                <textarea placeholder="..." class="form-create__input" id="descripcion" name="texto" maxlength="200" required><?php echo $row["textoNovedad"] ?></textarea>
                 <label class="create_label" for="inicio">Inicio:</label>
-                <input type="date" placeholder="..." class="form-create__input" id="inicio" name="desde" value="<?php echo $row["fechaDesdeNov"] ?>" required>
+                <input type="date" class="form-create__input" id="inicio" name="desde" value="<?php echo $row["fechaDesdeNov"] ?>" required>
                 <label class="create_label" for="final">Finalización:</label>
-                <input type="date" placeholder="..." class="form-create__input" id="final" name="hasta" value="<?php echo $row["fechaHastaNov"] ?>" required>
+                <input type="date" class="form-create__input" id="final" name="hasta" value="<?php echo $row["fechaHastaNov"] ?>" required>
                 <label class="create_label" for="categoria-usuario">Categoría de Cliente:</label>
                 <select  class="form-create__input" id="categoria-usuario" name="categoria" required>
+                    <option value="">Seleccione una categoría...</option>
                     <option value="Inicial" <?php if ($row["tipoUsuario"] == "Inicial") echo "selected" ?>>Inicial</option>
                     <option value="Medium" <?php if ($row["tipoUsuario"] == "Medium") echo "selected" ?>>Medium</option>
                     <option value="Premium" <?php if ($row["tipoUsuario"] == "Premium") echo "selected" ?>>Premium</option>

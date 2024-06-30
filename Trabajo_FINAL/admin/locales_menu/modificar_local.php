@@ -49,7 +49,7 @@
         ?>
 
         <div class="create_box">
-            <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post" class="form_create">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post" class="form_create">
                 <h2 class="create_subtitle">Modificar Local</h2>
                 <label class="create_label" for="nombre">Nombre de Local:</label>
                 <input type="text" placeholder="..." class="form-create__input" id="nombre" name="name" value="<?php echo $row["nombreLocal"] ?>" maxlength="100" required>

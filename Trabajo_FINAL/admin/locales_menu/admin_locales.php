@@ -37,7 +37,7 @@
         ?>
         <h1 class="page_title">Locales</h1>
         <div class="search_box">
-            <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="get" class="form_search">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="get" class="form_search">
                 <label class="search_label" for="select_parametro">Búsqueda de local:
                     <select name="parametro" id="select_parametro" class="form-search__select">
                         <option value="nombreLocal" <?php if ($_GET["parametro"] == "nombreLocal") echo "selected" ?>>Por nombre</option>
@@ -47,7 +47,7 @@
                         <option value="codUsuario" <?php if ($_GET["parametro"] == "codUsuario") echo "selected" ?>>Por código de Dueño</option>
                     </select>
                 </label>
-                <a href="admin_locales.php" class="refresh_button" title="Quitar Selección" aria-label="Quitar Selección"><svg class="refresh_logo" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/><path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/></svg></a>
+                <a href="admin_locales.php" class="refresh_button" title="Quitar Selección" aria-label="Quitar Selección"><svg class="bi bi-arrow-clockwise refresh_logo" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/><path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/></svg></a>
                 <input type="text" placeholder="¿Qué buscas?" class="form-search__input" id="search" name="buscar_name" value="<?php echo htmlspecialchars($_GET["buscar_name"]) ?>">
                 <input type="submit" value="Buscar" class="form-search__button" name="buscar">
             </form>
@@ -120,7 +120,7 @@
                                         <form action='modificar_local.php' method='POST'>
                                             <button type='submit' class='modify_button' aria-label='Modificar Local' title='Modificar Local'>
                                                 <input type='hidden' name='codLocal' value='{$row["codLocal"]}'>
-                                                <svg class='modify_symbol' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil-square' viewBox='0 0 16 16'>
+                                                <svg class='bi bi-pencil-square modify_symbol' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'>
                                                     <path d='M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z'/>
                                                     <path fill-rule='evenodd' d='M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z'/>
                                                 </svg>
@@ -130,7 +130,7 @@
                     if ($class_b != "estado_baja") {
                         echo "
                                         <button class='delete_button' onclick=\"document.getElementById('modal-{$row["codLocal"]}').checked = true\" aria-label='Eliminar Local' title='Eliminar Local'>
-                                            <svg class='delete_symbol' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-x-square-fill' viewBox='0 0 16 16'>
+                                            <svg class='bi bi-x-square-fill delete_symbol' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'>
                                                 <path d='M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708'/>
                                             </svg>
                                         </button>
@@ -161,7 +161,7 @@
                     else {
                         echo "
                                         <button class='accept_button' onclick=\"document.getElementById('modal-{$row["codLocal"]}').checked = true\" aria-label='Restablecer Local' title='Restablecer Local'>
-                                            <svg class='accept_symbol' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-check-circle-fill' viewBox='0 0 16 16'>
+                                            <svg class='bi bi-check-circle-fill accept_symbol' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'>
                                                 <path d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z'/>
                                             </svg>
                                         </button>
@@ -209,7 +209,7 @@
 
                     <?php
                     echo '
-                        <span>
+                        <div>
                             <ul class="pagination">
                     ';
 
@@ -246,7 +246,7 @@
 
                     echo '
                             </ul>
-                        </span>
+                        </div>
                     ';
                     ?>
                 </div>

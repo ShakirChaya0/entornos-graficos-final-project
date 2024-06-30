@@ -112,7 +112,7 @@
 
                     <?php
                     echo '
-                        <span>
+                        <div>
                             <ul class="pagination">
                     ';
 
@@ -149,7 +149,7 @@
 
                     echo '
                             </ul>
-                        </span>
+                        </div>
                     ';
                     ?>
                 </div>

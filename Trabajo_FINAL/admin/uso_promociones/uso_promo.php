@@ -102,7 +102,7 @@
 
                     <?php
                     echo '
-                        <span>
+                        <div>
                             <ul class="pagination">
                     ';
 
@@ -139,7 +139,7 @@
 
                     echo '
                             </ul>
-                        </span>
+                        </div>
                     ';
                     ?>
                 </div>
@@ -221,7 +221,7 @@
                                 <span>Página <?php echo $pag_2 ?> de <?php echo $total_pags_2 ?></span>
                                 <?php
                                 echo '
-                                    <span>
+                                    <div>
                                         <ul class="pagination">
                                 ';
                                 if (isset($_GET["page_2"]) && $_GET["page_2"] > 1) {
@@ -254,7 +254,7 @@
                                 }
                                 echo '
                                         </ul>
-                                    </span>
+                                    </div>
                                 ';
                                 ?>
                             </div>
@@ -267,39 +267,40 @@
                                 </div>";
                         }
                     ?>
-            </div>
-            <div class="flex-item list-container">
-                <h3 class="page_subtitle">Promociones usadas por categoría:</h3>
-                <?php
-                    $cont_categorias = array("Inicial"=>0, "Medium"=>0, "Premium"=>0);
+                </div>
+                <div class="flex-item list-container">
+                    <h3 class="page_subtitle">Promociones usadas por categoría:</h3>
+                    <?php
+                        $cont_categorias = array("Inicial"=>0, "Medium"=>0, "Premium"=>0);
 
-                    $sql_3 = "SELECT * FROM uso_promociones WHERE estadoUsoPromo = 'aceptada'";
-                    $result_3 = mysqli_query($conn, $sql_3);
-                    if (mysqli_num_rows($result_3) > 0) {
+                        $sql_3 = "SELECT * FROM uso_promociones WHERE estadoUsoPromo = 'aceptada'";
+                        $result_3 = mysqli_query($conn, $sql_3);
+                        if (mysqli_num_rows($result_3) > 0) {
 
-                        while ($row_3 = mysqli_fetch_assoc($result_3)) {
-                            $sql_cat = "SELECT * FROM usuarios WHERE codUsuario = '{$row_3["codCliente"]}'";
-                            $result_cat = mysqli_query($conn, $sql_cat);
-                            $row_cat = mysqli_fetch_assoc($result_cat);
+                            while ($row_3 = mysqli_fetch_assoc($result_3)) {
+                                $sql_cat = "SELECT * FROM usuarios WHERE codUsuario = '{$row_3["codCliente"]}'";
+                                $result_cat = mysqli_query($conn, $sql_cat);
+                                $row_cat = mysqli_fetch_assoc($result_cat);
 
-                            $cont_categorias["{$row_cat["categoriaCliente"]}"]++;
+                                $cont_categorias["{$row_cat["categoriaCliente"]}"]++;
+                            }
+
+                            echo "<ul class='list-group list-group-flush'>";
+                            foreach ($cont_categorias as $categoria=>$total_promos) {
+                                echo "<li class='list-group-item d-flex justify-content-between align-items-center'>$categoria:
+                                        <span class='badge text-bg-primary'>$total_promos</span>
+                                    </li>";
+                            }
+                            echo "</ul>";
                         }
-
-                        echo "<ul class='list-group list-group-flush'>";
-                        foreach ($cont_categorias as $categoria=>$total_promos) {
-                            echo "<li class='list-group-item d-flex justify-content-between align-items-center'>$categoria:
-                                    <span class='badge text-bg-primary'>$total_promos</span>
-                                </li>";
+                        else {
+                            echo "
+                                    <div class='warning-nd-box'>
+                                            <p class='warning-box__msj'>No se han usado ninguna promoción</p>
+                                    </div>";
                         }
-                        echo "</ul>";
-                    }
-                    else {
-                        echo "
-                                <div class='warning-nd-box'>
-                                        <p class='warning-box__msj'>No se han usado ninguna promoción</p>
-                                </div>";
-                    }
-                ?>
+                    ?>
+                </div>
             </div>
         </div>
     </section>

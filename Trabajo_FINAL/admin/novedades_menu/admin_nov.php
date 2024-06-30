@@ -37,7 +37,7 @@
         ?>
         <h1 class="page_title">Novedades</h1>
         <div class="search_box">
-            <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="get" class="form_search">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="get" class="form_search">
                 <label class="search_label" for="select_parametro">Búsqueda de novedad:
                     <select name="parametro" id="select_parametro" class="form-search__select">
                         <option value="tituloNovedad" <?php if ($_GET["parametro"] == "tituloNovedad") echo "selected" ?>>Por título</option>
@@ -121,7 +121,7 @@
                                         <form action='modificar_nov.php' method='POST'>
                                             <button type='submit' class='modify_button' aria-label='Modificar Novedad' title='Modificar Novedad'>
                                                 <input type='hidden' name='codNovedad' value='{$row["codNovedad"]}'>
-                                                <svg class='modify_symbol' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil-square' viewBox='0 0 16 16'>
+                                                <svg class='bi bi-pencil-square modify_symbol' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'>
                                                     <path d='M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z'/>
                                                     <path fill-rule='evenodd' d='M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z'/>
                                                 </svg>
@@ -131,7 +131,7 @@
                     if ($class_b != "estado_baja") {
                         echo "
                                         <button class='delete_button' onclick=\"document.getElementById('modal-{$row["codNovedad"]}').checked = true\" aria-label='Eliminar Novedad' title='Eliminar Novedad'>
-                                            <svg class='delete_symbol' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-x-square-fill' viewBox='0 0 16 16'>
+                                            <svg class='bi bi-x-square-fill delete_symbol' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'>
                                                 <path d='M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708'/>
                                             </svg>
                                         </button>
@@ -162,7 +162,7 @@
                     else {
                         echo "
                                         <button class='accept_button' onclick=\"document.getElementById('modal-{$row["codNovedad"]}').checked = true\" aria-label='Restablecer Novedad' title='Restablecer Novedad'>
-                                            <svg class='accept_symbol' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-check-circle-fill' viewBox='0 0 16 16'>
+                                            <svg class='bi bi-check-circle-fill accept_symbol' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'>
                                                 <path d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z'/>
                                             </svg>
                                         </button>
@@ -211,7 +211,7 @@
 
                     <?php
                     echo '
-                        <span>
+                        <div>
                             <ul class="pagination">
                     ';
 
@@ -248,7 +248,7 @@
 
                     echo '
                             </ul>
-                        </span>
+                        </div>
                     ';
                     ?>
                 </div>
