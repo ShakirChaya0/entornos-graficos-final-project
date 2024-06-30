@@ -147,9 +147,6 @@
                             echo "<p class= 'error'>*Completa el tipo de usuario</p>";
                         }
                     }
-                    else{
-                        echo "<p class= 'error'>*Completa el tipo de usuario</p>";
-                    }
                         
                 ?>
             </div>

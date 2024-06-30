@@ -16,8 +16,8 @@
 </head>
 <body>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>" method="post" class="form">
-            <div class="logo-cont">
-                <a href="../Home-UNR/index.php"><img src="../Imagenes-Videos/logo.jpg" alt="logo" class="logo"></a>
+            <div class="logo-cont" aria-label="Inicio">
+                <a href="../Home-UNR/index.php"><img src="../Imagenes-Videos/logo.jpg" alt="Inicio" class="logo"></a>
             </div>
             <div class="username_form">
                 <img src="../Imagenes-Videos/avatar.png" alt="Avatar.png" class="avatar-de-email">
@@ -56,17 +56,17 @@
                                 echo"<p class='error'>* No existe dicho usuario</p>";
                             }
                             else{
-                                $row = mysqli_fetch_assoc($result);
-                                $_SESSION["codUsuario"] = $row["codUsuario"];
-                                $_SESSION["nombreUsuario"] = $row["nombreUsuario"];
-                                $_SESSION["claveUsuario"] = $row["claveUsuario"];
-                                $_SESSION["tipoUsuario"] = $row["tipoUsuario"];
-                                $_SESSION["categoriaCliente"] = $row["categoriaCliente"];
-                                $_SESSION["estado"] = $row["estado"];
-                                $_SESSION["cantidadPromo"] = $row["cantidadPromo"];
+                                $row_promos = mysqli_fetch_assoc($result);
+                                $_SESSION["codUsuario"] = $row_promos["codUsuario"];
+                                $_SESSION["nombreUsuario"] = $row_promos["nombreUsuario"];
+                                $_SESSION["claveUsuario"] = $row_promos["claveUsuario"];
+                                $_SESSION["tipoUsuario"] = $row_promos["tipoUsuario"];
+                                $_SESSION["categoriaCliente"] = $row_promos["categoriaCliente"];
+                                $_SESSION["estado"] = $row_promos["estado"];
+                                $_SESSION["cantidadPromo"] = $row_promos["cantidadPromo"];
                                 $_SESSION["editarPerfil"] = 0;
                                 mysqli_close($conn);
-                                if($row["tipoUsuario"] == "Administrador"){
+                                if($row_promos["tipoUsuario"] == "Administrador"){
                                     $_SESSION["promocionCreadaDueño"] = 0;
                                     $_SESSION["localCreado"] = 0;
                                     $_SESSION["localModificado"] = 0;
@@ -84,11 +84,11 @@
                                     $_SESSION["no_dueño"] = 0;
                                     header("LOCATION: ../admin/home/home_page_admin.php");
                                 }
-                                elseif($row["tipoUsuario"] == "Cliente"){
+                                elseif($row_promos["tipoUsuario"] == "Cliente"){
                                     header("LOCATION: ../Client/Home/Home.php");
                                 }
-                                elseif($row["tipoUsuario"] == "Dueño de local"){
-                                    if($row["estado"] == "A"){
+                                elseif($row_promos["tipoUsuario"] == "Dueño de local"){
+                                    if($row_promos["estado"] == "A"){
                                         $_SESSION["promocionCreadaDueño"] = 0;
                                         $_SESSION["localCreado"] = 0;
                                         $_SESSION["localModificado"] = 0;
