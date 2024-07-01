@@ -1,0 +1,251 @@
+body {
+    overflow-x: hidden;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    background-color: #ebebeb;
+    height: 100vh;
+    width: 100vw;
+    min-width: 100vw;
+    margin:0;
+    padding: 0;
+}
+
+@media screen and (max-width: 1200px) and (min-height: 600px) {
+  html {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 768px) and (max-height: 600px) {
+  html {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 480px) and (max-height: 400px) {
+  html {
+    font-size: 10px;
+  }
+}
+
+/*header*/
+
+.iteracion{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 2rem 2rem;
+  gap: 2rem;
+}
+.filtrado_locales{
+  background: rgb(255, 255, 255);
+  min-width: 360px;
+  max-width: 700px;
+  width: 60vw;
+  height: 10vh;
+  min-height: 88px;
+  display: block;
+  margin: auto;
+  margin-top: 1rem;
+  border-radius: 1rem;
+}
+
+.busqueda_local{
+  margin-top: 35px;
+  margin-left: 70px;
+  width: 30vw;
+  min-width: 200px;
+  max-width: 400px;
+  border: 1px solid rgb(255, 255, 255);
+  border-bottom: 1px solid black;
+  outline: none;
+}
+.lupa_local{
+  position: absolute;
+  margin-top: 2rem;
+  margin-left: 1rem;
+  background: transparent;
+  border: none;
+  color: transparent;
+}
+.lupa_busqueda{
+  width: 4vw;
+  min-width: 30px;
+  max-width: 40px;
+  height: 4vh;
+  margin-left: 0.5rem;
+  min-height: 34.8px;
+}
+.container{
+  height: 20vh;
+  width: 200px;
+  min-height: 165px;
+  padding: 0;
+  margin-left: 6rem;
+  margin-top: 2.5rem;
+  background-color: rgb(255, 255, 255);
+  border-radius: 0.5rem;
+  min-width: 200px;
+  margin-right: 0;
+}
+.dive-content{
+  position:absolute;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  transition: opacity 0.3s ease-in-out;
+}
+.base-div{
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  overflow: hidden;
+  min-height: 61.5px;
+}
+.hover-div{
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  height: 5rem;
+}
+.container:hover .base-div{
+  opacity: 0;
+}
+.container:hover .hover-div{
+  opacity: 1;
+}
+.container:hover{
+  border: 2px solid rgb(23, 46, 109);
+}
+.local_data{
+  display: block;
+  text-align: center;
+  align-items: center;
+  opacity: 0;
+  height: 3.5rem;
+  padding-top: 2rem;
+  transition: opacity 0.3s ease-in-out;
+  color: rgb(23, 46, 109);
+}
+.container:hover .local_data{
+  opacity: 1;
+}
+.data{
+  position: relative;
+  border: 1px solid rgb(0, 44, 167);
+  margin-top: 1rem;
+  margin-left: 2.3rem;
+  width: 8rem;
+  border-radius: 0.3rem;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(to right, rgb(21, 43, 105), rgb(0, 75, 187), rgb(0, 128, 187));
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  height: 3.5vh;
+  overflow: hidden;
+  min-height: 30px;
+}
+.link_promociones{
+  margin-left: 2.3rem;
+  max-width: 350px;
+  width: 130px;
+  height: 3.3vh;
+  font-size: 20px;
+  border-radius: 0.3rem;
+  min-height: 28.8px;
+  /*background: linear-gradient(to right, rgb(21, 43, 105), rgb(0, 75, 187), rgb(0, 128, 187));*/
+  background-color: rgb(29, 64, 161);
+  color: white;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+.link_promociones:hover{
+  background-color: rgb(32, 77, 202)
+}
+
+.fondo_titulo{
+  background-image: url(../../Imagenes-Videos/Imagen-Shopping.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.lineas_title{
+  width: 100vw;
+  height: 400px;
+  text-align: center;
+  padding-top: 8rem;
+  font-size: 3.7rem;
+  background: #00336090;
+  color: rgb(255, 255, 255);
+  min-width: 100vw;
+  min-height: 81.6px;
+}
+.lineas_title h1{
+  display: block;
+  width: 100%;
+  font-size: 4rem;
+  font-weight: 900;
+  letter-spacing: .3rem;
+  margin: auto;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.lineas_title p{
+  display: block;
+  text-align: center;
+  font-size: 1.6rem;
+  padding: 0 15px;
+  width: 100%;
+  margin: auto;
+}
+
+.card{
+  min-width: 280px;
+  max-width: 280px;
+  min-height: 300px;
+  transition: transform 0.5s ease;
+}
+
+.card:hover{
+  z-index: 1;
+  transform: scale(1.2);
+  box-shadow: 0px 0px 20px 3px rgba(110,110,110,0.5);
+}
+
+.top_card{
+  background: linear-gradient(to right, rgb(21, 43, 105), rgb(0, 75, 187), rgb(0, 128, 187));
+  color: white;
+}
+.green{
+  color: green !important;
+  font-size: 18px;
+}
+.error_box{
+  width: 40vw;
+  height: 5vh;
+  text-align: center;
+  margin: auto;
+  margin-top: 1rem;
+  max-width: 240px;
+  background-color: white;
+  border-radius: 1rem;
+  min-height: 46.3px;
+}
+.error{
+  padding-top: 0.7rem;
+  margin: 0;
+  color: red;
+}
+
+@media (max-width: 400px) {
+  .lineas_title h1 {
+    font-size: 45px;
+  }
+
+  .lineas_title p {
+    font-size: 21px;
+  }
+
+}
+
+

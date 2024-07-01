@@ -1,0 +1,226 @@
+body {
+    overflow-x: hidden;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    background-color: #ebebeb;
+    height: 100vh;
+    width: 100vw;
+    min-width: 100vw;
+    margin:0;
+    padding: 0;
+}
+
+.iteracion{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin: auto;
+}
+
+.filtrado_locales{
+  background: rgb(255, 255, 255);
+  min-width: 280px;
+  max-width: 500px;
+  width: 40vw;
+  height: 16vh;
+  min-height: 159px;
+  margin: auto;
+  display: block;
+  margin-top: 1rem;
+  border-radius: 1rem;
+}
+.section1{
+  flex-wrap: wrap;
+}
+@media(max-width: 1400px){
+  .filtrado_locales{
+    height: 14vh;
+    flex-wrap: wrap;
+  }
+  .label_busqueda{
+    margin-left:5rem;
+    margin-top: 0.6rem;
+    margin-right: 0;
+  }
+}
+
+@media(max-width: 934px){
+  .filtrado_locales{
+    height: 21vh;
+  }
+}
+
+.form-search__select{
+  position: relative;
+  margin-left: 10px;
+  font-size: medium;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  left: -10px;
+  top: 0px;
+  transition: box-shadow 0.1s;
+}
+
+.form-search__select:focus {
+  box-shadow: 0 0 8px 1px #257cc9;
+  outline: none;
+}
+
+.busqueda_local{
+  margin-top: 1rem;
+  margin-left: 30px;
+  width: 27vw;
+  min-width: 182px;
+  max-width: 400px;
+  border: 1px solid rgb(255, 255, 255);
+  border-bottom: 1px solid black;
+  outline: none;
+}
+.label_busqueda{
+  width: 4vw;
+  min-width: 30px;
+  max-width: 40px;
+  height: 4vh;
+  min-height: 35px;
+  position: relative;
+  margin: auto;
+  margin-right: 1rem;
+  z-index: 4;
+}
+
+.search_label{
+  margin-left: 2rem;
+  margin-top: 2rem;
+  margin-right: 2rem;
+  font-size: 16px;
+}
+
+.lupa_input{
+  position: relative;
+  z-index: 2;
+  border: none;
+  background-color: transparent;
+  color: transparent;
+  width: 100%;
+  height: 100%;
+  min-width: 40px;
+}
+.lupa_busqueda{
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-width: 40px;
+}
+
+.container{
+  height: 20vh;
+  width: 200px;
+  min-height: 194px;
+  padding: 0;
+  background-color: rgb(255, 255, 255);
+  border-radius: 0.5rem;
+  min-width: 200px;
+  border: 2px solid rgb(23, 46, 109);
+  margin: auto;
+  margin-top: 3rem;
+}
+
+@media(max-width: 544px){
+  .container{
+    margin:auto;
+    margin-top: 2.5rem;
+  }
+}
+.base-div{
+  position: relative;
+  overflow: hidden;
+  top: -77%;
+  width: 150px;
+  margin: auto;
+}
+.local_data{
+  display: block;
+  text-align: center;
+  align-items: center;
+  height: 80px;
+  margin-top: 3rem;
+  color: rgb(23, 46, 109);
+}
+
+
+.data{
+  position: relative;
+  border: 2px solid rgb(0, 44, 167);
+  margin: auto;
+  width: 100%;
+  border-radius: 0.3rem;
+  text-align: center;
+  background: white;
+  color: rgb(29, 64, 161);
+  font-weight: 700;
+  font-size: 20px;
+  height: 100%;
+  overflow: hidden;
+  min-height: 30px;
+}
+
+.hover-div{
+  display: block;
+  position: relative;
+  top: -34%;
+}
+
+.link_promociones{
+  display: block;
+  margin: auto;
+  margin-top: 3rem;
+  max-width: 350px;
+  width: 130px;
+  height: 3.3vh;
+  font-size: 20px;
+  border-radius: 0.3rem;
+  min-height: 28.8px;
+  background-color: rgb(29, 64, 161);
+  color: white;
+  text-decoration: none;
+  text-align: center;
+}
+.link_promociones:hover{
+  background-color: rgb(32, 77, 202)
+}
+
+.lineas_title{
+  width: 100vw;
+  height: 81.6px;
+  text-align: center;
+  padding-top: 0;
+  font-size: 3.7rem;
+  background: linear-gradient(315deg, rgba(0,128,240,0.4) 31%, rgba(0,128,240,0.4) 92%);
+  background-color: black;
+  color: rgb(255, 255, 255);
+  min-width: 100vw;
+  min-height: 81.6px;
+}
+
+.error_box{
+  width: 40vw;
+  height: 5vh;
+  text-align: center;
+  margin: auto;
+  margin-top: 1rem;
+  max-width: 240px;
+  min-width: 240px;
+  background-color: white;
+  border-radius: 1rem;
+  min-height: 46.3px;
+}
+.error{
+  margin: 0;
+  padding-top: 0.5rem;
+  color: red;
+}
