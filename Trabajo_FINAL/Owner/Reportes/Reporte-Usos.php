@@ -3,10 +3,9 @@
     session_start();
     include("../../database.php");
 
-    /*if (!isset($_SESSION["codUsuario"]) || $_SESSION["tipoUsuario"] != "Dueño de local") {
+    if (!isset($_SESSION["codUsuario"]) || $_SESSION["tipoUsuario"] != "Dueño de local") {
         header("Location: ../../inicio_de_sesion/inicio_sesion.php");
-    }*/
-
+    }
     // Función que cuenta la cantidad de usos que tiene cada promo contando las aparciciones del codPromo en la tabla uso_promociones
     function conteo_usos(int $codPromo){
         include("../../database.php");

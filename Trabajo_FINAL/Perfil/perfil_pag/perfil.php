@@ -38,13 +38,13 @@
         <h1 class="page_title">Perfil</h1>
         
         <div class="create_box">
-            <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post" class="form_create">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post" class="form_create">
                 <h2 class="create_subtitle">Datos de Usuario</h2>
                 <label class="create_label" for="nombre">Nombre de Usuario:</label>
                 <input type="text" placeholder="..." class="form-create__input" id="nombre" name="name" maxlength="100" value="<?php echo $_SESSION["nombreUsuario"] ?>" required <?php if ($_SESSION["editarPerfil"] == 0) echo "disabled readonly"?>>
                 <label class="create_label" for="ubi">Contraseña:</label>
                 <div class="password_form">
-                    <img src="../../Imagenes-Videos/candado.png" alt="candado.png" class="avatar-de-email" id="togglePassword">
+                    <img src="../../Imagenes-Videos/candado.png" alt="Ver contraseña" class="avatar-de-email" id="togglePassword" aria-label="ver contraseña">
                     <input type="password" placeholder="..." class="form-create__input" id="password" name="password" maxlength="8" value="<?php echo $_SESSION["claveUsuario"] ?>" required <?php if ($_SESSION["editarPerfil"] == 0) echo "disabled readonly"?>>
                 </div>
                 <label class="create_label" for="rubro">Tipo de Usuario:</label>

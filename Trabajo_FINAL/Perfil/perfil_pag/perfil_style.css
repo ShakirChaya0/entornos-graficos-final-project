@@ -93,7 +93,7 @@ section:target {
   width: 20px;
   height: 20px;
   top: 20px;
-  right: 7%;
+  right: 2%;
 }
 
 .password_form{
@@ -158,6 +158,9 @@ section:target {
 
   .form-create__input{
     width: 95%;
+  }
+  .avatar-de-email{
+    right: 7%;
   }
 }
 

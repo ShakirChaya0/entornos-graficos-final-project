@@ -5,9 +5,9 @@
     include("../../database.php");
     include("../../admin/successMensajes.php");
 
-    /*if (!isset($_SESSION["codUsuario"]) || $_SESSION["tipoUsuario"] != "Dueño de local") {
+    if (!isset($_SESSION["codUsuario"]) || $_SESSION["tipoUsuario"] != "Dueño de local") {
         header("Location: ../../inicio_de_sesion/inicio_sesion.php");
-    }*/
+    }
 
     $parametro = NULL;
     $busqueda = NULL;

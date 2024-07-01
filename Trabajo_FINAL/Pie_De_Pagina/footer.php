@@ -63,7 +63,7 @@
               </svg><a href="../Client/Novedades/Novedades.php">Novedades</a></li>
             <li> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
                 <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
-              </svg><a href="../Home-UNR/index.php#About us">Sobre Nosotros</a></li>
+              </svg><a href="../Home-UNR/index.php#AboutUs">Sobre Nosotros</a></li>
           </ul>
         </div>
         <div class="f3">
@@ -85,7 +85,7 @@
                     <form method="post">
                       <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Correo Electronico</label>
-                        <input type="text" class="form-control" id="recipient-name" name="nombre" required>
+                        <input type="email" class="form-control" id="recipient-name" name="nombre" required>
                       </div>
                       <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Asunto</label>
@@ -182,7 +182,7 @@
               </svg><a href="../../Client/Novedades/Novedades.php">Novedades</a></li>
             <li> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
                 <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
-              </svg><a href="../../Home-UNR/index.php#About us">Sobre Nosotros</a></li>
+              </svg><a href="../../Home-UNR/index.php#AboutUs">Sobre Nosotros</a></li>
           </ul>
         </div>
         <div class="f3">
@@ -204,7 +204,7 @@
                   <form method="post">
                       <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Correo Electronico</label>
-                        <input type="text" class="form-control" id="recipient-name" name="nombre" required>
+                        <input type="email" class="form-control" id="recipient-name" name="nombre" required>
                       </div>
                       <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Asunto</label>
@@ -296,7 +296,7 @@
             </svg><a href="../Novedades/Novedades.php">Novedades</a></li>
           <li> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
               <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
-            </svg><a href="../Home/Home.php#About us">Sobre Nosotros</a></li>
+            </svg><a href="../Home/Home.php#AboutUs">Sobre Nosotros</a></li>
         </ul>
       </div>
       <div class="f3">
@@ -317,7 +317,7 @@
                 <div class="modal-body">
                   <form method="post">
                     <div class="mb-3">
-                      <label for="recipient-name" class="col-form-label">nombre</label>
+                      <label for="recipient-name" class="col-form-label">Nombre</label>
                       <input type="text" class="form-control" id="recipient-name" name="nombre" required>
                     </div>
                     <div class="mb-3">
