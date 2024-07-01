@@ -1,0 +1,87 @@
+Ejercitacion 1:
+Variables:
+$a = bool;
+$b, $c = string;
+$d = int;
+$f = int;
+$g = int;
+
+Operadores:
+operador asignacion: =
+operador aritmetico: + * 
+operador comparacion: ?
+operador incremental: ++
+
+Funciones:
+doble() tipo entero
+$i = parametro
+
+Estructura de control:
+if() Condicional
+
+Salida en pantalla:
+bool
+string
+string
+int
+1
+xyz
+xyz
+18
+34
+44
+(La salida seria toda junta pero se separo para apreciar mejor la respuesta)
+
+
+Ejercitacion 2:
+
+a)
+ Si, son equivalentes.
+
+b)
+ Si, son equivalentes.
+
+c)
+ Si, son equivalentes.
+
+Ejercitacion 3:
+
+a)
+ Se utiliza para crear una tabla con dos columnas y cinco filas con las celdas vacias
+
+b)
+ El codigo se usa para validar la edad del usuario.
+
+Ejercitacion 4:
+
+ La salida del programa es: EL EL clavel blanco. Y previamente muestra advertencias por no estar definidas las variables
+
+Ejercitacion 5:
+
+ El codigo es un contador de visitas de una pagina web que fue ligeramente modificado para arreglar su funcionalidad
+
+
+PHP: arrays,funciones
+
+Ejercitacion 1:
+ 
+ Si, son equivalentes.
+
+Ejercitacion 2:
+
+a) 
+Salida correspondiente: bar1
+
+b)
+Salida correspondiente: 5942
+
+c)
+ No tiene salida correspondiente. Dejando a la matriz indefinida.
+
+Ejercitacion 3:
+
+a) 
+ Salida correspondiente: Has entrado en esta pagina a las 21 horas, con 16 minutos y 20 segundos, del 18/5/2024.
+
+b)
+ Salida correspondiente: 5+6=11

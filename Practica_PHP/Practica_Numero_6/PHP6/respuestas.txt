@@ -1,0 +1,26 @@
+1)
+
+a) mysqli_connect();
+
+b) nombre del server, nombre del usuario, contraseña. Son los necesarios
+
+c) mysqli_ select_db();
+
+d) Parametros: $Conexión_Server, $nombreBaseDatos.
+
+e) Se utiliza para hacer una consulta a la base de datos.
+
+f) Parametros: $Conexión_Server, $consulta.
+
+g) Se utiliza para terminar la ejecucion de un script si algo falla, si ocurre este fallo muestra un mensaje.
+
+h) Se utiliza para mostrar un mensaje de error en los casos de una falla en mysqli.
+
+i) El codigo comienza con una iteracion siempre que haya registros en la base de datos,
+ luego en una tabla pone los valores de cada campo del registro, libera la memoria asociada 
+ al resultado y finalmente culmina con el corte de la conexion con el server
+
+
+
+
+	
