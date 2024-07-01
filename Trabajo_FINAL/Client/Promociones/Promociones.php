@@ -985,7 +985,6 @@
         </select>
       </label>
       <input id="lupa_local" type="text" class="busqueda_local" name="search" placeholder="¿Que es lo que busca?">
-      <!--<input id="promociones_usadas" type="checkbox" name="usadas" class="checkbox_prom">-->
       <label for="enviar_busqueda" class="label_busqueda"><img class="lupa_busqueda" src="../../Imagenes-Videos/lupa.png" alt="lupa de busqueda"><input type="submit" class="lupa_input" id="enviar_busqueda" name="busqued"></label>
     </form>
   <div class="iteracion">

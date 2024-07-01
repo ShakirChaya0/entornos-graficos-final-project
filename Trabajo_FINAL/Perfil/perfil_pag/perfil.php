@@ -1,10 +1,10 @@
 <?php
     ob_start();
     session_start();
-    /*if (!isset($_SESSION["codUsuario"])) {
+    if (!isset($_SESSION["codUsuario"])) {
         session_destroy();
         header("Location: ../../inicio_de_sesion/inicio_sesion.php");
-    }*/
+    }
     include("../../database.php");
 
     function valid_input($input) {

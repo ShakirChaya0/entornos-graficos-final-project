@@ -1,8 +1,8 @@
 <?php
   session_start();
-  /*if(strtolower($_SESSION["tipoUsuario"]) != "cliente"){
+  if(strtolower($_SESSION["tipoUsuario"]) != "Cliente"){
     header("LOCATION: ../../inicio_de_sesion/inicio_sesion.php");
-  }*/
+  }
 ?>
 <!doctype html>
 <html lang="es">

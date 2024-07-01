@@ -1,10 +1,10 @@
 <?php
     ob_start();
     session_start();
-    /*if (!isset($_SESSION["codUsuario"]) || $_SESSION["codUsuario"] != 1) {
+    if (!isset($_SESSION["codUsuario"]) || $_SESSION["codUsuario"] != 1) {
         session_destroy();
         header("Location: ../../inicio_de_sesion/inicio_sesion.php");
-    }*/
+    }
     include("../../database.php");
 ?>
 <!DOCTYPE html>
