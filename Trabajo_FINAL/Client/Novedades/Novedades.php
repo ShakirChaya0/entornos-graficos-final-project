@@ -41,6 +41,7 @@
       include("../../database.php");
       $sql = "SELECT * FROM novedades";
       $result = mysqli_query($conn, $sql);
+      $bandera = false;
       date_default_timezone_set('America/Argentina/Buenos_Aires');
       $fecha_actual = date("Y-m-d");
       $fecha_actual = strtotime($fecha_actual);
@@ -68,6 +69,7 @@
                 </div>
               </div>
                 ";
+                $bandera = true;
               }
               else{
                 echo"
@@ -84,7 +86,7 @@
                 </div>
               </div>
                 ";
-
+                $bandera = true;
               }
             }
             elseif(strtolower($row_usu["categoriaCliente"]) == "medium"){
@@ -106,6 +108,7 @@
                   </div>
                 </div>
                   ";
+                  $bandera = true;
                 }
                 else{
                   echo"
@@ -122,7 +125,7 @@
                   </div>
                 </div>
                   ";
-
+                  $bandera = true;
                 }
               }
             }
@@ -145,6 +148,7 @@
                   </div>
                 </div>
                   ";
+                  $bandera = true;
                 }
                 else{
                   echo"
@@ -161,7 +165,7 @@
                   </div>
                 </div>
                   ";
-
+                  $bandera = true;
                 }
               }
             }
@@ -169,6 +173,14 @@
           else{
             continue;
           } 
+        }
+        if(!$bandera){
+          echo"
+              <div class = 'error_box'>
+                <p class = 'error'>No hay Novedades</p>
+              </div>
+            
+            ";
         }
       }
       else{
