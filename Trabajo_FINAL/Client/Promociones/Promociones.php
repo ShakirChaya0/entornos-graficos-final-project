@@ -9,6 +9,7 @@
   function mostrarpromociones(){
     include("../../database.php");
     date_default_timezone_set('America/Argentina/Buenos_Aires');
+    $bandera = false;
     $fecha_actual = date("Y-m-d");
     $search_usu = 'SELECT * FROM usuarios WHERE codUsuario = "'.$_SESSION["codUsuario"].'"';
     $result_usu = mysqli_query($conn, $search_usu);
@@ -49,6 +50,7 @@
                       <div class='Promocion_aprobada '>Usada</div>
                     </div>      
                   </div>";
+                $bandera = true;
                 $flag = false;
                 break;
               }
@@ -74,6 +76,7 @@
                   </form>
                   </div>
                   </div>";
+                  $bandera = true;
                   if(!empty($_POST["{$row_promo['codPromo']}"]) && $_POST["{$row_promo['codPromo']}"] == "Usar") {
                     $cantProm = $row_usu["cantidadPromo"] + 1;
                     $sql = "UPDATE usuarios SET cantidadPromo = '$cantProm' WHERE codUsuario = {$row_usu['codUsuario']}";
@@ -106,6 +109,7 @@
                     </form>
                     </div>
                     </div>";
+                    $bandera = true;
                     if(!empty($_POST["{$row_promo['codPromo']}"]) && $_POST["{$row_promo['codPromo']}"] == "Usar") {
                       $cantProm = $row_usu["cantidadPromo"] + 1;
                       $sql = "UPDATE usuarios SET cantidadPromo = '$cantProm' WHERE codUsuario = {$row_usu['codUsuario']}";
@@ -140,6 +144,7 @@
                     </form>
                     </div>
                     </div>";
+                    $bandera = true;
                     if(!empty($_POST["{$row_promo['codPromo']}"]) && $_POST["{$row_promo['codPromo']}"] == "Usar") {
                       $cantProm = $row_usu["cantidadPromo"] + 1;
                       $sql = "UPDATE usuarios SET cantidadPromo = '$cantProm' WHERE codUsuario = {$row_usu['codUsuario']}";
@@ -178,6 +183,7 @@
                 </form>
                 </div>
                 </div>";
+                $bandera = true;
               if(!empty($_POST["{$row_promo['codPromo']}"]) && $_POST["{$row_promo['codPromo']}"] == "Usar") {
                 $cantProm = $row_usu["cantidadPromo"] + 1;
                 $sql = "UPDATE usuarios SET cantidadPromo = '$cantProm' WHERE codUsuario = {$row_usu['codUsuario']}";
@@ -210,6 +216,7 @@
                 </form>
                 </div>
                 </div>";
+                $bandera = true;
                 if(!empty($_POST["{$row_promo['codPromo']}"]) && $_POST["{$row_promo['codPromo']}"] == "Usar") {
                   $cantProm = $row_usu["cantidadPromo"] + 1;
                   $sql = "UPDATE usuarios SET cantidadPromo = '$cantProm' WHERE codUsuario = {$row_usu['codUsuario']}";
@@ -243,6 +250,7 @@
                 </form>
                 </div>
                 </div>";
+                $bandera = true;
                 if(!empty($_POST["{$row_promo['codPromo']}"]) && $_POST["{$row_promo['codPromo']}"] == "Usar") {
                   $cantProm = $row_usu["cantidadPromo"] + 1;
                   $sql = "UPDATE usuarios SET cantidadPromo = '$cantProm' WHERE codUsuario = {$row_usu['codUsuario']}";
@@ -267,6 +275,12 @@
       }
     }
     else{
+      echo"
+                <div class = 'no_promo cion'>No hay promociones</div>
+            
+            ";
+    }
+    if(!$bandera){
       echo"
                 <div class = 'no_promo cion'>No hay promociones</div>
             
@@ -961,7 +975,7 @@
     include("../../Barra_Navegacion/Nav-bar.php");
   ?>
   <div class="lineas_title">Promociones</div>
-    <form class="filtrado_locales" action = "<?php echo echo htmlspecialchars($_SERVER["PHP_SELF"])?>" method="post">
+    <form class="filtrado_locales" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>" method="post">
       <label class="search_label" for="select_parametro"><b>Búsqueda de local:</b>
         <select name="parametro" id="select_parametro" class="form-search__select">
             <option value="nombreLocal" <?php if ($selected_value == 'nombreLocal') echo 'selected'; ?>>Por nombre de local</option>
