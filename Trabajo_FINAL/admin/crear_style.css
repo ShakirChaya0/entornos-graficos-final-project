@@ -135,11 +135,11 @@ textarea {
 }
 
 .form-create__button, .form-modify__button {
-  border: 1px solid #198754;
+  border: 1px solid #136d43;
   border-radius: 5px;
   padding: 10px 20px;
   color: #fffafa;
-  background-color: #198754;
+  background-color: #136d43;
   transition-property: background-color, border;
   transition-duration: 0.2s;
 }

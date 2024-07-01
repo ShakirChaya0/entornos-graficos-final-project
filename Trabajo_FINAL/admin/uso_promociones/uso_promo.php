@@ -8,7 +8,7 @@
     include("../../database.php");
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -108,18 +108,18 @@
 
                     if (isset($_GET["page"]) && $_GET["page"] > 1) {
                         ?>
-                        <li class="page-item"><a href="?page=<?php echo $_GET["page"] - 1 ?>" class="page-link">««</a></li>
+                        <li class="page-item"><a href="?page=<?php echo $_GET["page"] - 1 ?>" class="page-link" aria-label='Página anterior'>««</a></li>
                         <?php
                     }
                     else {
                         ?>
-                        <li class="page-item"><a class="page-link inactive">««</a></li>
+                        <li class="page-item"><a class="page-link inactive" aria-label='Estas en la primer página'>««</a></li>
                         <?php
                     }
 
                     for ($i = 1; $i <= $total_pags; $i++) {
                         ?>
-                        <li class="page-item"><a href="?page=<?php echo $i ?>" class="page-link"><?php echo $i ?></a></li>
+                        <li class="page-item"><a href="?page=<?php echo $i ?>" class="page-link" aria-label='Pagina numero <?php echo $i ?>'><?php echo $i ?></a></li>
                         <?php
                     }
 
@@ -128,12 +128,12 @@
                     }
                     if ($_GET["page"] >= $total_pags) {
                         ?>
-                        <li class="page-item"><a class="page-link inactive">»»</a></li>
+                        <li class="page-item"><a class="page-link inactive" aria-label='Página siguiente'>»»</a></li>
                         <?php
                     }
                     else {
                         ?>
-                        <li class="page-item"><a href="?page=<?php echo $_GET["page"] + 1 ?>" class="page-link">»»</a></li>
+                        <li class="page-item"><a href="?page=<?php echo $_GET["page"] + 1 ?>" class="page-link" aria-label='Página siguiente'>»»</a></li>
                         <?php
                     }
 
@@ -226,17 +226,17 @@
                                 ';
                                 if (isset($_GET["page_2"]) && $_GET["page_2"] > 1) {
                                     ?>
-                                    <li class="page-item"><a href="?page_2=<?php echo $_GET["page_2"] - 1 ?>" class="page-link">««</a></li>
+                                    <li class="page-item"><a href="?page_2=<?php echo $_GET["page_2"] - 1 ?>" class="page-link" aria-label='Página anterior'>««</a></li>
                                     <?php
                                 }
                                 else {
                                     ?>
-                                    <li class="page-item"><a class="page-link inactive">««</a></li>
+                                    <li class="page-item"><a class="page-link inactive" aria-label='Estas en la primer página'>««</a></li>
                                     <?php
                                 }
                                 for ($i = 1; $i <= $total_pags_2; $i++) {
                                     ?>
-                                    <li class="page-item"><a href="?page_2=<?php echo $i ?>" class="page-link"><?php echo $i ?></a></li>
+                                    <li class="page-item"><a href="?page_2=<?php echo $i ?>" class="page-link" aria-label='Página número <?php echo $i ?>'><?php echo $i ?></a></li>
                                     <?php
                                 }
                                 if (!isset($_GET["page_2"])) {
@@ -244,12 +244,12 @@
                                 }
                                 if ($_GET["page_2"] >= $total_pags_2) {
                                     ?>
-                                    <li class="page-item"><a class="page-link inactive">»»</a></li>
+                                    <li class="page-item"><a class="page-link inactive" aria-label='Estás en la última página'>»»</a></li>
                                     <?php
                                 }
                                 else {
                                     ?>
-                                    <li class="page-item"><a href="?page_2=<?php echo $_GET["page_2"] + 1 ?>" class="page-link">»»</a></li>
+                                    <li class="page-item"><a href="?page_2=<?php echo $_GET["page_2"] + 1 ?>" class="page-link" aria-label='Página siguiente'>»»</a></li>
                                     <?php
                                 }
                                 echo '

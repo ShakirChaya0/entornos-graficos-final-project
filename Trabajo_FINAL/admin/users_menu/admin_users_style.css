@@ -146,6 +146,11 @@ input[type="checkbox"]:checked ~ .modal {
   background-color: rgba(0,0,0,0.4);
 }
 
+.modal-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
 .modal p {
   text-align: left;
   margin: 10px 0;

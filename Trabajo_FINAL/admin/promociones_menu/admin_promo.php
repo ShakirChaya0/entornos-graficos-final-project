@@ -9,7 +9,7 @@
     include("../successMensajes.php");
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -97,12 +97,12 @@
                                         <button class='btn btn-outline-secondary' onclick=\"document.getElementById('modal-{$row["codPromo"]}').checked = true\">
                                             Seleccionar
                                         </button>
-                                        <input type='checkbox' id='modal-{$row["codPromo"]}' name='modal-trigger'>
+                                        <input type='checkbox' id='modal-{$row["codPromo"]}' name='modal-trigger' aria-label='Seleccionar promoción'>
                                         <div class='modal'>
                                             <div class='modal-dialog'>
                                                 <div class='modal-content'>
                                                     <div class='modal-header'>
-                                                        <h5 class='modal-title'>Aceptar/Rechazar promoción de <strong style='color: #0070d1;'>{$local["nombreLocal"]}</strong></h5>
+                                                        <p class='modal-title'>Aceptar/Rechazar promoción de <span style='color: #0070d1;'>{$local["nombreLocal"]}</span></p>
                                                         <button type='button' class='btn btn-close' onclick=\"document.getElementById('modal-{$row["codPromo"]}').checked = false\" aria-label='Cerrar'></button>
                                                     </div>
                                                     <div class='modal-body'>

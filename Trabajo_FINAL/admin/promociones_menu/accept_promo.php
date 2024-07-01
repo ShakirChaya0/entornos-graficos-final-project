@@ -25,11 +25,7 @@
                     'Reply-To: no_reply@gmail.com' . "\r\n" .
                     'X-Mailer: PHP/' . phpversion();
 
-        if (mail($destinatario, $asunto, $cuerpo, $headers)) {
-            echo "Correo enviado exitosamente a $email";
-        } else {
-            echo "Error al enviar el correo.";
-        }
+        mail($destinatario, $asunto, $cuerpo, $headers);
 
         $sql = "UPDATE promociones 
                 SET estadoPromo = '$estado'

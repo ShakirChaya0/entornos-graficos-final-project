@@ -10,7 +10,7 @@
     include("../successMensajes.php");
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -135,12 +135,12 @@
                                                 <path d='M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708'/>
                                             </svg>
                                         </button>
-                                        <input type='checkbox' id='modal-{$row["codNovedad"]}' name='modal-trigger'>
+                                        <input type='checkbox' id='modal-{$row["codNovedad"]}' name='modal-trigger' aria-label='Seleccionar novedad para eliminar'>
                                         <div class='modal'>
                                             <div class='modal-dialog'>
                                                 <div class='modal-content'>
                                                     <div class='modal-header'>
-                                                        <h5 class='modal-title'>Dar de baja: <strong style='color: #c90a0a'>{$row["codNovedad"]}- {$row["tituloNovedad"]}</strong></h5>
+                                                        <p class='modal-title'>Dar de baja: <strong style='color: #c90a0a'>{$row["codNovedad"]}- {$row["tituloNovedad"]}</strong></p>
                                                         <button type='button' class='btn btn-close' onclick=\"document.getElementById('modal-{$row["codNovedad"]}').checked = false\" aria-label='Cerrar'></button>
                                                     </div>
                                                     <div class='modal-body'>
@@ -166,12 +166,12 @@
                                                 <path d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z'/>
                                             </svg>
                                         </button>
-                                        <input type='checkbox' id='modal-{$row["codNovedad"]}' name='modal-trigger'>
+                                        <input type='checkbox' id='modal-{$row["codNovedad"]}' name='modal-trigger' aria-label='Seleccionar novedad para restablecer'>
                                         <div class='modal'>
                                             <div class='modal-dialog'>
                                                 <div class='modal-content'>
                                                     <div class='modal-header'>
-                                                        <h5 class='modal-title'>Restablecer: <strong style='color: #14c974'>{$row["codNovedad"]}- {$row["tituloNovedad"]}</strong></h5>
+                                                        <p class='modal-title'>Restablecer: <strong style='color: #14c974'>{$row["codNovedad"]}- {$row["tituloNovedad"]}</strong></p>
                                                         <button type='button' class='btn btn-close' onclick=\"document.getElementById('modal-{$row["codNovedad"]}').checked = false\" aria-label='Cerrar'></button>
                                                     </div>
                                                     <div class='modal-body'>
