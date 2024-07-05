@@ -10,11 +10,21 @@ body {
     padding: 0;
 }
 
+.page_title {
+  background-color: #003360;
+  color: #fffafa;
+  text-align: center;
+  font-size: 4rem;
+  letter-spacing: 3px;
+  padding: 0.3rem;
+}
+
 .iteracion{
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
   margin: auto;
+  padding: 10px 25px;
 }
 
 .filtrado_locales{

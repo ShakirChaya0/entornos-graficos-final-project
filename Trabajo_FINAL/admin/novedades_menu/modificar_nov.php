@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="../crear_style.css">
     <link rel="stylesheet" href="../../Barra_Navegacion/Bar-style.css">
     <link rel="stylesheet" href="../../Pie_De_Pagina/footer.css">
-    <title>Rosario Shopping Center - Modificar Novedad</title>
+    <title>Modificar Novedad | Rosario Shopping Center</title>
 </head>
 <body>
     

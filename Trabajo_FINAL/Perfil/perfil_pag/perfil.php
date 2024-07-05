@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="perfil_style.css">
     <link rel="stylesheet" href="../../Barra_Navegacion/Bar-style.css">
     <link rel="stylesheet" href="../../Pie_De_Pagina/footer.css">
-    <title>Rosario Shopping Center - Perfil de Usuario</title>
+    <title>Perfil de Usuario | Rosario Shopping Center</title>
 </head>
 <body>
     
@@ -83,7 +83,7 @@
             $sql_aux = "SELECT * FROM usuarios WHERE nombreUsuario = '{$_POST["name"]}'";
             $result = mysqli_query($conn, $sql_aux);
 
-            if (mysqli_num_rows($result) == 0) {
+            if (mysqli_num_rows($result) == 0 || $_SESSION["nombreUsuario"] == $_POST["name"]) {
                 $password = $_POST["password"];
                 $name = valid_input($_POST["name"]);
                 

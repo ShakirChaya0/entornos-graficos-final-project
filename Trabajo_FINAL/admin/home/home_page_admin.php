@@ -16,7 +16,7 @@
 	<link rel="stylesheet" href="home_style.css">
     <link rel="stylesheet" href="../../Barra_Navegacion/Bar-style.css">
     <link rel="stylesheet" href="../../Pie_De_Pagina/footer.css">
-	<title>Rosario Shopping Center - Inicio</title>
+	<title>Inicio | Rosario Shopping Center</title>
 </head>
 
 <body>

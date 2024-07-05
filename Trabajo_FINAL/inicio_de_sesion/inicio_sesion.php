@@ -6,29 +6,30 @@
     $_SESSION["tipoUsuario"] = "UNR";
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../Imagenes-Videos/bolsas-de-compra.png">
     <link rel="stylesheet" href="log_in.css">
-    <title>Rosario shopping center - Inicio de sesion</title>
+    <title>Inicio de sesion | Rosario Shopping Center</title>
 </head>
 <body>
     <main>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>" method="post" class="form">
-            <div class="logo-cont" aria-label="Logo de la empresa" title="Inicio de la pagina principal">
-                <a href="../Home-UNR/index.php" alt="Inicio de la pagina principal"><img src="../Imagenes-Videos/logo.jpg" alt="Inicio de la pagina principal" class="logo"></a>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>" method="post" class="form" >
+            <div class="logo-cont" title="Enlace a la pagina principal">
+                <a href="../Home-UNR/index.php" aria-label="Enlace a la pagina principal"><img src="../Imagenes-Videos/logo.jpg" alt="Enlace a la página principal" class="logo"></a>
+                <h1 style="display: none">Rosario Shopping Center</h1>
             </div>
             <div class="username_form">
-                <img src="../Imagenes-Videos/avatar.png" alt="Imagen de avatar de usuario" class="avatar-de-email" title="Imagen de avatar de usuario">
-                <input type="text" required class="form-control" id="floatingInput"  name="username" autocomplete="off">
-                <label for="floatingInput">Email del Usuario</label>
+                <img src="../Imagenes-Videos/avatar.png" alt="Imagen de avatar de usuario" class="avatar-de-email" title="Avatar de usuario">
+                <input type="text" required class="form-control" id="floatingInput" aria-labelledby="email-label" name="username" autocomplete="off" aria-required="true">
+                <label for="floatingInput" id="email-label">Email del Usuario</label>
             </div>
             <div class="password_form">
-                <img src="../Imagenes-Videos/candado.png" alt="Imagen contraseña" class="avatar-de-email" id="togglePassword" title="Imagen contraseña">
-                <input type="password" required class="form-control" id="password" name="password">
-                <label for="password">Contraseña</label>
+                <img src="../Imagenes-Videos/candado.png" alt="Ver contraseña" class="avatar-de-email" id="togglePassword" title="Dejar ver contraseña">
+                <input type="password" required class="form-control" id="password" aria-labelledby="pass-label" name="password" aria-required="true">
+                <label for="password" id="pass-label">Contraseña</label>
             </div>
             <script>
                 document.getElementById('togglePassword').addEventListener('click', function () {
@@ -43,8 +44,8 @@
                 });
             </script>
             <div class="footer_form">
-                <input type="submit" value="Iniciar sesion" class="submit" name="submit">
-                <p class="regis">¿Aun no te registraste?<a href="sign_up.php"> Registrarse</a></p>
+                <input type="submit" value="Iniciar sesion" class="submit" name="submit" aria-label="Iniciar Sesión">
+                <p class="regis">¿Aun no te registraste?<a href="sign_up.php" aria-label="Enlace para registrarse"> Registrarse</a></p>
             <div class="cont_error">
                 <?php
                     if(!empty($_POST["submit"])){

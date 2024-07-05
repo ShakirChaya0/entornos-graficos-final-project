@@ -7,7 +7,7 @@
   include("../../admin/novedades_menu/verif_nov.php");
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="Novedades.css">
     <link rel="stylesheet" href="../../Pie_De_Pagina/footer.css">
     <link rel="stylesheet" href="../../Barra_Navegacion/Bar-style.css">
-    <title>Rosario Shopping Center Novedades</title>
+    <title>Novedades | Rosario Shopping Center</title>
   </head>
 <body>
   <?php

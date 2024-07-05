@@ -55,7 +55,7 @@
           if($_SERVER["PHP_SELF"] == "/Home-UNR/index.php"){
     ?>
               <div class="navbar-style">
-                <a class="navbar-brand" href="../Home-UNR/index.php"><img title="Inicio" class="icon" src="../Imagenes-Videos/bolsas-de-compra.png" alt="Inicio"></a>
+                <a class="navbar-brand" href="../Home-UNR/index.php" aria-label="Enlace a la página principal"><img title="Inicio" class="icon" src="../Imagenes-Videos/bolsas-de-compra.png" alt="Inicio"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -63,24 +63,24 @@
               <div class="collapse navbar-collapse" id="navbarScroll">
                   <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                     <li class="nav-item">
-                      <a class="nav-link active locales-active" aria-current="page" href="../Client/Locales/Locales.php">Locales</a>
+                      <a class="nav-link active locales-active" aria-current="page" aria-label="Enlace a la página de Locales" href="../Client/Locales/Locales.php">Locales</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="../Client/Promociones/Promociones.php">Promociones</a>
+                      <a class="nav-link active" aria-current="page" aria-label="Enlace a la página de Promociones" href="../Client/Promociones/Promociones.php">Promociones</a>
                     </li>
                     <li class="nav-item dropdown">
-                      <a class="nav-link active" aria-current="page" href="../Client/Novedades/Novedades.php">Novedades</a>
+                      <a class="nav-link active" aria-current="page" aria-label="Enlace a la página de Novedades" href="../Client/Novedades/Novedades.php">Novedades</a>
                     </li>
                     <li class="nav-item dropdown">
-                      <a class="nav-link active" aria-current="page" href="../Home-UNR/index.php#AboutUs">Sobre Nosotros</a>
+                      <a class="nav-link active" aria-current="page" aria-label="Enlace a la sección Sobre Nosotros de la página principal" href="../Home-UNR/index.php#AboutUs">Sobre Nosotros</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="#Contacto">Contacto</a>
+                      <a class="nav-link active" aria-current="page" aria-label="Enlace al botón de Contacto del pie de página" href="#Contacto">Contacto</a>
                     </li>
                   </ul>
                   <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])   ?>" method="post" class="d-flex align-items-center form-style" role="search">
-                      <input class="btn btn-outline-success" name="Iniciar-Sesion" value="Iniciar Sesión" type="submit">
-                      <input class="btn btn-outline-success success" name="Registrarse" value="Registrarse" type="submit">
+                      <input class="btn btn-outline-success" name="Iniciar-Sesion" value="Iniciar Sesión" type="submit" aria-label="Enlace a la página de Inicio de Sesión como Usuario registrado">
+                      <input class="btn btn-outline-success success" name="Registrarse" value="Registrarse" type="submit" aria-label="Enlace a la página para registrarse como Usuario">
                   </form>
               </div>
               <?php

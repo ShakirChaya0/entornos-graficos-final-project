@@ -21,7 +21,7 @@
 
         $destinatario = $row["nombreUsuario"];
         $asunto = "Aprobación/Denegación de Promoción";
-        $headers = 'From: rosarioShoppingCenter@gmail.com' . "\r\n" .
+        $headers = 'From: rosarioshoppingcenter@gmail.com' . "\r\n" .
                     'Reply-To: no_reply@gmail.com' . "\r\n" .
                     'X-Mailer: PHP/' . phpversion();
 

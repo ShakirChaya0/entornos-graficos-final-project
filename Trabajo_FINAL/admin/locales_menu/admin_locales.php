@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="admin_locales_style.css">
     <link rel="stylesheet" href="../../Barra_Navegacion/Bar-style.css">
     <link rel="stylesheet" href="../../Pie_De_Pagina/footer.css">
-    <title>Rosario Shopping Center - Locales</title>
+    <title>Locales | Rosario Shopping Center</title>
 </head>
 <body>
 
@@ -72,7 +72,7 @@
 
         <!-- SELECT FILAS POR PAG Y TABLA -->
         <?php
-            $cant_registros = 15;
+            $cant_registros = 10;
             $pag = isset($_GET["page"]) ? $_GET["page"] : 1;
             $inicio = ($pag - 1) * $cant_registros;
             

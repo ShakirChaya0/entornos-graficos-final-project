@@ -29,28 +29,30 @@
 
   <!-- Título de Locales-->
   <main>
-      <div class="lineas_title">Locales</div>
+        <h1 class="page_title">Locales</h1>
 
     <!-- Barra de búsqueda de locales -->
-        <form class="filtrado_locales" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>">
-          <label class="search_label" for="select_parametro"><b>Búsqueda de local:</b>
-            <select name="parametro" id="select_parametro" class="form-search__select" aria-label="Seleccion de opciones">
+        <form class="filtrado_locales" method="get" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>">
+          <label class="search_label" for="select_parametro" id="select_label"><b>Búsqueda de local:</b>
+            <select name="parametro" id="select_parametro" class="form-search__select" aria-label="Seleccion de opciones" aria-labelledby="select_label">
                 <option value="nombreLocal">Por nombre</option>
                 <option value="ubicacionLocal">Por ubicación</option>
                 <option value="rubroLocal">Por rubro</option>
                 <option value="codUsuario">Por código de Dueño</option>
             </select>
           </label>
-          <input id= "lupa_local" type="text" class="busqueda_local" name="busqueda" placeholder="¿Qué desea buscar?" title="Busqueda de local">
+          <input id="lupa_local" type="text" class="busqueda_local" name="busqueda" placeholder="¿Qué desea buscar?" title="Busqueda de local" aria-label="Campo de texto, ingresar el dato para buscar">
           <label for="enviar_busqueda" class="label_busqueda">
-            <img class="lupa_busqueda" src="../../Imagenes-Videos/lupa.png" alt="Lupa de busqueda"><input type="submit" class="lupa_input" id="enviar_busqueda" name="busqued" title="Boton de busqueda">
+            <button type="submit" class="lupa_input" id="enviar_busqueda" name="busqued" aria-label="Botón Buscar">
+                <img class="lupa_busqueda" src="../../Imagenes-Videos/lupa.png" alt="Lupa de búsqueda">
+            </button>
           </label>
         </form>
 
       <div class="iteracion">  
         <?php
         include("../../database.php");
-          if(empty($_POST["busqueda"])){
+          if(empty($_GET["busqueda"])){
             $sql = "SELECT * FROM locales";
             $result = mysqli_query($conn, $sql);
             if(mysqli_num_rows($result) > 0){
@@ -63,7 +65,7 @@
                                 <p class = 'data'> {$row['nombreLocal']}</p>
                               </div>
                               <div class = 'hover-div'>
-                                <a class='link_promociones' href='$URL' aria-label='Promociones' title='Promociones'>Promociones</a>
+                                <a class='link_promociones' href='$URL' aria-label='Enlace a Promociones del local' title='Promociones del Local'>Promociones</a>
                               </div>
                         </div>";
                 };
@@ -78,8 +80,8 @@
             }
           }
           else{
-            $parame = $_POST["parametro"];
-            $busqueda = $_POST["busqueda"];
+            $parame = $_GET["parametro"];
+            $busqueda = $_GET["busqueda"];
             $sql = "SELECT * FROM locales WHERE $parame LIKE '$busqueda%'";
             $resp = mysqli_query($conn, $sql);
             if(mysqli_num_rows($resp) > 0){
@@ -92,7 +94,7 @@
                               <p class = 'data'> {$row['nombreLocal']}</p>
                             </div>
                             <div class = 'hover-div'>
-                              <a class='link_promociones' href='$URL' aria-label='Promociones' title='Promociones'>Promociones</a>
+                              <a class='link_promociones' href='$URL' aria-label='Enlace a Promociones del local' title='Promociones del Local'>Promociones</a>
                             </div>
                       </div>";
               };
@@ -100,7 +102,7 @@
             else{
               echo"
                 <div class = 'error_box'>
-                  <p class = 'error'>No se encontro lo que buscaste</p>
+                  <p class = 'error'>No se encontraron locales</p>
                 </div>
 
               ";

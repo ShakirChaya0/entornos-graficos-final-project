@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="admin_users_style.css">
     <link rel="stylesheet" href="../../Barra_Navegacion/Bar-style.css">
     <link rel="stylesheet" href="../../Pie_De_Pagina/footer.css">
-    <title>Rosario Shopping Center - Listado Usuarios</title>
+    <title>Listado Usuarios | Rosario Shopping Center</title>
 </head>
 <body>
     

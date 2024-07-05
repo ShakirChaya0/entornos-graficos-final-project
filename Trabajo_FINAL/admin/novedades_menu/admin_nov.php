@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="admin_nov_style.css">
     <link rel="stylesheet" href="../../Barra_Navegacion/Bar-style.css">
     <link rel="stylesheet" href="../../Pie_De_Pagina/footer.css">
-    <title>Rosario Shopping Center - Novedades</title>
+    <title>Novedades | Rosario Shopping Center</title>
 </head>
 <body>
     

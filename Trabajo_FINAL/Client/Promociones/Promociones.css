@@ -10,11 +10,22 @@ body {
     padding: 0;
 }
 
+.page_title {
+  background-color: #003360;
+  color: #fffafa;
+  text-align: center;
+  font-size: 4rem;
+  letter-spacing: 3px;
+  padding: 0.3rem;
+}
+
 .iteracion{
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
   margin: auto;
+  margin-top:1.5rem;
+  padding: 10px 25px;
 }
 .filtrado_locales{
   background: rgb(255, 255, 255);
@@ -310,5 +321,57 @@ border: 2px solid red;
   height: 100%;
   overflow: hidden;
   min-height: 30px;
+}
+
+.card{
+  min-width: 280px;
+  max-width: 280px;
+  min-height: 300px;
+  margin: auto;
+}
+
+.top_card{
+  background: white;
+  border: 2px solid rgb(29, 64, 161);
+  color: rgb(29, 64, 161);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.green{
+  color: green;
+  border: 2px solid rgb(30, 124, 30);
+}
+
+.button{
+  min-width: 100%;
+  background-color: rgb(29, 64, 161);
+  color: white !important;
+  font-weight: 600;
+  border: 2px solid rgb(29, 64, 161);
+}
+
+.button:hover{
+  background-color: rgb(32, 77, 202);
+}
+
+.card-body{
+  border-left: 2px solid rgb(29, 64, 161);
+  border-right: 2px solid rgb(29, 64, 161);
+}
+
+.usado{
+  min-width: 100%;
+  color: white !important;
+  cursor: default !important;
+  font-weight: 600;
+  background-color: rgb(30, 124, 30);
+  border: 2px solid rgb(30, 124, 30);
+}
+
+
+.aprobado{
+  border-left: 2px solid rgb(30, 124, 30);
+  border-right: 2px solid rgb(30, 124, 30);
 }
 

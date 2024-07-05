@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="admin_promo_style.css">
     <link rel="stylesheet" href="../../Barra_Navegacion/Bar-style.css">
     <link rel="stylesheet" href="../../Pie_De_Pagina/footer.css">
-    <title>Rosario Shopping Center - Listado Promociones</title>
+    <title>Listado Promociones | Rosario Shopping Center</title>
 </head>
 <body>
 
