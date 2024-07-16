@@ -2,6 +2,7 @@
     ob_start();
     session_start();
     include("../../database.php");
+    include("../../successMail.php");
 
     if (!isset($_SESSION["codUsuario"]) || $_SESSION["tipoUsuario"] != "Dueño de local") {
         header("Location: ../../inicio_de_sesion/inicio_sesion.php");
@@ -320,9 +321,15 @@ if ($Filas_Locales > 0) {
 
 ?>
 </div>
+    <?php
+        successMail();
+        $_SESSION["mailEnviado"] = 0;
+    ?>
+
 <?php
     include("../../Pie_De_Pagina/footer.php");
-?>                  
+?>          
+
 
 </body>
 </html>

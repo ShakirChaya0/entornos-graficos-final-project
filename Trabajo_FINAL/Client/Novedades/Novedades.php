@@ -5,6 +5,7 @@
     header("LOCATION: ../../inicio_de_sesion/inicio_sesion.php");
   }
   include("../../admin/novedades_menu/verif_nov.php");
+  include("../../successMail.php");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -193,9 +194,15 @@
       }
       ?>
     </div>
+    
+    <?php
+        successMail();
+        $_SESSION["mailEnviado"] = 0;
+    ?>
     <?php
       include("../../Pie_De_Pagina/footer.php");
     ?>
+    
 </body>
 <?php
   ob_end_flush();

@@ -1,6 +1,7 @@
 <?php
     session_start();
     include("../../database.php");
+    include("../../successMail.php");
 
     if (!isset($_SESSION["codUsuario"]) || $_SESSION["tipoUsuario"] != "Dueño de local") {
         header("Location: ../../inicio_de_sesion/inicio_sesion.php");
@@ -63,10 +64,17 @@
             ?>
         </div>
 	</section>
+	
+
 
 <?php
     include("../../Pie_De_Pagina/footer.php");
-?>                  
+?>      
+
+<?php
+  successMail();
+  $_SESSION["mailEnviado"] = 0;
+?>
 
 </body>
 </html>

@@ -1,5 +1,6 @@
 <?php
   session_start();
+  include("../../successMail.php");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -113,5 +114,12 @@
   </main>
     <?php
       include("../../Pie_De_Pagina/footer.php");
+    ?>
+    <?php
+        successMail();
+        if($_SESSION["mailEnviado"] == 1){
+            header("Location: {$_SERVER["PHP_SELF"]}");
+        }
+        $_SESSION["mailEnviado"] = 0;
     ?>
 </body>

@@ -3,6 +3,7 @@
   if(strtolower($_SESSION["tipoUsuario"]) != "cliente"){
     header("LOCATION: ../../inicio_de_sesion/inicio_sesion.php");
   }
+  include("../../successMail.php");
 ?>
 <!doctype html>
 <html lang="es">
@@ -187,6 +188,13 @@
     include("../../Pie_De_Pagina/footer.php");
   ?>
 
+    <?php
+        successMail();
+        if($_SESSION["mailEnviado"] == 1){
+            header("Location: {$_SERVER["PHP_SELF"]}");
+        }
+        $_SESSION["mailEnviado"] = 0;
+    ?>
 </body>
 
 </html>

@@ -1,6 +1,7 @@
 <?php
-session_start();
-$_SESSION["tipoUsuario"] = "UNR";
+    session_start();
+    $_SESSION["tipoUsuario"] = "UNR";
+    include("../successMail.php");
 ?>
 
 <!DOCTYPE html>
@@ -177,6 +178,13 @@ $_SESSION["tipoUsuario"] = "UNR";
   include("../Pie_De_Pagina/footer.php");
 ?>
 
+<?php
+  successMail();
+  if($_SESSION["mailEnviado"] == 1){
+    header("Location: {$_SERVER["PHP_SELF"]}");
+  }
+  $_SESSION["mailEnviado"] = 0;
+?>
 </body>
 
 </html>

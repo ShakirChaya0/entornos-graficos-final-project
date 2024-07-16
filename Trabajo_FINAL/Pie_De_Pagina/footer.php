@@ -84,7 +84,7 @@
                   <div class="modal-body">
                     <form method="post">
                       <div class="mb-3">
-                        <label for="recipient-email" class="col-form-label">Correo Electronico</label>
+                        <label for="recipient-email" class="col-form-label">Correo Electrónico</label>
                         <input type="email" class="form-control" id="recipient-email" name="nombre" required>
                       </div>
                       <div class="mb-3">
@@ -107,11 +107,14 @@
                         $nombre = $_POST["nombre"];
                         $asunto = $_POST["asunto"];
                         $cuerpo = $_POST["cuerpo"];
-                        $email = "santikellemberger@gmail.com";
+                        $email = "admin@rosarioshoppingcenter.shop";
                         $header = "From: {$nombre}"."\r\n";
                         $header.= "Reply-To: {$_SESSION['nombreUsuario']}"."\r\n";
                         $header.= "X-Mailer: PHP/".phpversion();
                         $mail = @mail($email, $asunto, $cuerpo, $header);
+                        
+                        $_SESSION["mailEnviado"] = 1;
+                        header("Location: {$_SERVER["PHP_SELF"]}");
                       }
                     }
                   ?>
@@ -203,7 +206,7 @@
                   <div class="modal-body">
                   <form method="post">
                       <div class="mb-3">
-                        <label for="recipient-email" class="col-form-label">Correo Electronico</label>
+                        <label for="recipient-email" class="col-form-label">Correo Electrónico</label>
                         <input type="email" class="form-control" id="recipient-email" name="nombre" required>
                       </div>
                       <div class="mb-3">
@@ -226,11 +229,14 @@
                         $nombre = $_POST["nombre"];
                         $asunto = $_POST["asunto"];
                         $cuerpo = $_POST["cuerpo"];
-                        $email = "santikellemberger@gmail.com";
+                        $email = "admin@rosarioshoppingcenter.shop";
                         $header = "From: {$nombre}"."\r\n";
                         $header.= "Reply-To: {$_SESSION['nombreUsuario']}"."\r\n";
                         $header.= "X-Mailer: PHP/".phpversion();
                         $mail = @mail($email, $asunto, $cuerpo, $header);
+                        
+                        $_SESSION["mailEnviado"] = 1;
+                        header("Location: {$_SERVER["PHP_SELF"]}");
                       }
                     }
                   ?>
@@ -340,11 +346,14 @@
                     $nombre = $_POST["nombre"];
                     $asunto = $_POST["asunto"];
                     $cuerpo = $_POST["cuerpo"];
-                    $email = "santikellemberger@gmail.com";
+                    $email = "admin@rosarioshoppingcenter.shop";
                     $header = "From: {$nombre}"."\r\n";
                     $header.= "Reply-To: {$_SESSION['nombreUsuario']}"."\r\n";
                     $header.= "X-Mailer: PHP/".phpversion();
                     $mail = @mail($email, $asunto, $cuerpo, $header);
+                    
+                    $_SESSION["mailEnviado"] = 1;
+                    header("Location: {$_SERVER["PHP_SELF"]}");
                   }
                 }
               ?>
@@ -442,11 +451,14 @@
                       if(!empty($_POST["asunto"]) && !empty($_POST["cuerpo"])){
                         $asunto = $_POST["asunto"];
                         $cuerpo = $_POST["cuerpo"];
-                        $email = "santikellemberger@gmail.com";
+                        $email = "admin@rosarioshoppingcenter.shop";
                         $header = "From: {$_SESSION['nombreUsuario']}"."\r\n";
                         $header.= "Reply-To: {$_SESSION['nombreUsuario']}"."\r\n";
                         $header.= "X-Mailer: PHP/".phpversion();
                         $mail = @mail($email, $asunto, $cuerpo, $header);
+                        
+                        $_SESSION["mailEnviado"] = 1;
+                        header("Location: {$_SERVER["PHP_SELF"]}");
                       }
                     }
                   ?>
@@ -551,4 +563,5 @@
          <?php
       } 
         ?>
+    
 </footer>

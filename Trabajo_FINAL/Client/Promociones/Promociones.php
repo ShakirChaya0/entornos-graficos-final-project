@@ -1,6 +1,7 @@
 <?php
 ob_start();
 session_start();
+include("../../successMail.php");
 
 $selected_value = "";
 $search = "";
@@ -107,6 +108,7 @@ function mostrarPromocion($row_promo, $row_local, $row_usu, $fecha_actual, $conn
         }
 
         $add_prom = "INSERT INTO uso_promociones (codCliente, codPromo, fechaUsoPromo, estadoUsoPromo, codLocal) VALUES ({$row_usu['codUsuario']}, {$row_promo['codPromo']}, '$fecha_actual', 'aceptada', {$row_promo['codLocal']})";
+        $_SESSION["cantidadPromo"]++;
         mysqli_query($conn, $add_prom);
         $_POST = array();
         header("LOCATION: {$_SERVER['PHP_SELF']}");
@@ -385,7 +387,13 @@ function mostrar_UNR($conn, $search = "", $parametro = "") {
         ?>
     </div>
 
+    <?php
+        successMail();
+        $_SESSION["mailEnviado"] = 0;
+    ?>
+    
     <?php include("../../Pie_De_Pagina/footer.php"); ?>
+    
 </body>
 <?php ob_end_flush(); ?>
 </html>
